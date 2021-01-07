@@ -10,13 +10,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  displayName: 'Install Node.js'
-  enabled: true
-  continueOnError: false
-  inputs:
-    versionSpec: '14.2.0'
-
 - task: Npm@1
   displayName: Run npm install
   enabled: true
