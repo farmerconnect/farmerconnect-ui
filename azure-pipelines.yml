@@ -18,14 +18,6 @@ steps:
     command: 'install'
 
 - task: Npm@1
-  displayName: Run npm list webpack
-  enabled: true
-  continueOnError: false
-  inputs:
-    command: 'custom'
-    customCommand: 'list webpack'
-
-- task: Npm@1
   displayName: Run npm run build
   enabled: true
   continueOnError: false
