@@ -5522,9 +5522,9 @@ csstype@^2.5.7:
   integrity sha1-AEgipAUDRbVa1NzAC+HZzy9Clt4=
 
 csstype@^3.0.2:
-  version "3.0.5"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/csstype/-/csstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
-  integrity sha1-f97GoopnrhhkfFFmip/5W7L6e7g=
+  version "3.0.6"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/csstype/-/csstype-3.0.6.tgz#865d0b5833d7d8d40f4e5b8a6d76aea3de4725ef"
+  integrity sha1-hl0LWDPX2NQPTluKbXauo95HJe8=
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -5959,9 +5959,9 @@ dotenv@^6.2.0:
   integrity sha1-lBwEEFNdlCyL7PKNPzV9vZ1HYGQ=
 
 downshift@^6.0.6:
-  version "6.0.11"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/downshift/-/downshift-6.0.11.tgz#3c4911efcad0b76dd1e2d2fbad18906dedd531ad"
-  integrity sha1-PEkR78rQt23R4tL7rRiQbe3VMa0=
+  version "6.0.12"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/downshift/-/downshift-6.0.12.tgz#fadf3633e7cb22ec11d80900756821c4e6a1cf35"
+  integrity sha1-+t82M+fLIuwR2AkAdWghxOahzzU=
   dependencies:
     "@babel/runtime" "^7.12.5"
     compute-scroll-into-view "^1.0.16"
@@ -14664,10 +14664,39 @@ webpack-virtual-modules@^0.2.2:
   dependencies:
     debug "^3.0.0"
 
-webpack@4.44.2, webpack@^4.44.2:
+webpack@4.44.2:
   version "4.44.2"
   resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/webpack/-/webpack-4.44.2.tgz#6bfe2b0af055c8b2d1e90ed2cd9363f841266b72"
   integrity sha1-a/4rCvBVyLLR6Q7SzZNj+EEma3I=
+  dependencies:
+    "@webassemblyjs/ast" "1.9.0"
+    "@webassemblyjs/helper-module-context" "1.9.0"
+    "@webassemblyjs/wasm-edit" "1.9.0"
+    "@webassemblyjs/wasm-parser" "1.9.0"
+    acorn "^6.4.1"
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^4.3.0"
+    eslint-scope "^4.0.3"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^2.4.0"
+    loader-utils "^1.2.3"
+    memory-fs "^0.4.1"
+    micromatch "^3.1.10"
+    mkdirp "^0.5.3"
+    neo-async "^2.6.1"
+    node-libs-browser "^2.2.1"
+    schema-utils "^1.0.0"
+    tapable "^1.1.3"
+    terser-webpack-plugin "^1.4.3"
+    watchpack "^1.7.4"
+    webpack-sources "^1.4.1"
+
+webpack@^4.44.2:
+  version "4.45.0"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/webpack/-/webpack-4.45.0.tgz#bcdc1ddb43959adb47f8974e60d944027267c1be"
+  integrity sha1-vNwd20OVmttH+JdOYNlEAnJnwb4=
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/helper-module-context" "1.9.0"
