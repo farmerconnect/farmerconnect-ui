@@ -2410,9 +2410,9 @@
     loader-utils "^2.0.0"
 
 "@testing-library/dom@^7.28.1":
-  version "7.29.1"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@testing-library/dom/-/dom-7.29.1.tgz#a08ebeb26b2ea859b1621ff9642d114c1f04fe3a"
-  integrity sha1-oI6+smsuqFmxYh/5ZC0RTB8E/jo=
+  version "7.29.2"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@testing-library/dom/-/dom-7.29.2.tgz#6cba65d961d8b36d621a98caa8537444075fb42e"
+  integrity sha1-bLpl2WHYs21iGpjKqFN0RAdftC4=
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -2438,9 +2438,9 @@
     redent "^3.0.0"
 
 "@testing-library/react@^11.1.0":
-  version "11.2.2"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@testing-library/react/-/react-11.2.2.tgz#099c6c195140ff069211143cb31c0f8337bdb7b7"
-  integrity sha1-CZxsGVFA/waSERQ8sxwPgze9t7c=
+  version "11.2.3"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@testing-library/react/-/react-11.2.3.tgz#9971ede1c8465a231d7982eeca3c39fc362d5443"
+  integrity sha1-mXHt4chGWiMdeYLuyjw5/DYtVEM=
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
@@ -2610,9 +2610,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest@*", "@types/jest@^26.0.15":
-  version "26.0.19"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@types/jest/-/jest-26.0.19.tgz#e6fa1e3def5842ec85045bd5210e9bb8289de790"
-  integrity sha1-5voePe9YQuyFBFvVIQ6buCid55A=
+  version "26.0.20"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
+  integrity sha1-zS8nAuz2noa1huH1Ijpg5FQFYwc=
   dependencies:
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
@@ -5522,9 +5522,9 @@ csstype@^2.5.7:
   integrity sha1-AEgipAUDRbVa1NzAC+HZzy9Clt4=
 
 csstype@^3.0.2:
-  version "3.0.5"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/csstype/-/csstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
-  integrity sha1-f97GoopnrhhkfFFmip/5W7L6e7g=
+  version "3.0.6"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/csstype/-/csstype-3.0.6.tgz#865d0b5833d7d8d40f4e5b8a6d76aea3de4725ef"
+  integrity sha1-hl0LWDPX2NQPTluKbXauo95HJe8=
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -5959,9 +5959,9 @@ dotenv@^6.2.0:
   integrity sha1-lBwEEFNdlCyL7PKNPzV9vZ1HYGQ=
 
 downshift@^6.0.6:
-  version "6.0.10"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/downshift/-/downshift-6.0.10.tgz#c0fdc353b286c0b5f8d93af80a2bce57d90854d5"
-  integrity sha1-wP3DU7KGwLX42Tr4CivOV9kIVNU=
+  version "6.0.12"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/downshift/-/downshift-6.0.12.tgz#fadf3633e7cb22ec11d80900756821c4e6a1cf35"
+  integrity sha1-+t82M+fLIuwR2AkAdWghxOahzzU=
   dependencies:
     "@babel/runtime" "^7.12.5"
     compute-scroll-into-view "^1.0.16"
@@ -10367,9 +10367,9 @@ onetime@^5.1.0:
     mimic-fn "^2.1.0"
 
 open@^7.0.2, open@^7.0.3:
-  version "7.3.0"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/open/-/open-7.3.0.tgz#45461fdee46444f3645b6e14eb3ca94b82e1be69"
-  integrity sha1-RUYf3uRkRPNkW24U6zypS4Lhvmk=
+  version "7.3.1"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/open/-/open-7.3.1.tgz#111119cb919ca1acd988f49685c4fdd0f4755356"
+  integrity sha1-EREZy5GcoazZiPSWhcT90PR1U1Y=
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
@@ -11506,9 +11506,9 @@ postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, po
     supports-color "^6.1.0"
 
 postcss@^8.1.0:
-  version "8.2.2"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/postcss/-/postcss-8.2.2.tgz#60613b62297005084fd21024a68637798864fe26"
-  integrity sha1-YGE7YilwBQhP0hAkpoY3eYhk/iY=
+  version "8.2.3"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/postcss/-/postcss-8.2.3.tgz#14ed1294850c99661761d9cb68863718eb75690d"
+  integrity sha1-FO0SlIUMmWYXYdnLaIY3GOt1aQ0=
   dependencies:
     colorette "^1.2.1"
     nanoid "^3.1.20"
@@ -13706,9 +13706,9 @@ tapable@^1.0.0, tapable@^1.1.3:
   integrity sha1-ofzMBrWNth/XpF2i2kT186Pme6I=
 
 tar@^6.0.2:
-  version "6.0.5"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/tar/-/tar-6.0.5.tgz#bde815086e10b39f1dcd298e89d596e1535e200f"
-  integrity sha1-vegVCG4Qs58dzSmOidWW4VNeIA8=
+  version "6.1.0"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/tar/-/tar-6.1.0.tgz#d1724e9bcc04b977b18d5c573b333a2207229a83"
+  integrity sha1-0XJOm8wEuXexjVxXOzM6IgcimoM=
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
@@ -14029,9 +14029,9 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   integrity sha1-2mCGDxwuyqVwOrfTm8Bba/mIuXo=
 
 tsutils@^3.17.1:
-  version "3.18.0"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/tsutils/-/tsutils-3.18.0.tgz#38add50a28ec97e988cb43c5b32e55d1ff4a222a"
-  integrity sha1-OK3VCijsl+mIy0PFsy5V0f9KIio=
+  version "3.19.0"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/tsutils/-/tsutils-3.19.0.tgz#9387cb5fcb71579aa0909c509604f8a7fbe1cff1"
+  integrity sha1-k4fLX8txV5qgkJxQlgT4p/vhz/E=
   dependencies:
     tslib "^1.8.1"
 
@@ -14556,11 +14556,6 @@ web-namespaces@^1.0.0:
   resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/web-namespaces/-/web-namespaces-1.1.4.tgz#bc98a3de60dadd7faefc403d1076d529f5e030ec"
   integrity sha1-vJij3mDa3X+u/EA9EHbVKfXgMOw=
 
-web-vitals@^0.2.4:
-  version "0.2.4"
-  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/web-vitals/-/web-vitals-0.2.4.tgz#ec3df43c834a207fd7cdefd732b2987896e08511"
-  integrity sha1-7D30PINKIH/Xze/XMrKYeJbghRE=
-
 webidl-conversions@^5.0.0:
   version "5.0.0"
   resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/webidl-conversions/-/webidl-conversions-5.0.0.tgz#ae59c8a00b121543a2acc65c0434f57b0fc11aff"
@@ -14669,10 +14664,39 @@ webpack-virtual-modules@^0.2.2:
   dependencies:
     debug "^3.0.0"
 
-webpack@4.44.2, webpack@^4.44.2:
+webpack@4.44.2:
   version "4.44.2"
   resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/webpack/-/webpack-4.44.2.tgz#6bfe2b0af055c8b2d1e90ed2cd9363f841266b72"
   integrity sha1-a/4rCvBVyLLR6Q7SzZNj+EEma3I=
+  dependencies:
+    "@webassemblyjs/ast" "1.9.0"
+    "@webassemblyjs/helper-module-context" "1.9.0"
+    "@webassemblyjs/wasm-edit" "1.9.0"
+    "@webassemblyjs/wasm-parser" "1.9.0"
+    acorn "^6.4.1"
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+    chrome-trace-event "^1.0.2"
+    enhanced-resolve "^4.3.0"
+    eslint-scope "^4.0.3"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^2.4.0"
+    loader-utils "^1.2.3"
+    memory-fs "^0.4.1"
+    micromatch "^3.1.10"
+    mkdirp "^0.5.3"
+    neo-async "^2.6.1"
+    node-libs-browser "^2.2.1"
+    schema-utils "^1.0.0"
+    tapable "^1.1.3"
+    terser-webpack-plugin "^1.4.3"
+    watchpack "^1.7.4"
+    webpack-sources "^1.4.1"
+
+webpack@^4.44.2:
+  version "4.45.0"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/webpack/-/webpack-4.45.0.tgz#bcdc1ddb43959adb47f8974e60d944027267c1be"
+  integrity sha1-vNwd20OVmttH+JdOYNlEAnJnwb4=
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/helper-module-context" "1.9.0"
