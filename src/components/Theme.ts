@@ -1,12 +1,12 @@
-import { Button } from "./Button/interfaces";
+import { IButton } from "./Button/interfaces";
 import { buttonDefaultStyles } from "./Button/styles";
 
-interface Theme {
-    button: Button
+interface ITheme {
+    button: IButton
 };
 
-export const farmerConnectTheme: Theme = {
+export const farmerConnectTheme: ITheme = {
     button: buttonDefaultStyles
 }
 
-export default Theme;
+export default ITheme;
