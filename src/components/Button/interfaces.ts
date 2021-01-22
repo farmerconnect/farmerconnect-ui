@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import CustomStyles from "../CustomStyles";
 
 export interface IButton {
@@ -11,10 +11,8 @@ export interface IButtonColors {
     tertiary?: string
 }
 
-export interface IButtonProps extends CustomStyles {
+export interface IButtonProps extends CustomStyles, ButtonHTMLAttributes<HTMLButtonElement> {
     backgroundColor?: string,
     color?: string,
-    hoverColor?: string,
-    onClick(): void,
-    children?: ReactNode
+    hoverColor?: string
 }

@@ -6,8 +6,8 @@ const Button: React.FC<IButtonProps> = ({
     backgroundColor,
     color,
     customStyles,
-    onClick,
-    children
-}) => <Container backgroundColor={backgroundColor} color={color} onClick={onClick} customStyles={customStyles}>{children}</Container>;
+    children,
+    ...props
+}) => <Container backgroundColor={backgroundColor} color={color} customStyles={customStyles} {...props}>{children}</Container>;
 
 export default Button;
