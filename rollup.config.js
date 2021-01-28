@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import svg from 'rollup-plugin-svg';
 
 const config = {
     input: 'src/index.tsx',
@@ -10,7 +11,10 @@ const config = {
         file: 'dist/farmerconnect-ui.esm.js',
         format: 'es'
     }],
-    plugins: [ typescript() ]
+    plugins: [
+        typescript(),
+        svg()
+    ]
 };
 
 export default config;
