@@ -9,7 +9,9 @@ export default {
   title: 'Breadcrumbs',
   component: Breadcrumbs,
   argTypes: {
-    breadcrumbs: { control: 'object' },
+    doneColor: { control: 'color' },
+    undoneColor: { control: 'color' },
+    titleColor: { control: 'color' },
   },
 } as Meta;
 

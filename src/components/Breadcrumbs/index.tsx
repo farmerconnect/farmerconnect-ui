@@ -15,7 +15,11 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = (props: IBreadcrumbsProps) => {
           done={!foundActive}
           text={breadcrumb.text}
           hasPrevious={index > 0}
-          hasNext={index < props.breadcrumbs.length - 1} />
+          hasNext={index < props.breadcrumbs.length - 1}
+          doneColor={props.doneColor}
+          undoneColor={props.undoneColor}
+          titleColor={props.titleColor}
+        />
       })}
     </Container>
   )
