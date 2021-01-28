@@ -47,7 +47,7 @@ export const IconContainer = styled.div`
 `;
 
 export const Icon = styled.div<IBreadcrumbIconProps>`
-  background-image: url(${(props) => props.active ? activeImg : props.done ? doneImg : undoneImg});
+  background-image: url(${(props) => props.done ? doneImg : props.active ? activeImg : undoneImg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
