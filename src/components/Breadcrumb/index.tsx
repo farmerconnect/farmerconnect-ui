@@ -5,11 +5,11 @@ import { Container, Icon, IconContainer, IconLine, Text } from './styles';
 const Breadcrumb: React.FC<IBreadcrumbProps> = (props: IBreadcrumbProps) => {
   return (
     <Container>
-      <Text active={props.active} done={props.done}>{props.text}</Text>
+      <Text {...props}>{props.text}</Text>
       <IconContainer>
-        <IconLine done={props.done || props.active} visible={props.hasPrevious} />
-        <Icon active={props.active} done={props.done} hasNext={props.hasNext} hasPrevious={props.hasPrevious} />
-        <IconLine done={props.done} visible={props.hasNext} />
+        <IconLine done={props.active || props.done} visible={props.hasPrevious} />
+        <Icon {...props} />
+        <IconLine {...props} visible={props.hasNext} />
       </IconContainer>
     </Container>
   )

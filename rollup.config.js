@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import svg from 'rollup-plugin-svg';
 
 const config = {
     input: 'src/index.tsx',
@@ -12,8 +11,7 @@ const config = {
         format: 'es'
     }],
     plugins: [
-        typescript(),
-        svg()
+        typescript()
     ]
 };
 

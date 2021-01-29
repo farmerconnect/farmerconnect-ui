@@ -9,7 +9,9 @@ export default {
   title: 'Breadcrumb',
   component: Breadcrumb,
   argTypes: {
-    breadcrumb: { control: 'object' },
+    doneColor: { control: 'color' },
+    undoneColor: { control: 'color' },
+    titleColor: { control: 'color' },
   },
 } as Meta;
 
@@ -17,6 +19,5 @@ const Template: Story<IBreadcrumbProps> = (args) => <Breadcrumb {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  active: true,
   text: 'STEP NAME'
 };
