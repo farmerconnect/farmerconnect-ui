@@ -1,6 +1,6 @@
 import react from 'react';
 import { Container } from './styles';
-import Breadcrumb from '../Breadcrumb';
+import Breadcrumb from './Breadcrumb';
 import { IBreadcrumbsProps } from './interfaces';
 
 const Breadcrumbs: React.FC<IBreadcrumbsProps> = (props: IBreadcrumbsProps) => {
