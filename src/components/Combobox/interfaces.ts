@@ -5,10 +5,12 @@ export interface IComboProps {
     openContent: any;
     open: boolean;
     disabled?: boolean;
+    first?: boolean;
 }
 
 export interface ICombo {
     open: boolean;
+    disabled?: boolean;
 }
 
 export interface IButton {

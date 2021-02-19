@@ -6,6 +6,7 @@ const Combo: React.FC<IComboProps> = ({
   openContent,
   open,
   disabled,
+  first,
   ...props
 }) => {
 
@@ -16,8 +17,10 @@ const Combo: React.FC<IComboProps> = ({
 
   return (
     <Container
+      className={first ? 'first' : ''}
       onClick={e => handleOpenContent(e)}
       open={open}
+      disabled={disabled}
     >
       Select one product
       <Icon>

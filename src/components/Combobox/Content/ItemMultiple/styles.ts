@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.label`
+export const Container = styled.div`
+  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+  padding: 0 0 0.4rem 1.1rem;
+  margin: 0px 0px 1rem 0;
+`;
+
+export const Label = styled.label`
   display: block;
   position: relative;
   padding-left: 1.9rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;

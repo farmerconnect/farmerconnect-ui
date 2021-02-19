@@ -6,20 +6,18 @@ interface IProps {
   handleSelected: any;
 }
 
-const Item: React.FC<IProps> = ({
+const ItemSingle: React.FC<IProps> = ({
   content,
   handleSelected,
   ...props
 }) => {
 
   return (
-    <Container onClick={() => handleSelected(content)}>
+    <Container onClick={(e: any) => handleSelected(e, content)}>
       <b>{content.name}</b>
       <p>Registered by: {content.information.registered}︱ID: {content.information.id}︱Company prefix: {content.information.companyPrefix} </p>
-      <input type="checkbox" />
-      <span className="checkmark"></span>
     </Container>
   )
 }
 
-export default Item;
+export default ItemSingle;

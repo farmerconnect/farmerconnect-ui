@@ -1,19 +1,24 @@
 import styled from 'styled-components';
-import { IButton, IComboboxProps } from './interfaces';
 
-export const buttonDefaultStyles: IButton = {
-    colors: {
-        primary: '#00E394',
-        secondary: '#FFFFFF',
-        tertiary: '#00AF72'
-    }
-}
 
-export const Container = styled.div<IComboboxProps>`
-
+export const Container = styled.div`
 `;
 
 export const ContainerCombo = styled.div`
     display: flex;
     flex-direction: row;
+    position: relative;
+
+    .comboDivider {
+        width: 1px;
+        height: 100%;
+        background: #B9B9B9;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+
+        &.open {
+            background: #00E394;
+        }
+    }
 `;
