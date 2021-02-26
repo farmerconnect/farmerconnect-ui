@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const comboBoxDefaultStyles = {}
+
 
 export const Container = styled.div`
 `;
