@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ISearchProps {
+    searchStatus: boolean;
+}
+
 export const Container = styled.div`
     background-color: #F7F6F4;
     border: 0px;
@@ -15,17 +19,17 @@ export const Container = styled.div`
 `;
 
 export const ContainerSearch = styled.div`
-    width: 46%;
+    width: 48%;
     margin: 0px 0px 2rem 1rem;
     position: relative;
 `;
 
 export const Search = styled.input`
-    width: 100%;
+    width: 93%;
     height: 2rem;
     border: 1px solid rgba(20, 20, 20, 0.3);
     border-radius: 12px;
-    padding: 0.3rem 0.875rem;
+    padding: 0.3rem 2.775rem 0.3rem 1.075rem;
     background: #F7F6F4;
     outline: none;
     color: #141414;
@@ -36,7 +40,7 @@ export const Search = styled.input`
     }
 `;
 
-export const ButtonSearch = styled.button`
+export const ButtonSearch = styled.button<ISearchProps>`
     background: none;
     border: none;
     cursor: pointer;
@@ -46,6 +50,7 @@ export const ButtonSearch = styled.button`
     position: absolute;
     top: 12px;
     right: 0px;
+    display: ${(props) => props.searchStatus ? 'none' : 'block'};
 
     svg {
         path {
@@ -54,7 +59,7 @@ export const ButtonSearch = styled.button`
     }
 `;
 
-export const ButtonCancelSearch = styled.button`
+export const ButtonCancelSearch = styled.button<ISearchProps>`
     background: none;
     border: none;
     cursor: pointer;
@@ -64,7 +69,7 @@ export const ButtonCancelSearch = styled.button`
     position: absolute;
     top: 15px;
     right: 0px;
-    display: none;
+    display: ${(props) => props.searchStatus ? 'block' : 'none'};
 
     svg {
         path {
@@ -74,7 +79,7 @@ export const ButtonCancelSearch = styled.button`
 `;
 
 export const ContainerContent = styled.div`
-    height: 12.9rem;
+    max-height: 12.9rem;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
