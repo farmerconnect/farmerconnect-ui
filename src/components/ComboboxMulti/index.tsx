@@ -4,7 +4,7 @@ import { Container, ContainerCombo } from './styles';
 import Combo from './Combo'
 import Content from './Content'
 
-const ComboboxMulti: React.FC<IComboboxProps> = ({
+const ComboBoxMulti: React.FC<IComboboxProps> = ({
     firstContent,
     secondContent,
     textFirstCombo,
@@ -184,4 +184,4 @@ const ComboboxMulti: React.FC<IComboboxProps> = ({
     )
 }
 
-export default ComboboxMulti;
+export default ComboBoxMulti;
