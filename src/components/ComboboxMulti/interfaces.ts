@@ -49,3 +49,13 @@ export interface IItemSingle {
     content: any;
     handleSelected: any;
 }
+
+export interface IComboTheme {
+    colors: IComboColors;
+}
+
+export interface IComboColors {
+    primary: string,
+    secondary: string,
+    tertiary?: string
+}

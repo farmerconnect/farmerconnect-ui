@@ -4,17 +4,21 @@ import { IButton } from "./Button/interfaces";
 import { buttonDefaultStyles } from "./Button/styles";
 import { INavigationBar } from "./NavigationBar/interfaces";
 import { navigationBarDefaultStyles } from "./NavigationBar/styles";
+import { IComboTheme } from './ComboBoxMulti/interfaces';
+import { comboBoxDefaultStyles } from './ComboBoxMulti/styles';
 
 interface ITheme {
     breadcrumb: IBreadcrumb,
     button: IButton,
-    navigationBar: INavigationBar
+    navigationBar: INavigationBar,
+    comboBoxMulti: IComboTheme,
 };
 
 export const farmerConnectTheme: ITheme = {
     breadcrumb: breadcrumbDefaultStyles,
     button: buttonDefaultStyles,
-    navigationBar: navigationBarDefaultStyles
+    navigationBar: navigationBarDefaultStyles,
+    comboBoxMulti: comboBoxDefaultStyles
 }
 
 export default ITheme;

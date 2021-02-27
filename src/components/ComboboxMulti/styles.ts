@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { IComboTheme } from './interfaces';
 
-export const comboBoxDefaultStyles = {}
+export const comboBoxDefaultStyles: IComboTheme = {
+    colors: {
+        primary: 'rgba(112, 163, 140, 0.2)',
+        secondary: '#141414',
+        tertiary: 'rgba(20, 20, 20, 0.3)'
+    }
+  }
 
 
 export const Container = styled.div`
