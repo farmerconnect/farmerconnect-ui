@@ -4,8 +4,8 @@ import { IButton } from "./Button/interfaces";
 import { buttonDefaultStyles } from "./Button/styles";
 import { INavigationBar } from "./NavigationBar/interfaces";
 import { navigationBarDefaultStyles } from "./NavigationBar/styles";
-import { IComboTheme } from './ComboBoxMulti/interfaces';
-import { comboBoxDefaultStyles } from './ComboBoxMulti/styles';
+import { IComboTheme } from './ComboboxMulti/interfaces';
+import { comboBoxDefaultStyles } from './ComboboxMulti/styles';
 
 interface ITheme {
     breadcrumb: IBreadcrumb,
