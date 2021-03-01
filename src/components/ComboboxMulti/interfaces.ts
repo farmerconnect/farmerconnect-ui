@@ -22,6 +22,7 @@ export interface IComboboxProps {
     onChange: any;
     loading: boolean;
     limit: number;
+    clear: boolean;
 }
 
 export interface IContentProps {

@@ -14,7 +14,8 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     textButtonConfirm,
     onChange,
     loading,
-    limit
+    limit,
+    clear
 }) => {
 
     const [open, setOpen] = useState<boolean>(false);
@@ -55,8 +56,19 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
 
     useEffect(()=>{
         if(firstContent) setContent(firstContent)
-        if(secondContent) setContent2(secondContent)
-    }, [firstContent, secondContent])
+        if(secondContent) {
+            setContent2(secondContent)
+            setDisableButtonsContent(true)
+        }
+        if(clear) {
+            setContent2([])
+            setSelectedContent([])
+            setSelectedContent2([])
+            setDisableButtonsContent(true)
+            setDisable(true)
+            setLimitReached(false)
+        }
+    }, [firstContent, secondContent, clear])
 
     const handleOpenContent = (content:any, id: number) => {
         setOpen(!open)
@@ -77,6 +89,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             onChange(item, 0)
             setSelectedContent2([])
             setDisableButtonsContent(true)
+            setLimitReached(false)
             if(secondContent) setContent2(secondContent)
         } else {
             item.checked = !item.checked
@@ -97,7 +110,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
                 } else {
                     setDisableButtonsContent(true)
                 }
-                if(contentFiltered.length > 4) {
+                if(contentFiltered.length >= limit) {
                     setLimitReached(true)
                 } else {
                     setLimitReached(false)
@@ -108,7 +121,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
                 const newContent = content2.map(content => (content))
                 setContent2(newContent)
                 setDisableButtonsContent(false)
-                if(newContentSelected.length > 4) {
+                if(newContentSelected.length >= limit) {
                     setLimitReached(true)
                 } else {
                     setLimitReached(false)
