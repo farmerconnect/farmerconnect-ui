@@ -33,6 +33,7 @@ export const Button = styled.button<INavigationBarProps>`
   &:disabled {
     border-color: ${(props) => props.disabledColor || props.theme?.navigationBar?.colors?.tertiary || navigationBarDefaultStyles.colors.tertiary};
     color: ${(props) => props.disabledColor || props.theme?.navigationBar?.colors?.tertiary || navigationBarDefaultStyles.colors.tertiary};
+    cursor: auto;
   }
 
   ${props => props.customStyles}

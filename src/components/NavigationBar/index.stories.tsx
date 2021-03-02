@@ -20,4 +20,6 @@ const Template: Story<INavigationBarProps> = (args) => <NavigationBar {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
+  previousButton: { children: 'Previous', disabled: true, onClick: () => console.log('clicked on previous') },
+  nextButton: { children: 'Next', disabled: false, onClick: () => console.log('clicked on next') }
 };
