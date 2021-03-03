@@ -11,6 +11,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = (props: IBreadcrumbsProps) => {
       {props.breadcrumbs.map((breadcrumb, index) => {
         foundActive = foundActive || breadcrumb.active;
         return <Breadcrumb
+          key={index}
           active={breadcrumb.active}
           done={!foundActive}
           text={breadcrumb.text}
