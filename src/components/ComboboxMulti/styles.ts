@@ -20,11 +20,8 @@ export const ContainerCombo = styled.div`
 
     .comboDivider {
         width: 1px;
-        height: 100%;
+        height: auto;
         background: #B9B9B9;
-        position: absolute;
-        top: 0px;
-        left: 50%;
 
         &.open {
             background: #00E394;

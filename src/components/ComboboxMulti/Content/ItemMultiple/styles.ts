@@ -17,6 +17,14 @@ export const Label = styled.label`
   -ms-user-select: none;
   user-select: none;
 
+  &.disabled {
+    color: rgba(20,20,20,.3);
+
+    .checkmark {
+      border: 1px solid rgba(20,20,20,.3);
+    }
+  }
+
   b {
     font-weight: 800;
   }

@@ -11,15 +11,16 @@ const ItemMultiple: React.FC<IItemMultipleProps> = ({
   ...props
 }) => {
 
+  const disabled = limitReached && !content.checked;
   return (
     <Container>
-      <Label onChange={(e: any) => handleSelected(e, content)}>
-        <b>ID: {content.id}</b>
+      <Label onChange={(e: any) => handleSelected(e, content)} className={`${disabled ? 'disabled' : ""}`}>
+        <b>ID: {content.id.split(":").pop()}</b>
         <p>Product id: {content.product_id}</p>
         <input type="checkbox"
           checked={content.checked}
           onChange={(e: any) => handleSelected(e, content)}
-          disabled={limitReached && !content.checked}
+          disabled={disabled}
         />
         <span className="checkmark"></span>
       </Label>
