@@ -142,6 +142,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             })
             setContent2(newContent)
             setDisableButtonsContent(true)
+            setLimitReached(false)
         }
         onChange([], 1)
     }
