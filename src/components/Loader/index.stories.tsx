@@ -9,8 +9,10 @@ export default {
   title: 'Loader',
   component: Loader,
   argTypes: {
-    color: { control: 'color' },
+    show: { control: 'boolean' },
     options: { control: 'object' },
+    iconSize: { control: 'number' },
+    iconColor: { control: 'color' },
   },
 } as Meta;
 
