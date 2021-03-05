@@ -1,6 +1,6 @@
 {
   "name": "farmerconnect-ui",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
