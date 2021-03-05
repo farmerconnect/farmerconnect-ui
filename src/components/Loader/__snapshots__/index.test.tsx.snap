@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader component should match the snapshot - hidden 1`] = `ShallowWrapper {}`;
+
+exports[`Loader component should match the snapshot - visible 1`] = `ShallowWrapper {}`;
