@@ -15,7 +15,7 @@ export default {
 } as Meta;
 
 const defaultArgs = {
-  show: false,
+  show: true,
   options: [
     {
       duration: 5,
