@@ -1,7 +1,8 @@
 import * as React from "react";
 
 interface IIconClose {
-  fill: string
+  fill?: string;
+  className?: string;
 }
 
 const IconClose: React.FC<IIconClose> = ({

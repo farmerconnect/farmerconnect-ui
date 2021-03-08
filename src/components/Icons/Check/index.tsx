@@ -1,7 +1,8 @@
 import * as React from "react";
 
 interface IIconCheck {
-  fill: string
+  fill?: string;
+  className?: string;
 }
 
 const IconCheck: React.FC<IIconCheck> = ({

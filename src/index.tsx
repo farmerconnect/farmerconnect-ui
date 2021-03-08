@@ -6,5 +6,6 @@ import IconClose from './components/Icons/Close';
 import IconWarning from './components/Icons/Warning';
 import NavigationBar from './components/NavigationBar';
 import Loader from './components/Loader';
+import TextInput from './components/TextInput';
 
-export { Breadcrumbs, Button, ComboBoxMulti, IconCheck, IconClose, NavigationBar, IconWarning, Loader };
+export { Breadcrumbs, Button, ComboBoxMulti, IconCheck, IconClose, NavigationBar, IconWarning, Loader, TextInput };

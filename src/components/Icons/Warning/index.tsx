@@ -1,7 +1,8 @@
 import * as React from "react";
 
 interface IIconWarning {
-  fill: string
+  fill?: string;
+  className?: string;
 }
 
 const IconWarning: React.FC<IIconWarning> = ({
