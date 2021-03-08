@@ -9,7 +9,7 @@ export const breadcrumbDefaultStyles: IBreadcrumb = {
   }
 }
 
-const fontFamily = `font-family: 'Red Hat Display', sans-serif;`;
+const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
 export const Container = styled.div`
   ${fontFamily}
   align-items: center;
@@ -26,7 +26,7 @@ export const Text = styled.span<IBreadcrumbProps>`
     : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
   };
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: ${(props) => props.active ? 700 : 400};
 `;
 
 export const IconContainer = styled.div`
@@ -39,6 +39,8 @@ export const IconContainer = styled.div`
 
 export const Icon = styled.div<IBreadcrumbBarProps>`
   background-color: ${(props) => props.done
+    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+    : props.active
     ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
     : ''
   };
@@ -55,7 +57,7 @@ export const Icon = styled.div<IBreadcrumbBarProps>`
 
 export const IconLine = styled.div<IBreadcrumbLineProps>`
   border-bottom: 0.1rem solid ${(props) => props.done
-    ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
+    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
     : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
   }; 
   height: 0.45rem;
