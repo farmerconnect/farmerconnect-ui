@@ -44,7 +44,9 @@ export const Icon = styled.div<IBreadcrumbBarProps>`
     ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
     : ''
   };
-  border: 0.1rem solid ${(props) => props.active || props.done
+  border: 0.1rem solid ${(props) => props.done
+    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+    : props.active
     ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
     : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
   };
