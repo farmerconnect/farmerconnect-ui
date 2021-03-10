@@ -8,12 +8,20 @@ const NavigationBar: React.FC<INavigationBarProps> = (
   return (
     <Container {...props}>
       <PreviousButtonContainer>
-        <Button {...{ backgroundColor: props.backgroundColor, color: props.color, disabledColor: props.disabledColor, customStyles: props.previousButton?.customStyles }}
-                {...props.previousButton}>{props.previousButton?.children}</Button>
+        {props.previousButton ? (
+          <Button {...{ backgroundColor: props.backgroundColor, color: props.color, disabledColor: props.disabledColor, customStyles: props.previousButton?.customStyles }}
+                  {...props.previousButton}>{props.previousButton?.children}</Button>
+        ) : (
+          <></>
+        )}
       </PreviousButtonContainer>
       <NextButtonContainer>
-        <Button {...{ backgroundColor: props.backgroundColor, color: props.color, disabledColor: props.disabledColor, customStyles: props.nextButton?.customStyles }}
-                {...props.nextButton}>{props.nextButton?.children}</Button>
+        {props.nextButton ? (
+          <Button {...{ backgroundColor: props.backgroundColor, color: props.color, disabledColor: props.disabledColor, customStyles: props.nextButton?.customStyles }}
+                  {...props.nextButton}>{props.nextButton?.children}</Button>
+        ) : (
+          <></>
+        )}
       </NextButtonContainer>
     </Container>
   )
