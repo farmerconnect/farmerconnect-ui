@@ -12,8 +12,7 @@ export const Container = styled.div`
     color: #6D6D6D;
     font-weight: normal;
     max-width: 100%;
-    min-height: 2.5rem;
-    max-height: 331px;
+    min-height: 20rem;
     outline: none;
     padding: 1rem 0rem 1rem;
 `;
@@ -79,7 +78,8 @@ export const ButtonCancelSearch = styled.button<ISearchProps>`
 `;
 
 export const ContainerContent = styled.div`
-    max-height: 12.9rem;
+    min-height: 11rem;
+    max-height: 19.9rem;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {

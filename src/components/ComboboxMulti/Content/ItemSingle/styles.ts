@@ -6,6 +6,7 @@ export const Container = styled.li`
   margin: 0px 0px 1rem 0;
   list-style: none;
   cursor: pointer;
+  color: #141414;
 
   p {
     margin: 0;

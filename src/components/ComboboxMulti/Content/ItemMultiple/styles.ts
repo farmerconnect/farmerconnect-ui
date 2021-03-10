@@ -16,6 +16,7 @@ export const Label = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: #141414;
 
   &.disabled {
     color: rgba(20,20,20,.3);
