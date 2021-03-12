@@ -8,6 +8,7 @@ const TextInput: React.FC<ITextInputProps> = ({
   id,
   classes,
   placeHolder,
+  value,
   onChange
 }) => {
 
@@ -52,6 +53,7 @@ const TextInput: React.FC<ITextInputProps> = ({
         placeholder={`${placeHolder ? placeHolder : ""}`}
         className={`${classes ? classes : ""}`}
         id={`${id ? id : ""}`}
+        value={value}
         data-cy="report-name-input"
       ></TextInputField>
       {
