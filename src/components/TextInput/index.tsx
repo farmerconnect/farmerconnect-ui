@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ITextInputProps } from "./interfaces";
 import { TextInputContainer, TextInputField } from "./styles";
 import IconCheck from "../Icons/Check";
@@ -28,7 +28,7 @@ const TextInput: React.FC<ITextInputProps> = ({
     validateInput(inputValue);
   };
   const validateInput = (value: string) => {
-    if (value.length > 3 && value.length <= 100) {
+    if (value?.length > 3 && value?.length <= 100) {
       setValidInput(true);
       onChange(value, true);
     } else {
@@ -37,11 +37,15 @@ const TextInput: React.FC<ITextInputProps> = ({
     }
   };
 
+  useEffect(() => {
+    setInputValue(value);
+    validateInput(value);
+  }, [value]);
 
   return (
     <TextInputContainer
       className={`${focusInput ? "focus" : ""} ${
-      !validInput && inputValue.length > 0 && !focusInput
+      !validInput && inputValue?.length > 0 && !focusInput
       ? "error"
       : ""
       }`}
@@ -53,14 +57,14 @@ const TextInput: React.FC<ITextInputProps> = ({
         placeholder={`${placeHolder ? placeHolder : ""}`}
         className={`${classes ? classes : ""}`}
         id={`${id ? id : ""}`}
-        value={value}
+        value={inputValue}
         data-cy="report-name-input"
       ></TextInputField>
       {
         validInput && !focusInput && <IconCheck className='checkInput' />
       }
       {
-        !validInput && inputValue.length > 0 && !focusInput && <IconWarning className='checkInput' />
+        !validInput && inputValue?.length > 0 && !focusInput && <IconWarning className='checkInput' />
       }
     </TextInputContainer>
   );
