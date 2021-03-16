@@ -41,6 +41,10 @@ export const Message = styled.p`
   line-height: 24px;
   margin: 20px 0 0;
   text-align: center;
+
+  &.error {
+    max-width: 392px;
+  }
 `;
 
 export const Content = styled.div`

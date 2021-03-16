@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { ILoaderProps } from './interfaces';
+import Caution from "../Icons/Caution";
 import {
   Button,
   Content,
@@ -16,6 +17,7 @@ const Loader = ({
   iconSize,
   iconColor,
   buttonText,
+  errorOptions,
   onButtonClick,
   ...props
 }: ILoaderProps) => {
@@ -68,11 +70,24 @@ const Loader = ({
     [option]
   );
 
+  const renderError = useCallback(() => {
+    return (
+      <Fragment>
+        <Caution />
+        <Message className="error">{errorOptions?.message}</Message>
+      </Fragment>
+    )
+  }, [errorOptions])
+
   return (
     <Container show={show} {...props}>
       <Content>
-        {renderSpinner()}
-        {renderMessage()}
+        {
+          errorOptions?.error ? renderError() : renderSpinner()
+        }
+        {
+          errorOptions?.error ? "" : renderMessage()
+        }
         {onButtonClick && buttonText && (
           <Button onClick={onButtonClick}>{buttonText}</Button>
         )}

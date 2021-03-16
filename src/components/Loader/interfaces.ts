@@ -20,11 +20,17 @@ interface ILoaderOption {
   duration?: number;
 }
 
+interface ILoaderError {
+  error: boolean;
+  message: string;
+}
+
 export interface ILoaderProps extends CustomStyles {
   show?: boolean;
   options?: ILoaderOption[];
   iconSize?: number;
   iconColor?: string;
   buttonText?: string | ReactNode;
+  errorOptions?: ILoaderError;
   onButtonClick?: () => void;
 }
