@@ -15,7 +15,9 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     onChange,
     loading,
     limit,
-    clear
+    clear,
+    firstItemRender,
+    secondItemRender
 }) => {
 
     const [open, setOpen] = useState<boolean>(false);
@@ -57,8 +59,10 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     useEffect(()=>{
         if(firstContent) setContent(firstContent)
         if(secondContent) {
+            setSelectedContent2([])
             setContent2(secondContent)
             setDisableButtonsContent(true)
+            setLimitReached(false)
         }
         if(clear) {
             setContent2([])
@@ -192,6 +196,8 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
                     textButtonClear={textButtonClear}
                     textButtonConfirm={textButtonConfirm}
                     limitReached={limitReached}
+                    firstContentItemRender={firstItemRender}
+                    secondContentItemRender={secondItemRender}
                 />
             }
         </Container>

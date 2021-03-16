@@ -4,7 +4,7 @@ import ItemMultiple from './ItemMultiple';
 import ItemSingle from './ItemSingle';
 import {IContentProps} from '../interfaces';
 
-const renderSingle = (content: any, itemSelect: any) => {
+const renderSingle = (content: any, itemSelect: any, firstContentItemRender: any) => {
   return (
     <Container>
       <ContainerContent>
@@ -14,6 +14,7 @@ const renderSingle = (content: any, itemSelect: any) => {
             key={index}
             content={item}
             handleSelected={(e:any, item: any) => itemSelect(e, item)}
+            contentRender={firstContentItemRender(item)}
           />
         ))
       }
@@ -37,6 +38,7 @@ function renderMultiple (
   textButtonClear: string,
   textButtonConfirm: string,
   limitReached: boolean,
+  secondContentItemRender: any
 ) {
   return (
     <Fragment>
@@ -75,6 +77,7 @@ function renderMultiple (
               <ItemMultiple
                 key={index}
                 content={item}
+                contentRender={secondContentItemRender(item)}
                 limitReached={limitReached}
                 handleSelected={
                   (e:any, item:any) => {
@@ -117,6 +120,8 @@ const Content: React.FC<IContentProps> = ({
   textButtonClear,
   textButtonConfirm,
   limitReached,
+  firstContentItemRender,
+  secondContentItemRender,
   ...props
 }) => {
 
@@ -150,8 +155,8 @@ const Content: React.FC<IContentProps> = ({
     onSearch(searchValue)
   }
 
-  if (open && multiple) return renderMultiple(content, itemSelect, disabled, handleClear, handleConfirm, searchValue, handleSearchType, handleClearSearch, searchStatus, handleSearch, textSearch, textButtonClear, textButtonConfirm, limitReached)
-  if (open && !multiple) return renderSingle(content, itemSelect)
+  if (open && multiple) return renderMultiple(content, itemSelect, disabled, handleClear, handleConfirm, searchValue, handleSearchType, handleClearSearch, searchStatus, handleSearch, textSearch, textButtonClear, textButtonConfirm, limitReached, secondContentItemRender)
+  if (open && !multiple) return renderSingle(content, itemSelect, firstContentItemRender)
 
   return <div></div>
 }

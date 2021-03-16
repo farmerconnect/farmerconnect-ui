@@ -23,6 +23,8 @@ export interface IComboboxProps {
     loading: boolean;
     limit: number;
     clear: boolean;
+    firstItemRender: (item: any) => void;
+    secondItemRender: (item: any) => void;
 }
 
 export interface IContentProps {
@@ -38,17 +40,21 @@ export interface IContentProps {
     textButtonClear: string;
     textButtonConfirm: string;
     limitReached: boolean;
+    firstContentItemRender: (item: any) => void;
+    secondContentItemRender: (item: any) => void;
 }
 
 export interface IItemMultipleProps {
     content: any;
     handleSelected: any;
     limitReached: boolean;
+    contentRender: (item: any) => void;
 }
 
 export interface IItemSingle {
     content: any;
     handleSelected: any;
+    contentRender: any;
 }
 
 export interface IComboTheme {
