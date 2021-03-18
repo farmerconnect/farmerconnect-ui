@@ -16,11 +16,11 @@ const Container = styled.button<IButtonProps>`
     color: ${(props) => props.color || props.theme?.button?.colors?.secondary || buttonDefaultStyles.colors.secondary};
     cursor: pointer;
     font-weight: bold;
-    max-width: 10rem;
     min-height: 2rem;
     min-width: 7rem;
     outline: none;
-    padding: 10px 15px 10px 15px;
+    padding: 13px 46px;
+    text-align: center;
 
     &:hover {
         background-color: ${(props) => props.hoverColor || props.theme?.button?.colors?.tertiary || buttonDefaultStyles.colors.tertiary};
