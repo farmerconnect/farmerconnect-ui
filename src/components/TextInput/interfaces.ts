@@ -3,5 +3,6 @@ export interface ITextInputProps {
   classes?: string;
   placeHolder?: string;
   value: string;
+  name?: string;
   onChange: (value: string, isValid: boolean) => void;
 }

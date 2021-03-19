@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
+export const ContainerInput = styled.div`
+  height: 4.0625rem;
+`;
+
 export const TextInputContainer = styled.div`
   background-color: #f7f6f4;
   border-radius: 1rem;
   height: 2.5rem;
-  max-width: 18rem;
   position: relative;
 
   &.focus {
@@ -12,7 +15,7 @@ export const TextInputContainer = styled.div`
   }
 
   &.error {
-    filter: drop-shadow(2px 2px 0px #fb2e4c);
+    filter: drop-shadow(1px 1px 0px #fb2e4c);
   }
 
   .checkInput {
@@ -26,12 +29,28 @@ export const TextInputField = styled.input.attrs({
   type: "text",
 })`
   background-color: transparent;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 500;
   height: 2.5rem;
-  min-width: 80%;
-  padding-left: 1rem;
-  padding-right: 2.8rem;
+  width: 100%;
+  padding: 0rem 2.8rem 0rem 1rem;
   outline: none;
   border: none;
+  color: #141414;
+
+  &::placeholder {
+    font-weight: 400;
+    color: #6D6D6D;
+  }
+
+  &:active, &:focus {
+    font-weight: 700;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: #FB2E4C;
+  padding: 0rem 0rem 0rem 0.9rem;
 `;
