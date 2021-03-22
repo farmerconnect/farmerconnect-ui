@@ -3,9 +3,9 @@ import { IBreadcrumb, IBreadcrumbBarProps, IBreadcrumbLineProps, IBreadcrumbProp
 
 export const breadcrumbDefaultStyles: IBreadcrumb = {
   colors: {
-      primary: '#000000',
+      primary: '#141414',
       secondary: '#00E394',
-      tertiary: '#B9B9B9'
+      tertiary: '#141414b3'
   }
 }
 
@@ -25,7 +25,7 @@ export const Text = styled.span<IBreadcrumbProps>`
     ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
     : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
   };
-  font-size: 0.8rem;
+  font-size: 0.6875rem;
   font-weight: ${(props) => props.active ? 700 : 400};
 `;
 
