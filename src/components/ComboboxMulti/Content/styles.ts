@@ -7,7 +7,7 @@ interface ISearchProps {
 export const Container = styled.div`
     background-color: #F7F6F4;
     border: 0px;
-    filter: drop-shadow(1px 1px 0px #00E394);
+    filter: drop-shadow(2px 2px 0px #00E394);
     border-radius: 0px 0px 12px 12px;
     color: #6D6D6D;
     font-weight: normal;
@@ -18,24 +18,30 @@ export const Container = styled.div`
 `;
 
 export const ContainerSearch = styled.div`
-    width: 48%;
+    width: 49.6%;
     margin: 0px 0px 2rem 1rem;
     position: relative;
+    border: 1px solid rgba(20, 20, 20, 0.3);
+    border-radius: 12px;
+
+    &.active {
+        border: 1px solid rgba(20, 20, 20, 0.7);
+    }
 `;
 
 export const Search = styled.input`
-    width: 93%;
+    width: 100%;
     height: 2rem;
-    border: 1px solid rgba(20, 20, 20, 0.3);
-    border-radius: 12px;
-    padding: 0.3rem 2.775rem 0.3rem 1.075rem;
-    background: #F7F6F4;
+    border: transparent;
+    padding: 0rem 2.775rem 0rem 1.075rem;
+    background: transparent;
     outline: none;
     color: #141414;
+    font-size: 0.6875rem;
 
     &:active,
     &:focus {
-        border: 1px solid rgba(20, 20, 20, 0.7);
+        border: transparent;
     }
 `;
 
@@ -47,8 +53,8 @@ export const ButtonSearch = styled.button<ISearchProps>`
     width: 32px;
     height: 23px;
     position: absolute;
-    top: 12px;
-    right: 0px;
+    top: 3px;
+    right: 8px;
     display: ${(props) => props.searchStatus ? 'none' : 'block'};
 
     svg {
@@ -66,8 +72,8 @@ export const ButtonCancelSearch = styled.button<ISearchProps>`
     width: 32px;
     height: 14px;
     position: absolute;
-    top: 15px;
-    right: 0px;
+    top: 10px;
+    right: 7px;
     display: ${(props) => props.searchStatus ? 'block' : 'none'};
 
     svg {
@@ -108,7 +114,7 @@ export const ButtonClear = styled.button`
     background: transparent;
     border: 1px solid #00E394;
     border-radius: 12px;
-    padding: 10px 16px;
+    padding: 0.7rem 1rem;
     font-size: .875rem;
     color: #00E394;
     font-weight: bold;
@@ -127,7 +133,7 @@ export const ButtonConfirm = styled.button`
     background: #00E394;
     border: none;
     border-radius: 12px;
-    padding: 10px 16px;
+    padding: 0.7rem 1rem;
     font-size: .875rem;
     color: #fff;
     font-weight: bold;
@@ -140,4 +146,11 @@ export const ButtonConfirm = styled.button`
         background: rgba(20, 20, 20, 0.3);
         cursor: default;
     }
+`;
+
+export const ErrorMessage = styled.div`
+    font-size: 0.875rem;
+    color: #141414;
+    font-weight: 400;
+    text-align: center;
 `;

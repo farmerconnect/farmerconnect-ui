@@ -15,7 +15,7 @@ export const TextInputContainer = styled.div`
   }
 
   &.error {
-    filter: drop-shadow(1px 1px 0px #fb2e4c);
+    filter: drop-shadow(2px 2px 0px #fb2e4c);
   }
 
   .checkInput {

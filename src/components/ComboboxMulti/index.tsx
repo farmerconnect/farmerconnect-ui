@@ -24,7 +24,8 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     const [actualContent, setActualContent] = useState<any[]>([])
     const [selectedContent, setSelectedContent] = useState<any[]>([]);
     const [selectedContent2, setSelectedContent2] = useState<any[]>([]);
-    const [disable, setDisable] = useState<boolean>(true);
+    const [disable1, setDisable1] = useState<boolean>(false);
+    const [disable2, setDisable2] = useState<boolean>(true);
     const [idOpened, setIdOpened] = useState<number | null>(null);
     const [multiple, setMultiple] = useState(false);
     const [content, setContent] = useState<any[]>(firstContent)
@@ -63,13 +64,15 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             setContent2(secondContent)
             setDisableButtonsContent(true)
             setLimitReached(false)
+            setDisable2(false)
         }
         if(clear) {
             setContent2([])
             setSelectedContent([])
             setSelectedContent2([])
             setDisableButtonsContent(true)
-            setDisable(true)
+            setDisable1(false)
+            setDisable2(true)
             setLimitReached(false)
         }
     }, [firstContent, secondContent, clear])
@@ -91,6 +94,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             setSelectedContent(item)
             setOpen(false)
             onChange(item, 0)
+            setDisable1(true)
             setSelectedContent2([])
             setDisableButtonsContent(true)
             setLimitReached(false)
@@ -116,8 +120,10 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
                 }
                 if(contentFiltered.length >= limit) {
                     setLimitReached(true)
+                    setDisable2(true)
                 } else {
                     setLimitReached(false)
+                    setDisable2(false)
                 }
             } else {
                 const newContentSelected = [...selectedContent2, item]
@@ -127,17 +133,21 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
                 setDisableButtonsContent(false)
                 if(newContentSelected.length >= limit) {
                     setLimitReached(true)
+                    setDisable2(true)
                 } else {
+                    console.log('limite menor')
                     setLimitReached(false)
+                    setDisable2(false)
                 }
             }
         }
-        setDisable(false)
+        setDisable2(false)
     }
 
     const clearSelected = () => {
         if(idOpened === 1) {
             setSelectedContent([])
+            setDisable1(false)
         } else {
             setSelectedContent2([])
             const newContent = content2.map(content => {
@@ -147,6 +157,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             setContent2(newContent)
             setDisableButtonsContent(true)
             setLimitReached(false)
+            setDisable2(false)
         }
         onChange([], 1)
     }
@@ -154,6 +165,9 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     const confirmSelected = () => {
         setOpen(false)
         onChange(selectedContent2, 1)
+        if(selectedContent2.length >= limit) {
+            setDisable2(true)
+        }
     }
 
     const handleSearch = (value:string) => {
@@ -168,17 +182,22 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
         <Container ref={wrapperRef}>
             <ContainerCombo>
                 <Combo
-                    openContent={() => handleOpenContent(content, 1)}
+                    openContent={(idNumber: number) => handleOpenContent(content, idNumber)}
                     open={open}
+                    disabled={disable1}
                     first={true}
                     textCombo={isLoading ? 'Loading' : textFirstCombo}
+                    id={1}
+                    idOpened={idOpened}
                 />
                 <div className={open && idOpened === 1 ? 'comboDivider open' : 'comboDivider'}></div>
                 <Combo
-                    openContent={() => handleOpenContent(content2, 2)}
+                    openContent={(idNumber: number) => handleOpenContent(content2, idNumber)}
                     open={open}
-                    disabled={disable}
+                    disabled={disable2}
                     textCombo={isLoading ? 'Loading' : textSecondCombo}
+                    id={2}
+                    idOpened={idOpened}
                 />
             </ContainerCombo>
             {

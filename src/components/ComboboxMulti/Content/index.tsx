@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Container, ContainerSearch, Search, ButtonSearch, ButtonCancelSearch, ContainerContent, ContainerButtons, ButtonClear, ButtonConfirm } from './styles';
+import { Container, ContainerSearch, Search, ButtonSearch, ButtonCancelSearch, ContainerContent, ContainerButtons, ButtonClear, ButtonConfirm, ErrorMessage } from './styles';
 import ItemMultiple from './ItemMultiple';
 import ItemSingle from './ItemSingle';
 import {IContentProps} from '../interfaces';
@@ -73,19 +73,23 @@ function renderMultiple (
         </ContainerSearch>
         <ContainerContent>
           {
-            content.map((item:any, index:number) => (
-              <ItemMultiple
-                key={index}
-                content={item}
-                contentRender={secondContentItemRender(item)}
-                limitReached={limitReached}
-                handleSelected={
-                  (e:any, item:any) => {
-                    itemSelect(e, item);
+            !!content.length ? (
+              content.map((item:any, index:number) => (
+                <ItemMultiple
+                  key={index}
+                  content={item}
+                  contentRender={secondContentItemRender(item)}
+                  limitReached={limitReached}
+                  handleSelected={
+                    (e:any, item:any) => {
+                      itemSelect(e, item);
+                    }
                   }
-                }
-              />
-            ))
+                />
+              ))
+            ) : (
+              <ErrorMessage>There are no results matching your search.</ErrorMessage>
+            )
           }
         </ContainerContent>
         <ContainerButtons>

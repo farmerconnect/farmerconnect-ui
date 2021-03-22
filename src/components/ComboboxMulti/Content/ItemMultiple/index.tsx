@@ -17,13 +17,17 @@ const ItemMultiple: React.FC<IItemMultipleProps> = ({
   return (
     <Container>
       <Label onChange={(e: any) => handleSelected(e, content)} className={`${disabled ? 'disabled' : ""}`}>
-        {contentRender}
-        <input type="checkbox"
-          checked={content.checked}
-          onChange={(e: any) => handleSelected(e, content)}
-          disabled={disabled}
-        />
-        <span className="checkmark"></span>
+        <div>
+          {contentRender}
+        </div>
+        <div>
+          <input type="checkbox"
+            checked={content.checked}
+            onChange={(e: any) => handleSelected(e, content)}
+            disabled={disabled}
+          />
+          <span className="checkmark"></span>
+        </div>
       </Label>
     </Container>
   )

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border-bottom: 1px solid rgba(20, 20, 20, 0.1);
-  padding: 0 0 0.4rem 1.1rem;
+  padding: 0 0 0.5rem 1.1rem;
   margin: 0px 0px 1rem 0;
 `;
 
@@ -27,11 +27,13 @@ export const Label = styled.label`
   }
 
   b {
-    font-weight: 800;
+    font-weight: 700;
+    font-size: 0.875rem;
   }
 
   p {
     margin: 0px;
+    font-size: 0.6875rem;
   }
 
   input {
@@ -58,7 +60,7 @@ export const Label = styled.label`
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 0.3rem;
     left: 0;
     height: 1rem;
     width: 1rem;
@@ -71,9 +73,9 @@ export const Label = styled.label`
       position: absolute;
       display: none;
       top: 0px;
-      left: 4px;
-      width: 5px;
-      height: 10px;
+      left: 3px;
+      width: 4px;
+      height: 9px;
       border: solid white;
       border-width: 0 3px 3px 0;
       -webkit-transform: rotate(45deg);

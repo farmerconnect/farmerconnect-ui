@@ -16,15 +16,26 @@ export const Container = styled.div<ICombo>`
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
+    filter: drop-shadow(0px 0px 0px transparent);
     
     &.first {
         border-radius: ${(props) => props.open ? '12px 0px 0px 0px' : '12px 0px 0px 12px' };
+    }
+
+    &.openSecond {
+        filter: drop-shadow(2px 2px 0px #00e394);
     }
 `;
 
 export const Icon = styled.div`
     svg {
         fill: #6D6D6D;
+    }
+
+    &.open {
+        svg {
+            transform: rotate(180deg);
+        }
     }
 `;
 

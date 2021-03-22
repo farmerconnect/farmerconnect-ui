@@ -4,6 +4,8 @@ export interface IComboProps {
     disabled?: boolean;
     first?: boolean;
     textCombo: string;
+    id: number;
+    idOpened: number | null;
 }
 
 export interface ICombo {
