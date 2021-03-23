@@ -17,7 +17,7 @@ export const Container = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  width: 15rem;
+  min-width: 15rem;
 `;
 
 export const Text = styled.span<IBreadcrumbProps>`
@@ -35,6 +35,7 @@ export const IconContainer = styled.div`
   flex-wrap: wrap;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+  width: 100%;
 `;
 
 export const Icon = styled.div<IBreadcrumbBarProps>`
@@ -61,8 +62,8 @@ export const IconLine = styled.div<IBreadcrumbLineProps>`
   border-bottom: 0.1rem solid ${(props) => props.done
     ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
     : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
-  }; 
+  };
+  flex-grow: 1;
   height: 0.45rem;
-  width: 7rem;
   visibility: ${(props) => props.visible ? 'visible' : 'hidden'};
 `;
