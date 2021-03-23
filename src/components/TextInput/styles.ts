@@ -37,6 +37,7 @@ export const TextInputField = styled.input.attrs({
   outline: none;
   border: none;
   color: #141414;
+  font-family: 'Red Hat Text', sans-serif;
 
   &::placeholder {
     font-weight: 400;

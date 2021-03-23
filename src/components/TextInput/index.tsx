@@ -66,7 +66,6 @@ const TextInput: React.FC<ITextInputProps> = ({
           className={`${classes ? classes : ""}`}
           id={`${id ? id : ""}`}
           value={inputValue}
-          data-cy="report-name-input"
         ></TextInputField>
         {
           validInput && !focusInput && <IconCheck className='checkInput' />

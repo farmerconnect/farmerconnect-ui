@@ -64,7 +64,9 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
             setContent2(secondContent)
             setDisableButtonsContent(true)
             setLimitReached(false)
-            setDisable2(false)
+            if(!!selectedContent.length) {
+                setDisable2(false)
+            }
         }
         if(clear) {
             setContent2([])
@@ -91,7 +93,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     const handleSelectItem = (e: any, item: any) => {
         e.stopPropagation();
         if(idOpened === 1) {
-            setSelectedContent(item)
+            setSelectedContent([item])
             setOpen(false)
             onChange(item, 0)
             setDisable1(true)

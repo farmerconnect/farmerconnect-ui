@@ -21,6 +21,8 @@ const Container = styled.button<IButtonProps>`
     outline: none;
     padding: 13px 46px;
     text-align: center;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
 
     &:hover {
         background-color: ${(props) => props.hoverColor || props.theme?.button?.colors?.tertiary || buttonDefaultStyles.colors.tertiary};

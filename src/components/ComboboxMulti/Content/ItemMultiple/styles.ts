@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border-bottom: 1px solid rgba(20, 20, 20, 0.1);
-  padding: 0 0 0.5rem 1.1rem;
-  margin: 0px 0px 1rem 0;
+  padding: 0.5rem 0 0.5rem 1.1rem;
+  margin: 0;
 `;
 
 export const Label = styled.label`

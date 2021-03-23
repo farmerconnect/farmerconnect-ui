@@ -53,8 +53,9 @@ export const ButtonSearch = styled.button<ISearchProps>`
     width: 32px;
     height: 23px;
     position: absolute;
-    top: 3px;
-    right: 8px;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
     display: ${(props) => props.searchStatus ? 'none' : 'block'};
 
     svg {
@@ -72,8 +73,9 @@ export const ButtonCancelSearch = styled.button<ISearchProps>`
     width: 32px;
     height: 14px;
     position: absolute;
-    top: 10px;
+    top: 50%;
     right: 7px;
+    transform: translateY(-50%);
     display: ${(props) => props.searchStatus ? 'block' : 'none'};
 
     svg {
@@ -121,6 +123,7 @@ export const ButtonClear = styled.button`
     cursor: pointer;
     margin-right: 17px;
     outline: none;
+    font-family: 'Red Hat Text', sans-serif;
 
     &:disabled {
         color: rgba(20, 20, 20, 0.3);
@@ -131,7 +134,7 @@ export const ButtonClear = styled.button`
 
 export const ButtonConfirm = styled.button`
     background: #00E394;
-    border: none;
+    border: 1px solid #00E394;;
     border-radius: 12px;
     padding: 0.7rem 1rem;
     font-size: .875rem;
@@ -140,10 +143,12 @@ export const ButtonConfirm = styled.button`
     cursor: pointer;
     margin-right: 20px;
     outline: none;
+    font-family: 'Red Hat Text', sans-serif;
 
     &:disabled {
         color: #F1F1EF;
         background: rgba(20, 20, 20, 0.3);
+        border: 1px solid rgba(20, 20, 20, 0.1);
         cursor: default;
     }
 `;
