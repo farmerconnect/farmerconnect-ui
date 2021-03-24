@@ -36,7 +36,7 @@ export const Button = styled(StyledButton)`
   }
 `;
 
-export const Message = styled.p`
+export const Message = styled.p<{ dangerouslySetInnerHTML?: any }>`
   font-size: 18px;
   line-height: 24px;
   margin: 20px 0 0;
@@ -44,6 +44,10 @@ export const Message = styled.p`
 
   &.error {
     max-width: 392px;
+  }
+
+  a {
+    color: black;
   }
 `;
 

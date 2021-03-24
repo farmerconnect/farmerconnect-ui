@@ -22,7 +22,7 @@ interface ILoaderOption {
 
 interface ILoaderError {
   error: boolean;
-  message: string;
+  message: ReactNode;
 }
 
 export interface ILoaderProps extends CustomStyles {
