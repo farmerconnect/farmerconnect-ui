@@ -24,7 +24,7 @@ export const Button = styled.button<INavigationBarProps>`
   border: 0.01rem solid ${(props) => props.color || props.theme?.navigationBar?.colors?.secondary || navigationBarDefaultStyles.colors.secondary};
   border-radius: 0.6rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.8rem;
   min-width: 7rem;
