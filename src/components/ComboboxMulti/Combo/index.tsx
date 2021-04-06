@@ -33,6 +33,7 @@ const Combo: React.FC<IComboProps> = ({
       onClick={e => handleOpenContent(e)}
       open={open}
       disabled={disabled}
+      {...props}
     >
       {textCombo}
       <Icon className={opened ? "open" : ""}>

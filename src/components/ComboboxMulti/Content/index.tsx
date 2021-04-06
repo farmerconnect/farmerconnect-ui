@@ -7,7 +7,7 @@ import {IContentProps} from '../interfaces';
 const renderSingle = (content: any, itemSelect: any, firstContentItemRender: any) => {
   return (
     <Container>
-      <ContainerContent>
+      <ContainerContent data-cy="containerContent">
       {
         content.map((item: any, index: number) => (
           <ItemSingle 
@@ -42,7 +42,7 @@ function renderMultiple (
 ) {
   return (
     <Fragment>
-      <Container>
+      <Container data-cy="containerContent">
         <ContainerSearch>
           <Search 
             placeholder={textSearch}
@@ -92,7 +92,7 @@ function renderMultiple (
             )
           }
         </ContainerContent>
-        <ContainerButtons>
+        <ContainerButtons data-cy="container-buttons-comboboxMulti">
           <ButtonClear
             disabled={disabled}
             onClick={() => handleClear()}

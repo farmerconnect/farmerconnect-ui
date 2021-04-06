@@ -203,6 +203,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
           textCombo={isLoading ? "Loading" : textFirstCombo}
           id={1}
           idOpened={idOpened}
+          data-cy="first-combo"
         />
         <div
           className={
@@ -217,6 +218,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
           textCombo={isLoading ? "Loading" : textSecondCombo}
           id={2}
           idOpened={idOpened}
+          data-cy="second-combo"
         />
       </ContainerCombo>
       {open && actualContent && !isLoading && (

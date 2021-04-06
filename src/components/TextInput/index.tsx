@@ -10,7 +10,8 @@ const TextInput: React.FC<ITextInputProps> = ({
   placeHolder,
   value,
   name,
-  onChange
+  onChange,
+  ...props
 }) => {
 
   const [inputValue, setInputValue] = useState<string>("");
@@ -66,6 +67,7 @@ const TextInput: React.FC<ITextInputProps> = ({
           className={`${classes ? classes : ""}`}
           id={`${id ? id : ""}`}
           value={inputValue}
+          {...props}
         ></TextInputField>
         {
           validInput && !focusInput && <IconCheck className='checkInput' />
