@@ -25,7 +25,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
   const [selectedContent2, setSelectedContent2] = useState<any[]>([]);
   const [disable1, setDisable1] = useState<boolean>(false);
   const [disable2, setDisable2] = useState<boolean>(true);
-  const [idOpened, setIdOpened] = useState<number | null>(null);
+  const [idOpened, setIdOpened] = useState<number>(1);
   const [multiple, setMultiple] = useState(false);
   const [content, setContent] = useState<any[]>(firstContent);
   const [content2, setContent2] = useState<any[]>([]);
@@ -42,7 +42,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     if (wrapperRef?.current && wrapperRef.current.contains(e.target)) {
       return;
     }
-    setOpen(false);
+    if (idOpened && idOpened !== 2) setOpen(false);
   };
 
   useEffect(() => {
@@ -66,14 +66,21 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
         setDisableButtonsContent(true);
         setLimitReached(false);
         if (disable1) {
-            setDisable2(false);
+          setDisable2(false);
         }
       } else {
         setSelectedContent2(filterContent);
-        setDisableButtonsContent(false);
-        setLimitReached(true);
-        setDisable1(true);
-        setDisable2(true);
+        if (filterContent.length >= limit) {
+          setDisableButtonsContent(false);
+          setLimitReached(true);
+          setDisable1(true);
+          setDisable2(true);
+        } else {
+          setDisableButtonsContent(true);
+          setLimitReached(false);
+          setDisable1(true);
+          setDisable2(false);
+        }
       }
       setContent2(secondContent);
     }
@@ -153,7 +160,6 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
         }
       }
     }
-    setDisable2(false);
   };
 
   const clearSelected = () => {
