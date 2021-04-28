@@ -1,4 +1,5 @@
-import { Row, Col } from ".";
+import Col from ".";
+import Row from "../Row";
 import { render } from "@testing-library/react";
 import "jest-styled-components";
 

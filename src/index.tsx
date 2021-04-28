@@ -7,7 +7,8 @@ import IconWarning from "./components/Icons/Warning";
 import NavigationBar from "./components/NavigationBar";
 import Loader from "./components/Loader";
 import TextInput from "./components/TextInput";
-import { Row, Col } from "./components/Grid";
+import Row from "./components/Row";
+import Col from "./components/Col";
 import Container from "./components/Container";
 
 export {

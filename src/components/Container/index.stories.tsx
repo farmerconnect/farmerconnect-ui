@@ -1,23 +1,15 @@
-import React from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { IContainerProps } from "./interfaces";
 import Container from ".";
+import { IContainerProps } from "./interfaces";
 
 export default {
   title: "Container",
   component: Container,
-  argTypes: {
-    size: {
-      control: {
-        type: "select",
-        options: ["default", "sm", "md", "lg", "xl", "xxl", "fluid"],
-      },
-    },
-  },
+  argTypes: {},
   args: {
-    size: "md",
+    size: 1544,
   },
 } as Meta;
 
@@ -34,7 +26,7 @@ const Template: Story<IContainerProps> = (args) => (
         borderRadius: "16px",
       }}
     >
-      CONTENT
+      Maximum container size: {args.size}px
     </div>
   </Container>
 );

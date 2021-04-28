@@ -1,18 +1,12 @@
 import styled, { css } from "styled-components";
 import { IColProps } from "./interfaces";
 
-export const Row = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 export const Col = styled.div<IColProps>`
-  ${({ xs, sm, md, lg, xl, xxl }) => css`
-    padding: 4px 8px;
+  ${({ xs = 12, sm, md, lg, xl, xxl }) => css`
     margin: 0;
     box-sizing: border-box;
     flex: 1;
-    ${xs && +xs === 0
+    ${xs === 0
       ? "display: none;"
       : `max-width: ${xs ? (100 / 12) * xs : 100}%;`}
 

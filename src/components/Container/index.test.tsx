@@ -4,15 +4,14 @@ import Container from ".";
 
 describe("Container Component", () => {
   it("renders without crashing", () => {
-    const container = render(<Container size="default">CONTAINER</Container>);
+    const container = render(<Container>CONTAINER</Container>);
     expect(container.getByText(/CONTAINER/)).toBeInTheDocument();
   });
   it("has the right size rules", () => {
-    const container = render(<Container size="default">CONTAINER</Container>);
+    const container = render(<Container size={1280}>CONTAINER</Container>);
     expect(container.getByText(/CONTAINER/)).toHaveStyleRule(
       "max-width",
-      "540px",
-      { media: "(min-width:576px)" }
+      "1280px"
     );
   });
 });
