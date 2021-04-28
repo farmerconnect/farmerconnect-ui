@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.35] - 2021-03-14
-
-- Adjust multiCombobox to accept more than one item
-
 ## [0.1.36] - 2021-04-28
 
 - Added _Row_ and _Col_ grid components
 - Added _Container_ responsive component
+
+## [0.1.35] - 2021-03-14
+
+- Adjust multiCombobox to accept more than one item
