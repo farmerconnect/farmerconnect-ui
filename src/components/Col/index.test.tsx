@@ -1,7 +1,6 @@
 import Col from ".";
 import Row from "../Row";
 import { render } from "@testing-library/react";
-import "jest-styled-components";
 
 describe("Grid Column Component", () => {
   it("renders without errors", () => {
