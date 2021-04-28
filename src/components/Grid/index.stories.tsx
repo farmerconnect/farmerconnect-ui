@@ -19,13 +19,6 @@ export default {
   },
 } as Meta;
 
-// const Content = styled.div`
-//   height: 35vh;
-//   display: block;
-//   background-color: #00e394;
-//   border-radius: 32px;
-// `;
-
 const Template: Story<IColProps> = (args) => (
   <Row>
     <Col {...args}>
