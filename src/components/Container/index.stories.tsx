@@ -9,7 +9,7 @@ export default {
   component: Container,
   argTypes: {},
   args: {
-    size: 1544,
+    size: 1600,
   },
 } as Meta;
 
