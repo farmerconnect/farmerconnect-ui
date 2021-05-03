@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.37] - 2021-05-03
+
+- Added _Icon_ components
+
 ## [0.1.36] - 2021-04-28
 
 - Added _Row_ and _Col_ grid components
