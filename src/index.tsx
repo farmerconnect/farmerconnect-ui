@@ -8,6 +8,9 @@ import NavigationBar from "./components/NavigationBar";
 import Loader from "./components/Loader";
 import TextInput from "./components/TextInput";
 import * as Icon from "./components/Icons";
+import Row from "./components/Row";
+import Col from "./components/Col";
+import Container from "./components/Container";
 
 export {
   Breadcrumbs,
@@ -20,4 +23,7 @@ export {
   Loader,
   TextInput,
   Icon,
+  Row,
+  Col,
+  Container,
 };
