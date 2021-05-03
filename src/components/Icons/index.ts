@@ -16,3 +16,4 @@ export { default as TMFProjects } from "./TMFProjects";
 export { default as TraceabilityReporting } from "./TraceabilityReporting";
 export { default as TransactionLog } from "./TransactionLog";
 export { default as UploadTrace } from "./UploadTrace";
+export { default as CommunityBuilder } from "./CommunityBuilder";

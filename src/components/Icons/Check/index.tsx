@@ -1,7 +1,10 @@
 import * as React from "react";
 import { IIconProps } from "./../IconList/interfaces";
 
-const Check: React.FC<IIconProps> = ({ fill = "#00E394", ...props }) => {
+const Check: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  fill = "#00E394",
+  ...props
+}) => {
   return (
     <svg
       width="20"

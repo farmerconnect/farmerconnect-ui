@@ -1,7 +1,6 @@
 import * as React from "react";
-import { IIconProps } from "../IconList/interfaces";
 
-const FacilityMasterdata: React.FC<IIconProps> = ({
+const FacilityMasterdata: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (

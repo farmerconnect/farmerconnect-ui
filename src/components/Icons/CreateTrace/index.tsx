@@ -1,7 +1,9 @@
 import * as React from "react";
-import { IIconProps } from "../IconList/interfaces";
 
-const CreateTrace: React.FC<IIconProps> = ({ fill = "black", ...props }) => (
+const CreateTrace: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  fill = "black",
+  ...props
+}) => (
   <svg
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
