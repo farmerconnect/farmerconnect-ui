@@ -1,7 +1,9 @@
 import * as React from "react";
-import { IIconProps } from "../IconList/interfaces";
 
-const TMFProjects: React.FC<IIconProps> = ({ fill = "black", ...props }) => (
+const TMFProjects: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  fill = "black",
+  ...props
+}) => (
   <svg
     id="Layer_1"
     data-name="Layer 1"

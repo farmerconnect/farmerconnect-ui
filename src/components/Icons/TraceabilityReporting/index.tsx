@@ -1,7 +1,6 @@
 import * as React from "react";
-import { IIconProps } from "../IconList/interfaces";
 
-const TraceabilityReporting: React.FC<IIconProps> = ({
+const TraceabilityReporting: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
