@@ -17,3 +17,4 @@ export { default as TraceabilityReporting } from "./TraceabilityReporting";
 export { default as TransactionLog } from "./TransactionLog";
 export { default as UploadTrace } from "./UploadTrace";
 export { default as CommunityBuilder } from "./CommunityBuilder";
+export { default as ViewMore } from "./ViewMore";
