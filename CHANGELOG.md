@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.41] - 2021-05-12
+
+- Added Modal component
 ## [0.1.40] - 2021-05-11
 
 - Added Radio component

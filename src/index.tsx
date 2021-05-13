@@ -11,6 +11,7 @@ import * as Icon from "./components/Icons";
 import Row from "./components/Row";
 import Col from "./components/Col";
 import Container from "./components/Container";
+import Modal from "./components/Modal";
 import Radio from "./components/Radio";
 
 export {
@@ -27,5 +28,6 @@ export {
   Row,
   Col,
   Container,
+  Modal,
   Radio,
 };
