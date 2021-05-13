@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.42] - 2021-05-12
+
+- Added Single Select
+- Changed multicombobox logic to use useReducer
+
 ## [0.1.41] - 2021-05-12
 
 - Added Modal component

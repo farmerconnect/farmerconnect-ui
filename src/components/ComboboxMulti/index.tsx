@@ -1,8 +1,125 @@
-import React, { useState, useEffect, useRef } from "react";
-import { IComboboxProps } from "./interfaces";
+import React, { useEffect, useRef, useReducer } from "react";
+import {
+  IComboboxProps,
+  IInitialValues,
+  IReducer,
+  ActionType,
+} from "./interfaces";
 import { Container, ContainerCombo } from "./styles";
 import Combo from "./Combo";
 import Content from "./Content";
+
+const INITIAL_VALUES: IInitialValues = {
+  open: false,
+  actualContent: [],
+  selectedContent: [],
+  selectedContent2: [],
+  disable1: false,
+  disable2: true,
+  idOpened: 1,
+  multiple: false,
+  content: [],
+  content2: [],
+  disableButtonsContent: true,
+  isLoading: true,
+  limitReached: false,
+};
+
+const reducerCombo: React.Reducer<IInitialValues, IReducer> = (
+  state,
+  action
+) => {
+  switch (action.type) {
+    case ActionType.SET_ISLOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case ActionType.SET_FIRST_CONTENT:
+      return {
+        ...state,
+        content: action.payload,
+      };
+    case ActionType.SET_SECOND_CONTENT:
+      return {
+        ...state,
+        content2: action.payload,
+      };
+    case ActionType.SET_SECOND_CONTENT_SELECTED:
+      return {
+        ...state,
+        selectedContent2: action.payload.selectedContent2,
+        disableButtonsContent: action.payload.disableButtonsContent,
+        limitReached: action.payload.limitReached,
+        disable1: action.payload.disable1,
+        disable2: action.payload.disable2,
+      };
+    case ActionType.SET_CLEAR:
+      return {
+        ...state,
+        content2: [],
+        selectedContent: [],
+        selectedContent2: [],
+        disableButtonsContent: true,
+        disable1: false,
+        disable2: true,
+        limitReached: false,
+      };
+    case ActionType.OPEN_CONTENT:
+      return {
+        ...state,
+        open: !state.open,
+        actualContent: action.payload.actualContent,
+        idOpened: action.payload.idOpened,
+        multiple: action.payload.multiple,
+      };
+    case ActionType.SELECT_ITEM:
+      return {
+        ...state,
+        open: action.payload.open,
+        selectedContent: action.payload.selectedContent,
+        selectedContent2: action.payload.selectedContent2,
+        disable1: action.payload.disable1,
+        disable2: action.payload.disable2,
+        disableButtonsContent: action.payload.disableButtonsContent,
+        limitReached: action.payload.limitReached,
+        content2: action.payload.content2,
+      };
+    case ActionType.CLEAR_FIRST_SELECTED:
+      return {
+        ...state,
+        selectedContent: action.payload.selectedContent,
+        disable1: action.payload.disable1,
+      };
+    case ActionType.CLEAR_SECOND_SELECTED:
+      return {
+        ...state,
+        selectedContent2: action.payload.selectedContent2,
+        content2: action.payload.content2,
+        disableButtonsContent: action.payload.disableButtonsContent,
+        limitReached: action.payload.limitReached,
+        disable2: action.payload.disable2,
+      };
+    case ActionType.CONFIRM_SELECT:
+      return {
+        ...state,
+        open: action.payload.open,
+        disable2: action.payload.disable2,
+      };
+    case ActionType.SET_ACTUAL_CONTENT:
+      return {
+        ...state,
+        actualContent: action.payload,
+      };
+    case ActionType.SET_OPEN:
+      return {
+        ...state,
+        open: !state.open,
+      };
+    default:
+      return state;
+  }
+};
 
 const ComboBoxMulti: React.FC<IComboboxProps> = ({
   firstContent,
@@ -19,21 +136,22 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
   firstItemRender,
   secondItemRender,
 }) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [actualContent, setActualContent] = useState<any[]>([]);
-  const [selectedContent, setSelectedContent] = useState<any[]>([]);
-  const [selectedContent2, setSelectedContent2] = useState<any[]>([]);
-  const [disable1, setDisable1] = useState<boolean>(false);
-  const [disable2, setDisable2] = useState<boolean>(true);
-  const [idOpened, setIdOpened] = useState<number>(1);
-  const [multiple, setMultiple] = useState(false);
-  const [content, setContent] = useState<any[]>(firstContent);
-  const [content2, setContent2] = useState<any[]>([]);
-  const [disableButtonsContent, setDisableButtonsContent] = useState<boolean>(
-    true
-  );
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [limitReached, setLimitReached] = useState<boolean>(false);
+  const [state, dispatch] = useReducer(reducerCombo, INITIAL_VALUES);
+  const {
+    open,
+    actualContent,
+    selectedContent,
+    selectedContent2,
+    disable1,
+    disable2,
+    idOpened,
+    multiple,
+    content,
+    content2,
+    disableButtonsContent,
+    isLoading,
+    limitReached,
+  } = state;
 
   const wrapperRef = useRef(null);
 
@@ -42,7 +160,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     if (wrapperRef?.current && wrapperRef.current.contains(e.target)) {
       return;
     }
-    if (idOpened && idOpened !== 2) setOpen(false);
+    if (idOpened && idOpened !== 2) dispatch({ type: ActionType.SET_OPEN });
   };
 
   useEffect(() => {
@@ -54,69 +172,87 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
   }, []);
 
   useEffect(() => {
-    setIsLoading(loading);
+    dispatch({ type: ActionType.SET_ISLOADING, payload: loading });
   }, [loading]);
 
   useEffect(() => {
-    if (firstContent) setContent(firstContent);
+    if (firstContent)
+      dispatch({ type: ActionType.SET_FIRST_CONTENT, payload: firstContent });
     if (secondContent) {
       const filterContent = secondContent.filter((el) => el.checked === true);
       if (!filterContent.length) {
-        setSelectedContent2([]);
-        setDisableButtonsContent(true);
-        setLimitReached(false);
-        if (disable1) {
-          setDisable2(false);
-        }
+        const setDisable2 = disable1 ? false : true;
+        dispatch({
+          type: ActionType.SET_SECOND_CONTENT_SELECTED,
+          payload: {
+            selectedContent2: [],
+            disableButtonsContent: true,
+            limitReached: false,
+            disable1: disable1,
+            disable2: setDisable2,
+          },
+        });
       } else {
-        setSelectedContent2(filterContent);
         if (filterContent.length >= limit) {
-          setDisableButtonsContent(false);
-          setLimitReached(true);
-          setDisable1(true);
-          setDisable2(true);
+          dispatch({
+            type: ActionType.SET_SECOND_CONTENT_SELECTED,
+            payload: {
+              selectedContent2: filterContent,
+              disableButtonsContent: false,
+              limitReached: true,
+              disable1: true,
+              disable2: true,
+            },
+          });
         } else {
-          setDisableButtonsContent(true);
-          setLimitReached(false);
-          setDisable1(true);
-          setDisable2(false);
+          dispatch({
+            type: ActionType.SET_SECOND_CONTENT_SELECTED,
+            payload: {
+              selectedContent2: filterContent,
+              disableButtonsContent: true,
+              limitReached: false,
+              disable1: true,
+              disable2: false,
+            },
+          });
         }
       }
-      setContent2(secondContent);
+      dispatch({ type: ActionType.SET_SECOND_CONTENT, payload: secondContent });
     }
     if (clear) {
-      setContent2([]);
-      setSelectedContent([]);
-      setSelectedContent2([]);
-      setDisableButtonsContent(true);
-      setDisable1(false);
-      setDisable2(true);
-      setLimitReached(false);
+      dispatch({ type: ActionType.SET_CLEAR });
     }
   }, [firstContent, secondContent, clear]);
 
   const handleOpenContent = (content: any, id: number) => {
-    setOpen(!open);
-    setActualContent(content);
-    setIdOpened(id);
-    if (id === 1) {
-      setMultiple(false);
-    } else {
-      setMultiple(true);
-    }
+    const setMultiple = id === 1 ? false : true;
+    dispatch({
+      type: ActionType.OPEN_CONTENT,
+      payload: {
+        actualContent: content,
+        idOpened: id,
+        multiple: setMultiple,
+      },
+    });
   };
 
   const handleSelectItem = (e: any, item: any) => {
     e.stopPropagation();
     if (idOpened === 1) {
-      setSelectedContent([item]);
-      setOpen(false);
       onChange(item, 0);
-      setDisable1(true);
-      setSelectedContent2([]);
-      setDisableButtonsContent(true);
-      setLimitReached(false);
-      if (secondContent) setContent2(secondContent);
+      dispatch({
+        type: ActionType.SELECT_ITEM,
+        payload: {
+          open: false,
+          selectedContent: [item],
+          selectedContent2: [],
+          disable1: true,
+          disable2: true,
+          disableButtonsContent: true,
+          limitReached: false,
+          content2: secondContent,
+        },
+      });
     } else {
       item.checked = !item.checked;
       if (item.checked === false) {
@@ -124,68 +260,105 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
         const contentFiltered = selectedContent2.filter(
           (content) => content.id !== id
         );
-        setSelectedContent2(contentFiltered);
         const newContent = content2.map((content) => {
           if (content.id === id) {
             content.checked = false;
           }
           return content;
         });
-        setContent2(newContent);
         const status = contentFiltered.length > 0 ? true : false;
-        if (status === true) {
-          setDisableButtonsContent(false);
-        } else {
-          setDisableButtonsContent(true);
-        }
+        const setDisableButtonsContent = status ? false : true;
+        let setLimitReached, setDisable2;
         if (contentFiltered.length >= limit) {
-          setLimitReached(true);
-          setDisable2(true);
+          setLimitReached = true;
+          setDisable2 = true;
         } else {
-          setLimitReached(false);
-          setDisable2(false);
+          setLimitReached = false;
+          setDisable2 = false;
         }
+        dispatch({
+          type: ActionType.SELECT_ITEM,
+          payload: {
+            open: true,
+            selectedContent: selectedContent,
+            selectedContent2: contentFiltered,
+            disable1: disable1,
+            disable2: setDisable2,
+            disableButtonsContent: setDisableButtonsContent,
+            limitReached: setLimitReached,
+            content2: newContent,
+          },
+        });
       } else {
         const newContentSelected = [...selectedContent2, item];
-        setSelectedContent2(newContentSelected);
         const newContent = content2.map((content) => content);
-        setContent2(newContent);
-        setDisableButtonsContent(false);
+        let setLimitReached, setDisable2;
         if (newContentSelected.length >= limit) {
-          setLimitReached(true);
-          setDisable2(true);
+          setLimitReached = true;
+          setDisable2 = true;
         } else {
-          setLimitReached(false);
-          setDisable2(false);
+          setLimitReached = false;
+          setDisable2 = false;
         }
+
+        dispatch({
+          type: ActionType.SELECT_ITEM,
+          payload: {
+            open: true,
+            selectedContent: selectedContent,
+            selectedContent2: newContentSelected,
+            disable1: disable1,
+            disable2: setDisable2,
+            disableButtonsContent: false,
+            limitReached: setLimitReached,
+            content2: newContent,
+          },
+        });
       }
     }
   };
 
   const clearSelected = () => {
     if (idOpened === 1) {
-      setSelectedContent([]);
-      setDisable1(false);
+      dispatch({
+        type: ActionType.CLEAR_FIRST_SELECTED,
+        payload: {
+          selectedContent: [],
+          disable1: false,
+        },
+      });
     } else {
-      setSelectedContent2([]);
       const newContent = content2.map((content) => {
         content.checked = false;
         return content;
       });
-      setContent2(newContent);
-      setDisableButtonsContent(true);
-      setLimitReached(false);
-      setDisable2(false);
+      dispatch({
+        type: ActionType.CLEAR_SECOND_SELECTED,
+        payload: {
+          selectedContent2: [],
+          content2: newContent,
+          disableButtonsContent: true,
+          limitReached: false,
+          disable2: false,
+        },
+      });
     }
     onChange([], 1);
   };
 
   const confirmSelected = () => {
-    setOpen(false);
     onChange(selectedContent2, 1);
+    let setDisable2;
     if (selectedContent2.length >= limit) {
-      setDisable2(true);
+      setDisable2 = true;
     }
+    dispatch({
+      type: ActionType.CONFIRM_SELECT,
+      payload: {
+        open: false,
+        disable2: setDisable2,
+      },
+    });
   };
 
   const handleSearch = (value: string) => {
@@ -193,7 +366,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     const filtered = contentToFilter.filter((item) => {
       return item.id.toLowerCase().includes(value.toLowerCase());
     });
-    setActualContent(filtered);
+    dispatch({ type: ActionType.SET_ACTUAL_CONTENT, payload: filtered });
   };
 
   return (

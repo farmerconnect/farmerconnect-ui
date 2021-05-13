@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { Fragment } from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, Meta } from "@storybook/react/types-6-0";
 
-import ComboboxMulti from './';
-import { IComboboxProps } from './interfaces';
+import ComboboxMulti from "./";
+import { IComboboxProps } from "./interfaces";
 
 export default {
-  title: 'Multi Combobox',
+  title: "Multi Combobox",
   component: ComboboxMulti,
   argTypes: {
-    firstContent: {control: 'object'},
-    secondContent: {control: 'object'},
-    textFirstCombo: {control: 'string'},
-    textSecondCombo: {control: 'string'},
-    textSearch: {control: 'string'},
-    textButtonClear: {control: 'string'},
-    textButtonConfirm: {control: 'string'},
+    firstContent: { control: "object" },
+    secondContent: { control: "object" },
+    textFirstCombo: { control: "string" },
+    textSecondCombo: { control: "string" },
+    textSearch: { control: "string" },
+    textButtonClear: { control: "string" },
+    textButtonConfirm: { control: "string" },
   },
 } as Meta;
 
@@ -23,76 +23,131 @@ const Template: Story<IComboboxProps> = (args) => <ComboboxMulti {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  textFirstCombo: 'Select one product',
-  textSecondCombo: 'Select up to 5 items',
-  textSearch: 'Search item reference number',
-  textButtonClear: 'Clear selected   ',
-  textButtonConfirm: 'Confirm selection',
-  firstContent:[
+  textFirstCombo: "Select one product",
+  textSecondCombo: "Select up to 5 items",
+  textSearch: "Search item reference number",
+  textButtonClear: "Clear selected   ",
+  textButtonConfirm: "Confirm selection",
+  firstContent: [
     {
-        name: 'Product 1',
-        information: {
-            registered: 'xxx',
-            id: 1,
-            companyPrefix: 9,
-        }
+      id: "urn:ibm:ift:product:class:3509222193835.COFFEE-CHERRY",
+      org_id: "9a2103d8-998c-4ecc-aa24-70f8cfa85909",
+      description: "COFFEE - CHERRY",
+      object_sku: "d0093dd15606437d234f9d20c56ff9f2",
+      org_name: "Cooperative",
+      next: null,
     },
     {
-        name: 'Product 2',
-        information: {
-            registered: 'xxx',
-            id: 1,
-            companyPrefix: 9,
-        }
-    }
-],
-secondContent: [{
-  name: 'Product 3',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-},
-{
-  name: 'Product 4',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-},
-{
-  name: 'Product 5',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-},
-{
-  name: 'Product 6',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-},
-{
-  name: 'Product 7',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-},
-{
-  name: 'Product 8',
-  information: {
-      registered: 'xxx',
-      id: 1,
-      companyPrefix: 9,
-  }
-}]
+      id: "urn:ibm:ift:product:class:3030682152562.COFFEE-GREENBEAN",
+      org_id: "03b98726-476c-4e72-abb3-7d68b6b9319e",
+      description: "COFFEE - GREEN BEAN",
+      object_sku: "37e60d763a85abd5e11aac9824105aaf",
+      org_name: "Roaster",
+      next: null,
+    },
+    {
+      id: "urn:ibm:ift:product:class:3509222193835.COFFEE-GREENBEAN",
+      org_id: "9a2103d8-998c-4ecc-aa24-70f8cfa85909",
+      description: "COFFEE - GREEN BEAN",
+      object_sku: "f447767aa7da138e937bb6c860b76305",
+      org_name: "Cooperative",
+      next: null,
+    },
+  ],
+  secondContent: [
+    {
+      name: "Product 3",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+    {
+      name: "Product 4",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+    {
+      name: "Product 5",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+    {
+      name: "Product 6",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+    {
+      name: "Product 7",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+    {
+      name: "Product 8",
+      information: {
+        registered: "xxx",
+        id: 1,
+        companyPrefix: 9,
+      },
+    },
+  ],
+  firstItemRender: (content: any) => {
+    const id =
+      content.id.split(":").length > 1
+        ? content.id?.split(":")[5].split(".")[1]
+        : content.id;
+
+    const companyPrefix =
+      content.id.split(":").length > 1
+        ? content.id?.split(":")[5].split(".")[0]
+        : content.id;
+    return (
+      <Fragment>
+        <b>{content.description}</b>
+        <p>
+          Registered by: {content.org_name} - {companyPrefix}
+        </p>
+      </Fragment>
+    );
+  },
+  secondItemRender: (content: any) => {
+    const id =
+      content.id.split(":").length > 1
+        ? content.id.split(":").pop().split(".").pop()
+        : content.id;
+
+    const productId =
+      content.product_id.split(":").length > 1
+        ? content.product_id.split(":").pop().split(".")[1]
+        : content.product_id;
+
+    const companyPrefix =
+      content.product_id.split(":").length > 1
+        ? content.product_id.split(":").pop().split(".")[0]
+        : content.product_id;
+    return (
+      <Fragment>
+        <b>
+          ID: {id}
+        </b>
+        <p>
+          Product id: {productId} ︱
+          Company prefix: {companyPrefix}
+        </p>
+      </Fragment>
+    );
+  },
 };
- 
