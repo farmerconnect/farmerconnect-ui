@@ -12,7 +12,6 @@ const TraceabilityReporting: React.FC<React.SVGProps<SVGSVGElement>> = ({
     fill={fill}
     {...props}
   >
-    <title>FCicons_Traceability Reporting_black</title>
     <path
       d="M328.09,109H171.91a43,43,0,0,0-43,43V348a43,43,0,0,0,43,43H328.09a43,43,0,0,0,43-43V152A43,43,0,0,0,328.09,109Zm25.76,239a25.79,25.79,0,0,1-25.76,25.76H171.91A25.79,25.79,0,0,1,146.15,348V152a25.79,25.79,0,0,1,25.76-25.75H328.09A25.79,25.79,0,0,1,353.85,152Z"
       fill={fill}

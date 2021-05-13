@@ -12,6 +12,7 @@ import Row from "./components/Row";
 import Col from "./components/Col";
 import Container from "./components/Container";
 import Modal from "./components/Modal";
+import Radio from "./components/Radio";
 
 export {
   Breadcrumbs,
@@ -28,4 +29,5 @@ export {
   Col,
   Container,
   Modal,
+  Radio,
 };
