@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.40] - 2021-05-11
+
+- Added Radio component
+- Removed Icon tooltips
+
+## [0.1.39] - 2021-05-09
+
+- Fixed Icon components
+
 ## [0.1.38] - 2021-05-03
 
 - Added CommunityBuilder old icon
