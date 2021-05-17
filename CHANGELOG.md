@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2021-05-17
+
+- Publish on Github
 ## [0.1.42] - 2021-05-12
 
 - Added Single Select
