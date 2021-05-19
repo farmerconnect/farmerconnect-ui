@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2021-05-19
+
+- Merge with the latest updates on old repository
+
 ## [1.1.0] - 2021-05-19
 
 - Add storybook-deployer and deploy step to pipeline so that the latest version is always deployed to github pages after build succeeds
@@ -14,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2021-05-17
 
 - Publish on Github
+
+## [0.1.43] - 2021-05-18
+
+- Removed dangerouslySetInnerHTML from Loader
 ## [0.1.42] - 2021-05-12
 
 - Added Single Select

@@ -10,9 +10,10 @@ export const Overlay = styled.div`
   bottom: 0;
   right: 0;
   background-color: rgba(20, 20, 20, 0.4);
-  animation: show 0.1s ease-out;
+  animation: show-modal-overlay 0.1s ease-out;
+  z-index: 101;
 
-  @keyframes show {
+  @keyframes show-modal-overlay {
     0% {
       background-color: rgba(20, 20, 20, 0);
     }
@@ -26,8 +27,8 @@ export const Container = styled.div`
   background-color: white;
   padding: 2.25rem;
   border-radius: 0.75rem;
-  animation: show 0.3s ease-out;
-  @keyframes show {
+  animation: show-modal-body 0.3s ease-out;
+  @keyframes show-modal-body {
     0% {
       opacity: 0;
       transform: translateY(1rem);

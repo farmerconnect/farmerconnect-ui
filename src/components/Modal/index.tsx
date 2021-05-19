@@ -1,7 +1,7 @@
 import { FC, HTMLProps, ReactNode } from "react";
 import * as S from "./styles";
 
-type ModalProps = {
+export type ModalProps = {
   show: boolean;
   children: ReactNode;
 } & HTMLProps<HTMLDivElement>;

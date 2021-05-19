@@ -40,10 +40,10 @@ export const Label = styled.label`
 
   input:checked + .checked {
     display: block;
-    animation: show 0.2s;
+    animation: show-radio-button-animation 0.2s;
   }
 
-  @keyframes show {
+  @keyframes show-radio-button-animation {
     0% {
       transform: scale(1.1);
     }

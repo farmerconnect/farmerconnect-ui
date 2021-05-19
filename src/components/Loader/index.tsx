@@ -74,7 +74,7 @@ const Loader = ({
     return (
       <Fragment>
         <Caution />
-        <Message className="error" dangerouslySetInnerHTML={{__html: errorOptions?.message}}></Message>
+        <Message className="error">{errorOptions?.message}</Message>
       </Fragment>
     )
   }, [errorOptions])

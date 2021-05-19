@@ -1,4 +1,4 @@
-export interface IRowProps {
+export type IRowProps = {
   gutter?: number;
   bottom?: number;
-}
+};
