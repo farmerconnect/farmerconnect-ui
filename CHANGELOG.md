@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-05-19
+
+- Add storybook-deployer and deploy step to pipeline so that the latest version is always deployed to github pages after build succeeds
+
 ## [1.0.0] - 2021-05-17
 
 - Publish on Github

@@ -42,3 +42,21 @@ steps:
     command: 'publish'
     publishRegistry: 'useFeed'
     publishFeed: '099e7de5-5a11-4c12-a542-e808a6f5e8b3'
+
+- task: Npm@1
+  displayName: Build storybook
+  enabled: true
+  condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+  continueOnError: true
+  inputs:
+    command: 'custom'
+    customCommand: 'run build-storybook'
+
+- task: Npm@1
+  displayName: Deploy to github pages
+  enabled: true
+  condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+  continueOnError: true
+  inputs:
+    command: 'custom'
+    customCommand: 'run deploy-storybook -- --existing-output-dir=storybook-static'
