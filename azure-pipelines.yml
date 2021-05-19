@@ -4,7 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- main
+
+variables:
+  GH_TOKEN: farmerconnect:$(githubToken)
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -43,6 +46,11 @@ steps:
     publishRegistry: 'useFeed'
     publishFeed: '099e7de5-5a11-4c12-a542-e808a6f5e8b3'
 
+- task: CmdLine@2
+  condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+  inputs:
+    script: 'git remote set-url origin https://${{ variables.GH_TOKEN }}@github.com/farmerconnect/farmerconnect-ui.git'
+
 - task: Npm@1
   displayName: Build storybook
   enabled: true
@@ -56,7 +64,7 @@ steps:
   displayName: Deploy to github pages
   enabled: true
   condition: not(eq(variables['Build.Reason'], 'PullRequest'))
-  continueOnError: true
+  continueOnError: false
   inputs:
     command: 'custom'
-    customCommand: 'run deploy-storybook -- --existing-output-dir=storybook-static'
+    customCommand: 'run deploy-storybook -- --ci --existing-output-dir=storybook-static'
