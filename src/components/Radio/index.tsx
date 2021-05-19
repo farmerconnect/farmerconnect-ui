@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from "react";
+import { HTMLProps, ReactNode, SVGProps } from "react";
 import { Label } from "./styles";
 
 export type RadioProps = {
@@ -16,7 +16,7 @@ const Radio = ({ children, className, style, ...props }: RadioProps) => (
 
 export default Radio;
 
-const RadioUnchecked = (props) => (
+const RadioUnchecked = (props: { className: string }) => (
   <svg
     width="24"
     height="24"
@@ -29,7 +29,7 @@ const RadioUnchecked = (props) => (
   </svg>
 );
 
-const RadioChecked = (props) => (
+const RadioChecked = (props: { className: string }) => (
   <svg
     width="24"
     height="24"

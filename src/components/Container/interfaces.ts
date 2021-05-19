@@ -1,3 +1,3 @@
-export interface IContainerProps {
+export type IContainerProps = {
   size?: number;
-}
+};

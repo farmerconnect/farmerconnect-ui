@@ -36,7 +36,7 @@ export const Button = styled(StyledButton)`
   }
 `;
 
-export const Message = styled.p<{ dangerouslySetInnerHTML?: any }>`
+export const Message = styled.p`
   font-size: 18px;
   line-height: 24px;
   margin: 20px 0 0;

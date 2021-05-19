@@ -250,12 +250,12 @@ const Select: React.FC<ISelectProps> = ({
   };
 
   const clearSelected = () => {
-    const newContent = content.map((content) => {
-      content.checked = false;
-      return content;
-    });
+    const newContent = content.map((content) => ({
+      ...content,
+      checked: false,
+    }));
     dispatch({ type: ActionType.SET_CLEAR, payload: newContent });
-    onChange([]);
+    onChange(newContent);
   };
 
   const confirmSelected = () => {
@@ -312,7 +312,7 @@ const Select: React.FC<ISelectProps> = ({
             onSearch={(value: string) => handleSearch(value)}
             searchOptions={{
               visible: searchOptions.visible,
-              textSearch: searchOptions.textSearch || ""
+              textSearch: searchOptions.textSearch || "",
             }}
             textButtonClear={textButtonClear}
             textButtonConfirm={textButtonConfirm}
