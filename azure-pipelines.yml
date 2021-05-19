@@ -38,7 +38,7 @@ steps:
 
 - task: Npm@1
   displayName: Publish to Azure Artifacts
-  enabled: false
+  enabled: true
   continueOnError: false
   condition: not(eq(variables['Build.Reason'], 'PullRequest'))
   inputs:
