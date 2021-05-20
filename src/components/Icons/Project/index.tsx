@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TMFProjects: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const Project: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -23,4 +23,4 @@ const TMFProjects: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default TMFProjects;
+export default Project;

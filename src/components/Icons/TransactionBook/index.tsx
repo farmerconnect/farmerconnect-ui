@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TransactionLog: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const TransactionBook: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -23,4 +23,4 @@ const TransactionLog: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default TransactionLog;
+export default TransactionBook;

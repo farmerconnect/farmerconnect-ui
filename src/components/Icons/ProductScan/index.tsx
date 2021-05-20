@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TMFProducts: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const ProductScan: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -35,4 +35,4 @@ const TMFProducts: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default TMFProducts;
+export default ProductScan;
