@@ -1,6 +1,6 @@
 import React from "react";
 
-const CommunityBuilder: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const Screen: React.FC<React.SVGProps<SVGSVGElement>> = ({
   ...props
 }) => (
   <svg viewBox="-10 -10 55 55" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -13,4 +13,4 @@ const CommunityBuilder: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default CommunityBuilder;
+export default Screen;

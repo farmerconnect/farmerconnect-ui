@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TraceabilityReporting: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const Report: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -43,4 +43,4 @@ const TraceabilityReporting: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default TraceabilityReporting;
+export default Report;

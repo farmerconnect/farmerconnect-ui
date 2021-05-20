@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const FacilityMasterdata: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const Facility: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -31,4 +31,4 @@ const FacilityMasterdata: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default FacilityMasterdata;
+export default Facility;

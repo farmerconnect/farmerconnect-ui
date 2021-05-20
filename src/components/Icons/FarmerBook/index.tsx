@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const FarmerLog: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const FarmerBook: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -23,4 +23,4 @@ const FarmerLog: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default FarmerLog;
+export default FarmerBook;
