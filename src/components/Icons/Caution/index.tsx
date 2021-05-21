@@ -1,18 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-const Caution: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  fill = "#FB2E4C",
-  ...props
-}) => {
+const Caution: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = '#FB2E4C', ...props }) => {
   return (
-    <svg
-      width="53"
-      height="53"
-      viewBox="0 0 53 53"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M17.5982 3.68301L3.68975 17.5934C-1.22992 22.5137 -1.22992 30.479 3.68975 35.3994L17.5982 49.3097C22.5179 54.2301 30.4821 54.2301 35.4018 49.3097L49.3102 35.3994C54.2299 30.479 54.2299 22.5137 49.3102 17.5934L35.4018 3.68301C30.4821 -1.22767 22.5179 -1.22767 17.5982 3.68301Z"
         fill={fill}

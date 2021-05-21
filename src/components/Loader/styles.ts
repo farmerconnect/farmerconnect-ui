@@ -23,8 +23,7 @@ const loadingAnimation = keyframes`
 `;
 
 export const Button = styled(StyledButton)`
-  color: ${({ theme, color }) =>
-    color || theme?.loader?.button?.color || loaderDefaultStyles.button.color};
+  color: ${({ theme, color }) => color || theme?.loader?.button?.color || loaderDefaultStyles.button.color};
   font-size: 14px;
   line-height: 18px;
   margin-top: 80px;
@@ -113,8 +112,7 @@ export const SpinnerItem = styled.div<ILoaderProps>`
   box-sizing: content-box;
   position: absolute;
   animation: ${loadingAnimation} linear 1.0204081632653061s infinite;
-  background: ${({ theme, iconColor }) =>
-    iconColor || theme?.loader?.color || loaderDefaultStyles.icon.color};
+  background: ${({ theme, iconColor }) => iconColor || theme?.loader?.color || loaderDefaultStyles.icon.color};
 
   ${({ iconSize }: ILoaderProps) => css`
     left: ${scaleTo(103.95, iconSize)}px;
@@ -122,8 +120,7 @@ export const SpinnerItem = styled.div<ILoaderProps>`
     width: ${scaleTo(23.1, iconSize)}px;
     height: ${scaleTo(23.1, iconSize)}px;
     border-radius: ${scaleTo(6.93, iconSize)}px / ${scaleTo(6.93, iconSize)}px;
-    transform-origin: ${scaleTo(11.55, iconSize)}px
-      ${scaleTo(78.54, iconSize)}px;
+    transform-origin: ${scaleTo(11.55, iconSize)}px ${scaleTo(78.54, iconSize)}px;
   `}
 
   &:nth-child(1) {

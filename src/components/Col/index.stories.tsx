@@ -1,21 +1,21 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import Col from ".";
-import Row from "../Row";
-import Container from "../Container";
-import { IColProps } from "./interfaces";
+import Col from '.';
+import Row from '../Row';
+import Container from '../Container';
+import { IColProps } from './interfaces';
 
 const Content = () => (
   <div
     style={{
-      height: "10vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "white",
-      backgroundColor: "#00e394",
-      borderRadius: "16px",
+      height: '10vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      backgroundColor: '#00e394',
+      borderRadius: '16px',
     }}
   >
     Content
@@ -23,7 +23,7 @@ const Content = () => (
 );
 
 export default {
-  title: "Col",
+  title: 'Col',
   component: Col,
   argTypes: {},
   args: {
@@ -37,7 +37,7 @@ export default {
 } as Meta;
 
 const Template: Story<IColProps> = (args) => (
-  <Container style={{ backgroundColor: "lightgray" }}>
+  <Container style={{ backgroundColor: 'lightgray' }}>
     <Row bottom={16}>
       <Col {...args}>
         <Content />

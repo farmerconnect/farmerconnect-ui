@@ -1,20 +1,20 @@
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import Row from ".";
-import Col from "../Col";
-import { IRowProps } from "./interfaces";
-import Container from "../Container";
+import Row from '.';
+import Col from '../Col';
+import { IRowProps } from './interfaces';
+import Container from '../Container';
 
 const Content = () => (
   <div
     style={{
-      height: "10vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "white",
-      backgroundColor: "#00e394",
-      borderRadius: "16px",
+      height: '10vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      backgroundColor: '#00e394',
+      borderRadius: '16px',
     }}
   >
     Content
@@ -22,7 +22,7 @@ const Content = () => (
 );
 
 export default {
-  title: "Row",
+  title: 'Row',
   component: Row,
   argTypes: {},
   args: {
@@ -32,7 +32,7 @@ export default {
 } as Meta;
 
 const Template: Story<IRowProps> = (args) => (
-  <Container style={{ backgroundColor: "lightgray" }}>
+  <Container style={{ backgroundColor: 'lightgray' }}>
     <Row {...args}>
       <Col xs={12}>
         <Content />

@@ -3,25 +3,28 @@ import { INavigationBar, INavigationBarProps } from './interfaces';
 
 export const navigationBarDefaultStyles: INavigationBar = {
   colors: {
-      primary: 'rgba(112, 163, 140, 0.2)',
-      secondary: '#141414',
-      tertiary: 'rgba(20, 20, 20, 0.3)'
-  }
-}
+    primary: 'rgba(112, 163, 140, 0.2)',
+    secondary: '#141414',
+    tertiary: 'rgba(20, 20, 20, 0.3)',
+  },
+};
 
 export const Container = styled.div<INavigationBarProps>`
-  background: ${(props) => props.backgroundColor || props.theme?.navigationBar?.colors?.primary || navigationBarDefaultStyles.colors.primary};
+  background: ${(props) =>
+    props.backgroundColor || props.theme?.navigationBar?.colors?.primary || navigationBarDefaultStyles.colors.primary};
   display: flex;
   flex-direction: row;
   height: 4rem;
   width: 100%;
 
-  ${props => props.customStyles}
+  ${(props) => props.customStyles}
 `;
 
 export const Button = styled.button<INavigationBarProps>`
   background: none;
-  border: 0.01rem solid ${(props) => props.color || props.theme?.navigationBar?.colors?.secondary || navigationBarDefaultStyles.colors.secondary};
+  border: 0.01rem solid
+    ${(props) =>
+      props.color || props.theme?.navigationBar?.colors?.secondary || navigationBarDefaultStyles.colors.secondary};
   border-radius: 0.6rem;
   cursor: pointer;
   font-size: 0.875rem;
@@ -31,12 +34,18 @@ export const Button = styled.button<INavigationBarProps>`
   outline: none;
 
   &:disabled {
-    border-color: ${(props) => props.disabledColor || props.theme?.navigationBar?.colors?.tertiary || navigationBarDefaultStyles.colors.tertiary};
-    color: ${(props) => props.disabledColor || props.theme?.navigationBar?.colors?.tertiary || navigationBarDefaultStyles.colors.tertiary};
+    border-color: ${(props) =>
+      props.disabledColor ||
+      props.theme?.navigationBar?.colors?.tertiary ||
+      navigationBarDefaultStyles.colors.tertiary};
+    color: ${(props) =>
+      props.disabledColor ||
+      props.theme?.navigationBar?.colors?.tertiary ||
+      navigationBarDefaultStyles.colors.tertiary};
     cursor: auto;
   }
 
-  ${props => props.customStyles}
+  ${(props) => props.customStyles}
 `;
 
 export const PreviousButtonContainer = styled.div`

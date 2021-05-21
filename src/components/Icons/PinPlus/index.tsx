@@ -1,16 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-const PinPlus: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  fill = "black",
-  ...props
-}) => (
-  <svg
-    data-name="Layer 1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 500 500"
-    fill={fill}
-    {...props}
-  >
+const PinPlus: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'black', ...props }) => (
+  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill={fill} {...props}>
     <path
       d="M250,112.84A103.7,103.7,0,0,0,146.42,216.43c0,18.44,7.83,37.73,8.73,39.9a160.59,160.59,0,0,0,11.73,21.93L232,376.92c4.29,6.51,10.86,10.24,18,10.24s13.72-3.73,18-10.23l5.93-9a8.61,8.61,0,1,0-14.38-9.49l-5.93,9c-2.08,3.16-5.16,3.17-7.26,0l-65.11-98.66A144.62,144.62,0,0,1,171,249.67c-.3-.73-7.4-17.9-7.4-33.24a86.36,86.36,0,0,1,172.72,0c0,15.48-7.31,33-7.38,33.22-.94,2.24-2.27,5-3.73,7.8a8.61,8.61,0,0,0,15.29,7.94c1.74-3.34,3.23-6.48,4.32-9.07.89-2.12,8.72-21.29,8.72-39.89A103.7,103.7,0,0,0,250,112.84Z"
       fill={fill}

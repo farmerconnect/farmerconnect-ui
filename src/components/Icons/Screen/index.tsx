@@ -1,8 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Screen: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  ...props
-}) => (
+const Screen: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
   <svg viewBox="-10 -10 55 55" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"

@@ -2,8 +2,6 @@ import React from 'react';
 import { Container, Label } from './styles';
 import { IItemMultipleProps } from '../../interfaces';
 
-
-
 const ItemMultiple: React.FC<IItemMultipleProps> = ({
   content,
   handleSelected,
@@ -11,17 +9,15 @@ const ItemMultiple: React.FC<IItemMultipleProps> = ({
   contentRender,
   ...props
 }) => {
-
   const disabled = limitReached && !content.checked;
 
   return (
     <Container>
-      <Label onChange={(e: any) => handleSelected(e, content)} className={`${disabled ? 'disabled' : ""}`}>
+      <Label onChange={(e: any) => handleSelected(e, content)} className={`${disabled ? 'disabled' : ''}`}>
+        <div>{contentRender}</div>
         <div>
-          {contentRender}
-        </div>
-        <div>
-          <input type="checkbox"
+          <input
+            type="checkbox"
             checked={content.checked}
             onChange={(e: any) => handleSelected(e, content)}
             disabled={disabled}
@@ -30,7 +26,7 @@ const ItemMultiple: React.FC<IItemMultipleProps> = ({
         </div>
       </Label>
     </Container>
-  )
-}
+  );
+};
 
 export default ItemMultiple;

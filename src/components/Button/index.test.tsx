@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './'
+import Button from './';
 
 describe('Button component', () => {
   test('it matches the snapshot', () => {

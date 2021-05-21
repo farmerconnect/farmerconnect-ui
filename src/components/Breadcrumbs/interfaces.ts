@@ -1,4 +1,4 @@
-import { IBreadcrumbColorProps } from "./Breadcrumb/interfaces";
+import { IBreadcrumbColorProps } from './Breadcrumb/interfaces';
 
 export interface IBreadcrumbProps {
   active: boolean;

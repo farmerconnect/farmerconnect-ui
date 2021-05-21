@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { IRowProps } from "./interfaces";
-import { Col } from "../Col/styles";
+import styled from 'styled-components';
+import { IRowProps } from './interfaces';
+import { Col } from '../Col/styles';
 
 export const Row = styled.div<IRowProps>`
   display: flex;

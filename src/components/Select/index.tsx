@@ -1,13 +1,8 @@
-import React, { useEffect, useRef, useReducer, Fragment } from "react";
-import {
-  ISelectProps,
-  IInitialValues,
-  IReducer,
-  ActionType,
-} from "./interfaces";
-import { Container, ContainerCombo } from "./styles";
-import Combo from "./Combo";
-import Content from "./Content";
+import React, { useEffect, useRef, useReducer, Fragment } from 'react';
+import { ISelectProps, IInitialValues, IReducer, ActionType } from './interfaces';
+import { Container, ContainerCombo } from './styles';
+import Combo from './Combo';
+import Content from './Content';
 
 const INITIAL_VALUES: IInitialValues = {
   open: false,
@@ -19,10 +14,7 @@ const INITIAL_VALUES: IInitialValues = {
   limitReached: false,
 };
 
-const reducerSelect: React.Reducer<IInitialValues, IReducer> = (
-  state,
-  action
-) => {
+const reducerSelect: React.Reducer<IInitialValues, IReducer> = (state, action) => {
   switch (action.type) {
     case ActionType.SET_ISLOADING:
       return {
@@ -99,19 +91,9 @@ const Select: React.FC<ISelectProps> = ({
   multiple,
   ItemRender,
 }) => {
-  const [
-    {
-      open,
-      actualContent,
-      selectedContent,
-      disable,
-      disableButtonsContent,
-      isLoading,
-      limitReached,
-    },
-    dispatch,
-  ] = useReducer(reducerSelect, INITIAL_VALUES);
-  const searchField = searchOptions.field || "";
+  const [{ open, actualContent, selectedContent, disable, disableButtonsContent, isLoading, limitReached }, dispatch] =
+    useReducer(reducerSelect, INITIAL_VALUES);
+  const searchField = searchOptions.field || '';
 
   const wrapperRef = useRef(null);
 
@@ -125,12 +107,12 @@ const Select: React.FC<ISelectProps> = ({
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickCombo, true);
+    document.addEventListener('click', handleClickCombo, true);
 
     return () => {
-      document.removeEventListener("click", handleClickCombo, true);
+      document.removeEventListener('click', handleClickCombo, true);
     };
-  }, []);
+  });
 
   useEffect(() => {
     dispatch({ type: ActionType.SET_ISLOADING, payload: loading });
@@ -180,7 +162,7 @@ const Select: React.FC<ISelectProps> = ({
       });
       dispatch({ type: ActionType.SET_CLEAR, payload: newContent });
     }
-  }, [content, clear]);
+  }, [content, clear, multiple, limit]);
 
   const handleOpenContent = (content: any, id: number) => {
     dispatch({
@@ -230,9 +212,7 @@ const Select: React.FC<ISelectProps> = ({
           }
           return content;
         });
-        const contentFiltered = newContent.filter(
-          (content) => content.checked === true
-        );
+        const contentFiltered = newContent.filter((content) => content.checked === true);
         const isLimitReached = contentFiltered.length >= limit;
         const isButtonsDisabled = contentFiltered.length > 0 ? false : true;
         dispatch({
@@ -290,9 +270,7 @@ const Select: React.FC<ISelectProps> = ({
       <Container ref={wrapperRef}>
         <ContainerCombo>
           <Combo
-            openContent={(idNumber: number) =>
-              handleOpenContent(content, idNumber)
-            }
+            openContent={(idNumber: number) => handleOpenContent(content, idNumber)}
             open={open}
             disabled={disable}
             textCombo={textSelect}
@@ -312,7 +290,7 @@ const Select: React.FC<ISelectProps> = ({
             onSearch={(value: string) => handleSearch(value)}
             searchOptions={{
               visible: searchOptions.visible,
-              textSearch: searchOptions.textSearch || "",
+              textSearch: searchOptions.textSearch || '',
             }}
             textButtonClear={textButtonClear}
             textButtonConfirm={textButtonConfirm}

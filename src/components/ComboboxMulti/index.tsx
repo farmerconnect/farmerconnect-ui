@@ -1,13 +1,8 @@
-import React, { useEffect, useRef, useReducer } from "react";
-import {
-  IComboboxProps,
-  IInitialValues,
-  IReducer,
-  ActionType,
-} from "./interfaces";
-import { Container, ContainerCombo } from "./styles";
-import Combo from "./Combo";
-import Content from "./Content";
+import React, { useEffect, useRef, useReducer } from 'react';
+import { IComboboxProps, IInitialValues, IReducer, ActionType } from './interfaces';
+import { Container, ContainerCombo } from './styles';
+import Combo from './Combo';
+import Content from './Content';
 
 const INITIAL_VALUES: IInitialValues = {
   open: false,
@@ -25,10 +20,7 @@ const INITIAL_VALUES: IInitialValues = {
   limitReached: false,
 };
 
-const reducerCombo: React.Reducer<IInitialValues, IReducer> = (
-  state,
-  action
-) => {
+const reducerCombo: React.Reducer<IInitialValues, IReducer> = (state, action) => {
   switch (action.type) {
     case ActionType.SET_ISLOADING:
       return {
@@ -164,20 +156,19 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickCombo, true);
+    document.addEventListener('click', handleClickCombo, true);
 
     return () => {
-      document.removeEventListener("click", handleClickCombo, true);
+      document.removeEventListener('click', handleClickCombo, true);
     };
-  }, []);
+  });
 
   useEffect(() => {
     dispatch({ type: ActionType.SET_ISLOADING, payload: loading });
   }, [loading]);
 
   useEffect(() => {
-    if (firstContent)
-      dispatch({ type: ActionType.SET_FIRST_CONTENT, payload: firstContent });
+    if (firstContent) dispatch({ type: ActionType.SET_FIRST_CONTENT, payload: firstContent });
     if (secondContent) {
       const filterContent = secondContent.filter((el) => el.checked === true);
       if (!filterContent.length) {
@@ -222,7 +213,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     if (clear) {
       dispatch({ type: ActionType.SET_CLEAR });
     }
-  }, [firstContent, secondContent, clear]);
+  }, [firstContent, secondContent, clear, disable1, limit]);
 
   const handleOpenContent = (content: any, id: number) => {
     const setMultiple = id === 1 ? false : true;
@@ -257,9 +248,7 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
       item.checked = !item.checked;
       if (item.checked === false) {
         const id = item.id;
-        const contentFiltered = selectedContent2.filter(
-          (content) => content.id !== id
-        );
+        const contentFiltered = selectedContent2.filter((content) => content.id !== id);
         const newContent = content2.map((content) => {
           if (content.id === id) {
             content.checked = false;
@@ -373,28 +362,21 @@ const ComboBoxMulti: React.FC<IComboboxProps> = ({
     <Container ref={wrapperRef}>
       <ContainerCombo>
         <Combo
-          openContent={(idNumber: number) =>
-            handleOpenContent(content, idNumber)
-          }
+          openContent={(idNumber: number) => handleOpenContent(content, idNumber)}
           open={open}
           disabled={disable1}
           first={true}
-          textCombo={isLoading ? "Loading" : textFirstCombo}
+          textCombo={isLoading ? 'Loading' : textFirstCombo}
           id={1}
           idOpened={idOpened}
           data-cy="first-combo"
         />
-        <div
-          className={
-            open && idOpened === 1 ? "comboDivider open" : "comboDivider"
-          }></div>
+        <div className={open && idOpened === 1 ? 'comboDivider open' : 'comboDivider'}></div>
         <Combo
-          openContent={(idNumber: number) =>
-            handleOpenContent(content2, idNumber)
-          }
+          openContent={(idNumber: number) => handleOpenContent(content2, idNumber)}
           open={open}
           disabled={disable2}
-          textCombo={isLoading ? "Loading" : textSecondCombo}
+          textCombo={isLoading ? 'Loading' : textSecondCombo}
           id={2}
           idOpened={idOpened}
           data-cy="second-combo"
