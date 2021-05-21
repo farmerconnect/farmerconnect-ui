@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.4] - 2021-05-21
+
+- Add LICENSE
+
 ## [1.1.3] - 2021-05-20
 
-- Change icons names and selects storys data
+- Change icons names and dummy data on selects
 
 ## [1.1.2] - 2021-05-19
 
