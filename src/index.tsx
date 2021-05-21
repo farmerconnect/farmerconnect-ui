@@ -13,6 +13,8 @@ import Col from "./components/Col";
 import Container from "./components/Container";
 import Modal from "./components/Modal";
 import Radio from "./components/Radio";
+import CustomButton from "./components/CustomButton";
+import Select from "./components/Select";
 
 export {
   Breadcrumbs,
@@ -30,4 +32,6 @@ export {
   Container,
   Modal,
   Radio,
+  CustomButton,
+  Select,
 };

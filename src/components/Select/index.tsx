@@ -206,11 +206,12 @@ const Select: React.FC<ISelectProps> = ({
         const newContentSelected = [...selectedContent, item];
         const isLimitReached = newContentSelected.length >= limit;
         const isButtonsDisabled = newContentSelected.length > 0 ? false : true;
-        const newContent = content.map((content) => {
+        const newContent = actualContent.map((content) => {
           if (content.id === id) {
-            content.checked = true;
+            return { ...content, checked: true };
+          } else {
+            return content;
           }
-          return content;
         });
         dispatch({
           type: ActionType.SET_MULTIPLE_ITEM,
@@ -224,7 +225,7 @@ const Select: React.FC<ISelectProps> = ({
         });
       } else {
         const id = item.id;
-        const newContent = content.map((content) => {
+        const newContent = actualContent.map((content) => {
           if (content.id === id) {
             content.checked = false;
           }
