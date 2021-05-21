@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const RunTrace: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const PinPlay: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -27,4 +27,4 @@ const RunTrace: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default RunTrace;
+export default PinPlay;

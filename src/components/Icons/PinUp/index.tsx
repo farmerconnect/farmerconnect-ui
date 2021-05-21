@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const UploadTrace: React.FC<React.SVGProps<SVGSVGElement>> = ({
+const PinUp: React.FC<React.SVGProps<SVGSVGElement>> = ({
   fill = "black",
   ...props
 }) => (
@@ -27,4 +27,4 @@ const UploadTrace: React.FC<React.SVGProps<SVGSVGElement>> = ({
   </svg>
 );
 
-export default UploadTrace;
+export default PinUp;
