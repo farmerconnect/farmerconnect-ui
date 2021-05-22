@@ -103,6 +103,7 @@ export const FilterInputWrapper = styled.div`
       padding: 0.5rem 4rem 0.5rem 0.75rem;
       outline: none;
       color: #141414;
+      font-weight: 700;
       &:placeholder {
         color: #5b5b5b;
       }

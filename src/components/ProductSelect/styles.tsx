@@ -1,6 +1,5 @@
-import React from "react";
 import styled, { css } from "styled-components";
-import Checkbox from "../Checkbox";
+import { ListWrapper as SingleSelectListWrapper } from "../OrderSelect/styles";
 
 import { isOpenType } from ".";
 
@@ -76,6 +75,13 @@ export const Content = styled.div<ContentProps>`
   overflow: hidden;
   box-shadow: 0.125rem 0.125rem 0 0 #00e394;
   transition: all 0.05s ease-out;
+`;
+
+export const ListWrapper = styled(SingleSelectListWrapper)`
+  > label > svg {
+    align-self: flex-start;
+    margin-top: 0.125rem;
+  }
 `;
 
 export const ProductList = styled.ul`

@@ -9,7 +9,6 @@ import {
   EmptyMessage,
   FilterInputWrapper,
   MagnifyingGlassIcon,
-  ListWrapper,
 } from "../OrderSelect/styles";
 
 export type itemType = {
@@ -19,6 +18,15 @@ export type itemType = {
 
 export type productType = {
   id: string;
+};
+
+export type textType = {
+  productsHeading: string;
+  itemsHeading: string;
+  filterPlaceholder: string;
+  clearButton: string;
+  confirmButton: string;
+  emptyList: string;
 };
 
 export type isOpenType = "products" | "items" | false;
@@ -34,6 +42,7 @@ export type SelectProps = {
   limit?: number;
   disableProducts: boolean;
   disableItems: boolean;
+  text: textType;
 };
 
 const DoubleSelect = ({
@@ -142,7 +151,7 @@ const DoubleSelect = ({
                 )}
               </div>
             </FilterInputWrapper>
-            <ListWrapper>
+            <S.ListWrapper>
               {filteredItems.map((item) => (
                 <CustomCheckbox
                   checked={
@@ -157,7 +166,7 @@ const DoubleSelect = ({
               {filteredItems.length === 0 && filterText && (
                 <EmptyMessage>There are no matches</EmptyMessage>
               )}
-            </ListWrapper>
+            </S.ListWrapper>
             <ButtonContainer>
               <CustomButton
                 variant="outline"

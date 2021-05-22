@@ -47,6 +47,14 @@ const Template: Story<SelectProps> = (args) => {
         </>
       )}
       products={data}
+      text={{
+        productsHeading: "Select one product",
+        itemsHeading: "Select items",
+        filterPlaceholder: "Search product ID",
+        clearButton: "Clear selection",
+        confirmButton: "Confirm selection",
+        emptyList: "There are no results matching your search.",
+      }}
     />
   );
 };
