@@ -15,6 +15,9 @@ import Modal from "./components/Modal";
 import Radio from "./components/Radio";
 import CustomButton from "./components/CustomButton";
 import Select from "./components/Select";
+import OrderSelect from "./components/OrderSelect";
+import ProductSelect from "./components/ProductSelect";
+import Checkbox from "./components/Checkbox";
 
 export {
   Breadcrumbs,
@@ -34,4 +37,7 @@ export {
   Radio,
   CustomButton,
   Select,
+  Checkbox,
+  OrderSelect,
+  ProductSelect,
 };
