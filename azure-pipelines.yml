@@ -21,6 +21,14 @@ steps:
       command: 'install'
 
   - task: Npm@1
+    displayName: Run npm audit
+    enabled: true
+    continueOnError: false
+    inputs:
+      command: 'custom'
+      customCommand: 'audit'
+
+  - task: Npm@1
     displayName: Run npm run lint
     enabled: true
     continueOnError: false
