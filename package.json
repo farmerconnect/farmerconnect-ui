@@ -4,7 +4,6 @@
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
-    "start": "react-scripts start",
     "build": "rollup --config",
     "test": "react-scripts test --ci --watchAll=false",
     "eject": "react-scripts eject",
@@ -13,12 +12,6 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format && yarn lint",
-      "pre-push": "yarn test"
-    }
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.1.0",
