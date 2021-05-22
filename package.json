@@ -48,13 +48,17 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "hosted-git-info": "^4.0.2",
     "husky": "^6.0.0",
     "jest-styled-components": "^7.0.4",
+    "postcss": "^8.3.0",
     "prettier": "^2.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "rollup": "^2.36.1",
+    "ssri": "^8.0.1",
+    "trim": "^1.0.1",
     "tslib": "^2.1.0",
     "typescript": "^4.0.3",
     "webpack": "4.44.2"
@@ -65,6 +69,12 @@
   },
   "dependencies": {
     "styled-components": "^5.2.1"
+  },
+  "resolutions": {
+    "hosted-git-info": "^4.0.2",
+    "postcss": "^8.3.0",
+    "ssri": "^8.0.1",
+    "trim": "^1.0.1"
   },
   "eslintConfig": {
     "extends": [
