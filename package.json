@@ -4,7 +4,6 @@
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "build": "rollup --config",
     "test": "react-scripts test --ci --watchAll=false",
     "eject": "react-scripts eject",
