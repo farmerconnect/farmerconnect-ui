@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2021-05-22
+
+- Fix audit issues
+- Add audit checks pre-commit and to pipeline
+
 ## [1.2.0] - 2021-05-21
 
 - Add eslint with CRA rules
