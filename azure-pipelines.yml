@@ -21,6 +21,14 @@ steps:
       command: 'install'
 
   - task: Npm@1
+    displayName: Run npm run lint
+    enabled: true
+    continueOnError: false
+    inputs:
+      command: 'custom'
+      customCommand: 'run lint'
+
+  - task: Npm@1
     displayName: Run npm run build
     enabled: true
     continueOnError: false
