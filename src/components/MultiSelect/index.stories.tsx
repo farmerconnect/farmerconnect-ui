@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
 
@@ -11,19 +12,35 @@ export default {
 } as Meta;
 
 const data = [
-  { id: "Wagner", checked: false },
-  { id: "Jéssica", checked: false },
-  { id: "Wanda", checked: false },
-  { id: "Valter", checked: false },
-  { id: "Leonardo", checked: false },
-  { id: "Maristela", checked: false },
-  { id: "VP", checked: false },
-  { id: "Marcelo", checked: false },
-  { id: "Roberto", checked: false },
-  { id: "Gabigol", checked: false },
-  { id: "Renato", checked: false },
-  { id: "Gurizão", checked: false },
+  { id: "Item 1", checked: false },
+  { id: "Item 2", checked: false },
+  { id: "Item 3", checked: false },
+  { id: "Item 4", checked: false },
+  { id: "Item 5", checked: false },
+  { id: "Item 6", checked: false },
+  { id: "Item 7", checked: false },
+  { id: "Item 8", checked: false },
+  { id: "Item 9", checked: false },
+  { id: "Item 10", checked: false },
 ];
+
+const ListItem = styled.div`
+  color: #141414;
+  margin: 0;
+  padding: 0.25rem 0;
+  > b {
+    font-size: 0.875rem;
+    font-weight: 700;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  > p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.6875rem;
+  }
+`;
 
 const Template: Story<SelectProps> = (args) => {
   const [items, setItems] = useState(data);
@@ -32,24 +49,29 @@ const Template: Story<SelectProps> = (args) => {
   return (
     <DoubleSelect
       {...args}
-      disableItems={product.id === null}
-      disableProducts={product.id !== null}
-      itemRenderer={(item) => item.id}
-      items={items}
+      disableRightCombo={product.id === null}
+      disableLeftCombo={product.id !== null}
+      rightListRenderer={(p) => (
+        <ListItem>
+          <b>{p.id}</b>
+          <p>Item description</p>
+        </ListItem>
+      )}
+      rightContent={items}
       limit={2}
       onChange={setItems}
       onConfirmSelection={(items) => alert(JSON.stringify(items))}
-      onSelectProduct={(p) => setProduct(p)}
-      productRenderer={(p) => (
-        <>
-          <p>{p.id}</p>
-          <p>description {p.id}</p>
-        </>
+      onSelectLeft={(p) => setProduct(p)}
+      leftListRenderer={(p) => (
+        <ListItem>
+          <b>{p.id}</b>
+          <p>Item description</p>
+        </ListItem>
       )}
-      products={data}
+      leftContent={data}
       text={{
-        productsHeading: "Select one product",
-        itemsHeading: "Select items",
+        leftComboHeading: "Select one product",
+        rightComboHeading: "Select items",
         filterPlaceholder: "Search product ID",
         clearButton: "Clear selection",
         confirmButton: "Confirm selection",

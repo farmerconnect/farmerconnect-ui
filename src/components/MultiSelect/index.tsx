@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, ReactNode } from "react";
-import { Icon } from "../..";
+import * as Icon from "../Icons";
 import CustomButton from "../CustomButton";
 import * as S from "./styles";
 import {
@@ -9,7 +9,7 @@ import {
   EmptyMessage,
   FilterInputWrapper,
   MagnifyingGlassIcon,
-} from "../OrderSelect/styles";
+} from "../SingleSelect/styles";
 
 export type itemType = {
   id: string;
@@ -21,53 +21,54 @@ export type productType = {
 };
 
 export type textType = {
-  productsHeading: string;
-  itemsHeading: string;
+  leftComboHeading: string;
+  rightComboHeading: string;
   filterPlaceholder: string;
   clearButton: string;
   confirmButton: string;
   emptyList: string;
 };
 
-export type isOpenType = "products" | "items" | false;
+export type isOpenType = "left" | "right" | false;
 
 export type SelectProps = {
-  items: itemType[];
-  products: productType[];
+  leftContent: productType[];
+  rightContent: itemType[];
   onChange: (c: itemType[]) => void;
   onConfirmSelection: (c: itemType[]) => void;
-  onSelectProduct: (p: productType) => void;
-  itemRenderer: (item: itemType) => ReactNode;
-  productRenderer: (product: productType) => ReactNode;
+  onSelectLeft: (p: productType) => void;
+  rightListRenderer: (item: itemType) => ReactNode;
+  leftListRenderer: (product: productType) => ReactNode;
   limit?: number;
-  disableProducts: boolean;
-  disableItems: boolean;
+  disableLeftCombo: boolean;
+  disableRightCombo: boolean;
   text: textType;
 };
 
 const DoubleSelect = ({
-  items = [],
-  products = [],
+  leftContent = [],
+  rightContent = [],
   limit = 2,
-  disableProducts = false,
-  disableItems = true,
+  disableLeftCombo = false,
+  disableRightCombo = true,
   onConfirmSelection,
-  itemRenderer,
+  rightListRenderer,
   onChange,
-  onSelectProduct,
-  productRenderer,
+  onSelectLeft,
+  leftListRenderer,
+  text,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState<isOpenType>(false);
   const [filterText, setFilterText] = useState("");
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = (dropdown: isOpenType) => {
-    if (dropdown === "products") {
-      if (disableProducts) return;
-      isOpen === false ? setIsOpen("products") : setIsOpen(false);
+    if (dropdown === "left") {
+      if (disableLeftCombo) return;
+      isOpen === false ? setIsOpen("left") : setIsOpen(false);
     } else {
-      if (disableItems) return;
-      isOpen === false ? setIsOpen("items") : setIsOpen(false);
+      if (disableRightCombo) return;
+      isOpen === false ? setIsOpen("right") : setIsOpen(false);
     }
   };
 
@@ -78,13 +79,15 @@ const DoubleSelect = ({
   };
 
   const handleClearSelection = () => {
-    onChange(items.map((item: itemType) => ({ ...item, checked: false })));
+    onChange(
+      rightContent.map((item: itemType) => ({ ...item, checked: false }))
+    );
     setFilterText("");
   };
 
   const handleToggleSelectItem = (item: itemType) => {
     onChange(
-      items.map((i) => ({
+      rightContent.map((i) => ({
         ...i,
         checked: i.id === item.id ? !item.checked : i.checked,
       }))
@@ -92,12 +95,12 @@ const DoubleSelect = ({
   };
 
   const handleConfirm = () => {
-    onConfirmSelection(items.filter((item) => item.checked));
+    onConfirmSelection(rightContent.filter((item) => item.checked));
     setIsOpen(false);
   };
 
   const handleSelectProduct = (product: productType) => {
-    onSelectProduct(product);
+    onSelectLeft(product);
     setIsOpen(false);
   };
 
@@ -108,37 +111,37 @@ const DoubleSelect = ({
     };
   }, []);
 
-  const selectedItems = items.filter((item: itemType) => item.checked);
+  const selectedItems = rightContent.filter((item: itemType) => item.checked);
 
-  const filteredItems = items.filter((item: itemType) =>
+  const filteredItems = rightContent.filter((item: itemType) =>
     item.id.toLowerCase().includes(filterText.toLowerCase())
   );
 
   return (
     <S.Wrapper ref={contentRef}>
       <S.Heading
-        onClick={() => handleToggleDropdown("products")}
+        onClick={() => handleToggleDropdown("left")}
         isOpen={isOpen}
-        disabled={disableProducts}
+        disabled={disableLeftCombo}
       >
-        Select one product
+        {text.leftComboHeading}
         <Chevron />
       </S.Heading>
       <S.Heading
-        onClick={() => handleToggleDropdown("items")}
+        onClick={() => handleToggleDropdown("right")}
         isOpen={isOpen}
-        disabled={disableItems}
+        disabled={disableRightCombo}
       >
-        Select up to 2 items
+        {text.rightComboHeading}
         <Chevron />
       </S.Heading>
       <S.Content isOpen={isOpen}>
-        {isOpen === "items" && (
+        {isOpen === "right" && (
           <>
             <FilterInputWrapper>
               <div>
                 <input
-                  placeholder="Search product"
+                  placeholder={text.filterPlaceholder}
                   value={filterText}
                   onChange={(e) => setFilterText(e.target.value)}
                 />
@@ -155,16 +158,17 @@ const DoubleSelect = ({
               {filteredItems.map((item) => (
                 <CustomCheckbox
                   checked={
-                    items.find((i: itemType) => i.id === item.id)!.checked
+                    rightContent.find((i: itemType) => i.id === item.id)!
+                      .checked
                   }
                   onChange={() => handleToggleSelectItem(item)}
                   disabled={!item.checked && selectedItems.length === limit}
                 >
-                  {itemRenderer(item)}
+                  {rightListRenderer(item)}
                 </CustomCheckbox>
               ))}
               {filteredItems.length === 0 && filterText && (
-                <EmptyMessage>There are no matches</EmptyMessage>
+                <EmptyMessage>{text.emptyList}</EmptyMessage>
               )}
             </S.ListWrapper>
             <ButtonContainer>
@@ -173,22 +177,22 @@ const DoubleSelect = ({
                 disabled={selectedItems.length === 0}
                 onClick={handleClearSelection}
               >
-                Clear selection
+                {text.clearButton}
               </CustomButton>
               <CustomButton
                 disabled={selectedItems.length === 0}
                 onClick={handleConfirm}
               >
-                Confirm selection
+                {text.confirmButton}
               </CustomButton>
             </ButtonContainer>
           </>
         )}
-        {isOpen === "products" && (
+        {isOpen === "left" && (
           <S.ProductList>
-            {products.map((product) => (
+            {leftContent.map((product) => (
               <li onClick={() => handleSelectProduct(product)}>
-                {productRenderer(product)}
+                {leftListRenderer(product)}
               </li>
             ))}
           </S.ProductList>

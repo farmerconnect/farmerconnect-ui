@@ -11,18 +11,16 @@ export default {
 } as Meta;
 
 const data = [
-  { id: "Wagner", checked: false },
-  { id: "Jéssica", checked: false },
-  { id: "Wanda", checked: false },
-  { id: "Valter", checked: false },
-  { id: "Leonardo", checked: false },
-  { id: "Maristela", checked: false },
-  { id: "VP", checked: false },
-  { id: "Marcelo", checked: false },
-  { id: "Roberto", checked: false },
-  { id: "Gabigol", checked: false },
-  { id: "Renato", checked: false },
-  { id: "Gurizão", checked: false },
+  { id: "Item 1", checked: false },
+  { id: "Item 2", checked: false },
+  { id: "Item 3", checked: false },
+  { id: "Item 4", checked: false },
+  { id: "Item 5", checked: false },
+  { id: "Item 6", checked: false },
+  { id: "Item 7", checked: false },
+  { id: "Item 8", checked: false },
+  { id: "Item 9", checked: false },
+  { id: "Item 10", checked: false },
 ];
 
 const Template: Story<SelectProps> = (args) => {

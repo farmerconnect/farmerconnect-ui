@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ListWrapper as SingleSelectListWrapper } from "../OrderSelect/styles";
+import { ListWrapper as SingleSelectListWrapper } from "../SingleSelect/styles";
 
 import { isOpenType } from ".";
 
@@ -27,14 +27,14 @@ export const Heading = styled.div<HeadingProps>`
     background-color: ${props.disabled ? "#EAEAEA" : "#F7F6F4"};
     transition: all 0.05s ease-out;
     border-radius: ${props.isOpen
-      ? props.isOpen === "products"
+      ? props.isOpen === "left"
         ? "0.75rem 0 0 0"
         : "0.75rem 0 0 0.75rem"
       : "0.75rem 0 0 0.75rem"};
     color: #5b5b5b;
     cursor: ${props.disabled ? "default" : "pointer"};
     box-shadow: ${props.isOpen ? "0.125rem 0.125rem 0 0 #00E394" : "none"};
-    border-right: ${props.isOpen === "products"
+    border-right: ${props.isOpen === "left"
       ? "2px solid #00E394"
       : "1px solid #b9b9b9"};
     > svg {
@@ -43,12 +43,12 @@ export const Heading = styled.div<HeadingProps>`
     }
     & + ${Heading} {
       border-radius: ${props.isOpen
-        ? props.isOpen === "items"
+        ? props.isOpen === "right"
           ? "0 0.75rem 0 0"
           : "0 0.75rem 0.75rem 0"
         : "0 0.75rem 0.75rem 0"};
       border-right: none;
-      box-shadow: ${props.isOpen === "items"
+      box-shadow: ${props.isOpen === "right"
         ? "0.125rem 0.125rem 0 0 #00E394"
         : "none"};
     }
@@ -63,7 +63,7 @@ export const Content = styled.div<ContentProps>`
   position: absolute;
   background-color: #f7f6f4;
   border-radius: ${(props) =>
-      props.isOpen === "items" ? "0.75rem 0" : "0 0.75rem"}
+      props.isOpen === "right" ? "0.75rem 0" : "0 0.75rem"}
     0.75rem 0.75rem;
   z-index: 5;
   left: 0;

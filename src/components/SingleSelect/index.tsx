@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, ReactNode } from "react";
-import { Icon } from "../../";
+import * as Icon from "../Icons";
 import CustomButton from "../CustomButton";
 import * as S from "./styles";
 
