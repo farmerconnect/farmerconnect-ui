@@ -21,8 +21,7 @@ const defaultArgs = {
   options: [
     {
       duration: 5,
-      message:
-        'We are working on your request, please bare with us for a moment...',
+      message: 'We are working on your request, please bare with us for a moment...',
     },
     {
       duration: 5,
@@ -35,9 +34,6 @@ const defaultArgs = {
   ],
   iconColor: loaderDefaultStyles.icon.color,
   buttonText: 'Cancel request',
-  onButtonClick: () => {
-    console.log('Cancel request');
-  },
 };
 
 const Template: Story = (args) => <Loader {...args} />;

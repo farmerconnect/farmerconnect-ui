@@ -8,18 +8,9 @@ import { ITextInputProps } from './interfaces';
 export default {
   title: 'Text Input',
   component: TextInput,
-  argTypes: {
-  },
+  argTypes: {},
 } as Meta;
 
 const Template: Story<ITextInputProps> = (args) => <TextInput {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  onChange: (value: string, isValid: boolean) => {
-    console.log('On Change');
-    console.log('value', value);
-    console.log('isValid', isValid);
-  },
-};
- 

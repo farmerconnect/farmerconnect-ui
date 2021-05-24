@@ -1,17 +1,17 @@
 export interface IBreadcrumb {
-    colors: IBreadcrumbColors
-};
+  colors: IBreadcrumbColors;
+}
 
 export interface IBreadcrumbColors {
-    primary: string,
-    secondary: string,
-    tertiary?: string
+  primary: string;
+  secondary: string;
+  tertiary?: string;
 }
 
 export interface IBreadcrumbColorProps {
-  doneColor?: string
-  undoneColor?: string,
-  titleColor?: string,
+  doneColor?: string;
+  undoneColor?: string;
+  titleColor?: string;
 }
 
 export interface IBreadcrumbBarProps extends IBreadcrumbColorProps {

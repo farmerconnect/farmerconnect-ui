@@ -1,8 +1,8 @@
-import { HTMLProps } from "react";
-import styled, { css } from "styled-components";
+import { HTMLProps } from 'react';
+import styled, { css } from 'styled-components';
 
 export type ButtonProps = {
-  variant?: "filled" | "outline" | "link" | "text";
+  variant?: 'filled' | 'outline' | 'link' | 'text';
   small?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
@@ -104,7 +104,7 @@ export const Button = styled.button<ButtonProps>`
           font-size: 0.6875rem;
           padding: 0.375rem 1rem;
         `
-      : ""}
+      : ''}
   svg {
     fill: white;
     transition: fill 0.2s ease-out;
@@ -116,5 +116,5 @@ export const Button = styled.button<ButtonProps>`
   &:hover:not(:disabled) {
     background-color: #02ce87;
   }
-  ${({ variant = "filled" }) => buttonModifiers[variant]}
+  ${({ variant = 'filled' }) => buttonModifiers[variant]}
 `;

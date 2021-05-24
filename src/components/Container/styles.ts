@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { IContainerProps } from "./interfaces";
+import styled from 'styled-components';
+import { IContainerProps } from './interfaces';
 
 export const Container = styled.div<IContainerProps>`
   margin: 0 auto;

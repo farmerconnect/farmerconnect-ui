@@ -1,18 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-const ViewMore1: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  fill = "#FB2E4C",
-  ...props
-}) => {
+const ViewMore1: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = '#FB2E4C', ...props }) => {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g opacity="0.6">
         <path
           fillRule="evenodd"
@@ -21,14 +11,7 @@ const ViewMore1: React.FC<React.SVGProps<SVGSVGElement>> = ({
           fill={fill}
         />
         <rect x="11" y="8" width="2" height="8" fill={fill} />
-        <rect
-          x="16"
-          y="11"
-          width="2"
-          height="8"
-          transform="rotate(90 16 11)"
-          fill={fill}
-        />
+        <rect x="16" y="11" width="2" height="8" transform="rotate(90 16 11)" fill={fill} />
       </g>
     </svg>
   );

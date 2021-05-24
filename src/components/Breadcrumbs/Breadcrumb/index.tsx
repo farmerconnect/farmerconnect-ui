@@ -1,4 +1,3 @@
-import react from 'react';
 import { IBreadcrumbProps } from './interfaces';
 import { Container, Icon, IconContainer, IconLine, Text } from './styles';
 
@@ -12,7 +11,7 @@ const Breadcrumb: React.FC<IBreadcrumbProps> = (props: IBreadcrumbProps) => {
         <IconLine {...props} visible={props.hasNext} />
       </IconContainer>
     </Container>
-  )
+  );
 };
 
 export default Breadcrumb;

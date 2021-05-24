@@ -1,5 +1,5 @@
-import { FC, HTMLProps, ReactNode } from "react";
-import * as S from "./styles";
+import { FC, HTMLProps, ReactNode } from 'react';
+import * as S from './styles';
 
 export type ModalProps = {
   show: boolean;

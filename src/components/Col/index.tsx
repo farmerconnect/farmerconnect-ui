@@ -1,3 +1,3 @@
-import { Col } from "./styles";
+import { Col } from './styles';
 
 export default Col;

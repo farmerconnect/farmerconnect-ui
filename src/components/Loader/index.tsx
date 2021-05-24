@@ -1,15 +1,7 @@
 import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { ILoaderProps } from './interfaces';
-import Caution from "../Icons/Caution";
-import {
-  Button,
-  Content,
-  Message,
-  Spinner,
-  Container,
-  SpinnerItem,
-  SpinnerItemList,
-} from './styles';
+import Caution from '../Icons/Caution';
+import { Button, Content, Message, Spinner, Container, SpinnerItem, SpinnerItemList } from './styles';
 
 const Loader = ({
   show,
@@ -22,10 +14,7 @@ const Loader = ({
   ...props
 }: ILoaderProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const option = useMemo(() => options && options[currentIndex], [
-    options,
-    currentIndex,
-  ]);
+  const option = useMemo(() => options && options[currentIndex], [options, currentIndex]);
 
   useEffect(() => {
     if (currentIndex !== 0 && !show) setCurrentIndex(0);
@@ -53,11 +42,7 @@ const Loader = ({
           {Array(9)
             .fill('')
             .map((_, index: number) => (
-              <SpinnerItem
-                key={index}
-                iconSize={iconSize}
-                iconColor={iconColor}
-              />
+              <SpinnerItem key={index} iconSize={iconSize} iconColor={iconColor} />
             ))}
         </SpinnerItemList>
       </Spinner>
@@ -65,10 +50,7 @@ const Loader = ({
     [iconColor, iconSize]
   );
 
-  const renderMessage = useCallback(
-    () => (option ? <Message>{option?.message}</Message> : null),
-    [option]
-  );
+  const renderMessage = useCallback(() => (option ? <Message>{option?.message}</Message> : null), [option]);
 
   const renderError = useCallback(() => {
     return (
@@ -76,21 +58,15 @@ const Loader = ({
         <Caution />
         <Message className="error">{errorOptions?.message}</Message>
       </Fragment>
-    )
-  }, [errorOptions])
+    );
+  }, [errorOptions]);
 
   return (
     <Container show={show} {...props}>
       <Content>
-        {
-          errorOptions?.error ? renderError() : renderSpinner()
-        }
-        {
-          errorOptions?.error ? "" : renderMessage()
-        }
-        {onButtonClick && buttonText && (
-          <Button onClick={onButtonClick}>{buttonText}</Button>
-        )}
+        {errorOptions?.error ? renderError() : renderSpinner()}
+        {errorOptions?.error ? '' : renderMessage()}
+        {onButtonClick && buttonText && <Button onClick={onButtonClick}>{buttonText}</Button>}
       </Content>
     </Container>
   );

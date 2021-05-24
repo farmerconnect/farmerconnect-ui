@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerInput = styled.div`
   height: 4.0625rem;
@@ -26,7 +26,7 @@ export const TextInputContainer = styled.div`
 `;
 
 export const TextInputField = styled.input.attrs({
-  type: "text",
+  type: 'text',
 })`
   background-color: transparent;
   font-size: 0.875rem;
@@ -41,10 +41,11 @@ export const TextInputField = styled.input.attrs({
 
   &::placeholder {
     font-weight: 400;
-    color: #6D6D6D;
+    color: #6d6d6d;
   }
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     font-weight: 700;
   }
 `;
@@ -52,6 +53,6 @@ export const TextInputField = styled.input.attrs({
 export const ErrorMessage = styled.p`
   font-weight: 400;
   font-size: 0.6875rem;
-  color: #FB2E4C;
+  color: #fb2e4c;
   padding: 0rem 0rem 0rem 0.9rem;
 `;
