@@ -22,7 +22,7 @@ export type SelectProps = {
   disabled: boolean;
 };
 
-const Select = ({
+const SingleSelect = ({
   content = [] as contentType[],
   onChange = (c: contentType[]) => {},
   onConfirmSelection = (c: contentType[]) => {},
@@ -145,4 +145,4 @@ const Select = ({
   );
 };
 
-export default Select;
+export default SingleSelect;

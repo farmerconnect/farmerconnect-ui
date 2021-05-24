@@ -15,8 +15,8 @@ import Modal from "./components/Modal";
 import Radio from "./components/Radio";
 import CustomButton from "./components/CustomButton";
 import Select from "./components/Select";
-import OrderSelect from "./components/OrderSelect";
-import ProductSelect from "./components/ProductSelect";
+import SingleSelect from "./components/SingleSelect";
+import DoubleSelect from "./components/MultiSelect";
 import Checkbox from "./components/Checkbox";
 
 export {
@@ -38,6 +38,6 @@ export {
   CustomButton,
   Select,
   Checkbox,
-  OrderSelect,
-  ProductSelect,
+  SingleSelect,
+  DoubleSelect,
 };

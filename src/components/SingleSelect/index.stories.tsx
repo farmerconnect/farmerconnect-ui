@@ -2,11 +2,11 @@ import React, { useState } from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import OrderSelect, { contentType, SelectProps } from ".";
+import SingleSelect, { contentType, SelectProps } from ".";
 
 export default {
-  title: "OrderSelect",
-  component: OrderSelect,
+  title: "SingleSelect",
+  component: SingleSelect,
   argTypes: {},
 } as Meta;
 
@@ -29,7 +29,7 @@ const Template: Story<SelectProps> = (args) => {
   const [content, setContent] = useState(data);
 
   return (
-    <OrderSelect
+    <SingleSelect
       {...args}
       content={content}
       onChange={setContent}
