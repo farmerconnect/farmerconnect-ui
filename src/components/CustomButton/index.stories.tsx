@@ -1,31 +1,25 @@
-import React from "react";
+import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import Button from ".";
-import { ButtonProps } from "./styles";
+import Button from '.';
+import { ButtonProps } from './styles';
 
 export default {
-  title: "Custom Button",
+  title: 'Custom Button',
   component: Button,
   argTypes: {
     variant: {
       control: {
-        type: "radio",
-        options: ["filled", "outline", "link", "text"],
+        type: 'radio',
+        options: ['filled', 'outline', 'link', 'text'],
       },
     },
   },
 } as Meta;
 
 const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    width="13"
-    height="14"
-    viewBox="0 0 13 14"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg" {...props}>
     <rect
       x="2.28223"
       y="1.00012"
@@ -50,8 +44,8 @@ const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const Template: Story<ButtonProps> = (args) => (
   <div
     style={{
-      display: "flex",
-      gap: "1rem",
+      display: 'flex',
+      gap: '1rem',
     }}
   >
     <Button {...args} />
@@ -72,24 +66,24 @@ const Template: Story<ButtonProps> = (args) => (
 
 export const Filled = Template.bind({});
 Filled.args = {
-  children: "Filled Button",
-  variant: "filled",
+  children: 'Filled Button',
+  variant: 'filled',
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-  children: "Outlined Button",
-  variant: "outline",
+  children: 'Outlined Button',
+  variant: 'outline',
 };
 
 export const Link = Template.bind({});
 Link.args = {
-  children: "Link Button",
-  variant: "link",
+  children: 'Link Button',
+  variant: 'link',
 };
 
 export const Text = Template.bind({});
 Text.args = {
-  children: "Text Button",
-  variant: "text",
+  children: 'Text Button',
+  variant: 'text',
 };

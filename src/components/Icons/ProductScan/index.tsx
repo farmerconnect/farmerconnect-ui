@@ -1,17 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-const ProductScan: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  fill = "black",
-  ...props
-}) => (
-  <svg
-    id="Layer_1"
-    data-name="Layer 1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 500 500"
-    fill={fill}
-    {...props}
-  >
+const ProductScan: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'black', ...props }) => (
+  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill={fill} {...props}>
     <path
       d="M312.49,317.1v-97c0-.1,0-.19,0-.29s0-.39-.06-.59a8.74,8.74,0,0,0-.3-1.54c-.06-.19-.1-.37-.17-.55a9.18,9.18,0,0,0-.94-1.88h0l-15.15-22.12V180.19a14.76,14.76,0,0,0-14.74-14.74H220.24a14.75,14.75,0,0,0-14.73,14.74v12.93l-15.17,22.14a8.62,8.62,0,0,0-1.51,4.86V316.8a15.06,15.06,0,0,0,15,15h93.88A14.76,14.76,0,0,0,312.49,317.1ZM278.6,182.67v12.55a1.9,1.9,0,0,0,0,.25,8.59,8.59,0,0,0,1.47,5.19l7.44,10.85H235.33l-12.6-18.39V182.67Zm-72.54,40.12L214.12,211l8.06,11.76v91.82H206.06Zm33.34,91.82V228.74h55.86v85.87Z"
       fill={fill}

@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { ITextInputProps } from "./interfaces";
-import { TextInputContainer, TextInputField, ErrorMessage, ContainerInput } from "./styles";
-import IconCheck from "../Icons/Check";
-import IconWarning from "../Icons/Warning";
+import React, { useEffect, useState } from 'react';
+import { ITextInputProps } from './interfaces';
+import { TextInputContainer, TextInputField, ErrorMessage, ContainerInput } from './styles';
+import IconCheck from '../Icons/Check';
+import IconWarning from '../Icons/Warning';
 
-const TextInput: React.FC<ITextInputProps> = ({
-  id,
-  classes,
-  placeHolder,
-  value,
-  name,
-  onChange,
-  ...props
-}) => {
-
-  const [inputValue, setInputValue] = useState<string>("");
+const TextInput: React.FC<ITextInputProps> = ({ id, classes, placeHolder, value, name, onChange, ...props }) => {
+  const [inputValue, setInputValue] = useState<string>('');
   const [focusInput, setFocusInput] = useState<boolean>(false);
   const [validInput, setValidInput] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
@@ -37,7 +28,7 @@ const TextInput: React.FC<ITextInputProps> = ({
     } else {
       setValidInput(false);
       onChange(value, false);
-      if(value?.length <= 3) {
+      if (value?.length <= 3) {
         setErrorMessage(`${name} must be over 3 characters`);
         return;
       }
@@ -48,39 +39,30 @@ const TextInput: React.FC<ITextInputProps> = ({
   useEffect(() => {
     setInputValue(value);
     validateInput(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (
     <ContainerInput>
       <TextInputContainer
-        className={`${focusInput ? "focus" : ""} ${
-        !validInput && inputValue?.length > 0 && !focusInput
-        ? "error"
-        : ""
+        className={`${focusInput ? 'focus' : ''} ${
+          !validInput && inputValue?.length > 0 && !focusInput ? 'error' : ''
         }`}
       >
         <TextInputField
           onChange={(e) => handleInputChange(e)}
           onFocus={() => handleOnFocus()}
           onBlur={() => handleOnBlur()}
-          placeholder={`${placeHolder ? placeHolder : ""}`}
-          className={`${classes ? classes : ""}`}
-          id={`${id ? id : ""}`}
+          placeholder={`${placeHolder ? placeHolder : ''}`}
+          className={`${classes ? classes : ''}`}
+          id={`${id ? id : ''}`}
           value={inputValue}
           {...props}
         ></TextInputField>
-        {
-          validInput && !focusInput && <IconCheck className='checkInput' />
-        }
-        {
-          !validInput && inputValue?.length > 0 && !focusInput && 
-            <IconWarning className='checkInput' />
-        }
+        {validInput && !focusInput && <IconCheck className="checkInput" />}
+        {!validInput && inputValue?.length > 0 && !focusInput && <IconWarning className="checkInput" />}
       </TextInputContainer>
-      {
-        !validInput && inputValue?.length > 0 && !focusInput &&
-          <ErrorMessage>{errorMessage}</ErrorMessage>
-      }
+      {!validInput && inputValue?.length > 0 && !focusInput && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </ContainerInput>
   );
 };

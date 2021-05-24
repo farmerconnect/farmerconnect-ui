@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from 'react';
 import {
   Container,
   ContainerSearch,
@@ -10,10 +10,10 @@ import {
   ButtonClear,
   ButtonConfirm,
   ErrorMessage,
-} from "./styles";
-import ItemMultiple from "./ItemMultiple";
-import ItemSingle from "./ItemSingle";
-import { IContentProps, ISearch } from "../interfaces";
+} from './styles';
+import ItemMultiple from './ItemMultiple';
+import ItemSingle from './ItemSingle';
+import { IContentProps, ISearch } from '../interfaces';
 
 const renderSingle = (
   content: any,
@@ -36,20 +36,13 @@ const renderSingle = (
             value={searchValue}
             onChange={(e) => handleSearchInput(e.target.value)}
             onKeyPress={(event) => {
-              if (event.key === "Enter") {
+              if (event.key === 'Enter') {
                 handleSearch();
               }
             }}
           />
-          <ButtonSearch
-            onClick={() => handleSearch()}
-            searchStatus={searchStatus}>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+          <ButtonSearch onClick={() => handleSearch()} searchStatus={searchStatus}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -58,15 +51,8 @@ const renderSingle = (
               />
             </svg>
           </ButtonSearch>
-          <ButtonCancelSearch
-            onClick={() => handleClearSearch()}
-            searchStatus={searchStatus}>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+          <ButtonCancelSearch onClick={() => handleClearSearch()} searchStatus={searchStatus}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z"
                 fill="black"
@@ -117,20 +103,13 @@ const renderMultiple = (
               value={searchValue}
               onChange={(e) => handleSearchInput(e.target.value)}
               onKeyPress={(event) => {
-                if (event.key === "Enter") {
+                if (event.key === 'Enter') {
                   handleSearch();
                 }
               }}
             />
-            <ButtonSearch
-              onClick={() => handleSearch()}
-              searchStatus={searchStatus}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+            <ButtonSearch onClick={() => handleSearch()} searchStatus={searchStatus}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -139,15 +118,8 @@ const renderMultiple = (
                 />
               </svg>
             </ButtonSearch>
-            <ButtonCancelSearch
-              onClick={() => handleClearSearch()}
-              searchStatus={searchStatus}>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+            <ButtonCancelSearch onClick={() => handleClearSearch()} searchStatus={searchStatus}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11.2496 0.758297C11.0939 0.602253 10.8825 0.514559 10.6621 0.514559C10.4417 0.514559 10.2303 0.602253 10.0746 0.758297L5.99961 4.82496L1.92461 0.749964C1.76892 0.59392 1.55754 0.506226 1.33711 0.506226C1.11668 0.506226 0.905302 0.59392 0.749609 0.749964C0.424609 1.07496 0.424609 1.59996 0.749609 1.92496L4.82461 5.99996L0.749609 10.075C0.424609 10.4 0.424609 10.925 0.749609 11.25C1.07461 11.575 1.59961 11.575 1.92461 11.25L5.99961 7.17496L10.0746 11.25C10.3996 11.575 10.9246 11.575 11.2496 11.25C11.5746 10.925 11.5746 10.4 11.2496 10.075L7.17461 5.99996L11.2496 1.92496C11.5663 1.6083 11.5663 1.07496 11.2496 0.758297Z"
                   fill="black"
@@ -170,9 +142,7 @@ const renderMultiple = (
               />
             ))
           ) : (
-            <ErrorMessage>
-              There are no results matching your search.
-            </ErrorMessage>
+            <ErrorMessage>There are no results matching your search.</ErrorMessage>
           )}
         </ContainerContent>
         <ContainerButtons data-cy="container-buttons-comboboxMulti">
@@ -205,7 +175,7 @@ const Content: React.FC<IContentProps> = ({
   ...props
 }) => {
   const [disabled, setDisabled] = useState(disableButtons);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [searchStatus, setSearchStatus] = useState(false);
 
   useEffect(() => {
@@ -226,8 +196,8 @@ const Content: React.FC<IContentProps> = ({
   };
 
   const handleClearSearch = () => {
-    setSearchValue("");
-    onSearch("");
+    setSearchValue('');
+    onSearch('');
   };
 
   const handleSearch = () => {

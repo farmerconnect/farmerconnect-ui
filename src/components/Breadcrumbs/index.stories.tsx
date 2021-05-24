@@ -22,6 +22,6 @@ Default.args = {
   breadcrumbs: [
     { active: false, text: 'STEP ONE' },
     { active: true, text: 'STEP TWO' },
-    { active: false, text: 'STEP THREE' }
-  ]
+    { active: false, text: 'STEP THREE' },
+  ],
 };

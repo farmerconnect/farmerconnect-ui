@@ -3,11 +3,11 @@ import { IBreadcrumb, IBreadcrumbBarProps, IBreadcrumbLineProps, IBreadcrumbProp
 
 export const breadcrumbDefaultStyles: IBreadcrumb = {
   colors: {
-      primary: '#141414',
-      secondary: '#00E394',
-      tertiary: '#141414b3'
-  }
-}
+    primary: '#141414',
+    secondary: '#00E394',
+    tertiary: '#141414b3',
+  },
+};
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
 export const Container = styled.div`
@@ -21,12 +21,12 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.span<IBreadcrumbProps>`
-  color: ${(props) => props.active || props.done
-    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
-    : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
-  };
+  color: ${(props) =>
+    props.active || props.done
+      ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+      : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary};
   font-size: 0.6875rem;
-  font-weight: ${(props) => props.active ? 700 : 400};
+  font-weight: ${(props) => (props.active ? 700 : 400)};
 `;
 
 export const IconContainer = styled.div`
@@ -39,18 +39,19 @@ export const IconContainer = styled.div`
 `;
 
 export const Icon = styled.div<IBreadcrumbBarProps>`
-  background-color: ${(props) => props.done
-    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
-    : props.active
-    ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
-    : ''
-  };
-  border: 0.1rem solid ${(props) => props.done
-    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
-    : props.active
-    ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
-    : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
-  };
+  background-color: ${(props) =>
+    props.done
+      ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+      : props.active
+      ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
+      : ''};
+  border: 0.1rem solid
+    ${(props) =>
+      props.done
+        ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+        : props.active
+        ? props.doneColor || props.theme?.breadcrumb?.colors?.secondary || breadcrumbDefaultStyles.colors.secondary
+        : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary};
   border-radius: 0.28rem;
   height: 0.8rem;
   width: 0.8rem;
@@ -59,11 +60,12 @@ export const Icon = styled.div<IBreadcrumbBarProps>`
 `;
 
 export const IconLine = styled.div<IBreadcrumbLineProps>`
-  border-bottom: 0.1rem solid ${(props) => props.done
-    ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
-    : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary
-  };
+  border-bottom: 0.1rem solid
+    ${(props) =>
+      props.done
+        ? props.titleColor || props.theme?.breadcrumb?.colors?.primary || breadcrumbDefaultStyles.colors.primary
+        : props.undoneColor || props.theme?.breadcrumb?.colors?.tertiary || breadcrumbDefaultStyles.colors.tertiary};
   flex-grow: 1;
   height: 0.45rem;
-  visibility: ${(props) => props.visible ? 'visible' : 'hidden'};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 `;

@@ -9,8 +9,7 @@ describe('Loader component', () => {
     options: [
       {
         duration: 2,
-        message:
-          'We are working on your request, please bare with us for a moment...',
+        message: 'We are working on your request, please bare with us for a moment...',
       },
       {
         duration: 2,

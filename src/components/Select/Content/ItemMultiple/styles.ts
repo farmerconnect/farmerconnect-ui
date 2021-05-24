@@ -19,10 +19,10 @@ export const Label = styled.label`
   color: #141414;
 
   &.disabled {
-    color: rgba(20,20,20,.3);
+    color: rgba(20, 20, 20, 0.3);
 
     .checkmark {
-      border: 1px solid rgba(20,20,20,.3);
+      border: 1px solid rgba(20, 20, 20, 0.3);
     }
   }
 
@@ -48,7 +48,7 @@ export const Label = styled.label`
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: none;
     }
@@ -64,12 +64,12 @@ export const Label = styled.label`
     left: 0;
     height: 1rem;
     width: 1rem;
-    background-color: #F7F6F4;
+    background-color: #f7f6f4;
     border: 1px solid #141414;
     border-radius: 4px;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: none;
       top: 0px;

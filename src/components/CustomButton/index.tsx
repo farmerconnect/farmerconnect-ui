@@ -1,1 +1,1 @@
-export {Button as default} from './styles'
+export { Button as default } from './styles';

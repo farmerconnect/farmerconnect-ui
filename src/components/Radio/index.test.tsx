@@ -1,8 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import Radio from ".";
+import { render } from '@testing-library/react';
+import Radio from '.';
 
-describe("Radio Component", () => {
-  it("Renders properly", () => {
+describe('Radio Component', () => {
+  it('Renders properly', () => {
     const container = render(
       <div>
         <Radio name="radio-test" value={1} placeholder="option-1">
