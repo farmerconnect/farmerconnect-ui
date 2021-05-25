@@ -2,8 +2,8 @@ import { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
 
 export type ButtonProps = {
-  variant: 'filled' | 'outline' | 'link' | 'text';
-  small: boolean;
+  variant?: 'filled' | 'outline' | 'link' | 'text';
+  small?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
 const buttonModifiers = {
@@ -12,10 +12,10 @@ const buttonModifiers = {
   `,
   outline: css`
     background-color: transparent;
-    border: 1px solid #02ce87;
-    color: #02ce87;
+    border: 1px solid #00e394;
+    color: #00e394;
     svg {
-      fill: #02ce87;
+      fill: #00e394;
     }
     &:disabled {
       background-color: transparent;
@@ -98,6 +98,13 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  ${({ small = false }) =>
+    small
+      ? css`
+          font-size: 0.6875rem;
+          padding: 0.375rem 1rem;
+        `
+      : ''}
   svg {
     fill: white;
     transition: fill 0.2s ease-out;

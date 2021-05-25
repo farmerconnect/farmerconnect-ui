@@ -1,6 +1,5 @@
 import Breadcrumbs from './components/Breadcrumbs';
 import Button from './components/Button';
-import ComboBoxMulti from './components/ComboboxMulti';
 import IconCheck from './components/Icons/Check';
 import IconClose from './components/Icons/Close';
 import IconWarning from './components/Icons/Warning';
@@ -13,11 +12,14 @@ import Col from './components/Col';
 import Container from './components/Container';
 import Modal from './components/Modal';
 import Radio from './components/Radio';
+import CustomButton from './components/CustomButton';
+import SingleSelect from './components/SingleSelect';
+import DoubleSelect from './components/MultiSelect';
+import Checkbox from './components/Checkbox';
 
 export {
   Breadcrumbs,
   Button,
-  ComboBoxMulti,
   IconCheck,
   IconClose,
   NavigationBar,
@@ -30,4 +32,8 @@ export {
   Container,
   Modal,
   Radio,
+  CustomButton,
+  Checkbox,
+  SingleSelect,
+  DoubleSelect,
 };
