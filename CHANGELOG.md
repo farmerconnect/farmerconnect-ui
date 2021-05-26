@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2021-05-26
+
+- Fix audit issues
+- Add audit checks pre-commit and to pipeline
+
 ## [1.3.0] - 2021-05-24
 
 - Add SingleSelect and MultiSelect components
