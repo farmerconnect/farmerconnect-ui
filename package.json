@@ -64,6 +64,7 @@
     "react-dom": "^16.0.0 || ^17.0.1"
   },
   "dependencies": {
+    "framer-motion": "^4.1.17",
     "styled-components": "^5.2.1"
   },
   "eslintConfig": {
