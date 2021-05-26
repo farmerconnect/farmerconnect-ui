@@ -13,36 +13,40 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: Npm@1
-    displayName: Run npm install
+  - task: CmdLine@2
+    displayName: install
     enabled: true
     continueOnError: false
     inputs:
-      command: 'install'
+      script: 'yarn install'
 
-  - task: Npm@1
-    displayName: Run npm run lint
+  - task: CmdLine@2
+    displayName: audit
     enabled: true
     continueOnError: false
     inputs:
-      command: 'custom'
-      customCommand: 'run lint'
+      script: 'yarn audit'
 
-  - task: Npm@1
-    displayName: Run npm run build
+  - task: CmdLine@2
+    displayName: lint
     enabled: true
     continueOnError: false
     inputs:
-      command: 'custom'
-      customCommand: 'run build'
+      script: 'yarn lint'
 
-  - task: Npm@1
-    displayName: Run npm run test
+  - task: CmdLine@2
+    displayName: build
     enabled: true
     continueOnError: false
     inputs:
-      command: 'custom'
-      customCommand: 'run test'
+      script: 'yarn build'
+
+  - task: CmdLine@2
+    displayName: test
+    enabled: true
+    continueOnError: false
+    inputs:
+      script: 'yarn test'
 
   - task: Npm@1
     displayName: Publish to Azure Artifacts
