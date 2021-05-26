@@ -1,6 +1,6 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import Checkbox from "../Checkbox";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import Checkbox from '../Checkbox';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -19,17 +19,17 @@ export const Heading = styled.div<HeadingProps>`
     align-items: center;
     font-size: 0.875rem;
     line-height: 1.32;
-    color: ${props.disabled ? "#B9B9B9" : "#141414"};
+    color: ${props.disabled ? '#B9B9B9' : '#141414'};
     padding: 0.625rem 1rem;
-    background-color: ${props.disabled ? "#EAEAEA" : "#F7F6F4"};
+    background-color: ${props.disabled ? '#EAEAEA' : '#F7F6F4'};
     transition: all 0.05s ease-out;
-    border-radius: ${props.isOpen ? "0.75rem 0.75rem 0 0" : "0.75rem"};
+    border-radius: ${props.isOpen ? '0.75rem 0.75rem 0 0' : '0.75rem'};
     color: #5b5b5b;
-    cursor: ${props.disabled ? "default" : "pointer"};
-    box-shadow: ${props.isOpen ? "0.125rem 0.125rem 0 0 #00E394" : "none"};
+    cursor: ${props.disabled ? 'default' : 'pointer'};
+    box-shadow: ${props.isOpen ? '0.125rem 0.125rem 0 0 #00E394' : 'none'};
     > svg {
-      fill: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
-      transform: ${props.isOpen ? "rotate(180deg)" : "none"};
+      fill: ${props.disabled ? '#B9B9B9' : '#5B5B5B'};
+      transform: ${props.isOpen ? 'rotate(180deg)' : 'none'};
     }
   `}
 `;
@@ -48,19 +48,14 @@ export const Content = styled.div<ContentProps>`
   top: 100%;
   display: flex;
   flex-direction: column;
-  height: ${(props) => (props.isOpen ? "20rem" : "0")};
+  height: ${(props) => (props.isOpen ? '20rem' : '0')};
   overflow: hidden;
   box-shadow: 0.125rem 0.125rem 0 0 #00e394;
   transition: all 0.05s ease-out;
 `;
 
 export const Chevron: React.FC = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="12"
-    height="8"
-    viewBox="0 0 12 8"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8">
     <path
       d="M11.2895 0.999531C10.8995 0.609531 10.2695 0.609531 9.87949 0.999531L5.99949 4.87953L2.11949 0.999531C1.72949 0.609531 1.09949 0.609531 0.70949 0.999531C0.319489 1.38953 0.319489 2.01953 0.70949 2.40953L5.29949 6.99953C5.68949 7.38953 6.31949 7.38953 6.70949 6.99953L11.2995 2.40953C11.6795 2.02953 11.6795 1.38953 11.2895 0.999531Z"
       fill="param(fill) #5B5B5B"
@@ -70,13 +65,7 @@ export const Chevron: React.FC = () => (
 
 export const MagnifyingGlassIcon: React.FC = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -156,6 +145,10 @@ export const ListWrapper = styled.div`
     margin-left: 0;
     gap: 0.5rem;
     padding: 0.3125rem 0.75rem;
+    align-items: flex-start;
+    > svg {
+      padding-top: 0.125rem;
+    }
   }
   label + label {
     border-top: 1px solid #e7e7e7;
