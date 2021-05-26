@@ -33,4 +33,4 @@ To contribute:
 2. Increase the version following [semver](https://semver.org/)
 3. Open a PR (don't forget the tests!)
 4. PR will go through review process and be merged to master by one of the core developers if approved
-5. Succesfull master build will generate a release with your new version and publish a package to npm.
+5. Successful master build will generate a release with your new version and publish a package to npm.
