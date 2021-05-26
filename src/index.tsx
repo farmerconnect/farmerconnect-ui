@@ -16,6 +16,7 @@ import CustomButton from './components/CustomButton';
 import SingleSelect from './components/SingleSelect';
 import DoubleSelect from './components/MultiSelect';
 import Checkbox from './components/Checkbox';
+import Tabs from './components/Tabs';
 
 export {
   Breadcrumbs,
@@ -36,4 +37,5 @@ export {
   Checkbox,
   SingleSelect,
   DoubleSelect,
+  Tabs,
 };
