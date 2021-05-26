@@ -5,7 +5,7 @@ This project contains the UI components that are shared across multiple front en
 # Install
 
 ```
-yarn add @farmerconnect/ui
+yarn add @farmerconnect/farmerconnect-ui
 ```
 
 # Build and Test
