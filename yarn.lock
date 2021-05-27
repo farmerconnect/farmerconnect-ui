@@ -1459,6 +1459,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@farmerconnect/eslint-config-ts@1.0.1":
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@farmerconnect/eslint-config-ts/-/eslint-config-ts-1.0.1.tgz#5417d85241fc276175bb7ef34dc82cefb5b01742"
+  integrity sha1-VBfYUkH8J2F1u37zTcgs77WwF0I=
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -6486,7 +6491,7 @@ eslint-webpack-plugin@^2.5.2:
     normalize-path "^3.0.0"
     schema-utils "^3.0.0"
 
-eslint@^7.11.0, eslint@^7.26.0:
+eslint@^7.11.0, eslint@^7.27.0:
   version "7.27.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.27.0.tgz#665a1506d8f95655c9274d84bd78f7166b07e9c7"
   integrity sha512-JZuR6La2ZF0UD384lcbnd0Cgg6QJjiCwhMD6eU4h/VGPcVGwawNNzKU41tgokGXnfjOOyI6QIffthhJTPzzuRA==
