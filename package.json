@@ -1,6 +1,6 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/react-select": "^4.0.15",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
@@ -71,6 +72,7 @@
   },
   "dependencies": {
     "framer-motion": "^4.1.17",
+    "react-select": "^4.3.1",
     "styled-components": "^5.2.1"
   },
   "resolutions": {

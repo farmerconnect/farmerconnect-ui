@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Checkbox from '../Checkbox';
+import SmallSelect from '../SmallSelect';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -77,10 +78,12 @@ export const MagnifyingGlassIcon: React.FC = () => {
 };
 
 export const FilterInputWrapper = styled.div`
-  padding: 1.25rem 1rem;
-  display: block;
-  > div {
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+  > .input-wrapper {
     position: relative;
+    flex: 1;
     max-width: 17rem;
     > input {
       border: 1px solid #b9b9b9;
@@ -90,6 +93,7 @@ export const FilterInputWrapper = styled.div`
       font-size: 0.6875rem;
       background: transparent;
       padding: 0.5rem 4rem 0.5rem 0.75rem;
+      line-height: 1.3;
       outline: none;
       color: #141414;
       font-weight: 700;
@@ -173,4 +177,24 @@ export const EmptyMessage = styled.p`
 
 export const CustomCheckbox = styled(Checkbox)`
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
+`;
+
+export const FilterSelect = styled(SmallSelect)`
+  flex: 1;
+  max-width: none;
+  .select__control,
+  .select__control:hover {
+    border-color: #b9b9b9;
+    max-height: 2rem;
+    .select__value-container {
+      flex-wrap: nowrap;
+    }
+    &--is-focused {
+      border-color: #b9b9b9;
+    }
+  }
+  .select__menu {
+    background-color: #f7f6f4;
+    border-color: #b9b9b9;
+  }
 `;

@@ -11,17 +11,19 @@ export default {
   argTypes: {},
 } as Meta;
 
-const data = [
-  { id: 'Item 1', checked: false },
-  { id: 'Item 2', checked: false },
-  { id: 'Item 3', checked: false },
-  { id: 'Item 4', checked: false },
-  { id: 'Item 5', checked: false },
-  { id: 'Item 6', checked: false },
-  { id: 'Item 7', checked: false },
-  { id: 'Item 8', checked: false },
-  { id: 'Item 9', checked: false },
-  { id: 'Item 10', checked: false },
+type mockListItem = { id: string; country: string; continent: string } & contentType;
+
+const data: mockListItem[] = [
+  { id: 'United States', checked: false, country: 'United States', continent: 'America' },
+  { id: 'Brazil', checked: false, country: 'Brazil', continent: 'America' },
+  { id: 'Switzerland', checked: false, country: 'Switzerland', continent: 'Europe' },
+  { id: 'Germany', checked: false, country: 'Germany', continent: 'Europe' },
+  { id: 'France', checked: false, country: 'France', continent: 'Europe' },
+  { id: 'Portugal', checked: false, country: 'Portugal', continent: 'Europe' },
+  { id: 'Spain', checked: false, country: 'Spain', continent: 'Europe' },
+  { id: 'Austria', checked: false, country: 'Austria', continent: 'Europe' },
+  { id: 'Italy', checked: false, country: 'Italy', continent: 'Europe' },
+  { id: 'Australia', checked: false, country: 'Australia', continent: 'Oceania' },
 ];
 
 const ListItem = styled.div`
@@ -50,10 +52,10 @@ const Template: Story<SelectProps> = (args) => {
       {...args}
       content={content}
       onChange={setContent}
-      itemRenderer={(item) => (
+      itemRenderer={(item: mockListItem) => (
         <ListItem>
           <b>{item.id}</b>
-          <p>Item description</p>
+          <p>{item.country}</p>
         </ListItem>
       )}
       onConfirmSelection={(c: contentType[]) => alert(JSON.stringify(c))}
@@ -62,6 +64,16 @@ const Template: Story<SelectProps> = (args) => {
       filterPlaceholderText="Search PO number"
       headingText="Select up to 2 purchase orders"
       emptyText="There are no results matching your search"
+      selectFilter1={{
+        content: (item: mockListItem) => item.country,
+        placeholder: 'filter country',
+        filter: (c: mockListItem, s) => s.includes(c.country),
+      }}
+      selectFilter2={{
+        content: (item: mockListItem) => item.continent,
+        placeholder: 'filter continent',
+        filter: (c: mockListItem, s) => s.includes(c.continent),
+      }}
     />
   );
 };
