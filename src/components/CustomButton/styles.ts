@@ -84,7 +84,7 @@ const buttonModifiers = {
 export const Button = styled.button<ButtonProps>`
   font-size: 0.875rem;
   line-height: 1.32;
-  padding: 0.625rem 1rem;
+  padding: 0.625rem 2.3rem;
   display: inline-flex;
   border-radius: 0.75rem;
   font-weight: 700;
