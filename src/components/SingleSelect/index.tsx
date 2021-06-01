@@ -13,36 +13,35 @@ export type optionType = {
   label: string;
 };
 
-export type filterProps =
+export type filterProps<T extends contentType> =
   | {
-      enable: true;
       placeholder: string;
-      content: (c: contentType) => string;
-      filter: (c: contentType, s: string[]) => boolean;
+      content: (c: T) => string;
+      filter: (c: T, s: string[]) => boolean;
     }
   | false;
 
-export type SelectProps = {
-  content: contentType[];
-  onChange: (c: contentType[]) => void;
-  onConfirmSelection: (c: contentType[]) => void;
-  itemRenderer: (item: contentType) => ReactNode;
+export type SelectProps<T extends contentType> = {
+  content?: T[];
+  onChange?: (c: T[]) => void;
+  onConfirmSelection?: (c: T[]) => void;
+  itemRenderer?: (item: T) => ReactNode;
   limit?: number;
-  headingText: string;
-  filterPlaceholderText: string;
-  clearButtonText: string;
-  confirmButtonText: string;
-  emptyText: string;
-  disabled: boolean;
-  selectFilter1: filterProps;
-  selectFilter2: filterProps;
+  headingText?: string;
+  filterPlaceholderText?: string;
+  clearButtonText?: string;
+  confirmButtonText?: string;
+  emptyText?: string;
+  disabled?: boolean;
+  selectFilter1?: filterProps<T>;
+  selectFilter2?: filterProps<T>;
 };
 
-const SingleSelect = ({
-  content = [] as contentType[],
-  onChange = (c: contentType[]) => {},
-  onConfirmSelection = (c: contentType[]) => {},
-  itemRenderer = (item: contentType) => item.id,
+function SingleSelect<T extends contentType>({
+  content = [],
+  onChange = (_) => {},
+  onConfirmSelection = (_) => {},
+  itemRenderer = (item) => item.id,
   limit = 2,
   disabled = false,
   headingText,
@@ -52,7 +51,7 @@ const SingleSelect = ({
   filterPlaceholderText,
   selectFilter1 = false,
   selectFilter2 = false,
-}: SelectProps) => {
+}: SelectProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
   const [filterText, setFilterText] = useState('');
   const [filterContentSelect1, setFilterContentSelect1] = useState<string[]>([]);
@@ -71,11 +70,11 @@ const SingleSelect = ({
   };
 
   const handleClearSelection = () => {
-    onChange(content.map((item: contentType) => ({ ...item, checked: false })));
+    onChange(content.map((item: T) => ({ ...item, checked: false })));
     setFilterText('');
   };
 
-  const handleToggleSelectItem = (item: contentType) => {
+  const handleToggleSelectItem = (item: T) => {
     onChange(
       content.map((i) => ({
         ...i,
@@ -98,15 +97,25 @@ const SingleSelect = ({
 
   const selectedItems = content.filter((item: contentType) => item.checked);
 
-  const filteredItems = content.filter((item: contentType) => item.id.toLowerCase().includes(filterText.toLowerCase()));
+  const filteredText = content.filter((item: contentType) => item.id.toLowerCase().includes(filterText.toLowerCase()));
 
-  const filteredSelect1 = filterContentSelect1.length
-    ? filteredItems.filter((item) => selectFilter1.filter(item, filterContentSelect1))
-    : filteredItems;
+  const filteredTextSelect1 =
+    selectFilter1 === false
+      ? filteredText
+      : filterContentSelect1.length
+      ? filteredText.filter((item) => selectFilter1.filter(item, filterContentSelect1))
+      : filteredText;
 
-  const filteredSelect2 = filterContentSelect2.length
-    ? filteredSelect1.filter((item) => selectFilter2.filter(item, filterContentSelect2))
-    : filteredSelect1;
+  const filteredTextSelect2 =
+    selectFilter2 === false
+      ? filteredTextSelect1
+      : filterContentSelect2.length
+      ? filteredText.filter((item) => selectFilter2.filter(item, filterContentSelect2))
+      : filteredText;
+
+  const filteredTextSelect1Select2 = filterContentSelect2.length
+    ? filteredTextSelect1.filter((item) => selectFilter2.filter(item, filterContentSelect2))
+    : filteredTextSelect1;
 
   return (
     <S.Wrapper ref={contentRef}>
@@ -114,7 +123,7 @@ const SingleSelect = ({
         {headingText}
         <S.Chevron />
       </S.Heading>
-      <S.Content isOpen={isOpen}>
+      <S.Content isOpen={isOpen} aria-hidden={!isOpen}>
         <S.FilterInputWrapper>
           <div className="input-wrapper">
             <input
@@ -132,21 +141,29 @@ const SingleSelect = ({
           </div>
           {!!selectFilter1 && (
             <S.FilterSelect
-              options={[...new Set(filteredItems.map(selectFilter1.content))].map((item) => ({
-                label: item,
-                value: item,
-              }))}
+              options={
+                filterContentSelect2.length
+                  ? [...new Set(filteredTextSelect2.map(selectFilter1.content))].map((item) => ({
+                      label: item,
+                      value: item,
+                    }))
+                  : [...new Set(filteredText.map(selectFilter1.content))].map((item) => ({
+                      label: item,
+                      value: item,
+                    }))
+              }
               placeholder={selectFilter1.placeholder}
               isMulti
               onChange={(value: optionType[] | null) =>
                 value ? setFilterContentSelect1(value.map((option) => option.value)) : setFilterContentSelect1([])
               }
               value={filterContentSelect1.map((item) => ({ label: item, value: item }))}
+              inputId="single-select-dropdown-filter-1"
             />
           )}
           {!!selectFilter2 && (
             <S.FilterSelect
-              options={[...new Set(filteredSelect1.map(selectFilter2.content))].map((item) => ({
+              options={[...new Set(filteredTextSelect1.map(selectFilter2.content))].map((item) => ({
                 label: item,
                 value: item,
               }))}
@@ -156,20 +173,23 @@ const SingleSelect = ({
                 value ? setFilterContentSelect2(value.map((option) => option.value)) : setFilterContentSelect2([])
               }
               value={filterContentSelect2.map((item) => ({ label: item, value: item }))}
+              inputId="single-select-dropdown-filter-2"
             />
           )}
         </S.FilterInputWrapper>
         <S.ListWrapper>
-          {filteredSelect2.map((item) => (
+          {filteredTextSelect1Select2.map((item) => (
             <S.CustomCheckbox
               checked={content.find((i: contentType) => i.id === item.id)!.checked}
               onChange={() => handleToggleSelectItem(item)}
               disabled={!item.checked && selectedItems.length === limit}
+              value={item.id}
+              key={item.id}
             >
               {itemRenderer(item)}
             </S.CustomCheckbox>
           ))}
-          {filteredSelect2.length === 0 && <S.EmptyMessage>{emptyText}</S.EmptyMessage>}
+          {filteredTextSelect1Select2.length === 0 && <S.EmptyMessage>{emptyText}</S.EmptyMessage>}
         </S.ListWrapper>
         <S.ButtonContainer>
           <CustomButton variant="outline" disabled={selectedItems.length === 0} onClick={handleClearSelection}>
@@ -182,6 +202,6 @@ const SingleSelect = ({
       </S.Content>
     </S.Wrapper>
   );
-};
+}
 
 export default SingleSelect;

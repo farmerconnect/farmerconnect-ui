@@ -9,11 +9,15 @@ export default {
   title: 'SingleSelect',
   component: SingleSelect,
   argTypes: {},
+  excludeStories: ['data'],
 } as Meta;
 
-type mockListItem = { id: string; country: string; continent: string } & contentType;
+export interface mockListItem extends contentType {
+  country: string;
+  continent: string;
+}
 
-const data: mockListItem[] = [
+export const data: mockListItem[] = [
   { id: 'United States', checked: false, country: 'United States', continent: 'America' },
   { id: 'Brazil', checked: false, country: 'Brazil', continent: 'America' },
   { id: 'Switzerland', checked: false, country: 'Switzerland', continent: 'Europe' },
@@ -44,15 +48,15 @@ const ListItem = styled.div`
   }
 `;
 
-const Template: Story<SelectProps> = (args) => {
-  const [content, setContent] = useState(data);
+const Template: Story<SelectProps<mockListItem>> = (args) => {
+  const [content, setContent] = useState<mockListItem[]>(data);
 
   return (
-    <SingleSelect
+    <SingleSelect<mockListItem>
       {...args}
       content={content}
-      onChange={setContent}
-      itemRenderer={(item: mockListItem) => (
+      onChange={(content) => setContent(content)}
+      itemRenderer={(item) => (
         <ListItem>
           <b>{item.id}</b>
           <p>{item.country}</p>

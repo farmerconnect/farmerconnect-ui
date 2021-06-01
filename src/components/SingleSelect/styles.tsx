@@ -83,8 +83,9 @@ export const FilterInputWrapper = styled.div`
   gap: 0.75rem;
   > .input-wrapper {
     position: relative;
-    flex: 1;
-    max-width: 17rem;
+    flex: 1 1;
+    min-width: 17rem;
+    max-width: 50%;
     > input {
       border: 1px solid #b9b9b9;
       width: 100%;
