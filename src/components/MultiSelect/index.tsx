@@ -31,14 +31,14 @@ export type textType = {
 
 export type isOpenType = 'left' | 'right' | false;
 
-export type SelectProps = {
-  leftContent: productType[];
-  rightContent: itemType[];
-  onChange: (c: itemType[]) => void;
-  onConfirmSelection: (c: itemType[]) => void;
-  onSelectLeft: (p: productType) => void;
-  rightListRenderer: (item: itemType) => ReactNode;
-  leftListRenderer: (product: productType) => ReactNode;
+export type SelectProps<T extends productType, S extends itemType> = {
+  leftContent: T[];
+  rightContent: S[];
+  onChange: (c: S[]) => void;
+  onConfirmSelection: (c: S[]) => void;
+  onSelectLeft: (p: T) => void;
+  rightListRenderer: (item: S) => ReactNode;
+  leftListRenderer: (product: T) => ReactNode;
   limit?: number;
   disableLeftCombo: boolean;
   disableRightCombo: boolean;
@@ -46,18 +46,18 @@ export type SelectProps = {
 };
 
 const DoubleSelect = ({
-  leftContent = [],
-  rightContent = [],
+  leftContent = [] as productType[],
+  rightContent = [] as itemType[],
   limit = 2,
   disableLeftCombo = false,
-  disableRightCombo = true,
-  onConfirmSelection,
-  rightListRenderer,
-  onChange,
-  onSelectLeft,
-  leftListRenderer,
+  disableRightCombo = false,
+  onConfirmSelection = () => {},
+  rightListRenderer = (item) => item.id,
+  onChange = () => {},
+  onSelectLeft = () => {},
+  leftListRenderer = (item) => item.id,
   text,
-}: SelectProps) => {
+}: SelectProps<T, S>) => {
   const [isOpen, setIsOpen] = useState<isOpenType>(false);
   const [filterText, setFilterText] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
@@ -150,6 +150,8 @@ const DoubleSelect = ({
                   checked={rightContent.find((i: itemType) => i.id === item.id)!.checked}
                   onChange={() => handleToggleSelectItem(item)}
                   disabled={!item.checked && selectedItems.length === limit}
+                  value={item.id}
+                  key={`right-content-${item.id}`}
                 >
                   {rightListRenderer(item)}
                 </CustomCheckbox>
@@ -169,7 +171,9 @@ const DoubleSelect = ({
         {isOpen === 'left' && (
           <S.ProductList>
             {leftContent.map((product) => (
-              <li onClick={() => handleSelectProduct(product)}>{leftListRenderer(product)}</li>
+              <li onClick={() => handleSelectProduct(product)} key={`left-content-${product.id}`}>
+                {leftListRenderer(product)}
+              </li>
             ))}
           </S.ProductList>
         )}
