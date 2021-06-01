@@ -98,6 +98,9 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     font-size: 0.6875rem;
     color: rgba(20, 20, 20, 1);
     font-weight: 500;
+    > input {
+      font-weight: 500;
+    }
   }
   .select__option {
     font-size: 0.875rem;
