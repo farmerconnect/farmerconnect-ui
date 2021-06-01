@@ -1,6 +1,6 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/react-select": "^4.0.15",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
@@ -59,6 +60,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.3",
+    "react-select-event": "^5.3.0",
     "rollup": "^2.36.1",
     "ssri": "^8.0.1",
     "trim": "^1.0.1",
@@ -72,6 +74,7 @@
   },
   "dependencies": {
     "framer-motion": "^4.1.17",
+    "react-select": "^4.3.1",
     "styled-components": "^5.2.1"
   },
   "resolutions": {
@@ -80,7 +83,8 @@
     "hosted-git-info": "^4.0.2",
     "postcss": "^8.3.0",
     "ssri": "^8.0.1",
-    "trim": "^1.0.1"
+    "trim": "^1.0.1",
+    "ws": "^7.4.6"
   },
   "eslintConfig": {
     "extends": [
