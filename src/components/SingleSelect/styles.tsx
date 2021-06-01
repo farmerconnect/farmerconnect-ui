@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Checkbox from '../Checkbox';
+import Checkbox, { CheckboxProps } from '../Checkbox';
 import SmallSelect from '../SmallSelect';
 
 export const Wrapper = styled.div`
@@ -80,12 +80,13 @@ export const MagnifyingGlassIcon: React.FC = () => {
 export const FilterInputWrapper = styled.div`
   padding: 1.25rem 1.25rem 1.25rem 1rem;
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   > .input-wrapper {
     position: relative;
     flex: 1 1;
     min-width: 17rem;
     max-width: 50%;
+    margin-right: 0.25rem;
     > input {
       border: 1px solid #b9b9b9;
       width: 100%;
@@ -98,8 +99,10 @@ export const FilterInputWrapper = styled.div`
       outline: none;
       color: #141414;
       font-weight: 700;
-      &:placeholder {
+      font-family: 'Red Hat Text', sans-serif;
+      &::placeholder {
         color: #5b5b5b;
+        font-weight: 400;
       }
     }
     > svg {
@@ -176,7 +179,7 @@ export const EmptyMessage = styled.p`
   font-size: 0.875rem;
 `;
 
-export const CustomCheckbox = styled(Checkbox)`
+export const CustomCheckbox = styled<CheckboxProps>(Checkbox)`
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
 `;
 
@@ -193,6 +196,9 @@ export const FilterSelect = styled(SmallSelect)`
     &--is-focused {
       border-color: #b9b9b9;
     }
+  }
+  .select__placeholder {
+    color: #5b5b5b;
   }
   .select__menu {
     background-color: #f7f6f4;
