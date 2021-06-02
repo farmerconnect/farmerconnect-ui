@@ -1,5 +1,9 @@
+interface ITableColumnOptionsSortable {
+  key: string;
+}
+
 export interface ITableColumnOptions {
-  sortable?: boolean;
+  sortable?: ITableColumnOptionsSortable;
   fitContent?: boolean;
 }
 
