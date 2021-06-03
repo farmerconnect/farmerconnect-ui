@@ -18,3 +18,4 @@ export { default as TransactionBook } from './TransactionBook';
 export { default as PinUp } from './PinUp';
 export { default as Screen } from './Screen';
 export { default as ViewMore } from './ViewMore';
+export { default as PublicProfile } from './PublicProfile';
