@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Checkbox from '../Checkbox';
+import Checkbox, { CheckboxProps } from '../Checkbox';
+import SmallSelect from '../SmallSelect';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -67,8 +68,8 @@ export const MagnifyingGlassIcon: React.FC = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M12.6555 12.0598H13.3138L16.8471 15.6098C17.1888 15.9514 17.1888 16.5098 16.8471 16.8514C16.5055 17.1931 15.9471 17.1931 15.6055 16.8514L12.0638 13.3098V12.6514L11.8388 12.4181C10.6721 13.4181 9.08046 13.9348 7.38879 13.6514C5.07213 13.2598 3.22213 11.3264 2.93879 8.9931C2.50546 5.4681 5.47213 2.50143 8.99713 2.93477C11.3305 3.2181 13.2638 5.0681 13.6555 7.38477C13.9388 9.07643 13.4221 10.6681 12.4221 11.8348L12.6555 12.0598ZM4.56378 8.30977C4.56378 10.3848 6.23878 12.0598 8.31378 12.0598C10.3888 12.0598 12.0638 10.3848 12.0638 8.30977C12.0638 6.23477 10.3888 4.55977 8.31378 4.55977C6.23878 4.55977 4.56378 6.23477 4.56378 8.30977Z"
         fill="#5B5B5B"
       />
@@ -77,11 +78,15 @@ export const MagnifyingGlassIcon: React.FC = () => {
 };
 
 export const FilterInputWrapper = styled.div`
-  padding: 1.25rem 1rem;
-  display: block;
-  > div {
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  > .input-wrapper {
     position: relative;
-    max-width: 17rem;
+    flex: 1 1;
+    min-width: 17rem;
+    max-width: 50%;
+    margin-right: 0.25rem;
     > input {
       border: 1px solid #b9b9b9;
       width: 100%;
@@ -90,11 +95,14 @@ export const FilterInputWrapper = styled.div`
       font-size: 0.6875rem;
       background: transparent;
       padding: 0.5rem 4rem 0.5rem 0.75rem;
+      line-height: 1.3;
       outline: none;
       color: #141414;
       font-weight: 700;
-      &:placeholder {
+      font-family: 'Red Hat Text', sans-serif;
+      &::placeholder {
         color: #5b5b5b;
+        font-weight: 400;
       }
     }
     > svg {
@@ -171,6 +179,29 @@ export const EmptyMessage = styled.p`
   font-size: 0.875rem;
 `;
 
-export const CustomCheckbox = styled(Checkbox)`
+export const CustomCheckbox = styled<CheckboxProps>(Checkbox)`
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
+`;
+
+export const FilterSelect = styled(SmallSelect)`
+  flex: 1;
+  max-width: none;
+  .select__control,
+  .select__control:hover {
+    border-color: #b9b9b9;
+    max-height: 2rem;
+    .select__value-container {
+      flex-wrap: nowrap;
+    }
+    &--is-focused {
+      border-color: #b9b9b9;
+    }
+  }
+  .select__placeholder {
+    color: #5b5b5b;
+  }
+  .select__menu {
+    background-color: #f7f6f4;
+    border-color: #b9b9b9;
+  }
 `;

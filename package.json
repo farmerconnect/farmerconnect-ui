@@ -1,6 +1,6 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.4.1",
+  "version": "1.6.1",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "deploy-storybook": "storybook-to-ghpages"
   },
   "devDependencies": {
+    "@farmerconnect/eslint-config-ts": "1.0.1",
     "@rollup/plugin-typescript": "^8.1.0",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
@@ -31,6 +32,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/react-select": "^4.0.15",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
@@ -39,7 +41,7 @@
     "dns-packet": "^5.2.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-loader": "^4.0.2",
@@ -58,6 +60,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.3",
+    "react-select-event": "^5.3.0",
     "rollup": "^2.36.1",
     "ssri": "^8.0.1",
     "trim": "^1.0.1",
@@ -71,6 +74,7 @@
   },
   "dependencies": {
     "framer-motion": "^4.1.17",
+    "react-select": "^4.3.1",
     "styled-components": "^5.2.1"
   },
   "resolutions": {
@@ -79,7 +83,8 @@
     "hosted-git-info": "^4.0.2",
     "postcss": "^8.3.0",
     "ssri": "^8.0.1",
-    "trim": "^1.0.1"
+    "trim": "^1.0.1",
+    "ws": "^7.4.6"
   },
   "eslintConfig": {
     "extends": [
