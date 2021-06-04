@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.1] - 2021-06-02
+
+- Table component documentation improved
+- Table component exported
+- SVG warnings fixed
+
+## [1.6.0] - 2021-06-02
+
+- Table component added
+
+## [1.5.0] - 2021-06-01
+
+- Add SmallSelect
+- Changed SingleSelect to add dropdown filters
+
 ## [1.4.2] - 2021-05-27
 
 - Standardize eslint

@@ -19,6 +19,7 @@ import Checkbox from './components/Checkbox';
 import Tabs from './components/Tabs';
 import SmallSelect from './components/SmallSelect';
 import DropdownSelect from './components/DropdownSelect';
+import Table from './components/Table';
 
 export {
   Breadcrumbs,
@@ -41,5 +42,6 @@ export {
   DoubleSelect,
   Tabs,
   SmallSelect,
-  DropdownSelect
+  DropdownSelect,
+  Table,
 };
