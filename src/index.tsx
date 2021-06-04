@@ -19,6 +19,7 @@ import Checkbox from './components/Checkbox';
 import Tabs from './components/Tabs';
 import SmallSelect from './components/SmallSelect';
 import Table from './components/Table';
+import Tooltip from './components/Tooltip';
 
 export {
   Breadcrumbs,
@@ -42,4 +43,5 @@ export {
   Tabs,
   SmallSelect,
   Table,
+  Tooltip
 };
