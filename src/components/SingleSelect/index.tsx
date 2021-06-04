@@ -113,9 +113,10 @@ function SingleSelect<T extends contentType>({
       ? filteredText.filter((item) => selectFilter2.filter(item, filterContentSelect2))
       : filteredText;
 
-  const filteredTextSelect1Select2 = filterContentSelect2.length
-    ? filteredTextSelect1.filter((item) => selectFilter2.filter(item, filterContentSelect2))
-    : filteredTextSelect1;
+  const filteredTextSelect1Select2 =
+    filterContentSelect2.length && selectFilter2 !== false
+      ? filteredTextSelect1.filter((item) => selectFilter2.filter(item, filterContentSelect2))
+      : filteredTextSelect1;
 
   return (
     <S.Wrapper ref={contentRef}>

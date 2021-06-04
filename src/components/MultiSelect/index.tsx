@@ -45,9 +45,9 @@ export type SelectProps<T extends productType, S extends itemType> = {
   text: textType;
 };
 
-const DoubleSelect = ({
-  leftContent = [] as productType[],
-  rightContent = [] as itemType[],
+const DoubleSelect = <T extends productType, S extends itemType>({
+  leftContent = [] as T[],
+  rightContent = [] as S[],
   limit = 2,
   disableLeftCombo = false,
   disableRightCombo = false,
@@ -79,11 +79,11 @@ const DoubleSelect = ({
   };
 
   const handleClearSelection = () => {
-    onChange(rightContent.map((item: itemType) => ({ ...item, checked: false })));
+    onChange(rightContent.map((item: S) => ({ ...item, checked: false })));
     setFilterText('');
   };
 
-  const handleToggleSelectItem = (item: itemType) => {
+  const handleToggleSelectItem = (item: S) => {
     onChange(
       rightContent.map((i) => ({
         ...i,
@@ -97,7 +97,7 @@ const DoubleSelect = ({
     setIsOpen(false);
   };
 
-  const handleSelectProduct = (product: productType) => {
+  const handleSelectProduct = (product: T) => {
     onSelectLeft(product);
     setIsOpen(false);
   };
@@ -109,11 +109,9 @@ const DoubleSelect = ({
     };
   }, []);
 
-  const selectedItems = rightContent.filter((item: itemType) => item.checked);
+  const selectedItems = rightContent.filter((item: S) => item.checked);
 
-  const filteredItems = rightContent.filter((item: itemType) =>
-    item.id.toLowerCase().includes(filterText.toLowerCase())
-  );
+  const filteredItems = rightContent.filter((item: S) => item.id.toLowerCase().includes(filterText.toLowerCase()));
 
   return (
     <S.Wrapper ref={contentRef}>
