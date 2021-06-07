@@ -27,27 +27,20 @@ export const tagDefaultStyles = {
 };
 
 interface IGetColor {
+  key: 'color' | 'backgroundColor';
   theme: any;
   color?: string;
   variant?: TagVariant;
   backgroundColor?: string;
 }
 
-interface IGetColorByKey extends IGetColor {
-  key: 'color' | 'backgroundColor';
-}
+const getColor = ({ theme, variant, color, key }: IGetColor): string => {
+  if (color) return color;
 
-const getColorByKey = ({ theme, variant, key }: IGetColorByKey): string => {
   if (!variant) return tagDefaultStyles.colors.primary[key];
 
   return theme?.tag?.colors[variant][key] || tagDefaultStyles.colors[variant][key];
 };
-
-const getTextColor = ({ theme, variant, color }: IGetColor): string =>
-  color || getColorByKey({ theme, variant, key: 'color' });
-
-const getBackgroundColor = ({ theme, variant, backgroundColor }: IGetColor): string =>
-  backgroundColor || getColorByKey({ theme, variant, key: 'backgroundColor' });
 
 export const Container = styled.div<ITagProps>`
   border-radius: 12px;
@@ -59,10 +52,15 @@ export const Container = styled.div<ITagProps>`
   text-align: center;
   text-transform: uppercase;
 
-  ${({ color, variant, backgroundColor, theme }) => css`
-    color: ${getTextColor({ theme, variant, color })};
-    background-color: ${getBackgroundColor({ theme, variant, backgroundColor })};
-  `}
+  ${({ color, variant, backgroundColor, theme }) => {
+    const textColor = getColor({ theme, variant, color, key: 'color' });
+    const bgColor = getColor({ theme, variant, color: backgroundColor, key: 'backgroundColor' });
+
+    return css`
+      color: ${textColor};
+      background-color: ${bgColor};
+    `;
+  }}
 
   & + & {
     margin-left: 8px;
