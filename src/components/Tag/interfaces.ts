@@ -1,20 +1,7 @@
 import { HTMLAttributes } from 'react';
 import CustomStyles from '../CustomStyles';
 
-export enum TagVariantEnum {
-  DANGER = 'danger',
-  PRIMARY = 'primary',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  SECONDARY = 'secondary',
-}
-
-export type TagVariant =
-  | TagVariantEnum.DANGER
-  | TagVariantEnum.PRIMARY
-  | TagVariantEnum.SUCCESS
-  | TagVariantEnum.WARNING
-  | TagVariantEnum.SECONDARY;
+export type variant = 'danger' | 'primary' | 'success' | 'warning' | 'secondary';
 
 interface ITagColor {
   color: string;
@@ -23,16 +10,16 @@ interface ITagColor {
 
 export interface ITag {
   colors?: {
-    [TagVariantEnum.DANGER]?: ITagColor;
-    [TagVariantEnum.PRIMARY]?: ITagColor;
-    [TagVariantEnum.SUCCESS]?: ITagColor;
-    [TagVariantEnum.WARNING]?: ITagColor;
-    [TagVariantEnum.SECONDARY]?: ITagColor;
+    danger?: ITagColor;
+    primary?: ITagColor;
+    success?: ITagColor;
+    warning?: ITagColor;
+    secondary?: ITagColor;
   };
 }
 
 export interface ITagProps extends CustomStyles, HTMLAttributes<HTMLDivElement> {
   color?: string;
-  variant?: TagVariant;
+  variant?: variant;
   backgroundColor?: string;
 }

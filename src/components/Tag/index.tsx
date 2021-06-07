@@ -1,15 +1,14 @@
-import React from 'react';
-import { ITagProps, TagVariantEnum } from './interfaces';
+import { ITagProps } from './interfaces';
 import { Container } from './styles';
 
-const Tag: React.FC<ITagProps> = ({ children, variant, customStyles, ...props }) => (
+const Tag = ({ children, variant, customStyles, ...props }: ITagProps) => (
   <Container variant={variant} customStyles={customStyles} {...props}>
     {children}
   </Container>
 );
 
 Tag.defaultProps = {
-  variant: TagVariantEnum.PRIMARY,
+  variant: 'primary',
 };
 
 export default Tag;

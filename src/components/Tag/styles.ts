@@ -1,25 +1,25 @@
 import styled, { css } from 'styled-components';
-import { ITagProps, TagVariant, TagVariantEnum } from './interfaces';
+import { ITagProps, variant } from './interfaces';
 
-export const tagDefaultStyles = {
+export const tagDefaultStyles: any = {
   colors: {
-    [TagVariantEnum.PRIMARY]: {
+    primary: {
       color: '#081851',
       backgroundColor: '#D1EBEE',
     },
-    [TagVariantEnum.SECONDARY]: {
+    secondary: {
       color: '#5C5C5C',
       backgroundColor: '#EFEFEF',
     },
-    [TagVariantEnum.SUCCESS]: {
+    success: {
       color: '#005E3A',
       backgroundColor: '#CEE9DD',
     },
-    [TagVariantEnum.DANGER]: {
+    danger: {
       color: '#FB2E4C',
       backgroundColor: '#FFEAED',
     },
-    [TagVariantEnum.WARNING]: {
+    warning: {
       color: '#AE8800',
       backgroundColor: '#FFFCD4',
     },
@@ -30,7 +30,7 @@ interface IGetColor {
   key: 'color' | 'backgroundColor';
   theme: any;
   color?: string;
-  variant?: TagVariant;
+  variant?: variant;
   backgroundColor?: string;
 }
 
@@ -53,8 +53,8 @@ export const Container = styled.div<ITagProps>`
   text-transform: uppercase;
 
   ${({ color, variant, backgroundColor, theme, customStyles }) => {
-    const textColor = getColor({ theme, variant, color, key: 'color' });
     const bgColor = getColor({ theme, variant, color: backgroundColor, key: 'backgroundColor' });
+    const textColor = getColor({ theme, variant, color, key: 'color' });
 
     return css`
       color: ${textColor};

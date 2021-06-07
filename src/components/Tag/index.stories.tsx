@@ -1,7 +1,6 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Tag from './';
-import { TagVariantEnum } from './interfaces';
 
 export default {
   title: 'Tag',
@@ -9,7 +8,7 @@ export default {
   argTypes: {
     color: { control: 'color' },
     variant: {
-      options: Object.values(TagVariantEnum),
+      options: ['primary', 'secondary', 'success', 'danger', 'warning'],
       control: { type: 'select' },
     },
     customStyles: { control: 'object' },
@@ -77,7 +76,6 @@ export const CustomStyles = Template.bind({});
 CustomStyles.args = {
   children: 'Tag',
   onClick: action('click'),
-
   onMouseEnter: action('hovered'),
   customStyles: {
     cursor: 'pointer',
