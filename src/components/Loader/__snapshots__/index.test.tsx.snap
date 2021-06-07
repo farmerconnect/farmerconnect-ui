@@ -1,5 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loader component should match the snapshot - hidden 1`] = `ShallowWrapper {}`;
+exports[`Loader component should match the snapshot - hidden 1`] = `
+<styled.div
+  show={false}
+>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.div
+          key="0"
+        />
+        <styled.div
+          key="1"
+        />
+        <styled.div
+          key="2"
+        />
+        <styled.div
+          key="3"
+        />
+        <styled.div
+          key="4"
+        />
+        <styled.div
+          key="5"
+        />
+        <styled.div
+          key="6"
+        />
+        <styled.div
+          key="7"
+        />
+        <styled.div
+          key="8"
+        />
+      </styled.div>
+    </styled.div>
+    <styled.p>
+      We are working on your request, please bare with us for a moment...
+    </styled.p>
+    <Styled(Button)
+      onClick={[MockFunction]}
+    >
+      Cancel request
+    </Styled(Button)>
+  </styled.div>
+</styled.div>
+`;
 
-exports[`Loader component should match the snapshot - visible 1`] = `ShallowWrapper {}`;
+exports[`Loader component should match the snapshot - visible 1`] = `
+<styled.div
+  show={true}
+>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        <styled.div
+          key="0"
+        />
+        <styled.div
+          key="1"
+        />
+        <styled.div
+          key="2"
+        />
+        <styled.div
+          key="3"
+        />
+        <styled.div
+          key="4"
+        />
+        <styled.div
+          key="5"
+        />
+        <styled.div
+          key="6"
+        />
+        <styled.div
+          key="7"
+        />
+        <styled.div
+          key="8"
+        />
+      </styled.div>
+    </styled.div>
+    <styled.p>
+      We are working on your request, please bare with us for a moment...
+    </styled.p>
+    <Styled(Button)
+      onClick={[MockFunction]}
+    >
+      Cancel request
+    </Styled(Button)>
+  </styled.div>
+</styled.div>
+`;
