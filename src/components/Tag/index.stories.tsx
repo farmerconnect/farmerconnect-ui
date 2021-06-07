@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { action } from '@storybook/addon-actions';
 import Tag from './';
 import { TagVariantEnum } from './interfaces';
 
@@ -62,3 +63,26 @@ export const MultipleTags = () => (
     <Tag variant="danger">Tag 2</Tag>
   </>
 );
+
+export const HTMLProps = Template.bind({});
+HTMLProps.args = {
+  id: 'custom-id',
+  title: 'Tag',
+  children: 'Tag',
+  tabIndex: '-1',
+  className: 'custom-class',
+};
+
+export const CustomStyles = Template.bind({});
+CustomStyles.args = {
+  children: 'Tag',
+  onClick: action('click'),
+
+  onMouseEnter: action('hovered'),
+  customStyles: {
+    cursor: 'pointer',
+    boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.15)',
+    borderRadius: 0,
+    textTransform: 'lowercase',
+  },
+};

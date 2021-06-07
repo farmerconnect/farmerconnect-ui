@@ -52,13 +52,15 @@ export const Container = styled.div<ITagProps>`
   text-align: center;
   text-transform: uppercase;
 
-  ${({ color, variant, backgroundColor, theme }) => {
+  ${({ color, variant, backgroundColor, theme, customStyles }) => {
     const textColor = getColor({ theme, variant, color, key: 'color' });
     const bgColor = getColor({ theme, variant, color: backgroundColor, key: 'backgroundColor' });
 
     return css`
       color: ${textColor};
       background-color: ${bgColor};
+
+      ${customStyles || {}}
     `;
   }}
 
