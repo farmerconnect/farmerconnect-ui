@@ -9,9 +9,10 @@ export default {
   title: 'DropdownSelect',
   component: DropdownSelect,
   argTypes: {},
+  excludeStories: ['data', 'ListItem'],
 } as Meta;
 
-const data = [
+export const data:any[] = [
   { id: 'Item 1', checked: true, default: true },
   { id: 'Item 2', checked: true, default: true },
   { id: 'Item 3', checked: true, default: false},
@@ -24,7 +25,7 @@ const data = [
   { id: 'Item 10', checked: false, default: false },
 ];
 
-const ListItem = styled.div`
+export const ListItem = styled.div`
   color: #141414;
   margin: 0;
   padding: 0.25rem 0;

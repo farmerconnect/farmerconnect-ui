@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useRef, ReactNode } from 'react';
 import * as Icon from '../Icons';
 import CustomButton from '../CustomButton';
 import * as S from './styles';
@@ -16,7 +16,7 @@ export type SelectProps = {
   clearButtonText: string;
   confirmButtonText: string;
   emptyText: string;
-  disabled: boolean;
+  disabled?: boolean;
   contentText: string;
 };
 
