@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2021-06-07
+
+- Dropdown Select component added
+
 ## [1.7.0] - 2021-06-04
 
 - Tooltip component added
