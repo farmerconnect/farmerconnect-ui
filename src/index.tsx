@@ -21,6 +21,7 @@ import SmallSelect from './components/SmallSelect';
 import Table from './components/Table';
 import Tooltip from './components/Tooltip';
 import Tag from './components/Tag';
+import Dropdown from './components/Dropdown';
 
 export {
   Breadcrumbs,
@@ -46,4 +47,5 @@ export {
   Table,
   Tooltip,
   Tag,
+  Dropdown,
 };
