@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0] - 2021-06-07
+
+- Tag component added
+- Enzyme serializer added
+
 ## [1.8.0] - 2021-06-07
 
 - Dropdown component added
