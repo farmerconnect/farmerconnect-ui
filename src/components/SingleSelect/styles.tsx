@@ -179,7 +179,7 @@ export const EmptyMessage = styled.p`
   font-size: 0.875rem;
 `;
 
-export const CustomCheckbox = styled<CheckboxProps>(Checkbox)`
+export const CustomCheckbox = styled(Checkbox)<CheckboxProps>`
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
 `;
 
