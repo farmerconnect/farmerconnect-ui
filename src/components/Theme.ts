@@ -8,6 +8,8 @@ import { ILoader } from './Loader/interfaces';
 import { loaderDefaultStyles } from './Loader/styles';
 import { IArrow } from './Icons/Arrow/interfaces';
 import { arrowDefaultStyles } from './Icons/Arrow/styles';
+import { ITag } from './Tag/interfaces';
+import { tagDefaultStyles } from './Tag/styles';
 
 interface ITheme {
   breadcrumb: IBreadcrumb;
@@ -15,6 +17,7 @@ interface ITheme {
   navigationBar: INavigationBar;
   loader: ILoader;
   arrow: IArrow;
+  tag: ITag;
 }
 
 export const farmerConnectTheme: ITheme = {
@@ -23,6 +26,7 @@ export const farmerConnectTheme: ITheme = {
   navigationBar: navigationBarDefaultStyles,
   loader: loaderDefaultStyles,
   arrow: arrowDefaultStyles,
+  tag: tagDefaultStyles,
 };
 
 export default ITheme;
