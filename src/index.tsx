@@ -18,6 +18,7 @@ import DoubleSelect from './components/MultiSelect';
 import Checkbox from './components/Checkbox';
 import Tabs from './components/Tabs';
 import SmallSelect from './components/SmallSelect';
+import DropdownSelect from './components/DropdownSelect';
 import Table from './components/Table';
 import Tooltip from './components/Tooltip';
 import Tag from './components/Tag';
@@ -44,6 +45,7 @@ export {
   DoubleSelect,
   Tabs,
   SmallSelect,
+  DropdownSelect,
   Table,
   Tooltip,
   Tag,
