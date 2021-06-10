@@ -1,8 +1,17 @@
+import { HTMLAttributes, ReactNode } from 'react';
+
 interface ITableColumnOptionsSortable {
   key: string;
 }
 
-export interface ITableColumnOptions {
+export interface ITableChildren {
+  element: ReactNode;
+  key?: string;
+  index?: number;
+}
+
+export interface ITableColumnOptions extends HTMLAttributes<HTMLTableDataCellElement> {
+  centered?: boolean;
   sortable?: ITableColumnOptionsSortable;
   fitContent?: boolean;
 }

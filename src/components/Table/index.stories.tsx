@@ -101,3 +101,60 @@ export const Sortable: Story<any> = () => {
     </Table>
   );
 };
+
+export const Centered: Story<any> = () => (
+  <Table
+    columns={[
+      {
+        options: { fitContent: true },
+      },
+      // Centers the whole column
+      { text: 'Description', options: { centered: true } },
+      { text: 'Number' },
+      { text: 'ID' },
+      { text: 'Tags' },
+      {
+        options: { fitContent: true },
+      },
+    ]}
+  >
+    {new Array(5).fill('').map((_, i: number) => (
+      <Table.Row key={i}>
+        <Table.Column>
+          <img src="http://via.placeholder.com/80" alt="" />
+        </Table.Column>
+        <Table.Column>Lorem Ipsum</Table.Column>
+        <Table.Column>123456789</Table.Column>
+        <Table.Column>abcde-fghij</Table.Column>
+        {/* Centers only the body cell */}
+        <Table.Column centered>Tag 1</Table.Column>
+        <Table.Column>
+          <Button>Button</Button>
+        </Table.Column>
+      </Table.Row>
+    ))}
+  </Table>
+);
+
+export const Empty: Story<any> = () => (
+  <Table
+    columns={[
+      {
+        options: { fitContent: true },
+      },
+      { text: 'Description' },
+      { text: 'Number' },
+      { text: 'ID' },
+      { text: 'Tags' },
+      {
+        options: { fitContent: true },
+      },
+    ]}
+  >
+    <Table.Row>
+      <Table.Column centered colSpan={6}>
+        There are no items
+      </Table.Column>
+    </Table.Row>
+  </Table>
+);
