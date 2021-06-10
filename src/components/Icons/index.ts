@@ -20,3 +20,4 @@ export { default as Screen } from './Screen';
 export { default as ViewMore } from './ViewMore';
 export { default as PublicProfile } from './PublicProfile';
 export { default as Arrow } from './Arrow';
+export { default as Edit } from './Edit';
