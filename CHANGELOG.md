@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.0] - 2021-06-08
+
+- Icons
+  - Edit icon added
+  - ProductScan icon updated
+- Table component
+  - Children logic fixed
+  - Body cells font size updated
+
 ## [1.10.0] - 2021-06-08
 
 - Dropdown Select component added
