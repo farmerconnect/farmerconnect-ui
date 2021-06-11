@@ -1,7 +1,7 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, ReactNode, isValidElement, ReactElement } from 'react';
 import IconArrow from '../Icons/Arrow';
 import { SORT_ORDER } from './constants';
-import { ITableColumn, ITableProps } from './interfaces';
+import { ITableChildren, ITableColumn, ITableColumnOptions, ITableProps } from './interfaces';
 import * as S from './styles';
 
 const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange }) => {
@@ -23,38 +23,41 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange })
     [onSortChange, sort?.key]
   );
 
+  const getArrowStyle = useCallback(
+    (key: string, order: string) => {
+      if (key !== sort?.key) return {};
+
+      if (order === sort?.order) return { isActive: true };
+
+      return { isInactive: true };
+    },
+    [sort?.key, sort?.order]
+  );
+
   const renderSortButton = useCallback(
-    (options: any) => {
-      const { sortable } = options || {};
+    (options: ITableColumnOptions | undefined = {}) => {
+      const { sortable } = options;
 
       if (!sortable || !sortable.key || !sort) return null;
 
-      const getArrowStyle = (order: string) => {
-        if (sortable.key !== sort?.key) return {};
-
-        if (order === sort?.order) return { isActive: true };
-
-        return { isInactive: true };
-      };
-
       return (
         <S.SortButton onClick={() => handleSortClick(sortable.key, sort.order)}>
-          <IconArrow {...getArrowStyle(SORT_ORDER.DESC)} />
-          <IconArrow {...getArrowStyle(SORT_ORDER.ASC)} direction="down" />
+          <IconArrow {...getArrowStyle(sortable.key, SORT_ORDER.DESC)} />
+          <IconArrow {...getArrowStyle(sortable.key, SORT_ORDER.ASC)} direction="down" />
         </S.SortButton>
       );
     },
-    [handleSortClick, sort]
+    [getArrowStyle, handleSortClick, sort]
   );
 
   const renderHeader = useMemo(
     () => (
       <S.Head>
         <S.Row>
-          {columns.map(({ options, text }: ITableColumn, index: number) => (
+          {columns.map(({ options, text = '' }: ITableColumn, index: number) => (
             <S.Column key={`${tableKey}-th-${index}`} as="th" {...options}>
               <S.SortContainer>
-                {text || ''}
+                {text}
                 {renderSortButton(options)}
               </S.SortContainer>
             </S.Column>
@@ -65,25 +68,45 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange })
     [columns, renderSortButton, tableKey]
   );
 
+  const applyToChildren = useCallback(
+    (fn: (children: ITableChildren) => ReactElement | null, children: ReactNode, key?: string) => {
+      if (Array.isArray(children)) {
+        return children.map((child: ReactNode, index: number) => fn({ element: child, key, index }));
+      }
+
+      return fn({ element: children, key });
+    },
+    []
+  );
+
+  const cloneColumn = useCallback(
+    ({ element, index, key }: ITableChildren): ReactElement | null => {
+      if (!isValidElement(element)) return null;
+
+      const options = typeof index === 'number' ? columns[index]?.options : {};
+      const props = { ...element.props, ...options, index, key: `${key}-column-${index}` };
+
+      return React.cloneElement(element, props);
+    },
+    [columns]
+  );
+
+  const cloneRow = useCallback(
+    ({ element, index = 0 }: ITableChildren): ReactElement | null => {
+      if (!isValidElement(element)) return null;
+
+      const key = `${tableKey}-row-${element.key || index}`;
+      const props = { ...element.props, key, index };
+      const children = applyToChildren(cloneColumn, element.props.children, key);
+
+      return React.cloneElement(element, props, children);
+    },
+    [applyToChildren, cloneColumn, tableKey]
+  );
+
   const renderRows = useMemo(
-    () => (
-      <S.Body>
-        {children?.map((row: JSX.Element, index: number) =>
-          React.cloneElement(row, {
-            index,
-            key: `${tableKey}-row-${row.key}`,
-            children: row.props.children.map((column: JSX.Element, index: number) =>
-              React.cloneElement(column, {
-                ...column.props,
-                ...columns[index]?.options,
-                key: `${tableKey}-column-${row.key}-${index}`,
-              })
-            ),
-          })
-        )}
-      </S.Body>
-    ),
-    [children, columns, tableKey]
+    () => <S.Body>{applyToChildren(cloneRow, children)}</S.Body>,
+    [children, applyToChildren, cloneRow]
   );
 
   return (

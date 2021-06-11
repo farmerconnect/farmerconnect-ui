@@ -1,25 +1,46 @@
 import styled, { css } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
+import { ITableColumnOptions } from './interfaces';
 
 export const Container = styled.table`
   border: none;
   border-collapse: separate;
   border-spacing: 0;
+  font-family: 'Red Hat Text', sans-serif;
   width: 100%;
 `;
 
-export const Column = styled.td`
+export const SortContainer = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
+export const Column = styled.td<ITableColumnOptions>`
   box-sizing: border-box;
 
   img {
     display: block;
   }
 
-  ${({ fitContent }: any) =>
+  ${({ fitContent }: ITableColumnOptions) =>
     !!fitContent &&
     css`
       width: 1%;
       white-space: nowrap;
+    `}
+
+  ${({ centered }: ITableColumnOptions) =>
+    !!centered &&
+    css`
+      text-align: center;
+
+      > * {
+        margin: 0 auto;
+      }
+
+      ${SortContainer} {
+        justify-content: center;
+      }
     `}
 `;
 
@@ -32,7 +53,7 @@ export const Head = styled.thead`
     color: #141414;
     font-size: 11px;
     line-height: 14px;
-    letter-spacing: 5%;
+    letter-spacing: 0.5px;
     font-weight: 400;
     height: 40px;
     padding: 0 16px;
@@ -54,9 +75,9 @@ export const Body = styled.tbody`
     ${Column} {
       color: #141414;
       background: #ffffff;
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
       border: 1px solid #e7e7e7;
       padding: 16px;
       position: relative;
@@ -66,11 +87,11 @@ export const Body = styled.tbody`
         border-right: 0;
       }
 
-      &:first-child {
+      &:first-child:not(:last-child) {
         border-right: 0;
       }
 
-      &:last-child {
+      &:last-child:not(:first-child) {
         border-left: 0;
       }
     }
@@ -78,11 +99,11 @@ export const Body = styled.tbody`
     &:last-of-type {
       ${Column} {
         &:first-child {
-          border-radius: 0 0 0 12px;
+          border-bottom-left-radius: 12px;
         }
 
         &:last-child {
-          border-radius: 0 0 12px;
+          border-bottom-right-radius: 12px;
         }
       }
     }
@@ -105,9 +126,4 @@ export const SortButton = styled.button`
   ${StyledArrow} + ${StyledArrow} {
     margin-top: 1px;
   }
-`;
-
-export const SortContainer = styled.div`
-  align-items: center;
-  display: flex;
 `;

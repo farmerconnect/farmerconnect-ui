@@ -108,6 +108,10 @@ export const Button = styled.button<ButtonProps>`
   svg {
     fill: white;
     transition: fill 0.2s ease-out;
+
+    path {
+      fill: inherit;
+    }
   }
   &:disabled {
     cursor: default;
