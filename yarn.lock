@@ -1514,6 +1514,11 @@
   resolved "https://registry.yarnpkg.com/@farmerconnect/eslint-config-ts/-/eslint-config-ts-1.0.1.tgz#5417d85241fc276175bb7ef34dc82cefb5b01742"
   integrity sha512-IfHt9kETv9A3IljzbwqUH1cTJGLlzNFcXgqWis3fB26xp6UrJwtctMvFcax8Psooqv4MWU/0a/1/yuU6UiZ0Dw==
 
+"@farmerconnect/prettier-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@farmerconnect/prettier-config/-/prettier-config-1.1.0.tgz#0c27c26a2672d19e47a4acff2aeefefb8c430330"
+  integrity sha1-DCfCaiZy0Z5HpKz/Ku7++4xDAzA=
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
