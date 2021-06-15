@@ -31,12 +31,17 @@ const FilterSelect:React.FC<FilterSelectProps> = ({itemList, onSelectItem, listI
     setIsOpen(false);
   };
 
+  const handleClickOutside = (e: { target: any }) => {
+    if (!contentRef?.current?.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('mousedown', (e: { target: any }) => {
-      if (!contentRef?.current?.contains(e.target)) {
-        setIsOpen(false);
-      }
-    });
+    window.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const onInputChange = (html: any) => {
