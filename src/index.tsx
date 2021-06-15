@@ -23,6 +23,7 @@ import Table from './components/Table';
 import Tooltip from './components/Tooltip';
 import Tag from './components/Tag';
 import Dropdown from './components/Dropdown';
+import FilterSelect from './components/FilterSelect';
 
 export {
   Breadcrumbs,
@@ -50,4 +51,5 @@ export {
   Tooltip,
   Tag,
   Dropdown,
+  FilterSelect
 };
