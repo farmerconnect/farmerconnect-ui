@@ -1,4 +1,6 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactElement, ReactNode } from 'react';
+
+export type TableCloneChildrenFunction = (children: ITableChildren) => ReactElement | null;
 
 interface ITableColumnOptionsSortable {
   key: string;
