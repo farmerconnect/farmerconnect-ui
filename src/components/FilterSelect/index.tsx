@@ -48,6 +48,9 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
     var searchedText:string = html.currentTarget.value;
     let filteredList:T[] = itemList;
     
+    if(searchedText === '') {
+      onSelectItem(null as T);
+    } 
     if(searchedText !== undefined) {
       filteredList = itemList.filter((item) => resolveItemName(item).toLowerCase().includes(searchedText.toLowerCase()));
       sethasResults(filteredList.length !== 0);
