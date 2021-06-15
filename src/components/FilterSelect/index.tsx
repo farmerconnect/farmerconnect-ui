@@ -2,19 +2,19 @@ import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import * as S from './styles';
 import { Chevron} from '../SingleSelect/styles';
 
-interface FilterSelectProps {
-  itemList: any[];
-  onSelectItem: (item:any) => void;
-  resolveItemName: (item:any) => string;
-  listItemRender: (item: any) => ReactNode;
+interface FilterSelectProps<T> {
+  itemList: T[];
+  onSelectItem: (item:T) => void;
+  resolveItemName: (item:T) => string;
+  listItemRender: (item: T) => ReactNode;
   placeholder:string;
   noResultsMessage:string;
 }
 
-const FilterSelect:React.FC<FilterSelectProps> = ({itemList, onSelectItem, listItemRender, resolveItemName, placeholder, noResultsMessage}: FilterSelectProps) => {
+const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, placeholder, noResultsMessage}: FilterSelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [hasResults, sethasResults] = useState<boolean>(true);
-  const [outputList, setoutputList] = useState<any[]>(itemList);
+  const [outputList, setoutputList] = useState<T[]>(itemList);
   const [inputValue, setinputValue] = useState<string>('');  
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,7 @@ const FilterSelect:React.FC<FilterSelectProps> = ({itemList, onSelectItem, listI
     setIsOpen(!isOpen);
   };
 
-  const handleSelectItem = (item: any) => {
+  const handleSelectItem = (item: T) => {
     if(inputValue === '') {
       setoutputList(itemList);
     }
@@ -44,9 +44,9 @@ const FilterSelect:React.FC<FilterSelectProps> = ({itemList, onSelectItem, listI
     };
   }, []);
 
-  const onInputChange = (html: any) => {
-    var searchedText:string = html.target.value;
-    let filteredList:any[] = itemList;
+  const onInputChange = (html: React.FormEvent<HTMLInputElement>) => {
+    var searchedText:string = html.currentTarget.value;
+    let filteredList:T[] = itemList;
     
     if(searchedText !== undefined) {
       filteredList = itemList.filter((item) => resolveItemName(item).toLowerCase().includes(searchedText.toLowerCase()));
@@ -67,9 +67,9 @@ const FilterSelect:React.FC<FilterSelectProps> = ({itemList, onSelectItem, listI
         {
           hasResults ?
             <S.ItemList>
-            {outputList.map((product, i) => (
-              <li onClick={() => handleSelectItem(product)} key={`left-content-${product.id}-${i}`}>
-                {listItemRender(product)}
+            {outputList.map((item, index) => (
+              <li onClick={() => handleSelectItem(item)} key={`left-content-${index}`}>
+                {listItemRender(item)}
               </li>
             ))}
           </S.ItemList>
