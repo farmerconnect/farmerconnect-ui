@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITableColumnOptions } from './interfaces';
+import { ITableColumnOptions, ITableHoverable } from './interfaces';
 
 export const Container = styled.table`
   border: none;
@@ -70,11 +70,20 @@ export const Head = styled.thead`
   }
 `;
 
-export const Body = styled.tbody`
+export const Body = styled.tbody<ITableHoverable>`
   ${Row} {
+    background-color: #fff;
+
+    ${({ hoverable }: ITableHoverable) =>
+      hoverable &&
+      css`
+        &:hover {
+          background-color: #f3f3f3;
+        }
+      `}
+
     ${Column} {
       color: #141414;
-      background: #ffffff;
       font-size: 14px;
       font-weight: 600;
       line-height: 18px;

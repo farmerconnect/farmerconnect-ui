@@ -4,7 +4,7 @@ import { SORT_ORDER } from './constants';
 import { ITableChildren, ITableColumn, ITableColumnOptions, ITableProps } from './interfaces';
 import * as S from './styles';
 
-const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange }) => {
+const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange, hoverable = false }) => {
   const tableId = useMemo(() => Math.floor(Math.random() * Date.now()), []);
   const tableKey = useMemo(() => `fc-table-${tableId}`, [tableId]);
 
@@ -105,8 +105,8 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange })
   );
 
   const renderRows = useMemo(
-    () => <S.Body>{applyToChildren(cloneRow, children)}</S.Body>,
-    [children, applyToChildren, cloneRow]
+    () => <S.Body hoverable={hoverable}>{applyToChildren(cloneRow, children)}</S.Body>,
+    [children, applyToChildren, cloneRow, hoverable]
   );
 
   return (

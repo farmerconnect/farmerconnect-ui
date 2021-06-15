@@ -31,6 +31,10 @@ export interface ITableSort {
   onSortChange?: (key: string, order: string) => void;
 }
 
-export interface ITableProps extends ITableSort {
+export interface ITableHoverable {
+  hoverable?: boolean;
+}
+
+export interface ITableProps extends ITableSort, ITableHoverable {
   columns: ITableColumn[];
 }
