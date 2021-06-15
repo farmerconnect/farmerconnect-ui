@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.2] - 2021-06-14
+
+- Table component nested array children fix
+
 ## [1.11.1] - 2021-06-14
 
 - Standardize prettier config
