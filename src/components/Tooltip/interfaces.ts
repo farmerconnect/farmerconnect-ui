@@ -5,11 +5,7 @@ export interface ITooltipProps {
   backgroundColor?: string;
   color?: string;
   arrow?: boolean;
-  direction: 
-    | 'bottom'
-    | 'left'
-    | 'right'
-    | 'top';
+  direction: 'bottom' | 'left' | 'right' | 'top';
   content: ReactNode;
   children: ReactNode;
   onMouseEnter?: () => void;
