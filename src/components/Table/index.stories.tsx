@@ -158,3 +158,32 @@ export const Empty: Story<any> = () => (
     </Table.Row>
   </Table>
 );
+
+export const Slim: Story<any> = () => (
+  <Table
+    slim
+    columns={[
+      { text: 'ID' },
+      { text: 'Description' },
+      { text: 'Number' },
+      { text: 'Address' },
+      { text: 'Tags' },
+      {
+        options: { fitContent: true },
+      },
+    ]}
+  >
+    {new Array(5).fill('').map((_, i: number) => (
+      <Table.Row key={i}>
+        <Table.Column>{i}</Table.Column>
+        <Table.Column>Lorem Ipsum</Table.Column>
+        <Table.Column>123456789</Table.Column>
+        <Table.Column>abcde-fghij</Table.Column>
+        <Table.Column>Address</Table.Column>
+        <Table.Column>
+          <Button>Button</Button>
+        </Table.Column>
+      </Table.Row>
+    ))}
+  </Table>
+);
