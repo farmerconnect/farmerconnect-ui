@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.1] - 2021-06-18
+
+- Table component changes
+  - Default font-weight updated to 500
+  - Slim prop added
+  - Default theme added
+
 ## [1.11.2] - 2021-06-14
 
 - Table component nested array children fix

@@ -33,6 +33,24 @@ export interface ITableSort {
   onSortChange?: (key: string, order: string) => void;
 }
 
-export interface ITableProps extends ITableSort {
+export interface ITableBody {
+  slim?: boolean;
+}
+
+export interface ITable {
+  colors?: {
+    head?: {
+      color?: string;
+      backgroundColor?: string;
+    },
+    body?: {
+      color?: string;
+      borderColor?: string;
+      backgroundColor?: string;
+    }
+  }
+}
+
+export interface ITableProps extends ITableSort, ITableBody {
   columns: ITableColumn[];
 }

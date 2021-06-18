@@ -10,7 +10,7 @@ import {
 } from './interfaces';
 import * as S from './styles';
 
-const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange }) => {
+const Table: React.FC<ITableProps> = ({ slim, sort, columns, children, onSortChange }) => {
   const tableId = useMemo(() => Math.floor(Math.random() * Date.now()), []);
   const tableKey = useMemo(() => `fc-table-${tableId}`, [tableId]);
 
@@ -115,8 +115,8 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange })
   );
 
   const renderRows = useMemo(
-    () => <S.Body>{applyToChildren(cloneRow, children)}</S.Body>,
-    [children, applyToChildren, cloneRow]
+    () => <S.Body slim={slim}>{applyToChildren(cloneRow, children)}</S.Body>,
+    [children, applyToChildren, cloneRow, slim]
   );
 
   return (

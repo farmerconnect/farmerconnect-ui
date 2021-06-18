@@ -10,6 +10,8 @@ import { IArrow } from './Icons/Arrow/interfaces';
 import { arrowDefaultStyles } from './Icons/Arrow/styles';
 import { ITag } from './Tag/interfaces';
 import { tagDefaultStyles } from './Tag/styles';
+import { ITable } from './Table/interfaces';
+import { tableDefaultStyles } from './Table/styles';
 
 interface ITheme {
   breadcrumb: IBreadcrumb;
@@ -18,6 +20,7 @@ interface ITheme {
   loader: ILoader;
   arrow: IArrow;
   tag: ITag;
+  table: ITable;
 }
 
 export const farmerConnectTheme: ITheme = {
@@ -27,6 +30,7 @@ export const farmerConnectTheme: ITheme = {
   loader: loaderDefaultStyles,
   arrow: arrowDefaultStyles,
   tag: tagDefaultStyles,
+  table: tableDefaultStyles,
 };
 
 export default ITheme;
