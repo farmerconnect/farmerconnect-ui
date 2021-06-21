@@ -47,7 +47,7 @@ export const Container = styled.div<ITagProps>`
   font-size: 11px;
   font-weight: bold;
   letter-spacing: 0.05em;
-  line-height: 15px;
+  line-height: 14px;
   padding: 5px 12px;
   text-align: center;
   text-transform: uppercase;

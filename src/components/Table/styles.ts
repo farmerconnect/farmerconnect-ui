@@ -93,7 +93,7 @@ export const Body = styled.tbody<ITableBody>`
       font-weight: 500;
       line-height: 18px;
       border: 1px solid ${({ theme }) => theme?.table?.colors?.body?.borderColor || tableDefaultStyles?.colors?.body?.borderColor};
-      padding: ${({ slim }) => slim ? '10px 16px' : '16px'};
+      padding: ${({ slim }) => slim ? '8px 16px' : '16px'};
       position: relative;
 
       &:not(:first-child):not(:last-child) {
