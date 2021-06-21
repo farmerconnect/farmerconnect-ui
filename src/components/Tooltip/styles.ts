@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 `;
 
@@ -39,7 +39,7 @@ const TipBase = styled.div<ITooltipProps>`
 `;
 
 export const TopTip = styled(TipBase)<ITooltipProps>`
-  top: calc(30px * -1);
+  top: calc(30px * -1 - 6px);
 
   &:before {
     display: ${(props) => (props.arrow ? '' : 'none')};
@@ -49,7 +49,7 @@ export const TopTip = styled(TipBase)<ITooltipProps>`
 `;
 
 export const RightTip = styled(TipBase)<ITooltipProps>`
-  left: calc(100%);
+  left: calc(100% + 6px);
   top: 50%;
   transform: translateX(0) translateY(-50%);
 
@@ -63,7 +63,7 @@ export const RightTip = styled(TipBase)<ITooltipProps>`
 `;
 
 export const BottomTip = styled(TipBase)<ITooltipProps>`
-  bottom: calc(30px * -1);
+  bottom: calc(30px * -1 - 6px);
 
   &:before {
     display: ${(props) => (props.arrow ? '' : 'none')};
@@ -74,7 +74,7 @@ export const BottomTip = styled(TipBase)<ITooltipProps>`
 
 export const LeftTip = styled(TipBase)<ITooltipProps>`
   left: auto;
-  right: calc(100%);
+  right: calc(100% + 6px);
   top: 50%;
   transform: translateX(0) translateY(-50%);
 
