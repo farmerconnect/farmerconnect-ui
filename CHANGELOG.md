@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.4] - 2021-06-22
+
+- Removed side padding of custom buttons when text or link variant selected
+- Added download icon
+- Fixed border-radius from buttons on navigation bar
+- Added hoverable prop on Table component
+
 ## [1.12.3] - 2021-06-21
 
-- Public Profile icon reduced to 24px
+Public Profile icon reduced to 24px
 - Margin increased to 6px more in tooltip component 
 
 ## [1.12.2] - 2021-06-18
