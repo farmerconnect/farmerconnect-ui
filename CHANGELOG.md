@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.5] - 2021-06-23
+
+- Download icon fixed fill prop
+
 ## [1.12.4] - 2021-06-22
 
 - Removed side padding of custom buttons when text or link variant selected
