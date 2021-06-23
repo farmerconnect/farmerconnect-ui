@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.3] - 2021-06-21
+
+- Public Profile icon reduced to 24px
+- Margin increased to 6px more in tooltip component 
+
+## [1.12.2] - 2021-06-18
+
+- Tag component line-height reduced to 14px
+- Slim table vertical padding reduced to 8px
+
+## [1.12.1] - 2021-06-18
+
+- Table component changes
+  - Default font-weight updated to 500
+  - Slim prop added
+  - Default theme added
+
+## [1.11.2] - 2021-06-14
+
+- Table component nested array children fix
+
+## [1.11.1] - 2021-06-14
+
+- Standardize prettier config
+
 ## [1.11.0] - 2021-06-10
 
 - Icons

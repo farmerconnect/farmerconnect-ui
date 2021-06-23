@@ -1,10 +1,16 @@
 import React, { useMemo, useCallback, ReactNode, isValidElement, ReactElement } from 'react';
 import IconArrow from '../Icons/Arrow';
 import { SORT_ORDER } from './constants';
-import { ITableChildren, ITableColumn, ITableColumnOptions, ITableProps } from './interfaces';
+import {
+  ITableChildren,
+  ITableColumn,
+  ITableColumnOptions,
+  ITableProps,
+  TableCloneChildrenFunction,
+} from './interfaces';
 import * as S from './styles';
 
-const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange, hoverable = false }) => {
+const Table: React.FC<ITableProps> = ({ slim, sort, columns, children, onSortChange, hoverable = false }) => {
   const tableId = useMemo(() => Math.floor(Math.random() * Date.now()), []);
   const tableKey = useMemo(() => `fc-table-${tableId}`, [tableId]);
 
@@ -69,9 +75,13 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange, h
   );
 
   const applyToChildren = useCallback(
-    (fn: (children: ITableChildren) => ReactElement | null, children: ReactNode, key?: string) => {
+    (fn: TableCloneChildrenFunction, children: ReactNode, key?: string): ReactNode => {
       if (Array.isArray(children)) {
-        return children.map((child: ReactNode, index: number) => fn({ element: child, key, index }));
+        return children.map((child: ReactNode, index: number) => {
+          if (Array.isArray(child)) return applyToChildren(fn, child, key);
+
+          return fn({ element: child, key, index });
+        });
       }
 
       return fn({ element: children, key });
@@ -105,8 +115,8 @@ const Table: React.FC<ITableProps> = ({ sort, columns, children, onSortChange, h
   );
 
   const renderRows = useMemo(
-    () => <S.Body hoverable={hoverable}>{applyToChildren(cloneRow, children)}</S.Body>,
-    [children, applyToChildren, cloneRow, hoverable]
+    () => <S.Body slim={slim} hoverable={hoverable}>{applyToChildren(cloneRow, children)}</S.Body>,
+    [children, applyToChildren, cloneRow, slim, hoverable]
   );
 
   return (

@@ -1,6 +1,6 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.11.0",
+  "version": "1.12.3",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
@@ -9,13 +9,14 @@
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.js src/**/*.ts",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "format": "prettier 'src/**/*.ts' --write",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "devDependencies": {
     "@farmerconnect/eslint-config-ts": "1.0.1",
+    "@farmerconnect/prettier-config": "^1.1.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",

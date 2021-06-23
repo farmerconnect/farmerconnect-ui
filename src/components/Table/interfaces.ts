@@ -1,4 +1,6 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactElement, ReactNode } from 'react';
+
+export type TableCloneChildrenFunction = (children: ITableChildren) => ReactElement | null;
 
 interface ITableColumnOptionsSortable {
   key: string;
@@ -31,10 +33,31 @@ export interface ITableSort {
   onSortChange?: (key: string, order: string) => void;
 }
 
+export interface ITableBody {
+  slim?: boolean;
+}
 export interface ITableHoverable {
   hoverable?: boolean;
 }
 
-export interface ITableProps extends ITableSort, ITableHoverable {
+export interface ITableStyles {
+  slim?: boolean;
+  hoverable?: boolean;
+}
+export interface ITable {
+  colors?: {
+    head?: {
+      color?: string;
+      backgroundColor?: string;
+    },
+    body?: {
+      color?: string;
+      borderColor?: string;
+      backgroundColor?: string;
+    }
+  }
+}
+
+export interface ITableProps extends ITableSort, ITableBody, ITableHoverable {
   columns: ITableColumn[];
 }

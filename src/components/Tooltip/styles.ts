@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { ITooltipProps } from './interfaces';
 
 export const Container = styled.div`
-  padding-top: 10.0rem;
-  padding-left: 10.0rem;
+  padding-top: 10rem;
+  padding-left: 10rem;
 `;
 
 export const Wrapper = styled.div`
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 `;
 
@@ -17,10 +17,8 @@ const TipBase = styled.div<ITooltipProps>`
   left: 50%;
   transform: translateX(-50%);
   padding: 6px;
-  color: ${(props) =>
-    props.color || '#F3F3F3'};
-  background: ${(props) =>
-    props.backgroundColor || '#192C28'};
+  color: ${(props) => props.color || '#F3F3F3'};
+  background: ${(props) => props.backgroundColor || '#192C28'};
   font-size: 14px;
   font-family: sans-serif;
   line-height: 1;
@@ -28,7 +26,7 @@ const TipBase = styled.div<ITooltipProps>`
   white-space: nowrap;
 
   &:before {
-    content: " ";
+    content: ' ';
     left: 50%;
     border: solid transparent;
     height: 0;
@@ -41,59 +39,51 @@ const TipBase = styled.div<ITooltipProps>`
 `;
 
 export const TopTip = styled(TipBase)<ITooltipProps>`
-  top: calc(30px * -1);
+  top: calc(30px * -1 - 6px);
 
   &:before {
-    display: ${(props) =>
-      props.arrow ? "" : "none"};
+    display: ${(props) => (props.arrow ? '' : 'none')};
     top: 100%;
-    border-top-color: ${(props) =>
-      props.backgroundColor || '#192C28'};
+    border-top-color: ${(props) => props.backgroundColor || '#192C28'};
   }
 `;
 
 export const RightTip = styled(TipBase)<ITooltipProps>`
-  left: calc(100%);
+  left: calc(100% + 6px);
   top: 50%;
   transform: translateX(0) translateY(-50%);
 
   &:before {
-    display: ${(props) =>
-      props.arrow ? "" : "none"};
+    display: ${(props) => (props.arrow ? '' : 'none')};
     left: calc(6px * -1);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-right-color: ${(props) =>
-      props.backgroundColor || '#192C28'};
+    border-right-color: ${(props) => props.backgroundColor || '#192C28'};
   }
 `;
 
 export const BottomTip = styled(TipBase)<ITooltipProps>`
-  bottom: calc(30px * -1);
+  bottom: calc(30px * -1 - 6px);
 
   &:before {
-    display: ${(props) =>
-      props.arrow ? "" : "none"};
+    display: ${(props) => (props.arrow ? '' : 'none')};
     bottom: 100%;
-    border-bottom-color: ${(props) =>
-      props.backgroundColor || '#192C28'};
+    border-bottom-color: ${(props) => props.backgroundColor || '#192C28'};
   }
 `;
 
 export const LeftTip = styled(TipBase)<ITooltipProps>`
   left: auto;
-  right: calc(100%);
+  right: calc(100% + 6px);
   top: 50%;
   transform: translateX(0) translateY(-50%);
 
   &:before {
-    display: ${(props) =>
-      props.arrow ? "" : "none"};
+    display: ${(props) => (props.arrow ? '' : 'none')};
     left: auto;
     right: calc(6px * -2);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-left-color: ${(props) =>
-      props.backgroundColor || '#192C28'};
+    border-left-color: ${(props) => props.backgroundColor || '#192C28'};
   }
 `;

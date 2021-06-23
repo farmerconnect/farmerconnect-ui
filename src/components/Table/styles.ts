@@ -1,6 +1,20 @@
 import styled, { css } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITableColumnOptions, ITableHoverable } from './interfaces';
+import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
+
+export const tableDefaultStyles: ITable = {
+  colors: {
+    head: {
+      color: '#141414',
+      backgroundColor: '#f7f6f4',
+    },
+    body: {
+      color: '#141414',
+      borderColor: '#e7e7e7',
+      backgroundColor: '#ffffff',
+    }
+  }
+}
 
 export const Container = styled.table`
   border: none;
@@ -47,10 +61,10 @@ export const Column = styled.td<ITableColumnOptions>`
 export const Row = styled.tr``;
 
 export const Head = styled.thead`
-  background-color: #f7f6f4;
+  background-color: ${({ theme }) => theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
   ${Column} {
-    color: #141414;
+    color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
     font-size: 11px;
     line-height: 14px;
     letter-spacing: 0.5px;
@@ -70,7 +84,7 @@ export const Head = styled.thead`
   }
 `;
 
-export const Body = styled.tbody<ITableHoverable>`
+export const Body = styled.tbody<ITableStyles>`
   ${Row} {
     background-color: #fff;
 
@@ -83,12 +97,13 @@ export const Body = styled.tbody<ITableHoverable>`
       `}
 
     ${Column} {
-      color: #141414;
+      background-color: ${({ theme }) => theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
+      color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 18px;
-      border: 1px solid #e7e7e7;
-      padding: 16px;
+      border: 1px solid ${({ theme }) => theme?.table?.colors?.body?.borderColor || tableDefaultStyles?.colors?.body?.borderColor};
+      padding: ${({ slim }) => slim ? '8px 16px' : '16px'};
       position: relative;
 
       &:not(:first-child):not(:last-child) {
