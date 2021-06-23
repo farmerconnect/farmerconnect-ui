@@ -38,6 +38,7 @@ const buttonModifiers = {
     background-color: transparent;
     border: none;
     color: #00e394;
+    padding: 0.625rem 0rem;
     svg {
       fill: #00e394;
     }
@@ -61,6 +62,7 @@ const buttonModifiers = {
     background-color: transparent;
     border: none;
     color: #00e394;
+    padding: 0.625rem 0rem;
     svg {
       fill: #00e394;
     }
