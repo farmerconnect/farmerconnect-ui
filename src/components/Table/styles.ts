@@ -86,7 +86,7 @@ export const Head = styled.thead`
 
 export const Body = styled.tbody<ITableStyles>`
   ${Row} {
-    background-color: #fff;
+    background-color: ${({ theme }) => theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
 
     ${({ hoverable }: ITableHoverable) =>
       hoverable &&
@@ -97,7 +97,6 @@ export const Body = styled.tbody<ITableStyles>`
       `}
 
     ${Column} {
-      background-color: ${({ theme }) => theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
       color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
       font-size: 14px;
       font-weight: 500;
