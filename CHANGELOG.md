@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.12.3] - 2021-06-21
 
-Public Profile icon reduced to 24px
+- Public Profile icon reduced to 24px
 - Margin increased to 6px more in tooltip component 
 
 ## [1.12.2] - 2021-06-18
