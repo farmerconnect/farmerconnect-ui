@@ -58,5 +58,3 @@ export const Label = styled.label`
     opacity: 0.5;
   }
 `;
-
-// gray: #B9B9B9

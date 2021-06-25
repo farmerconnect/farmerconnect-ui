@@ -8,7 +8,7 @@ export type ToggleProps = {
 const Checkbox = ({ children, className, style, ...props }: ToggleProps) => (
 	<Label className={className} style={style}>
 		<input type="checkbox" {...props} />
-		<Slider>
+		<Slider data-testid="slider">
 			<div />
 		</Slider>
 		{children}
