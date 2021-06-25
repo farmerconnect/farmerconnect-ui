@@ -21,3 +21,5 @@ export { default as ViewMore } from './ViewMore';
 export { default as PublicProfile } from './PublicProfile';
 export { default as Arrow } from './Arrow';
 export { default as Edit } from './Edit';
+export { default as Remove } from './Remove'
+export { default as Plus } from './Plus'
