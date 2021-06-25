@@ -1,10 +1,13 @@
 import { ReactNode } from 'react';
 
-export interface IEditColumnNameProps {
+export interface iEditableLabelProps {
 	disabled?: boolean;
 	children?: ReactNode;
-	columnName?: string;
-	columnFriendlyName?: string;
+	primaryLabel?: string;
+	secondaryLabel?: string;
+	allowEmptyValue?: boolean;
+	minLength?: number;
+	maxLength?: number;
 	onSave?: (s: string) => void;
 	text?: {
 		save: string;
