@@ -1,4 +1,5 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import EditableLabel from '.';
@@ -12,7 +13,9 @@ export default {
 } as Meta;
 
 const Template: Story<iEditableLabelProps> = (args) => {
-	return <EditableLabel {...args} />;
+	const [value, setValue] = useState(args.secondaryLabel);
+
+	return <EditableLabel {...args} secondaryLabel={value} onSave={setValue} />;
 };
 
 export const Default = Template.bind({});

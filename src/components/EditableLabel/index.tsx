@@ -69,8 +69,8 @@ const EditableLabel = ({
 		</>
 	) : (
 		<S.Container>
-			<S.FriendlyName>{secondaryLabel}</S.FriendlyName>
-			<S.Name>{primaryLabel}</S.Name>
+			<S.StrongLabel>{secondaryLabel}</S.StrongLabel>
+			{secondaryLabel ? <S.LightLabel>{primaryLabel}</S.LightLabel> : <S.StrongLabel>{primaryLabel}</S.StrongLabel>}
 			{children}
 			<S.EditButton variant="text" disabled={disabled} onClick={handleEditClick}>
 				{text.edit}

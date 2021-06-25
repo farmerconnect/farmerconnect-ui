@@ -26,13 +26,13 @@ export const Container = styled.div`
 	}
 `;
 
-export const Name = styled.span`
+export const LightLabel = styled.span`
 	font-weight: 400;
 	font-size: 0.6875rem;
 	color: #b9b9b9;
 	text-transform: uppercase;
 `;
-export const FriendlyName = styled.span`
+export const StrongLabel = styled.span`
 	font-weight: 700;
 	font-size: 0.6875rem;
 	color: #141414;
