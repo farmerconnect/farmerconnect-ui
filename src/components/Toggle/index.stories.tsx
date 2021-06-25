@@ -13,20 +13,21 @@ export default {
 const Template: Story<ToggleProps> = (args) => (
 	<div>
 		<Toggle {...args} name="radio-0">
-			Option 1
+			Regular
 		</Toggle>
-		<Toggle {...args} name="radio-0">
-			Option 2
-		</Toggle>
-		<Toggle {...args} name="radio-0">
-			Option 3
-		</Toggle>
-		<Toggle {...args} name="radio-0">
-			Option 4
+		<Toggle {...args} name="radio-0" defaultChecked>
+			Default checked
 		</Toggle>
 		<Toggle {...args} disabled name="radio-0">
-			Option 5
+			Disabled
 		</Toggle>
+		<Toggle {...args} disabled name="radio-0" defaultChecked>
+			Disabled default checked
+		</Toggle>
+		<Toggle {...args} />
+		<Toggle {...args} defaultChecked />
+		<Toggle {...args} disabled />
+		<Toggle {...args} disabled defaultChecked />
 	</div>
 );
 
