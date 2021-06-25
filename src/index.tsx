@@ -26,6 +26,7 @@ import Dropdown from './components/Dropdown';
 import FilterSelect from './components/FilterSelect';
 import Input from './components/Input';
 import Toggle from './components/Toggle';
+import EditableLabel from './components/EditableLabel';
 
 export {
 	Breadcrumbs,
@@ -56,4 +57,5 @@ export {
 	FilterSelect,
 	Input,
 	Toggle,
+	EditableLabel,
 };
