@@ -25,6 +25,7 @@ import Tag from './components/Tag';
 import Dropdown from './components/Dropdown';
 import FilterSelect from './components/FilterSelect';
 import Input from './components/Input';
+import Toggle from './components/Toggle';
 
 export {
 	Breadcrumbs,
@@ -54,4 +55,5 @@ export {
 	Dropdown,
 	FilterSelect,
 	Input,
+	Toggle,
 };
