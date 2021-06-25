@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.14.0] - 2021-06-25
 
-- Added EditColumnName component
+- Added EditableLabel component
 
 ## [1.13.0] - 2021-06-24
 

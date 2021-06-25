@@ -19,7 +19,7 @@ export const Default = Template.bind({});
 Default.args = {
 	primaryLabel: 'Boring name',
 	secondaryLabel: 'Exciting name',
-	onSave: (name) => alert(`New column name: ${name}`),
+	onSave: (name) => alert(`New secondary label name: ${name}`),
 	text: {
 		save: 'Save',
 		edit: 'Edit',
