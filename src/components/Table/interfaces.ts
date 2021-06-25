@@ -36,7 +36,14 @@ export interface ITableSort {
 export interface ITableBody {
   slim?: boolean;
 }
+export interface ITableHoverable {
+  hoverable?: boolean;
+}
 
+export interface ITableStyles {
+  slim?: boolean;
+  hoverable?: boolean;
+}
 export interface ITable {
   colors?: {
     head?: {
@@ -51,6 +58,6 @@ export interface ITable {
   }
 }
 
-export interface ITableProps extends ITableSort, ITableBody {
+export interface ITableProps extends ITableSort, ITableBody, ITableHoverable {
   columns: ITableColumn[];
 }

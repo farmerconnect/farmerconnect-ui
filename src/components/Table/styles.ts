@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITable, ITableBody, ITableColumnOptions } from './interfaces';
+import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
 
 export const tableDefaultStyles: ITable = {
   colors: {
@@ -84,10 +84,19 @@ export const Head = styled.thead`
   }
 `;
 
-export const Body = styled.tbody<ITableBody>`
+export const Body = styled.tbody<ITableStyles>`
   ${Row} {
+    background-color: ${({ theme }) => theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
+
+    ${({ hoverable }: ITableHoverable) =>
+      hoverable &&
+      css`
+        &:hover {
+          background-color: #f3f3f3;
+        }
+      `}
+
     ${Column} {
-      background-color: ${({ theme }) => theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
       color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
       font-size: 14px;
       font-weight: 500;
