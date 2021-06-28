@@ -3,61 +3,61 @@ import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 export type TableCloneChildrenFunction = (children: ITableChildren) => ReactElement | null;
 
 interface ITableColumnOptionsSortable {
-	key: string;
+  key: string;
 }
 
 export interface ITableChildren {
-	element: ReactNode;
-	key?: string;
-	index?: number;
+  element: ReactNode;
+  key?: string;
+  index?: number;
 }
 
 export interface ITableColumnOptions extends HTMLAttributes<HTMLTableDataCellElement> {
-	centered?: boolean;
-	sortable?: ITableColumnOptionsSortable;
-	fitContent?: boolean;
+  centered?: boolean;
+  sortable?: ITableColumnOptionsSortable;
+  fitContent?: boolean;
 }
 
 export interface ITableColumn {
-	text?: string;
-	options?: ITableColumnOptions;
+  text?: string;
+  options?: ITableColumnOptions;
 }
 
 export interface ITableSortOptions {
-	key: string;
-	order: string;
+  key: string;
+  order: string;
 }
 
 export interface ITableSort {
-	sort?: ITableSortOptions;
-	onSortChange?: (key: string, order: string) => void;
+  sort?: ITableSortOptions;
+  onSortChange?: (key: string, order: string) => void;
 }
 
 export interface ITableBody {
-	slim?: boolean;
+  slim?: boolean;
 }
 export interface ITableHoverable {
-	hoverable?: boolean;
+  hoverable?: boolean;
 }
 
 export interface ITableStyles {
-	slim?: boolean;
-	hoverable?: boolean;
+  slim?: boolean;
+  hoverable?: boolean;
 }
 export interface ITable {
-	colors?: {
-		head?: {
-			color?: string;
-			backgroundColor?: string;
-		};
-		body?: {
-			color?: string;
-			borderColor?: string;
-			backgroundColor?: string;
-		};
-	};
+  colors?: {
+    head?: {
+      color?: string;
+      backgroundColor?: string;
+    };
+    body?: {
+      color?: string;
+      borderColor?: string;
+      backgroundColor?: string;
+    };
+  };
 }
 
 export interface ITableProps extends ITableSort, ITableBody, ITableHoverable {
-	columns: ITableColumn[];
+  columns: ITableColumn[];
 }

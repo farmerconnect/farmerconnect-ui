@@ -1,3 +1,3 @@
 export type IContainerProps = {
-	size?: number;
+  size?: number;
 };

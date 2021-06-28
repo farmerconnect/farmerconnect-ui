@@ -1,5 +1,5 @@
 interface CustomStyles {
-	customStyles?: {};
+  customStyles?: {};
 }
 
 export default CustomStyles;

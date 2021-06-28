@@ -2,35 +2,35 @@ import { ReactNode } from 'react';
 import CustomStyles from '../CustomStyles';
 
 export interface ILoaderIcon {
-	size: number;
-	color: string;
+  size: number;
+  color: string;
 }
 
 interface ILoaderButton {
-	color: string;
+  color: string;
 }
 
 export interface ILoader {
-	icon: ILoaderIcon;
-	button: ILoaderButton;
+  icon: ILoaderIcon;
+  button: ILoaderButton;
 }
 
 interface ILoaderOption {
-	message: string;
-	duration?: number;
+  message: string;
+  duration?: number;
 }
 
 interface ILoaderError {
-	error: boolean;
-	message: ReactNode;
+  error: boolean;
+  message: ReactNode;
 }
 
 export interface ILoaderProps extends CustomStyles {
-	show?: boolean;
-	options?: ILoaderOption[];
-	iconSize?: number;
-	iconColor?: string;
-	buttonText?: string | ReactNode;
-	errorOptions?: ILoaderError;
-	onButtonClick?: () => void;
+  show?: boolean;
+  options?: ILoaderOption[];
+  iconSize?: number;
+  iconColor?: string;
+  buttonText?: string | ReactNode;
+  errorOptions?: ILoaderError;
+  onButtonClick?: () => void;
 }

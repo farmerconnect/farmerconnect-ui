@@ -14,23 +14,23 @@ import { ITable } from './Table/interfaces';
 import { tableDefaultStyles } from './Table/styles';
 
 interface ITheme {
-	breadcrumb: IBreadcrumb;
-	button: IButton;
-	navigationBar: INavigationBar;
-	loader: ILoader;
-	arrow: IArrow;
-	tag: ITag;
-	table: ITable;
+  breadcrumb: IBreadcrumb;
+  button: IButton;
+  navigationBar: INavigationBar;
+  loader: ILoader;
+  arrow: IArrow;
+  tag: ITag;
+  table: ITable;
 }
 
 export const farmerConnectTheme: ITheme = {
-	breadcrumb: breadcrumbDefaultStyles,
-	button: buttonDefaultStyles,
-	navigationBar: navigationBarDefaultStyles,
-	loader: loaderDefaultStyles,
-	arrow: arrowDefaultStyles,
-	tag: tagDefaultStyles,
-	table: tableDefaultStyles,
+  breadcrumb: breadcrumbDefaultStyles,
+  button: buttonDefaultStyles,
+  navigationBar: navigationBarDefaultStyles,
+  loader: loaderDefaultStyles,
+  arrow: arrowDefaultStyles,
+  tag: tagDefaultStyles,
+  table: tableDefaultStyles,
 };
 
 export default ITheme;

@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
 export const Slider = styled.div`
-	box-sizing: border-box;
-	height: 1rem;
-	width: 2rem;
-	border-radius: 0.5rem;
-	background-color: #b9b9b9;
-	position: relative;
-	transition: background-color 0.2s ease-out;
-	> div {
-		position: absolute;
-		top: 0.125rem;
-		left: 0.125rem;
-		height: 0.75rem;
-		width: 0.75rem;
-		border-radius: 100%;
-		background-color: white;
-		transition: all 0.2s ease-out;
-	}
+  box-sizing: border-box;
+  height: 1rem;
+  width: 2rem;
+  border-radius: 0.5rem;
+  background-color: #b9b9b9;
+  position: relative;
+  transition: background-color 0.2s ease-out;
+  > div {
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 100%;
+    background-color: white;
+    transition: all 0.2s ease-out;
+  }
 `;
 
 export const Label = styled.label`
