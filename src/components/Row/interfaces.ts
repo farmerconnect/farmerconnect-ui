@@ -1,4 +1,4 @@
 export type IRowProps = {
-  gutter?: number;
-  bottom?: number;
+	gutter?: number;
+	bottom?: number;
 };
