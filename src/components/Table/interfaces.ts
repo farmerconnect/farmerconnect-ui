@@ -49,13 +49,13 @@ export interface ITable {
     head?: {
       color?: string;
       backgroundColor?: string;
-    },
+    };
     body?: {
       color?: string;
       borderColor?: string;
       backgroundColor?: string;
-    }
-  }
+    };
+  };
 }
 
 export interface ITableProps extends ITableSort, ITableBody, ITableHoverable {
