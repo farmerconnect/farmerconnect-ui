@@ -27,6 +27,7 @@ import FilterSelect from './components/FilterSelect';
 import Input from './components/Input';
 import Toggle from './components/Toggle';
 import EditableLabel from './components/EditableLabel';
+import TextArea from './components/TextArea';
 
 export {
 	Breadcrumbs,
@@ -58,4 +59,5 @@ export {
 	Input,
 	Toggle,
 	EditableLabel,
+	TextArea,
 };
