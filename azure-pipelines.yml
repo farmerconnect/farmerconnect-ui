@@ -25,7 +25,7 @@ steps:
     enabled: true
     continueOnError: false
     inputs:
-      script: 'yarn audit'
+      script: 'yarn audit --groups dependencies'
 
   - task: CmdLine@2
     displayName: lint
