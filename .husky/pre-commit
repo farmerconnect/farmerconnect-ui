@@ -1,7 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn audit
+yarn audit --groups dependencies
 yarn lint
 yarn format
 yarn test
