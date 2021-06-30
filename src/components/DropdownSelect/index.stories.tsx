@@ -66,9 +66,40 @@ const Template: Story<SelectProps> = (args) => {
       contentText="Select columns to view."
       emptyText="There are no results matching your search"
       limit={99}
+      isDraggable={false}
+    />
+  );
+};
+
+
+const Template2: Story<SelectProps> = (args) => {
+  const [content, setContent] = useState(data);
+
+  return (
+    <DropdownSelect
+      {...args}
+      content={content}
+      onChange={setContent}
+      itemRenderer={(item) => (
+        <ListItem>
+          <b>{item.id}</b>
+        </ListItem>
+      )}
+      onConfirmSelection={(c: any) => alert(JSON.stringify(c))}
+      onCancel={() => alert('cancel')}
+      clearButtonText="Cancel"
+      confirmButtonText="Save"
+      filterPlaceholderText="Find columns..."
+      filterSearch="id"
+      headingText="Customize"
+      contentText="Select columns to view."
+      emptyText="There are no results matching your search"
+      limit={99}
+      isDraggable={true}
     />
   );
 };
 
 export const Default = Template.bind({});
+export const Draggable = Template2.bind({});
 Default.args = {};

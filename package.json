@@ -1,6 +1,6 @@
 {
 	"name": "@farmerconnect/farmerconnect-ui",
-	"version": "1.15.0",
+	"version": "1.17.0",
 	"main": "dist/farmerconnect-ui.cjs.js",
 	"module": "dist/farmerconnect-ui.esm.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"test:watch": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint -c .eslintrc.js src/**/*.ts",
-		"format": "prettier 'src/**/*.ts' --write",
+		"format": "prettier src/**/*.ts --write",
 		"storybook": "start-storybook -p 6006 -s public --no-manager-cache",
 		"build-storybook": "build-storybook -s public",
 		"deploy-storybook": "storybook-to-ghpages"
@@ -36,6 +36,7 @@
 		"@types/jest": "^26.0.15",
 		"@types/node": "^12.0.0",
 		"@types/react": "^16.9.53",
+		"@types/react-beautiful-dnd": "^13.0.0",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-select": "^4.0.15",
 		"@types/styled-components": "^5.1.7",
@@ -80,6 +81,7 @@
 	},
 	"dependencies": {
 		"framer-motion": "^4.1.17",
+		"react-beautiful-dnd": "^13.1.0",
 		"react-select": "^4.3.1",
 		"styled-components": "^5.2.1"
 	},
@@ -93,7 +95,8 @@
 		"ssri": "^8.0.1",
 		"trim": "^1.0.1",
 		"ws": "^7.4.6",
-		"normalize-url": "^6.0.1"
+		"normalize-url": "^6.0.1",
+    "prismjs": "^1.24.0"
 	},
 	"eslintConfig": {
 		"extends": [

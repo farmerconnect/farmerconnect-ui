@@ -109,5 +109,6 @@ describe('DropdownSelect component', () => {
     expect(container.getByText('Item 3')).toBeInTheDocument();
     fireEvent.change(container.getByPlaceholderText(/Find columns.../i), { target: { value: 'x' } });
     expect(container.queryByText('Item 3')).not.toBeInTheDocument();
+    expect(container.getByText('There are no results matching your search')).toBeInTheDocument();
   });
 });
