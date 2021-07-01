@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
 
@@ -9,48 +9,54 @@ export const Wrapper = styled.div`
 `;
 
 type HeadingProps = {
-  isOpen: Boolean;
+  isOpen: boolean;
+  disabled: boolean;
 };
 
 export const Heading = styled.div<HeadingProps>`
-  flex: 1;
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  ${fontFamily}
-  font-size: 0.875rem;
-  line-height: 1.32;
-  padding: 0.625rem 1rem;
-  color: #141414;
-  background-color: #F7F6F4;
-  transition: all 0.05s ease-out;
-  border-radius: ${(props) => props.isOpen ? "0.75rem 0.75rem 0rem 0rem" : "0.75rem"};
-  color: #5b5b5b;
-  cursor: "pointer";
-  box-shadow: ${(props) => props.isOpen ? "0.125rem 0.125rem 0 0 #00E394" : "none"};
-  > svg {
-    fill: #5B5B5B;
-    transform: ${(props) => props.isOpen ? "rotate(180deg)" : "none"};
-  }
-  input {
-    background-color: #F7F6F4;
-    font-size: 14px;
-    margin:0;
-    border:none;
-    width: 100%;
+  ${(props) => css`
+    flex: 1;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     ${fontFamily}
-    font-size: 14px;
-    font-weight: 700;    
-  }
+    font-size: 0.875rem;
+    line-height: 1.32;
+    padding: 0.625rem 1rem;
+    color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+    background-color: ${props.disabled ? "#E7E7E7" : "#F7F6F4"};
+    transition: all 0.05s ease-out;
+    border-radius: ${props.isOpen ? "0.75rem 0.75rem 0rem 0rem" : "0.75rem"};
+    color: #5b5b5b;
+    cursor: ${props.disabled ? "default" : "pointer"};
+    box-shadow: ${props.isOpen ? "0.125rem 0.125rem 0 0 #00E394" : "none"};
+    > svg {
+      fill: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+      transform: ${props.isOpen ? "rotate(180deg)" : "none"};
+    }
+    input {
+      background-color: ${props.disabled ? "#E7E7E7" : "#F7F6F4"};
+      color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+      font-size: 14px;
+      margin: 0;
+      border: none;
+      width: 100%;
+      ${fontFamily}
+      font-size: 14px;
+      font-weight: 700;
+      cursor: ${props.disabled ? "default" : "auto"};
+    }
 
-  input:focus, textarea:focus, select:focus{
-    outline: none;
-  }
+    input:focus, textarea:focus, select:focus{
+      outline: none;
+    }
 
-  input::placeholder {
-    font-weight: 400;
-  }
+    input::placeholder {
+      font-weight: 400;
+      color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+    }
+  `}
 `;
 
 type ContentProps = {

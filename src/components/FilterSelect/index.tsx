@@ -7,11 +7,12 @@ interface FilterSelectProps<T> {
   onSelectItem: (item:T) => void;
   resolveItemName: (item:T) => string;
   listItemRender: (item: T) => ReactNode;
-  placeholder:string;
-  noResultsMessage:string;
+  placeholder: string;
+  noResultsMessage: string;
+  disabled?: boolean;
 }
 
-const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, placeholder, noResultsMessage}: FilterSelectProps<T>) => {
+const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, placeholder, noResultsMessage, disabled = false}: FilterSelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [hasResults, sethasResults] = useState<boolean>(true);
   const [outputList, setoutputList] = useState<T[]>(itemList);
@@ -19,6 +20,7 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = () => {
+    if (disabled) return;
     setIsOpen(!isOpen);
   };
 
@@ -62,8 +64,8 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
 
   return (
     <S.Wrapper ref={contentRef}>
-      <S.Heading onClick={() => handleToggleDropdown()} isOpen={isOpen}>
-        <input placeholder={placeholder} onChange={onInputChange} value={inputValue} alt="filter-select-input"></input>
+      <S.Heading onClick={() => handleToggleDropdown()} isOpen={isOpen} disabled={disabled}>
+        <input placeholder={placeholder} onChange={onInputChange} value={inputValue} alt="filter-select-input" disabled={disabled} />
         <Chevron />
       </S.Heading>
       <S.Content isOpen={isOpen}>

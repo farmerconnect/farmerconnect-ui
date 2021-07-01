@@ -68,6 +68,23 @@ const SelectedItem = styled.div`
 `;
 
 
+export type listItemType = {
+  id: number;
+  name: string;
+};
+
+const data:listItemType[] = [
+  { name: 'Alex Smith    | +55 55 99999 9120', id: 1 },
+  { name: 'Ronald Smith  | +55 55 99999 9121', id: 2 },
+  { name: 'David Smith   | +55 55 99999 9122', id: 3 },
+  { name: 'John Smith    | +55 55 99999 1223', id: 4 },
+  { name: 'Maria Smith   | +55 55 99999 9995', id: 5 },
+  { name: 'Joe Smith     | +55 55 99999 9996', id: 6 },
+  { name: 'Mathew Smith  | +55 55 99999 9997', id: 7 },
+  { name: 'Wink Smith    | +55 55 99999 9998', id: 8 },
+  { name: 'Kate Smith    | +55 55 99999 9999', id: 9 },
+  { name: 'Jess Smith    | +55 55 99999 9100', id: 10 },
+];
 
 const Template: Story<typeof FilterSelect> = (args) => {
   const [selectedItem, setselectedItem] = useState<string>();
@@ -94,26 +111,6 @@ const Template: Story<typeof FilterSelect> = (args) => {
     </div>   
   );
 };
-
-export type listItemType = {
-  id: number;
-  name: string;
-};
-
-const data:listItemType[] = [
-  { name: 'Alex Smith    | +55 55 99999 9120', id: 1 },
-  { name: 'Ronald Smith  | +55 55 99999 9121', id: 2 },
-  { name: 'David Smith   | +55 55 99999 9122', id: 3 },
-  { name: 'John Smith    | +55 55 99999 1223', id: 4 },
-  { name: 'Maria Smith   | +55 55 99999 9995', id: 5 },
-  { name: 'Joe Smith     | +55 55 99999 9996', id: 6 },
-  { name: 'Mathew Smith  | +55 55 99999 9997', id: 7 },
-  { name: 'Wink Smith    | +55 55 99999 9998', id: 8 },
-  { name: 'Kate Smith    | +55 55 99999 9999', id: 9 },
-  { name: 'Jess Smith    | +55 55 99999 9100', id: 10 },
-];
-
-
 
 /*
 Second datatype
@@ -164,5 +161,28 @@ const Template2: Story<typeof FilterSelect> = (args) => {
   );
 };
 
+/*
+Disabled
+*/
+
+const Template3: Story<typeof FilterSelect> = (args) => {
+  const [items] = useState<listItemType[]>(data);
+
+  return (
+    <div>
+      <FilterSelect
+        itemList={items}
+        resolveItemName={(item:listItemType) => item.name}
+        onSelectItem={() => { }}
+        listItemRender={(item:listItemType) => (<ListItem><span>{item.name}</span></ListItem>)}
+        placeholder={"Select farmer"}
+        noResultsMessage={"No results to show at the moment"}
+        disabled
+      />
+    </div>   
+  );
+};
+
 export const FirstType = Template.bind({});
 export const SecondType = Template2.bind({});
+export const Disabled = Template3.bind({});
