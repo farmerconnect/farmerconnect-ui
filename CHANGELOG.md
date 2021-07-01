@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added drag and drop on DropdownSelect
 
+## [1.17.1] - 2021-06-30
+
+- Fixed DropdownSelect styling
+
+## [1.17.0] - 2021-06-30
+
+- Added drag and drop on DropdownSelect
+
 ## [1.16.0] - 2021-06-28
 
 - Added TextArea component

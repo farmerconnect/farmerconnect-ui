@@ -1,124 +1,124 @@
 {
-	"name": "@farmerconnect/farmerconnect-ui",
-	"version": "1.17.0",
-	"main": "dist/farmerconnect-ui.cjs.js",
-	"module": "dist/farmerconnect-ui.esm.js",
-	"scripts": {
-		"prepare": "husky install",
-		"build": "rollup --config",
-		"test": "react-scripts test --ci --watchAll=false",
-		"test:watch": "react-scripts test",
-		"eject": "react-scripts eject",
-		"lint": "eslint -c .eslintrc.js src/**/*.ts",
-		"format": "prettier src/**/*.ts --write",
-		"storybook": "start-storybook -p 6006 -s public --no-manager-cache",
-		"build-storybook": "build-storybook -s public",
-		"deploy-storybook": "storybook-to-ghpages"
-	},
-	"devDependencies": {
-		"@farmerconnect/eslint-config-ts": "1.0.1",
-		"@farmerconnect/prettier-config": "^1.1.0",
-		"@rollup/plugin-typescript": "^8.1.0",
-		"@storybook/addon-actions": "^6.3.1",
-		"@storybook/addon-essentials": "^6.3.1",
-		"@storybook/addon-links": "^6.3.1",
-		"@storybook/addons": "^6.3.1",
-		"@storybook/node-logger": "^6.3.1",
-		"@storybook/preset-create-react-app": "^3.1.7",
-		"@storybook/react": "^6.3.1",
-		"@storybook/storybook-deployer": "^2.8.10",
-		"@storybook/theming": "^6.3.1",
-		"@testing-library/jest-dom": "^5.11.4",
-		"@testing-library/react": "^11.1.0",
-		"@testing-library/user-event": "^12.1.10",
-		"@types/enzyme": "^3.10.8",
-		"@types/enzyme-adapter-react-16": "^1.0.6",
-		"@types/jest": "^26.0.15",
-		"@types/node": "^12.0.0",
-		"@types/react": "^16.9.53",
-		"@types/react-beautiful-dnd": "^13.0.0",
-		"@types/react-dom": "^16.9.8",
-		"@types/react-select": "^4.0.15",
-		"@types/styled-components": "^5.1.7",
-		"@typescript-eslint/eslint-plugin": "^4.24.0",
-		"@typescript-eslint/parser": "^4.24.0",
-		"babel-loader": "8.1.0",
-		"browserslist": "^4.16.6",
-		"dns-packet": "^5.2.3",
-		"enzyme": "^3.11.0",
-		"enzyme-adapter-react-16": "^1.15.5",
-		"enzyme-to-json": "^3.6.2",
-		"eslint": "^7.27.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-config-react-app": "^6.0.0",
-		"eslint-loader": "^4.0.2",
-		"eslint-plugin-flowtype": "^5.7.2",
-		"eslint-plugin-import": "^2.23.3",
-		"eslint-plugin-jam3": "^0.2.3",
-		"eslint-plugin-jsx-a11y": "^6.4.1",
-		"eslint-plugin-prettier": "^3.4.0",
-		"eslint-plugin-react": "^7.23.2",
-		"eslint-plugin-react-hooks": "^4.2.0",
-		"hosted-git-info": "^4.0.2",
-		"husky": "^6.0.0",
-		"jest-styled-components": "^7.0.4",
-		"postcss": "^8.3.0",
-		"prettier": "^2.3.0",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"react-scripts": "^4.0.3",
-		"react-select-event": "^5.3.0",
-		"rollup": "^2.36.1",
-		"ssri": "^8.0.1",
-		"trim": "^1.0.1",
-		"tslib": "^2.1.0",
-		"typescript": "^4.0.3",
-		"webpack": "4.44.2"
-	},
-	"peerDependencies": {
-		"react": "^16.0.0 || ^17.0.1",
-		"react-dom": "^16.0.0 || ^17.0.1"
-	},
-	"dependencies": {
-		"framer-motion": "^4.1.17",
-		"react-beautiful-dnd": "^13.1.0",
-		"react-select": "^4.3.1",
-		"styled-components": "^5.2.1"
-	},
-	"resolutions": {
-		"browserslist": "^4.16.6",
-		"css-what": "^5.0.1",
-		"dns-packet": "^5.2.3",
-		"glob-parent": "^5.1.2",
-		"hosted-git-info": "^4.0.2",
-		"postcss": "^8.3.0",
-		"ssri": "^8.0.1",
-		"trim": "^1.0.1",
-		"ws": "^7.4.6",
-		"normalize-url": "^6.0.1",
+  "name": "@farmerconnect/farmerconnect-ui",
+  "version": "1.17.1",
+  "main": "dist/farmerconnect-ui.cjs.js",
+  "module": "dist/farmerconnect-ui.esm.js",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "rollup --config",
+    "test": "react-scripts test --ci --watchAll=false",
+    "test:watch": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint -c .eslintrc.js src/**/*.ts",
+    "format": "prettier src/**/*.ts --write",
+    "storybook": "start-storybook -p 6006 -s public --no-manager-cache",
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "devDependencies": {
+    "@farmerconnect/eslint-config-ts": "1.0.1",
+    "@farmerconnect/prettier-config": "^1.1.0",
+    "@rollup/plugin-typescript": "^8.1.0",
+    "@storybook/addon-actions": "^6.3.1",
+    "@storybook/addon-essentials": "^6.3.1",
+    "@storybook/addon-links": "^6.3.1",
+    "@storybook/addons": "^6.3.1",
+    "@storybook/node-logger": "^6.3.1",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.3.1",
+    "@storybook/storybook-deployer": "^2.8.10",
+    "@storybook/theming": "^6.3.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-beautiful-dnd": "^13.0.0",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-select": "^4.0.15",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "babel-loader": "8.1.0",
+    "browserslist": "^4.16.6",
+    "dns-packet": "^5.2.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.2",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-jam3": "^0.2.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "hosted-git-info": "^4.0.2",
+    "husky": "^6.0.0",
+    "jest-styled-components": "^7.0.4",
+    "postcss": "^8.3.0",
+    "prettier": "^2.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.3",
+    "react-select-event": "^5.3.0",
+    "rollup": "^2.36.1",
+    "ssri": "^8.0.1",
+    "trim": "^1.0.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.0.3",
+    "webpack": "4.44.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.1",
+    "react-dom": "^16.0.0 || ^17.0.1"
+  },
+  "dependencies": {
+    "framer-motion": "^4.1.17",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-select": "^4.3.1",
+    "styled-components": "^5.2.1"
+  },
+  "resolutions": {
+    "browserslist": "^4.16.6",
+    "css-what": "^5.0.1",
+    "dns-packet": "^5.2.3",
+    "glob-parent": "^5.1.2",
+    "hosted-git-info": "^4.0.2",
+    "postcss": "^8.3.0",
+    "ssri": "^8.0.1",
+    "trim": "^1.0.1",
+    "ws": "^7.4.6",
+    "normalize-url": "^6.0.1",
     "prismjs": "^1.24.0"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"jest": {
-		"snapshotSerializers": [
-			"enzyme-to-json/serializer"
-		]
-	}
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
 }

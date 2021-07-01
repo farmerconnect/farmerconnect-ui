@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const show = keyframes`
+0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+`;
 
 export const Label = styled.label`
   box-sizing: border-box;
@@ -14,7 +23,6 @@ export const Label = styled.label`
   user-select: none;
   position: relative;
   cursor: pointer;
-
   input {
     cursor: pointer;
     opacity: 0;
@@ -24,6 +32,10 @@ export const Label = styled.label`
     bottom: 0;
     left: 0;
     right: 0;
+  }
+
+  > svg {
+    min-width: 1.5rem;
   }
 
   input + .unchecked {
@@ -40,15 +52,6 @@ export const Label = styled.label`
 
   input:checked + .checked {
     display: block;
-    animation: show-radio-button-animation 0.2s;
-  }
-
-  @keyframes show-radio-button-animation {
-    0% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
+    animation: ${show} 0.2s;
   }
 `;

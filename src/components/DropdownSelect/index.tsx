@@ -4,41 +4,48 @@ import * as Icon from '../Icons';
 import CustomButton from '../CustomButton';
 import * as S from './styles';
 
-export type SelectProps = {
-  content: any[];
-  onChange: (c: any[]) => void;
-  onConfirmSelection: (c: any[]) => void;
-  onCancel: () => void;
-  itemRenderer: (item: any) => ReactNode;
-  limit?: number;
-  headingText: string;
-  filterPlaceholderText: string;
-  filterSearch: string;
-  clearButtonText: string;
-  confirmButtonText: string;
-  emptyText: string;
-  disabled?: boolean;
-  contentText: string;
-  isDraggable?: boolean;
+export type DropdownSelectContentItem = {
+  id: string;
+  checked: boolean;
+  default: boolean;
 };
+export interface ISelectProps<T extends DropdownSelectContentItem> {
+  content?: T[];
+  onChange?: (c: T[]) => void;
+  onConfirmSelection?: (c: T[]) => void;
+  onCancel?: () => void;
+  itemRenderer?: (c: T) => ReactNode;
+  limit?: number;
+  headingText?: string;
+  filterPlaceholderText?: string;
+  filterSearch?: (filterValue: string, row: T) => boolean;
+  clearButtonText?: string;
+  confirmButtonText?: string;
+  emptyText?: string;
+  disabled?: boolean;
+  contentText?: string;
+  isDraggable?: boolean;
+  allowEmptySelection?: boolean;
+}
 
-const DropdownSelect = ({
-  content = [] as any[],
-  onChange = (c: any[]) => {},
-  onConfirmSelection = (c: any[]) => {},
-  onCancel,
-  itemRenderer = (item: any) => item.id,
+const DropdownSelect = <T extends DropdownSelectContentItem>({
+  content = [],
+  onChange = (c) => {},
+  onConfirmSelection = (c) => {},
+  onCancel = () => {},
+  itemRenderer = (item) => item.id,
   limit = 2,
   headingText,
   clearButtonText,
   confirmButtonText,
   emptyText,
   filterPlaceholderText,
-  filterSearch,
+  filterSearch = (v, r) => r.id.toLowerCase().includes(v.toLowerCase()),
   contentText,
   isDraggable = false,
-}: SelectProps) => {
-  const [innerContent, setInnerContent] = useState<any>(content);
+  allowEmptySelection = true,
+}: ISelectProps<T>) => {
+  const [innerContent, setInnerContent] = useState<T[]>(content);
   const [filterText, setFilterText] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -46,9 +53,9 @@ const DropdownSelect = ({
     setInnerContent(content);
   }, [content]);
 
-  const handleToggleSelectItem = (item: any) => {
+  const handleToggleSelectItem = (item: T) => {
     onChange(
-      innerContent.map((i: any) => ({
+      innerContent.map((i) => ({
         ...i,
         checked: i.id === item.id ? !item.checked : i.checked,
       }))
@@ -61,14 +68,12 @@ const DropdownSelect = ({
   };
 
   const handleConfirm = () => {
-    onConfirmSelection(innerContent.filter((item: any) => item.checked));
+    onConfirmSelection(innerContent);
   };
 
-  const selectedItems = innerContent.filter((item: any) => item.checked);
+  const selectedItems = innerContent.filter((item) => item.checked);
 
-  const filteredItems = innerContent.filter((item: any) =>
-    item?.[filterSearch].toLowerCase().includes(filterText.toLowerCase())
-  );
+  const filteredItems = innerContent.filter((item) => filterSearch(filterText, item));
 
   function handleOnDragEnd(result: any) {
     if (!result.destination) return;
@@ -112,7 +117,7 @@ const DropdownSelect = ({
               {(provided) => (
                 <S.ListWrapper {...provided.droppableProps} ref={provided.innerRef}>
                   {!!filteredItems.length &&
-                    filteredItems.map((item: any, index: number) => (
+                    filteredItems.map((item, index) => (
                       <Draggable key={item.id} draggableId={item.id} index={index}>
                         {(provided, snapshot) => (
                           <S.ContainerDrag
@@ -124,7 +129,7 @@ const DropdownSelect = ({
                               <S.HandleIcon />
                             </div>
                             <S.CustomCheckbox
-                              checked={innerContent.find((i: any) => i.id === item.id)!.checked}
+                              checked={innerContent.find((i) => i.id === item.id)!.checked}
                               onChange={() => handleToggleSelectItem(item)}
                               disabled={(!item.checked && selectedItems.length === limit) || item.default}
                             >
@@ -143,10 +148,10 @@ const DropdownSelect = ({
         ) : (
           <S.ListWrapper>
             {!!filteredItems.length &&
-              filteredItems.map((item: any, index: number) => (
+              filteredItems.map((item, index) => (
                 <S.ContainerDrag isDragging={false} key={index}>
                   <S.CustomCheckbox
-                    checked={innerContent.find((i: any) => i.id === item.id)!.checked}
+                    checked={innerContent.find((i) => i.id === item.id)!.checked}
                     onChange={() => handleToggleSelectItem(item)}
                     disabled={(!item.checked && selectedItems.length === limit) || item.default}
                   >
@@ -161,7 +166,12 @@ const DropdownSelect = ({
           <S.CustomizedButton variant="link" onClick={() => handleCancel()}>
             {clearButtonText}
           </S.CustomizedButton>
-          <CustomButton onClick={handleConfirm}>{confirmButtonText}</CustomButton>
+          <CustomButton
+            onClick={handleConfirm}
+            disabled={!allowEmptySelection && innerContent.every((item) => !item.checked)}
+          >
+            {confirmButtonText}
+          </CustomButton>
         </S.ButtonContainer>
       </S.Content>
     </S.Wrapper>
