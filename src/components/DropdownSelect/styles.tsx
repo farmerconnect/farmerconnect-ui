@@ -126,8 +126,19 @@ export const EmptyMessage = styled.p`
 `;
 
 export const CustomCheckbox = styled(Checkbox)`
-  opacity: ${(props) => (props.disabled ? 0.4 : 1)};
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  ${(props) =>
+    props.disabled
+      ? css`
+          input + .unchecked,
+          input + .checked,
+          input:checked + svg + .unchecked,
+          input:checked + .checked,
+          input:checked + .checked {
+            display: none;
+          }
+        `
+      : ''}
 `;
 
 export const CustomizedButton = styled(CustomButton)`
@@ -168,7 +179,14 @@ export const ContainerDrag = styled.div<IDragProps>`
 
 export const HandleIcon: React.FC = () => {
   return (
-    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg" style={{marginRight: '0.75rem'}}>
+    <svg
+      width="8"
+      height="13"
+      viewBox="0 0 8 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ marginRight: '0.75rem' }}
+    >
       <circle cx="1.5" cy="1.5" r="1.5" fill="#B9B9B9" />
       <circle cx="6.5" cy="1.5" r="1.5" fill="#B9B9B9" />
       <circle cx="1.5" cy="6.5" r="1.5" fill="#B9B9B9" />
