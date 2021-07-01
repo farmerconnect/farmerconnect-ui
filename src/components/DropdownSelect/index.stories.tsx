@@ -12,7 +12,7 @@ export default {
   excludeStories: ['data', 'ListItem'],
 } as Meta;
 
-const data: DropdownSelectContentItem[] = [
+export const data: DropdownSelectContentItem[] = [
   { id: 'Item 1', checked: true, default: true },
   { id: 'Item 2', checked: true, default: true },
   { id: 'Item 3', checked: true, default: false },

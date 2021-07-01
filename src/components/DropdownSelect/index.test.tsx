@@ -19,7 +19,6 @@ describe('DropdownSelect component', () => {
         clearButtonText="Cancel"
         confirmButtonText="Save"
         filterPlaceholderText="Find columns..."
-        filterSearch="id"
         headingText="Customize"
         contentText="Select columns to view."
         emptyText="There are no results matching your search"
@@ -45,7 +44,6 @@ describe('DropdownSelect component', () => {
         clearButtonText="Cancel"
         confirmButtonText="Save"
         filterPlaceholderText="Find columns..."
-        filterSearch="id"
         headingText="Customize"
         contentText="Select columns to view."
         emptyText="There are no results matching your search"
@@ -71,7 +69,6 @@ describe('DropdownSelect component', () => {
         clearButtonText="Cancel"
         confirmButtonText="Save"
         filterPlaceholderText="Find columns..."
-        filterSearch="id"
         headingText="Customize"
         contentText="Select columns to view."
         emptyText="There are no results matching your search"
@@ -79,7 +76,7 @@ describe('DropdownSelect component', () => {
       />
     );
     fireEvent.click(container.getByText(/Item 5/i));
-    expect(onChange).toHaveBeenCalledWith([{ id: 'Item 5', checked: true, default: false  }]);
+    expect(onChange).toHaveBeenCalledWith([{ id: 'Item 5', checked: true, default: false }]);
   });
 
   it('filter options by text', () => {
@@ -98,7 +95,6 @@ describe('DropdownSelect component', () => {
         clearButtonText="Cancel"
         confirmButtonText="Save"
         filterPlaceholderText="Find columns..."
-        filterSearch="id"
         headingText="Customize"
         contentText="Select columns to view."
         emptyText="There are no results matching your search"
