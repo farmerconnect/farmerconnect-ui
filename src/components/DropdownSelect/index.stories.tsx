@@ -106,11 +106,11 @@ const Template2: Story<ISelectProps<DropdownSelectContentItem>> = (args) => {
       contentText="Select columns to view."
       emptyText="There are no results matching your search"
       limit={99}
-      isDraggable={true}
+      isDraggable={false}
     />
   );
 };
 
-export const Default = Template.bind({ args: { allowEmptySelection: false } });
-export const Draggable = Template2.bind({ args: { allowEmptySelection: false } });
+export const Default = Template.bind({});
+export const Draggable = Template2.bind({});
 Default.args = {};
