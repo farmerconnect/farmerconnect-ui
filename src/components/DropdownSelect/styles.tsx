@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Checkbox from '../Checkbox';
-import CustomButton from '../CustomButton'
+import CustomButton from '../CustomButton';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -41,7 +41,7 @@ export const ContentText = styled.p`
 `;
 
 export const FilterInputWrapper = styled.div`
-  padding: 1rem 1rem .5rem;
+  padding: 1rem 1rem 0.5rem;
   display: block;
   > div {
     position: relative;
@@ -107,22 +107,6 @@ export const ListWrapper = styled.div`
     background: #b9b9b9;
     border-radius: 6px;
   }
-  > label {
-    margin-left: 0;
-    margin-right: 0.4rem;
-    gap: 0.5rem;
-    padding: 0.3125rem 0.75rem;
-    align-items: flex-start;
-    > svg {
-      padding-top: 0.125rem;
-    }
-  }
-  label {
-    border-top: 1px solid #e7e7e7;
-  }
-  label:last-child {
-    border-bottom: 1px solid #e7e7e7;
-  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -147,7 +131,7 @@ export const CustomCheckbox = styled(Checkbox)`
 `;
 
 export const CustomizedButton = styled(CustomButton)`
-  color: #5B5B5B;
+  color: #5b5b5b;
 
   &:hover:not(:disabled) {
     color: #424242;
@@ -158,6 +142,42 @@ export const Close = styled.div`
   cursor: pointer;
 `;
 
+export const Handle = styled.div``;
+
+interface IDragProps {
+  isDragging: boolean;
+}
+
+export const ContainerDrag = styled.div<IDragProps>`
+  display: flex;
+  align-items: center;
+  margin-right: 0.4rem;
+  padding: 0px 0px 0px 0.4rem;
+  border-top: 1px solid #e7e7e7;
+  background: ${(props) => (props.isDragging ? '#E7E7E7' : '#fff')};
+  &:last-child {
+    border-bottom: 1px solid #e7e7e7;
+  }
+  label {
+    margin-left: 0;
+    gap: 0.5rem;
+    padding: 0.3125rem 0rem;
+    align-items: flex-start;
+  }
+`;
+
+export const HandleIcon: React.FC = () => {
+  return (
+    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg" style={{marginRight: '0.75rem'}}>
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#B9B9B9" />
+      <circle cx="6.5" cy="1.5" r="1.5" fill="#B9B9B9" />
+      <circle cx="1.5" cy="6.5" r="1.5" fill="#B9B9B9" />
+      <circle cx="6.5" cy="6.5" r="1.5" fill="#B9B9B9" />
+      <circle cx="1.5" cy="11.5" r="1.5" fill="#B9B9B9" />
+      <circle cx="6.5" cy="11.5" r="1.5" fill="#B9B9B9" />
+    </svg>
+  );
+};
 
 export const MagnifyingGlassIcon: React.FC = () => {
   return (
