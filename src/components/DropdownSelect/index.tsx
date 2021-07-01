@@ -61,7 +61,7 @@ const DropdownSelect = ({
   };
 
   const handleConfirm = () => {
-    onConfirmSelection(innerContent.filter((item: any) => item.checked));
+    onConfirmSelection(innerContent);
   };
 
   const selectedItems = innerContent.filter((item: any) => item.checked);
