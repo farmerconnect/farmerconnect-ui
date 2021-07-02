@@ -87,7 +87,7 @@ const data:listItemType[] = [
 ];
 
 const Template: Story<typeof FilterSelect> = (args) => {
-  const [selectedItem, setselectedItem] = useState<string>();
+  const [selectedItem, setSelectedItem] = useState<listItemType>();
   const [items] = useState<listItemType[]>(data);
 
   return (
@@ -95,16 +95,17 @@ const Template: Story<typeof FilterSelect> = (args) => {
       <FilterSelect
         itemList={items}
         resolveItemName={(item:listItemType) => item.name}
-        onSelectItem={(item:listItemType) => { setselectedItem(JSON.stringify(item)); }}
+        onSelectItem={(item:listItemType) => { setSelectedItem(item); }}
         listItemRender={(item:listItemType) => (<ListItem><span>{item.name}</span></ListItem>)}
         placeholder={"Select farmer"}
         noResultsMessage={"No results to show at the moment"}
+        selectedItem={selectedItem}
       />
       <SelectedItem>
         <span>Selected Value:</span>
         <div id="json-element">
           <pre>
-            <code>{selectedItem}</code>
+            <code>{JSON.stringify(selectedItem)}</code>
           </pre>
         </div>
       </SelectedItem>
@@ -136,7 +137,7 @@ const datatype2:listItemType2[] = [
 ];
 
 const Template2: Story<typeof FilterSelect> = (args) => {
-  const [selectedItem, setselectedItem] = useState<string>();
+  const [selectedItem, setSelectedItem] = useState<listItemType2>();
   const [items] = useState<listItemType2[]>(datatype2);
 
   return (
@@ -144,16 +145,17 @@ const Template2: Story<typeof FilterSelect> = (args) => {
       <FilterSelect
         itemList={items}
         resolveItemName={(item:listItemType2) => `${item.label} - ${item.value}`}
-        onSelectItem={(item:listItemType2) => { setselectedItem(JSON.stringify(item)); }}
+        onSelectItem={(item:listItemType2) => { setSelectedItem(item); }}
         listItemRender={(item:listItemType2) => (<ListItem><span>{item.label} - {item.value}</span></ListItem>)}
         placeholder={"Select farmer type2"}
         noResultsMessage={"No results to show at the moment"}
+        selectedItem={selectedItem}
       />
       <SelectedItem>
         <span>Selected Value:</span>
         <div id="json-element">
           <pre>
-            <code>{selectedItem}</code>
+            <code>{JSON.stringify(selectedItem)}</code>
           </pre>
         </div>
       </SelectedItem>

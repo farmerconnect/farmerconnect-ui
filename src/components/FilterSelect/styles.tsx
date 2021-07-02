@@ -113,8 +113,19 @@ export const ItemList = styled.ul`
     margin: 0;
     padding: 0.3125rem 1rem;
     cursor: pointer;
+    &:hover {
+      background-color: #E7E7E7;
+    }
   }
   li + li {
     border-top: 1px solid #e7e7e7;
   }
+`;
+
+type ItemProps = {
+  isSelected: boolean;
+};
+
+export const Item = styled.li<ItemProps>`
+  background-color: ${(props) => (props.isSelected ? "#E7E7E7" : "#f7f6f4")};
 `;
