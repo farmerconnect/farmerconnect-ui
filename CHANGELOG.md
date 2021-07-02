@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.17.3] - 2021-07-02
+
+- Added prop disabled in FilterSelect
+- Added prop selectedItem in FilterSelect
+- Show hover on selected option in FilterSelect
+- Added prop disabled in Input
+
 ## [1.17.2] - 2021-07-02
 
 - DropdownSelect on search hiding the dnd action
