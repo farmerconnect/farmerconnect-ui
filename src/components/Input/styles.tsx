@@ -31,13 +31,13 @@ export const Input = styled.input<InputProps>`
 	${(props) => css`
 		outline: none;
 		border: none;
-		color: #141414;
+		color: ${props.disabled ? "#B9B9B9" : "#141414"};
 		font-size: 0.875rem;
-		color: #141414;
 		font-weight: 500;
 		padding: 0.6875rem 1rem;
 		border-radius: 0.75rem;
-		background-color: #f7f6f4;
+		background-color: ${props.disabled ? "#E7E7E7" : "#f7f6f4"};
+		cursor: ${props.disabled ? "default" : "auto"};
 		font-family: inherit;
 		box-sizing: border-box;
 		width: 100%;
@@ -53,7 +53,7 @@ export const Input = styled.input<InputProps>`
 		}
 		&:active,
 		&:focus {
-			font-weight: 700;
+			font-weight: ${props.disabled ? "500" : "700"};
 		}
 	`}
 `;
