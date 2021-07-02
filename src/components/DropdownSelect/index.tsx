@@ -111,7 +111,7 @@ const DropdownSelect = <T extends DropdownSelectContentItem>({
             )}
           </div>
         </S.FilterInputWrapper>
-        {isDraggable ? (
+        {isDraggable && filterText === '' ? (
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="columns">
               {(provided) => (
