@@ -21,3 +21,6 @@ Error.args = { error: true };
 
 export const Success = Template.bind({});
 Success.args = { success: true };
+
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true };
