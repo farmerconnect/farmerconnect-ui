@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ## [1.17.2] - 2021-07-02
 
-- DropdownSelect on search hidding the dnd action
+- DropdownSelect on search hiding the dnd action
 
 ## [1.17.1] - 2021-06-30
 
