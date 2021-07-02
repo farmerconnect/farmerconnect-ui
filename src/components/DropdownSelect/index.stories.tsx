@@ -106,7 +106,7 @@ const Template2: Story<ISelectProps<DropdownSelectContentItem>> = (args) => {
       contentText="Select columns to view."
       emptyText="There are no results matching your search"
       limit={99}
-      isDraggable={false}
+      isDraggable={true}
     />
   );
 };
