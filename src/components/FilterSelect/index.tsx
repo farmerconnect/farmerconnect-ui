@@ -43,12 +43,13 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
 
   useEffect(() => {
     setOutputList(itemList);
+    setInputValue(selectedItem ? resolveItemName(selectedItem as T) : '');
 
     window.addEventListener('mousedown', handleClickOutside);
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [itemList]);
+  }, [itemList, selectedItem]);
 
   const onInputChange = (html: React.FormEvent<HTMLInputElement>) => {
     var searchedText:string = html.currentTarget.value;
