@@ -4,7 +4,16 @@ import { TextInputContainer, TextInputField, ErrorMessage, ContainerInput } from
 import IconCheck from '../Icons/Check';
 import IconWarning from '../Icons/Warning';
 
-const TextInput: React.FC<ITextInputProps> = ({ id, classes, placeHolder, value, name, onChange, ...props }) => {
+const TextInput: React.FC<ITextInputProps> = ({
+  id,
+  classes,
+  placeHolder,
+  value,
+  name,
+  onChange,
+  validate,
+  ...props
+}) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [focusInput, setFocusInput] = useState<boolean>(false);
   const [validInput, setValidInput] = useState<boolean>(false);
@@ -19,7 +28,11 @@ const TextInput: React.FC<ITextInputProps> = ({ id, classes, placeHolder, value,
   };
   const handleOnBlur = () => {
     setFocusInput(false);
-    validateInput(inputValue);
+    if (validate) {
+      validate(inputValue, setValidInput, onChange, setErrorMessage, name);
+    } else {
+      validateInput(inputValue);
+    }
   };
   const validateInput = (value: string) => {
     if (value?.length > 3 && value?.length <= 100) {
@@ -38,7 +51,11 @@ const TextInput: React.FC<ITextInputProps> = ({ id, classes, placeHolder, value,
 
   useEffect(() => {
     setInputValue(value);
-    validateInput(value);
+    if (validate) {
+      validate(value, setValidInput, onChange, setErrorMessage, name);
+    } else {
+      validateInput(value);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 

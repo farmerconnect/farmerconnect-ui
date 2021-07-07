@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.17.6] - 2021-07-07
+
+- Created optional validate function on TextInput
+
 ## [1.17.5] - 2021-07-06
 
 - Added input trim on DropdownSelect
