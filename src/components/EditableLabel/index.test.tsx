@@ -51,54 +51,94 @@ describe('EditColumnName component', () => {
     expect(queryByRole('textbox')).not.toBeInTheDocument();
   });
 
-  it('disables Save when input length is lower than minLength', () => {
+  it('calls the validate function with the correct argument', () => {
+    const validate = jest.fn();
     const { getByText, getByRole } = render(
-      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" minLength={5} />
+      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" validate={validate} />
     );
     fireEvent.click(getByText(/edit/i));
-    fireEvent.change(getByRole('textbox'), { target: { value: '  1234  ' } });
-    expect(getByText(/save/i)).toHaveAttribute('disabled');
-    fireEvent.change(getByRole('textbox'), { target: { value: '  12345  ' } });
-    expect(getByText(/save/i)).not.toHaveAttribute('disabled');
+    fireEvent.change(getByRole('textbox'), { target: { value: 'test' } });
+    expect(validate).toHaveBeenCalledWith('test');
   });
 
-  it('disables Save when input length is higher than maxLength', () => {
+  it('calls onSave when input is valid', () => {
+    const onSave = jest.fn();
+    const validate = (value: string) => (value.length < 3 ? 'error message' : false);
     const { getByText, getByRole } = render(
-      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" maxLength={5} />
+      <EditableLabel
+        primaryLabel="column-name"
+        secondaryLabel="column-friendly-name"
+        validate={validate}
+        onSave={onSave}
+      />
     );
     fireEvent.click(getByText(/edit/i));
-    fireEvent.change(getByRole('textbox'), { target: { value: '  123456  ' } });
-    expect(getByText(/save/i)).toHaveAttribute('disabled');
-    fireEvent.change(getByRole('textbox'), { target: { value: '  12345  ' } });
-    expect(getByText(/save/i)).not.toHaveAttribute('disabled');
+    fireEvent.change(getByRole('textbox'), { target: { value: 'test' } });
+    fireEvent.click(getByText(/save/i));
+    expect(onSave).toHaveBeenCalledWith('test');
   });
 
-  it('disables Save when allowEmptyValue is falsy and input is empty', () => {
+  it('calls onSave not to be called when input is invalid', () => {
+    const onSave = jest.fn();
+    const validate = (value: string) => (value.length < 3 ? 'error message' : false);
     const { getByText, getByRole } = render(
-      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" allowEmptyValue={false} />
+      <EditableLabel
+        primaryLabel="column-name"
+        secondaryLabel="column-friendly-name"
+        validate={validate}
+        onSave={onSave}
+      />
+    );
+    fireEvent.click(getByText(/edit/i));
+    fireEvent.change(getByRole('textbox'), { target: { value: 'te' } });
+    fireEvent.click(getByText(/save/i));
+    expect(onSave).not.toHaveBeenCalled();
+  });
+
+  it('does not invalidate field until first submit', () => {
+    const validate = (value: string) => (value.length < 3 ? 'error message' : false);
+    const { getByText, getByRole, queryByRole, queryByText } = render(
+      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" validate={validate} />
+    );
+    fireEvent.click(getByText(/edit/i));
+    fireEvent.change(getByRole('textbox'), { target: { value: 'te' } });
+    expect(queryByRole('alert')).not.toBeInTheDocument();
+    fireEvent.click(getByText(/save/i));
+    expect(getByText(/error message/i)).toBeInTheDocument();
+    expect(queryByText(/save/i)).not.toBeInTheDocument();
+  });
+
+  it('actively apply validation after first attempt', () => {
+    const validate = (value: string) => (value.length < 3 ? 'error message' : false);
+    const { getByText, getByRole, queryByRole, queryByText } = render(
+      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" validate={validate} />
+    );
+    fireEvent.click(getByText(/edit/i));
+    fireEvent.change(getByRole('textbox'), { target: { value: 't' } });
+    expect(queryByRole('alert')).not.toBeInTheDocument();
+    fireEvent.click(getByText(/save/i));
+    expect(getByText(/error message/i)).toBeInTheDocument();
+    expect(queryByText(/save/i)).not.toBeInTheDocument();
+    fireEvent.change(getByRole('textbox'), { target: { value: 'test' } });
+    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(getByText(/save/i)).toBeInTheDocument();
+  });
+
+  it('allow save empty values despite validation rules when allowEmptyValue', () => {
+    const onSave = jest.fn();
+    const validate = (value: string) => (value.length < 3 ? 'error message' : false);
+    const { getByText, getByRole } = render(
+      <EditableLabel
+        primaryLabel="column-name"
+        secondaryLabel="column-friendly-name"
+        validate={validate}
+        allowEmptyValue
+      />
     );
     fireEvent.click(getByText(/edit/i));
     fireEvent.change(getByRole('textbox'), { target: { value: '' } });
-    expect(getByText(/save/i)).toHaveAttribute('disabled');
-    fireEvent.change(getByRole('textbox'), { target: { value: '1' } });
-    expect(getByText(/save/i)).not.toHaveAttribute('disabled');
-  });
-
-  it('enables Save with empty value when allowEmptyValue is truthy', () => {
-    const { getByText, getByRole } = render(
-      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" allowEmptyValue={true} />
-    );
-    fireEvent.click(getByText(/edit/i));
-    fireEvent.change(getByRole('textbox'), { target: { value: '' } });
-    expect(getByText(/save/i)).not.toHaveAttribute('disabled');
-    fireEvent.change(getByRole('textbox'), { target: { value: '1' } });
-    expect(getByText(/save/i)).not.toHaveAttribute('disabled');
-  });
-
-  it('disables edit button when disabled is truthy', () => {
-    const { getByText } = render(
-      <EditableLabel primaryLabel="column-name" secondaryLabel="column-friendly-name" disabled />
-    );
-    expect(getByText(/edit/i)).toHaveAttribute('disabled');
+    fireEvent.click(getByText(/save/i));
+    expect(onSave).not.toHaveBeenCalled();
+    expect(getByText(/edit/i)).toBeInTheDocument();
   });
 });
