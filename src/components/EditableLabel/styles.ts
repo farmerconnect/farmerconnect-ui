@@ -1,13 +1,12 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import CustomButton from '../CustomButton';
+import DefaultInput from '../Input';
 
 const animateInput = keyframes`
 0% {
-	width: 0;
 	opacity: 0;
 }
 100% {
-	width: 100%;
 	opacity: 1;
 }
 `;
@@ -20,9 +19,9 @@ export const Container = styled.div`
   min-height: 2rem;
   > form {
     padding: 0;
-    margin: 0 1rem 0 0;
-    max-width: 12rem;
-    animation: ${animateInput} 0.2s ease-out;
+    margin: 0;
+    box-sizing: border-box;
+    animation: ${animateInput} 0.5s ease-out;
   }
 `;
 
@@ -51,8 +50,17 @@ export const EditButton = styled(CustomButton)`
 
 export const SaveButton = styled(CustomButton)`
   font-size: 0.6875rem;
-  margin-right: 1.5rem;
+  margin: 0 1.5rem 0 1rem;
   padding: 0;
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 0.6875rem;
+  font-weight: 400;
+  margin: 0 1rem 0 0.75rem;
+  padding: 0;
+  color: #fb2e4c;
+  max-width: 7rem;
 `;
 
 export const CancelButton = styled.button`
@@ -65,17 +73,37 @@ export const CancelButton = styled.button`
   cursor: pointer;
 `;
 
-export const Input = styled.input`
+export const Input = styled(DefaultInput)`
+  width: 12rem;
   box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 0.5625rem;
-  border-radius: 0.75rem;
-  border: 1px solid #141414;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  outline: none;
-  background-color: transparent;
+  > svg {
+    height: 1.0625rem;
+    width: 1.0625rem;
+    right: 0.6825rem;
+  }
+  > input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.5625rem;
+    border-radius: 0.75rem;
+    border: 1px solid #141414;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    outline: none;
+    background-color: transparent;
+    box-shadow: none;
+    ${(props) =>
+      props.error
+        ? css`
+            border-color: #fb2e4c;
+            padding-right: 2.25rem;
+          `
+        : ''}
+    &:focus {
+      box-shadow: none;
+    }
+  }
 `;
 
 export const Overlay = styled.div`

@@ -6,8 +6,7 @@ export interface iEditableLabelProps {
   primaryLabel?: string;
   secondaryLabel?: string;
   allowEmptyValue?: boolean;
-  minLength?: number;
-  maxLength?: number;
+  validate?: (s: string) => string | boolean;
   onSave?: (s: string) => void;
   text?: {
     save: string;

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo, FormEventHandler } from 'react';
 import EditIcon from '../Icons/Edit';
 import CloseIcon from '../Icons/Close';
 import { iEditableLabelProps } from './interfaces';
@@ -16,13 +16,13 @@ const EditableLabel = ({
   primaryLabel = '',
   disabled = false,
   text = defaultText,
-  minLength = 0,
-  maxLength = 50,
   allowEmptyValue = true,
+  validate = (s: string) => false,
 }: iEditableLabelProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(secondaryLabel);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [touched, setTouched] = useState(false);
+  const inputRef = useRef<HTMLFormElement>(null);
 
   const handleClickOutside = () => {
     setIsEditing(false);
@@ -31,47 +31,57 @@ const EditableLabel = ({
 
   const handleEditClick = () => {
     setInputValue(secondaryLabel || primaryLabel);
+    setTouched(false);
     setIsEditing(true);
   };
 
-  const handleSave = () => {
-    setIsEditing(false);
-    onSave(inputValue.trim());
+  const handleSave: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    if (allowEmptyValue && !inputValue) {
+      setIsEditing(false);
+      setTouched(false);
+      return;
+    }
+    if (!error) {
+      onSave(inputValue.trim());
+      setTouched(false);
+      setIsEditing(false);
+    } else {
+      setTouched(true);
+    }
   };
 
   useEffect(() => {
-    if (isEditing) inputRef.current?.select();
+    if (isEditing) (inputRef!.current!.firstChild!.firstChild! as HTMLInputElement).select();
   }, [isEditing]);
 
-  const shouldDisableSave = useMemo(() => {
-    if (allowEmptyValue && !inputValue.trim().length) return false;
-    if (!allowEmptyValue && !inputValue.trim().length) return true;
-    if (inputValue.trim().length > maxLength) return true;
-    if (!allowEmptyValue && inputValue.trim().length < minLength) return true;
-    if (allowEmptyValue && inputValue.trim().length && inputValue.trim().length < minLength) return true;
-    return false;
-  }, [inputValue, allowEmptyValue, maxLength, minLength]);
+  const error = useMemo(() => validate(inputValue.trim()), [inputValue, validate]);
 
   return isEditing ? (
     <>
       <S.Overlay onClick={handleClickOutside} aria-hidden="true" data-testid="overlay" />
       <S.Container>
-        <form onSubmit={handleSave}>
+        <form onSubmit={handleSave} ref={inputRef} id="editable-label-form">
           <S.Input
-            ref={inputRef}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             data-cy={`input-edit-label-${primaryLabel}`}
+            error={allowEmptyValue && !inputValue ? false : touched && !!error}
           />
         </form>
-        <S.SaveButton
-          variant="link"
-          onClick={handleSave}
-          disabled={shouldDisableSave}
-          data-cy={`button-save-label-${primaryLabel}`}
-        >
-          {text.save}
-        </S.SaveButton>
+        {allowEmptyValue && !inputValue ? null : !!error && touched ? (
+          <S.ErrorMessage role="alert">{error}</S.ErrorMessage>
+        ) : null}
+        {(allowEmptyValue && !inputValue) || !(!!error && touched) ? (
+          <S.SaveButton
+            variant="link"
+            type="submit"
+            form="editable-label-form"
+            data-cy={`button-save-label-${primaryLabel}`}
+          >
+            {text.save}
+          </S.SaveButton>
+        ) : null}
         <S.CancelButton onClick={handleClickOutside} data-testid="cancel-button">
           <CloseIcon />
         </S.CancelButton>
