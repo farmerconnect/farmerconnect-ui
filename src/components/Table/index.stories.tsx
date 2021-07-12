@@ -13,10 +13,14 @@ export default {
       },
     },
   },
+  args: {
+    isLoading: false,
+  },
 } as Meta;
 
-export const Default: Story<any> = () => (
+export const Default: Story<any> = (args) => (
   <Table
+    {...args}
     columns={[
       {
         options: { fitContent: true },
@@ -47,7 +51,7 @@ export const Default: Story<any> = () => (
   </Table>
 );
 
-export const Sortable: Story<any> = () => {
+export const Sortable: Story<any> = (args) => {
   const [sort, setSort] = useState({ key: 'description', order: 'asc' });
 
   const handleSortChange = (key: string, order: string) => setSort({ key, order });
@@ -55,7 +59,9 @@ export const Sortable: Story<any> = () => {
   return (
     <Table
       sort={sort}
+      isLoading={false}
       onSortChange={handleSortChange}
+      {...args}
       columns={[
         {
           options: { fitContent: true },
@@ -102,8 +108,9 @@ export const Sortable: Story<any> = () => {
   );
 };
 
-export const Centered: Story<any> = () => (
+export const Centered: Story<any> = (args) => (
   <Table
+    {...args}
     columns={[
       {
         options: { fitContent: true },
@@ -136,8 +143,9 @@ export const Centered: Story<any> = () => (
   </Table>
 );
 
-export const Hoverable: Story<any> = () => (
+export const Hoverable: Story<any> = (args) => (
   <Table
+    {...args}
     hoverable={true}
     columns={[
       {
@@ -169,8 +177,9 @@ export const Hoverable: Story<any> = () => (
   </Table>
 );
 
-export const Empty: Story<any> = () => (
+export const Empty: Story<any> = (args) => (
   <Table
+    {...args}
     columns={[
       {
         options: { fitContent: true },
@@ -192,8 +201,9 @@ export const Empty: Story<any> = () => (
   </Table>
 );
 
-export const Slim: Story<any> = () => (
+export const Slim: Story<any> = (args) => (
   <Table
+    {...args}
     slim
     columns={[
       { text: 'ID' },
