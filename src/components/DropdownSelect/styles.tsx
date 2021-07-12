@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import Checkbox from '../Checkbox';
 import CustomButton from '../CustomButton';
@@ -161,7 +162,6 @@ interface IDragProps {
 
 export const ContainerDrag = styled.div<IDragProps>`
   display: flex;
-  align-items: center;
   margin-right: 0.4rem;
   padding: 0px 0px 0px 0.4rem;
   border-top: 1px solid #e7e7e7;
@@ -177,7 +177,52 @@ export const ContainerDrag = styled.div<IDragProps>`
   }
 `;
 
-export const HandleIcon: React.FC = () => {
+export const CollapsableItem = styled.h3`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #141414;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.3125rem 0;
+  &.open {
+    > svg {
+      transform: rotate(90deg);
+    }
+  }
+  > svg {
+    margin-left: 0.5rem;
+    transition: transform 0.1s ease-out;
+  }
+`;
+export const AccordionContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  > label {
+    display: flex;
+    padding-left: 2rem;
+    border-top: 1px solid #e7e7e7;
+    > span {
+      padding-top: 0.25rem;
+      line-height: 1.3;
+    }
+  }
+`;
+
+export const ChevronRight: React.FC<HTMLProps<SVGSVGElement>> = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+    <path
+      d="M0.999531 0.711731C0.609531 1.10173 0.609531 1.73173 0.999531 2.12173L4.87953 6.00173L0.999531 9.88173C0.609531 10.2717 0.609531 10.9017 0.999531 11.2917C1.38953 11.6817 2.01953 11.6817 2.40953 11.2917L6.99953 6.70173C7.38953 6.31173 7.38953 5.68173 6.99953 5.29173L2.40953 0.701731C2.02953 0.321731 1.38953 0.321731 0.999531 0.711731Z"
+      fill="#141414"
+    />
+  </svg>
+);
+
+export const HandleIcon: React.FC<HTMLProps<SVGSVGElement>> = () => {
   return (
     <svg
       width="8"
@@ -185,7 +230,7 @@ export const HandleIcon: React.FC = () => {
       viewBox="0 0 8 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ marginRight: '0.75rem' }}
+      style={{ marginRight: '0.75rem', marginTop: '0.65rem' }}
     >
       <circle cx="1.5" cy="1.5" r="1.5" fill="#B9B9B9" />
       <circle cx="6.5" cy="1.5" r="1.5" fill="#B9B9B9" />
