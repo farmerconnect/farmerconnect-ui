@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
+import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable, StyledHeaderProps } from './interfaces';
 
 export const tableDefaultStyles: ITable = {
   colors: {
@@ -58,7 +58,24 @@ export const Column = styled.td<ITableColumnOptions>`
     `}
 `;
 
-export const Row = styled.tr``;
+export const Row = styled.tr`
+  position: relative;
+`;
+
+const tableHeaderLoadingAnimation = keyframes`
+0% {
+  left: 0;
+  right: 100%;
+}
+50% {
+  right: 0;
+  left: 0;
+}
+100% {
+  left: 100%;
+  right: 0;
+}
+`;
 
 export const Head = styled.thead`
   background-color: ${({ theme }) =>
@@ -83,6 +100,15 @@ export const Head = styled.thead`
       border-top-right-radius: 12px;
     }
   }
+`;
+
+export const LoadingBar = styled.div`
+  position: absolute;
+  height: 0.125rem;
+  left: 0;
+  bottom: 0;
+  background-color: #00e394;
+  animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
 `;
 
 export const Body = styled.tbody<ITableStyles>`

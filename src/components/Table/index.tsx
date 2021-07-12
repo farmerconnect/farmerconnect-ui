@@ -10,7 +10,15 @@ import {
 } from './interfaces';
 import * as S from './styles';
 
-const Table: React.FC<ITableProps> = ({ slim, sort, columns, children, onSortChange, hoverable = false }) => {
+const Table: React.FC<ITableProps> = ({
+  slim,
+  sort,
+  columns,
+  children,
+  onSortChange,
+  hoverable = false,
+  isLoading = false,
+}) => {
   const tableId = useMemo(() => Math.floor(Math.random() * Date.now()), []);
   const tableKey = useMemo(() => `fc-table-${tableId}`, [tableId]);
 
@@ -68,10 +76,11 @@ const Table: React.FC<ITableProps> = ({ slim, sort, columns, children, onSortCha
               </S.SortContainer>
             </S.Column>
           ))}
+          {isLoading && <S.LoadingBar />}
         </S.Row>
       </S.Head>
     ),
-    [columns, renderSortButton, tableKey]
+    [columns, renderSortButton, tableKey, isLoading]
   );
 
   const applyToChildren = useCallback(
@@ -115,7 +124,11 @@ const Table: React.FC<ITableProps> = ({ slim, sort, columns, children, onSortCha
   );
 
   const renderRows = useMemo(
-    () => <S.Body slim={slim} hoverable={hoverable}>{applyToChildren(cloneRow, children)}</S.Body>,
+    () => (
+      <S.Body slim={slim} hoverable={hoverable}>
+        {applyToChildren(cloneRow, children)}
+      </S.Body>
+    ),
     [children, applyToChildren, cloneRow, slim, hoverable]
   );
 

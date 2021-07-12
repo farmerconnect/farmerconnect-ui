@@ -55,6 +55,7 @@ export const Sortable: Story<any> = () => {
   return (
     <Table
       sort={sort}
+      isLoading={false}
       onSortChange={handleSortChange}
       columns={[
         {
