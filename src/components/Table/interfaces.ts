@@ -59,5 +59,6 @@ export interface ITable {
 }
 
 export interface ITableProps extends ITableSort, ITableBody, ITableHoverable {
+  isLoading?: boolean;
   columns: ITableColumn[];
 }
