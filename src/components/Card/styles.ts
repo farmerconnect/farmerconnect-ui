@@ -108,7 +108,7 @@ export const Action = styled.div<ICardProps>`
 `;
 
 export const Content = styled.div<ICardProps>`
-  background: #FFFFFF;
+  background: #F3F3F3;
   margin-right: ${(props) => (props.action ? getBorderPadding(props) : '0px')};
   height: ${(props) => getContentHeight(props)};
 `;
