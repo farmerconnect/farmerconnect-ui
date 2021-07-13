@@ -127,6 +127,7 @@ export const EmptyMessage = styled.p`
 `;
 
 export const CustomCheckbox = styled(Checkbox)`
+  font-weight: ${(props) => (props.checked ? '500' : '400')};
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   ${(props) =>
     props.disabled
@@ -154,8 +155,6 @@ export const Close = styled.div`
   cursor: pointer;
 `;
 
-export const Handle = styled.div``;
-
 interface IDragProps {
   isDragging: boolean;
 }
@@ -181,7 +180,7 @@ export const CollapsableItem = styled.h3`
   display: flex;
   gap: 1rem;
   align-items: center;
-  font-size: 0.6875rem;
+  font-size: 0.6875rem !important;
   font-weight: 700;
   color: #141414;
   cursor: pointer;

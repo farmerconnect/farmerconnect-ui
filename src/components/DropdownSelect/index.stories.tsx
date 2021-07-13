@@ -53,8 +53,6 @@ export const ListItem = styled.div`
   margin: 0;
   padding: 0.25rem 0;
   > b {
-    font-size: 0.875rem;
-    font-weight: 700;
     display: block;
     margin: 0;
     padding: 0;
@@ -74,11 +72,7 @@ const Template: Story<ISelectProps<DropdownSelectContentItem>> = (args) => {
       {...args}
       content={content}
       onChange={setContent}
-      itemRenderer={(item) => (
-        <ListItem>
-          <b>{item.id}</b>
-        </ListItem>
-      )}
+      itemRenderer={(item) => <ListItem>{item.id}</ListItem>}
       onConfirmSelection={(c: any) => alert(JSON.stringify(c))}
       onCancel={() => alert('cancel')}
       clearButtonText="Cancel"

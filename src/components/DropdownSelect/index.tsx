@@ -27,6 +27,7 @@ export interface ISelectProps<T extends DropdownSelectContentItem> {
   emptyText?: string;
   disabled?: boolean;
   contentText?: string;
+  noneText?: string;
   isDraggable?: boolean;
   allowEmptySelection?: boolean;
 }
@@ -43,6 +44,7 @@ const DropdownSelect = <T extends DropdownSelectContentItem>({
   confirmButtonText,
   emptyText,
   filterPlaceholderText,
+  noneText = 'none',
   filterSearch = (v, r) => r.id.toLowerCase().includes(v.toLowerCase()),
   contentText,
   isDraggable = false,
@@ -156,6 +158,7 @@ const DropdownSelect = <T extends DropdownSelectContentItem>({
                               selected={item.checked}
                               label={itemRenderer(item)}
                               onSelect={(subItemId) => handleSelectSubItem(item.id, subItemId)}
+                              noneText={noneText}
                             />
                           )}
                         </S.ContainerDrag>
@@ -190,6 +193,7 @@ type AccordionListProps<T extends { id: string; label: ReactNode }> = {
   items?: T[];
   onSelect?: (t: string | boolean) => void;
   selected?: string | boolean;
+  noneText?: string;
 };
 const AccordionList = <T extends { id: string; label: ReactNode }>({
   label,
@@ -197,6 +201,7 @@ const AccordionList = <T extends { id: string; label: ReactNode }>({
   items = [] as T[],
   selected = false,
   onSelect = (_) => {},
+  noneText = 'none',
 }: AccordionListProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -222,7 +227,7 @@ const AccordionList = <T extends { id: string; label: ReactNode }>({
             transition={{ duration: 0.2 }}
           >
             <Radio name={id} value="" checked={!selected} onChange={handleFormChange}>
-              <span>none</span>
+              <span>{noneText}</span>
             </Radio>
             {items.map((item) => (
               <Radio name={id} value={item.id} checked={selected === item.id} onChange={handleFormChange}>
