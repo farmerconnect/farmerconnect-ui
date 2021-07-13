@@ -110,6 +110,7 @@ export const LoadingBar = styled.caption`
   top: 2.5rem;
   background-color: #00e394;
   animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
+  z-index: 1;
 `;
 
 export const Body = styled.tbody<ITableStyles>`
