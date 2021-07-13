@@ -134,9 +134,9 @@ const Table: React.FC<ITableProps> = ({
 
   return (
     <S.Container>
-      {isLoading && <S.LoadingBar />}
       {renderHeader}
       {renderRows}
+      {isLoading && <S.LoadingBar />}
     </S.Container>
   );
 };
