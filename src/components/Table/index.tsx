@@ -76,10 +76,11 @@ const Table: React.FC<ITableProps> = ({
               </S.SortContainer>
             </S.Column>
           ))}
+          {isLoading && <S.LoadingBar />}
         </S.Row>
       </S.Head>
     ),
-    [columns, renderSortButton, tableKey]
+    [columns, renderSortButton, tableKey, isLoading]
   );
 
   const applyToChildren = useCallback(

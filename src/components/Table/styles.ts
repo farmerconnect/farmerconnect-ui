@@ -103,14 +103,13 @@ export const Head = styled.thead`
   }
 `;
 
-export const LoadingBar = styled.caption`
+export const LoadingBar = styled.div`
   position: absolute;
   height: 0.125rem;
   left: 0;
-  top: 2.5rem;
+  bottom: 0;
   background-color: #00e394;
   animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
-  z-index: 1;
 `;
 
 export const Body = styled.tbody<ITableStyles>`
