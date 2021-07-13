@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.18.0] - 2021-07-12
+
+- Added Card component
+
 ## [1.17.8] - 2021-07-12
 
 - Added isLoading prop to Table component
