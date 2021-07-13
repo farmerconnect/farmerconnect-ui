@@ -77,7 +77,12 @@ const tableHeaderLoadingAnimation = keyframes`
 }
 `;
 
-export const Head = styled.thead`
+type HeadProps = {
+  isLoading?: boolean;
+};
+
+export const Head = styled.thead<HeadProps>`
+  position: relative;
   background-color: ${({ theme }) =>
     theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
@@ -100,15 +105,20 @@ export const Head = styled.thead`
       border-top-right-radius: 12px;
     }
   }
-`;
-
-export const LoadingBar = styled.div`
-  position: absolute;
-  height: 0.125rem;
-  left: 0;
-  bottom: 0;
-  background-color: #00e394;
-  animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
+  ${(props) =>
+    props.isLoading
+      ? css`
+  &::after {
+    content: ''
+    position: absolute;
+    height: 0.125rem;
+    left: 0;
+    bottom: 0;
+    background-color: #00e394;
+    animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
+  }
+  `
+      : ''}
 `;
 
 export const Body = styled.tbody<ITableStyles>`

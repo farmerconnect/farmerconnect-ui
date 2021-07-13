@@ -66,7 +66,7 @@ const Table: React.FC<ITableProps> = ({
 
   const renderHeader = useMemo(
     () => (
-      <S.Head>
+      <S.Head isLoading={isLoading}>
         <S.Row>
           {columns.map(({ options, text = '' }: ITableColumn, index: number) => (
             <S.Column key={`${tableKey}-th-${index}`} as="th" {...options}>
@@ -76,7 +76,6 @@ const Table: React.FC<ITableProps> = ({
               </S.SortContainer>
             </S.Column>
           ))}
-          {isLoading && <S.LoadingBar />}
         </S.Row>
       </S.Head>
     ),
