@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.17.9] - 2021-07-13
+
+- Added subitems to DropdownSelect
+
 ## [1.17.8] - 2021-07-12
 
 - Added isLoading prop to Table component
