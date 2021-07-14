@@ -1,125 +1,48 @@
 import styled from 'styled-components';
-import { ICardProps } from './interfaces';
+import Button from '../CustomButton';
 
-const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
+export const Heading = styled.h2`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+`;
 
-const getBorderPadding = (props: ICardProps) => {
-  if (props.type === 'Main')
-    return '32px';
-  else
-    return '24px';
-}
+export const CollapseButtonContainer = styled.div`
+  display: flex;
+`;
 
-const getTitleFontSize = (props: ICardProps) => {
-  if (props.type === 'Main')
-    return '34px';
-  else
-    return '22px';
-}
-
-const getTitleLineHeight = (props: ICardProps) => {
-  if (props.type === 'Main')
-    return '45px';
-  else
-    if (props.action)
-      return '28px'
-    else
-      return '29px';
-}
-
-const getTitlePaddingBottom = (props: ICardProps) => {
-  if (props.type === 'Main')
-    return '24px';
-  else
-    return '16px';
-}
-
-const getHeaderHeight = (props: ICardProps) => {
-  if (props.type === 'Main')
-    if (props.action)
-      return '101px'
-    else
-      return '69px';
-  else
-    if (props.action)
-      return '68px'
-    else
-      return '45px';
-}
-
-const getContentHeight = (props: ICardProps) => {
-  var actionSize = getHeaderHeight(props);
-  var collapseSize = getFooterHeight(props);
-  return `calc(100% - ${actionSize} - ${collapseSize})`;
-}
-
-const getFooterHeight = (props: ICardProps) => {
-  if (props.type === 'Main')
-    if (props.collapse)
-      return '72px'
-    else
-      return '0px';
-  else
-    if (props.collapse)
-      return '72px'
-    else
-      return '0px';
-}
-
-export const Container = styled.div<ICardProps>`
-  max-height: ${(props) => (props.maxHeight)};
-  max-width: ${(props) => (props.maxWidth)};
-  background: #F3F3F3;
-  border-radius: 12px;
-  padding-top: ${(props) => (props.action ? '0px' : getBorderPadding(props))};
-  padding-right: ${(props) => (props.action ? '0px' : getBorderPadding(props))};
-  padding-bottom: ${(props) => (props.collapse ? '0px' : getBorderPadding(props))};
-  padding-left: ${(props) => getBorderPadding(props)};
+export const CardControls = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
 `;
 
-export const Header = styled.div<ICardProps>`
-  height: ${(props) => getHeaderHeight(props)};
-`;
-
-export const Title = styled.div<ICardProps>`
-  ${fontFamily}
-  font-style: normal;
-  font-weight: bold;
-  font-size: ${(props) => getTitleFontSize(props)};
-  line-height: ${(props) => getTitleLineHeight(props)};
-  color: #141414;
-  display: inline-block;
-  float: left;
-  padding-top: ${(props) => (props.action ? getBorderPadding(props) : '0px')};
-  padding-right: 0px;
-  padding-bottom: ${(props) => getTitlePaddingBottom(props)};
-  padding-left: 0px;
-`;
-
-export const Action = styled.div<ICardProps>`
-  display: ${(props) => (props.action ? 'inline-block' : 'none')};
-  float: right;
-  padding: 16px 16px 0px 16px;
-`;
-
-export const Content = styled.div<ICardProps>`
-  background: #F3F3F3;
-  margin-right: ${(props) => (props.action ? getBorderPadding(props) : '0px')};
-  height: ${(props) => getContentHeight(props)};
-`;
-
-export const Footer = styled.div<ICardProps>`
+type ContainerProps = {
+  isOpen: boolean;
+  type: 'Default' | 'Main';
+};
+export const Container = styled.div<ContainerProps>`
   position: relative;
-  margin-right: ${(props) => (props.action ? getBorderPadding(props) : '0px')};
-  height: ${(props) => getFooterHeight(props)};
+  background-color: #f3f3f3;
+  border-radius: 0.75rem;
+  padding: ${(props) => (props.type === 'Main' ? '2rem' : '1.5rem')};
+  > ${Heading} {
+    font-size: ${(props) => (props.type === 'Main' ? '2.125rem' : '1.0625rem')};
+    margin-bottom: ${(props) => (props.type === 'Main' ? '1.5rem' : '1rem')};
+  }
+  > ${CollapseButtonContainer} {
+    margin-bottom: ${(props) => (props.type === 'Main' ? '-1rem;' : '-0.5rem')};
+  }
 `;
 
-export const Expand = styled.div<ICardProps>`
-  display: ${(props) => (props.collapse ? '' : 'none')};
-  padding: 17px 0px 17px 0px;
+export const SeeMoreButton = styled(Button)`
+  > svg {
+    width: 0.75rem;
+    height: auto;
+  }
 `;

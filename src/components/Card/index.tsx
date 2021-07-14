@@ -1,40 +1,49 @@
-import Button from '../CustomButton';
-import { Plus, Arrow } from '../Icons';
-import { ICardProps } from './interfaces';
+import React, { createContext, useContext, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import * as S from './styles';
+import { ICardProps, ICollapsedProps } from './interfaces';
+import { Arrow } from '../Icons';
 
-const Card = (props: ICardProps) => {
-	return (
-		<S.Container {...props}>
-      <S.Header {...props}>
-        <S.Title {...props}>
-          {props.title}
-        </S.Title>
-        <S.Action {...props}>
-        <Button variant='text' onClick={props.onAction}>
-          {props.action}
-          <Plus />
-        </Button>
-        </S.Action>
-      </S.Header>
-      <S.Content {...props}>
-        {props.children}
-      </S.Content>
-      <S.Footer {...props}>
-        <S.Expand {...props}>
-          <Button variant='text' onClick={props.onCollapse}>
-            {props.collapse}
-            {props.collapseState === 'more' && (
-              <Arrow width={'11'} height={'6'} direction={'down'} />
-            )}
-            {props.collapseState === 'less' && (
-              <Arrow width={'11'} height={'6'} direction={'up'} />
-            )}
-          </Button>
-        </S.Expand>
-      </S.Footer>
-		</S.Container>
-	);
+const CardContext = createContext<[boolean, Function]>([false, () => {}]);
+
+function Card({ type = 'Default', ...props }: ICardProps) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <CardContext.Provider value={[open, setOpen]}>
+      <S.Container type={type} isOpen={open} {...props} />
+    </CardContext.Provider>
+  );
+}
+
+const Collapsed = ({ text = { seeMore: 'See more', seeLess: 'See less' }, children, ...props }: ICollapsedProps) => {
+  const [open, setOpen] = useContext(CardContext);
+
+  return (
+    <>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            animate={{ height: 'auto', overflow: 'hidden' }}
+            initial={{ height: 0, overflow: 'hidden' }}
+            exit={{ height: 0, overflow: 'hidden' }}
+            {...props}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <S.CollapseButtonContainer>
+        <S.SeeMoreButton variant="text" onClick={() => setOpen(!open)}>
+          {open ? text.seeLess : text.seeMore}
+          <Arrow direction={open ? 'up' : 'down'} />
+        </S.SeeMoreButton>
+      </S.CollapseButtonContainer>
+    </>
+  );
 };
+Card.Collapsed = Collapsed;
+Card.Heading = S.Heading;
+Card.Controls = S.CardControls;
 
 export default Card;

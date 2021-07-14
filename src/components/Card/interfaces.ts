@@ -1,14 +1,12 @@
-import { ReactNode } from "react";
+import { HTMLProps } from 'react';
 
 export type ICardProps = {
-  type: 'Default' | 'Main'
-  maxHeight?: string,
-  maxWidth?: string,
-  title: string,
-  children?: ReactNode;
-  action?: string;
-  onAction?: () => void; 
-  collapse?: string;
-  collapseState?: 'more' | 'less';
-  onCollapse?: () => void; 
-};
+  type?: 'Default' | 'Main';
+} & HTMLProps<HTMLDivElement>;
+
+export type ICollapsedProps = {
+  text?: {
+    seeMore: string;
+    seeLess: string;
+  };
+} & HTMLProps<HTMLDivElement>;
