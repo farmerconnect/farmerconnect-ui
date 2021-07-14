@@ -17,6 +17,7 @@ export const tableDefaultStyles: ITable = {
 };
 
 export const Container = styled.table`
+  position: relative;
   border: none;
   border-collapse: separate;
   border-spacing: 0;
@@ -106,9 +107,10 @@ export const LoadingBar = styled.div`
   position: absolute;
   height: 0.125rem;
   left: 0;
-  bottom: 0;
+  top: 2.5rem;
   background-color: #00e394;
   animation: ${tableHeaderLoadingAnimation} 3s infinite linear;
+  z-index: 1;
 `;
 
 export const Body = styled.tbody<ITableStyles>`
