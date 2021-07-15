@@ -28,6 +28,7 @@ import Input from './components/Input';
 import Toggle from './components/Toggle';
 import EditableLabel from './components/EditableLabel';
 import TextArea from './components/TextArea';
+import Card from './components/Card';
 
 export {
 	Breadcrumbs,
@@ -60,4 +61,5 @@ export {
 	Toggle,
 	EditableLabel,
 	TextArea,
+	Card,
 };
