@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
+import { HTMLMotionProps } from 'framer-motion';
 
-export type ICardProps = {
+export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   type?: 'Default' | 'Main';
-};
+}
 
-export type ICollapsedProps = {
+export interface ICollapsedProps extends HTMLMotionProps<'div'> {
   text?: {
     seeMore: string;
     seeLess: string;
   };
-  children?: ReactNode;
-};
+}

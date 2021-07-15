@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.20.0] - 2021-07-15
+
+- Added Accordion component
+- Fixed Card types
+
 ## [1.19.0] - 2021-07-14
 
 - Added DropdownSelect subitems

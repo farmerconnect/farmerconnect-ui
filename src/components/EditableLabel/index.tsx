@@ -23,6 +23,7 @@ const EditableLabel = ({
   const [inputValue, setInputValue] = useState(secondaryLabel);
   const [touched, setTouched] = useState(false);
   const inputRef = useRef<HTMLFormElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleClickOutside = () => {
     setIsEditing(false);
@@ -33,6 +34,7 @@ const EditableLabel = ({
     setInputValue(secondaryLabel || primaryLabel);
     setTouched(false);
     setIsEditing(true);
+    closeButtonRef.current?.scrollIntoView();
   };
 
   const handleSave: FormEventHandler<HTMLFormElement> = (e) => {
@@ -77,7 +79,7 @@ const EditableLabel = ({
             {text.save}
           </S.SaveButton>
         ) : null}
-        <S.CancelButton onClick={handleClickOutside} data-testid="cancel-button">
+        <S.CancelButton onClick={handleClickOutside} data-testid="cancel-button" ref={closeButtonRef}>
           <CloseIcon />
         </S.CancelButton>
       </S.Container>
