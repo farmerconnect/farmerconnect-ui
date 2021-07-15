@@ -131,6 +131,7 @@ describe('EditColumnName component', () => {
       <EditableLabel
         primaryLabel="column-name"
         secondaryLabel="column-friendly-name"
+        onSave={onSave}
         validate={validate}
         allowEmptyValue
       />
@@ -138,7 +139,7 @@ describe('EditColumnName component', () => {
     fireEvent.click(getByText(/edit/i));
     fireEvent.change(getByRole('textbox'), { target: { value: '' } });
     fireEvent.click(getByText(/save/i));
-    expect(onSave).not.toHaveBeenCalled();
+    expect(onSave).toHaveBeenCalledWith('');
     expect(getByText(/edit/i)).toBeInTheDocument();
   });
 });
