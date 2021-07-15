@@ -230,7 +230,7 @@ const AccordionList = <T extends { id: string; label: ReactNode }>({
               <span>{noneText}</span>
             </Radio>
             {items.map((item) => (
-              <Radio name={id} value={item.id} checked={selected === item.id} onChange={handleFormChange}>
+              <Radio name={id} value={item.id} checked={selected === item.id} onChange={handleFormChange} key={item.id}>
                 <span>{item.label}</span>
               </Radio>
             ))}

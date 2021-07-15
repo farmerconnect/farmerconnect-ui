@@ -60,7 +60,9 @@ export const ErrorMessage = styled.p`
   margin: 0 1rem 0 0.75rem;
   padding: 0;
   color: #fb2e4c;
-  max-width: 7rem;
+  min-width: 10rem;
+  text-transform: none;
+  white-space: normal;
 `;
 
 export const CancelButton = styled.button`
@@ -85,7 +87,7 @@ export const Input = styled(DefaultInput)`
     box-sizing: border-box;
     width: 100%;
     margin: 0;
-    padding: 0.5625rem;
+    padding: 0.5rem;
     border-radius: 0.75rem;
     border: 1px solid #141414;
     font-size: 0.6875rem;
