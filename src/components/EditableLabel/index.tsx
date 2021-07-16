@@ -23,7 +23,7 @@ const EditableLabel = ({
   const [inputValue, setInputValue] = useState(secondaryLabel);
   const [touched, setTouched] = useState(false);
   const inputRef = useRef<HTMLFormElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = () => {
     setIsEditing(false);
@@ -34,7 +34,9 @@ const EditableLabel = ({
     setInputValue(secondaryLabel || primaryLabel);
     setTouched(false);
     setIsEditing(true);
-    closeButtonRef.current?.scrollIntoView();
+    setTimeout(() => {
+      containerRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+    }, 100);
   };
 
   const handleSave: FormEventHandler<HTMLFormElement> = (e) => {
@@ -57,7 +59,7 @@ const EditableLabel = ({
   return isEditing ? (
     <>
       <S.Overlay onClick={handleClickOutside} aria-hidden="true" data-testid="overlay" />
-      <S.Container>
+      <S.Container ref={containerRef}>
         <form onSubmit={handleSave} ref={inputRef} id="editable-label-form">
           <S.Input
             value={inputValue}
@@ -79,7 +81,7 @@ const EditableLabel = ({
             {text.save}
           </S.SaveButton>
         ) : null}
-        <S.CancelButton onClick={handleClickOutside} data-testid="cancel-button" ref={closeButtonRef}>
+        <S.CancelButton onClick={handleClickOutside} data-testid="cancel-button">
           <CloseIcon />
         </S.CancelButton>
       </S.Container>

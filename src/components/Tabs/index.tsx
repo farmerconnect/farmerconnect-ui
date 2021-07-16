@@ -16,7 +16,7 @@ const Tabs = ({
   onChange = () => {},
   ...props
 }: TabsProps) => {
-  const handleSelectTab = (tab) => {
+  const handleSelectTab = (tab: number) => {
     if (disabledTabs.includes(tab)) return;
     onChange(tab);
   };
