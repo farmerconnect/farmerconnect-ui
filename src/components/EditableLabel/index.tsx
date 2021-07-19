@@ -37,12 +37,7 @@ const EditableLabel = ({
 
   const handleSave: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    if (allowEmptyValue && !inputValue) {
-      setIsEditing(false);
-      setTouched(false);
-      return;
-    }
-    if (!error) {
+    if (!error || (allowEmptyValue && !inputValue)) {
       onSave(inputValue.trim());
       setTouched(false);
       setIsEditing(false);

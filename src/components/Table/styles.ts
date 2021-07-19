@@ -103,7 +103,7 @@ export const Head = styled.thead`
   }
 `;
 
-export const LoadingBar = styled.div`
+export const LoadingBar = styled.tr`
   position: absolute;
   height: 0.125rem;
   left: 0;
