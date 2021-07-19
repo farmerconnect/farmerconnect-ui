@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.21.1] - 2021-07-19
+
+- Added open/close event in Card component
+- New font size for default Card component title
+
 ## [1.21.0] - 2021-07-19
 
 - Added delete icon
