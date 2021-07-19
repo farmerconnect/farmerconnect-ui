@@ -24,3 +24,4 @@ export { default as Edit } from './Edit';
 export { default as Remove } from './Remove';
 export { default as Plus } from './Plus';
 export { default as Download } from './Download';
+export { default as Delete } from './Delete';
