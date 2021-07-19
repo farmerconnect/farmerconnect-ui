@@ -17,6 +17,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 0.25rem;
   min-height: 2rem;
+  padding-right: 0.875rem;
   > form {
     padding: 0;
     margin: 0;
