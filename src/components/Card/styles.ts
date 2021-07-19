@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 0.75rem;
   padding: ${(props) => (props.type === 'Main' ? '2rem' : '1.5rem')};
   > ${Heading} {
-    font-size: ${(props) => (props.type === 'Main' ? '2.125rem' : '1.375rem')};
+    font-size: ${(props) => (props.type === 'Main' ? '2.125rem' : '1.063rem')};
     margin-bottom: ${(props) => (props.type === 'Main' ? '1.5rem' : '1rem')};
   }
   > ${CollapseButtonContainer} {

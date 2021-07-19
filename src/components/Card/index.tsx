@@ -16,8 +16,13 @@ function Card({ type = 'Default', ...props }: ICardProps) {
   );
 }
 
-const Collapsed = ({ text = { seeMore: 'See more', seeLess: 'See less' }, children, ...props }: ICollapsedProps) => {
+const Collapsed = ({ text = { seeMore: 'See more', seeLess: 'See less' }, onOpenClose = () => {}, children, ...props }: ICollapsedProps) => {
   const [open, setOpen] = useContext(CardContext);
+
+  const onOpen = (open: boolean) => {
+    setOpen(open);
+    onOpenClose(open);
+  }
 
   return (
     <>
@@ -34,7 +39,7 @@ const Collapsed = ({ text = { seeMore: 'See more', seeLess: 'See less' }, childr
         )}
       </AnimatePresence>
       <S.CollapseButtonContainer>
-        <S.SeeMoreButton variant="text" onClick={() => setOpen(!open)}>
+        <S.SeeMoreButton variant="text" onClick={() => onOpen(!open)}>
           {open ? text.seeLess : text.seeMore}
           <Arrow direction={open ? 'up' : 'down'} />
         </S.SeeMoreButton>

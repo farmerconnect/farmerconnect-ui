@@ -10,4 +10,5 @@ export interface ICollapsedProps extends HTMLMotionProps<'div'> {
     seeMore: string;
     seeLess: string;
   };
+  onOpenClose?: (open: boolean) => void;
 }
