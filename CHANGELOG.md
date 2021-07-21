@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.21.2] - 2021-07-19
+
+- Fix ProductScan icon
+
 ## [1.21.1] - 2021-07-19
 
 - Added open/close event in Card component
