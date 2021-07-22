@@ -1,4 +1,4 @@
-import Breadcrumbs from './components/Breadcrumbs';
+import WizardSteps from './components/WizardSteps';
 import Button from './components/Button';
 import IconCheck from './components/Icons/Check';
 import IconClose from './components/Icons/Close';
@@ -32,7 +32,7 @@ import Card from './components/Card';
 import Accordion from './components/Accordion';
 
 export {
-  Breadcrumbs,
+  WizardSteps,
   Button,
   IconCheck,
   IconClose,
