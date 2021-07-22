@@ -1,5 +1,5 @@
-import { IBreadcrumb } from './Breadcrumbs/Breadcrumb/interfaces';
-import { breadcrumbDefaultStyles } from './Breadcrumbs/Breadcrumb/styles';
+import { IWizardStep } from './WizardSteps/WizardStep/interfaces';
+import { wizardStepDefaultStyles } from './WizardSteps/WizardStep/styles';
 import { IButton } from './Button/interfaces';
 import { buttonDefaultStyles } from './Button/styles';
 import { INavigationBar } from './NavigationBar/interfaces';
@@ -14,7 +14,7 @@ import { ITable } from './Table/interfaces';
 import { tableDefaultStyles } from './Table/styles';
 
 interface ITheme {
-  breadcrumb: IBreadcrumb;
+  wizardStep: IWizardStep;
   button: IButton;
   navigationBar: INavigationBar;
   loader: ILoader;
@@ -24,7 +24,7 @@ interface ITheme {
 }
 
 export const farmerConnectTheme: ITheme = {
-  breadcrumb: breadcrumbDefaultStyles,
+  wizardStep: wizardStepDefaultStyles,
   button: buttonDefaultStyles,
   navigationBar: navigationBarDefaultStyles,
   loader: loaderDefaultStyles,
