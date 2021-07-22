@@ -1,16 +1,35 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { ListProps } from './interfaces';
 
 const ListPositionModifiers = {
-  'top-left': [0, 0],
-  'top-center': [0, 50],
-  'top-right': [0, 100],
-  'middle-left': [50, 0],
-  center: [50, 50],
-  'middle-right': [50, 100],
-  'bottom-left': [100, 0],
-  'bottom-center': [100, 50],
-  'bottom-right': [100, 100],
+  'top-left': css`
+    bottom: 100%;
+    right: 100%;
+  `,
+  'top-right': css`
+    bottom: 100%;
+    left: 100%;
+  `,
+  center: css`
+    top: 50%;
+    left: 50%;
+  `,
+  'bottom-left': css`
+    top: 100%;
+    right: 100%;
+  `,
+  'bottom-right': css`
+    top: 100%;
+    left: 100%;
+  `,
+};
+
+const TransformOriginModifiers = {
+  'top-left': 'bottom right',
+  'top-right': 'bottom left',
+  center: 'top left',
+  'bottom-left': 'top right',
+  'bottom-right': 'top left',
 };
 
 export const Overlay = styled.div`
@@ -41,8 +60,7 @@ const dropdownAnimation = keyframes`
 
 export const List = styled.ul<ListProps>`
   position: absolute;
-  top: ${({ position = 'top-left' }) => ListPositionModifiers[position][0]}%;
-  left: ${({ position = 'top-left' }) => ListPositionModifiers[position][1]}%;
+  ${(props) => ListPositionModifiers[props.position] || ListPositionModifiers['bottom-right']}
   list-style: none;
   padding: 0.5rem;
   margin: 0;
@@ -52,7 +70,7 @@ export const List = styled.ul<ListProps>`
   display: inline-flex;
   flex-direction: column;
   overflow: hidden;
-  transform-origin: top left;
+  transform-origin: ${(props) => TransformOriginModifiers[props.position] || TransformOriginModifiers['bottom-right']};
   z-index: 5;
   animation: ${dropdownAnimation} 0.1s ease-out;
 

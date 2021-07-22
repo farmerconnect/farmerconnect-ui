@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.22.0] - 2021-07-21
 
 - Added TagSelect component
+- Added children prop to Input component
+- Added Share icon
+- Added Alert icon
+- Added MagnifyingGlass icon
+- Added Chain icon
+- Fixed Dropdown positions
+- Fixed Modal props' spreading
+- Fixed Modal overlay opacity
 
 ## [1.21.1] - 2021-07-19
 

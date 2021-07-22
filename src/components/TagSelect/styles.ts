@@ -8,6 +8,7 @@ export const Container = styled.div<ContainerProps>`
   box-sizing: border-box;
   position: relative;
   display: inline-block;
+  z-index: ${(props) => (props.isOpen ? 5 : 'unset')};
   &:hover {
     filter: ${(props) => (props.isOpen ? 'none' : 'brightness(97%)')};
   }
@@ -45,6 +46,7 @@ export const Dropdown = styled.ul<DropdownProps>`
   border-radius: 0.75rem;
   overflow: hidden;
   cursor: pointer;
+  background-color: #fff;
   > li {
     display: flex;
     align-items: center;
