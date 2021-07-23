@@ -30,6 +30,7 @@ import EditableLabel from './components/EditableLabel';
 import TextArea from './components/TextArea';
 import Card from './components/Card';
 import Accordion from './components/Accordion';
+import Breadcrumbs from './components/Breadcrumbs';
 
 export {
   WizardSteps,
@@ -64,4 +65,5 @@ export {
   TextArea,
   Card,
   Accordion,
+  Breadcrumbs,
 };
