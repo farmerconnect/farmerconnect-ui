@@ -25,3 +25,7 @@ export { default as Remove } from './Remove';
 export { default as Plus } from './Plus';
 export { default as Download } from './Download';
 export { default as Delete } from './Delete';
+export { default as Share } from './Share';
+export { default as Alert } from './Alert';
+export { default as MagnifyingGlass } from './MagnifyingGlass';
+export { default as Chain } from './Chain';

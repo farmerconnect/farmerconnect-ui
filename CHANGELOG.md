@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.23.0] - 2021-07-21
+
+- Added TagSelect component
+- Added children prop to Input component
+- Added Share icon
+- Added Alert icon
+- Added MagnifyingGlass icon
+- Added Chain icon
+- Added InlineLoader component
+- Fixed Dropdown positions
+- Fixed Modal props' spreading
+- Fixed Modal overlay opacity
 ## [1.22.1] - 2021-07-22
 
 - Added missing export of Breadcrumb component

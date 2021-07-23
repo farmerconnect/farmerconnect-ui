@@ -30,6 +30,8 @@ import EditableLabel from './components/EditableLabel';
 import TextArea from './components/TextArea';
 import Card from './components/Card';
 import Accordion from './components/Accordion';
+import TagSelect from './components/TagSelect';
+import InlineLoader from './components/InlineLoader';
 import Breadcrumbs from './components/Breadcrumbs';
 
 export {
@@ -65,5 +67,7 @@ export {
   TextArea,
   Card,
   Accordion,
+  TagSelect,
+  InlineLoader,
   Breadcrumbs,
 };
