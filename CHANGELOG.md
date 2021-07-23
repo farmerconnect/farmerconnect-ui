@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed Dropdown positions
 - Fixed Modal props' spreading
 - Fixed Modal overlay opacity
+## [1.22.1] - 2021-07-22
+
+- Added missing export of Breadcrumb component
+
 ## [1.22.0] - 2021-07-22
 
 - Renamed existing Breadcrumbs to WizardSteps

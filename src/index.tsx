@@ -32,6 +32,7 @@ import Card from './components/Card';
 import Accordion from './components/Accordion';
 import TagSelect from './components/TagSelect';
 import InlineLoader from './components/InlineLoader';
+import Breadcrumbs from './components/Breadcrumbs';
 
 export {
   WizardSteps,
@@ -68,4 +69,5 @@ export {
   Accordion,
   TagSelect,
   InlineLoader,
+  Breadcrumbs,
 };
