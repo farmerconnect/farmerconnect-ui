@@ -1,4 +1,4 @@
-import Breadcrumbs from './components/Breadcrumbs';
+import WizardSteps from './components/WizardSteps';
 import Button from './components/Button';
 import IconCheck from './components/Icons/Check';
 import IconClose from './components/Icons/Close';
@@ -30,10 +30,13 @@ import EditableLabel from './components/EditableLabel';
 import TextArea from './components/TextArea';
 import Card from './components/Card';
 import Accordion from './components/Accordion';
+import TagSelect from './components/TagSelect';
+import InlineLoader from './components/InlineLoader';
+import Breadcrumbs from './components/Breadcrumbs';
 import Orderer from './components/Orderer';
 
 export {
-  Breadcrumbs,
+  WizardSteps,
   Button,
   IconCheck,
   IconClose,
@@ -65,5 +68,8 @@ export {
   TextArea,
   Card,
   Accordion,
-  Orderer,
+  TagSelect,
+  InlineLoader,
+  Breadcrumbs,
+  Orderer
 };
