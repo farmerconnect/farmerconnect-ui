@@ -83,6 +83,7 @@
     "framer-motion": "^4.1.17",
     "react-beautiful-dnd": "^13.1.0",
     "react-select": "^4.3.1",
+    "react-tooltip": "^4.2.21",
     "styled-components": "^5.2.1"
   },
   "resolutions": {

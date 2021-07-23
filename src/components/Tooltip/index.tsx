@@ -1,38 +1,40 @@
 import { FC } from 'react';
 import { ITooltipProps } from './interfaces';
-import * as S from './styles';
+import ReactTooltip from 'react-tooltip';
+import { Container } from './styles';
 
-const Tooltip: FC<ITooltipProps> = ({ ...props }) =>
-{
+const Tooltip: FC<ITooltipProps> = ({
+  direction,
+  effect,
+  className,
+  backgroundColor,
+  textColor,
+  arrowColor,
+  content,
+  id,
+  event,
+  offset,
+  ...props
+}) => {
+  const clickable = !!event && event === 'click' ? true : false;
+  const classnames = !!className ? `themed ${className}` : `themed`;
   return (
-    <S.Wrapper
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      onClick={props.onClick}
-    >
-      {props.children}
-
-      {(props.active && props.direction === "top") && (
-        <S.TopTip {...props}>
-          {props.content}
-        </S.TopTip>
-      )}
-      {(props.active && props.direction === "right") && (
-        <S.RightTip {...props}>
-          {props.content}
-        </S.RightTip>
-      )}
-      {(props.active && props.direction === "bottom") && (
-        <S.BottomTip {...props}>
-          {props.content}
-        </S.BottomTip>
-      )}
-      {(props.active && props.direction === "left") && (
-        <S.LeftTip {...props}>
-          {props.content}
-        </S.LeftTip>
-      )}
-    </S.Wrapper>
+    <Container>
+      <ReactTooltip
+        place={direction}
+        effect={effect}
+        className={classnames}
+        backgroundColor={backgroundColor}
+        textColor={textColor}
+        arrowColor={arrowColor}
+        id={id}
+        event={event}
+        clickable={clickable}
+        offset={offset}
+      >
+        {content}
+      </ReactTooltip>
+    </Container>
   );
 };
 export default Tooltip;

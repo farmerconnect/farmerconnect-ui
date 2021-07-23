@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 
 export interface ITooltipProps {
-  active: boolean;
   backgroundColor?: string;
-  color?: string;
-  arrow?: boolean;
+  textColor?: string;
+  arrowColor?: string;
   direction: 'bottom' | 'left' | 'right' | 'top';
+  effect: 'float' | 'solid';
+  className?: string;
   content: ReactNode;
-  children: ReactNode;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onClick?: () => void;
+  id: string;
+  event?: string;
+  offset?: any;
 }
