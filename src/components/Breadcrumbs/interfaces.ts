@@ -1,10 +1,8 @@
-import { IBreadcrumbColorProps } from './Breadcrumb/interfaces';
-
 export interface IBreadcrumbProps {
-  active: boolean;
   text: string;
+  onClick?: () => void;
 }
 
-export interface IBreadcrumbsProps extends IBreadcrumbColorProps {
+export interface IBreadcrumbsProps {
   breadcrumbs: IBreadcrumbProps[];
 }

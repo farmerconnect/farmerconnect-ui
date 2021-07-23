@@ -1,4 +1,4 @@
-import Breadcrumbs from './components/Breadcrumbs';
+import WizardSteps from './components/WizardSteps';
 import Button from './components/Button';
 import IconCheck from './components/Icons/Check';
 import IconClose from './components/Icons/Close';
@@ -34,7 +34,7 @@ import TagSelect from './components/TagSelect';
 import InlineLoader from './components/InlineLoader';
 
 export {
-  Breadcrumbs,
+  WizardSteps,
   Button,
   IconCheck,
   IconClose,

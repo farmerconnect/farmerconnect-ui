@@ -14,7 +14,7 @@ export default {
 const Template: Story<ITooltipProps> = (args) => {
   return (
     <Tooltip {...args}>
-      <PublicProfileIcon />
+      <PublicProfileIcon stroke={"#00E394"} />
     </Tooltip>
   )
 };
