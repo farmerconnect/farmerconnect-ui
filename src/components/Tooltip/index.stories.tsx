@@ -28,12 +28,9 @@ const Template: Story<ITooltipProps> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  backgroundColor: '#192C28',
-  textColor: '#F3F3F3',
-  direction: 'right',
-  effect: 'solid',
   content: 'See public profile',
   id: 'global',
+  direction: 'top',
 };
 
 const renderContent = () => (
@@ -57,21 +54,17 @@ const renderContent = () => (
         color: '#fff',
         position: 'absolute',
         top: '-3px',
-        right: '-35px',
+        right: '-24px',
       }}
     >
       <CloseIcon fill={'#fff'}/>
     </button>
-    <p>This is where you can find all of the participants in our ecosystem. For each of the companies in this directory, you can see the data that you have been entitled to. This is also where you can see important information about the headquarters of your own organization.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nulla eget nisl lobortis aliquam. Morbi vehicula dapibus nisi, eleifend mattis leo convallis vel. Aenean neque erat, viverra sed lobortis eu, pretium et velit. Proin neque urna, mollis in dictum vel, ornare non est. Proin egestas accumsan diam non bibendum.</p>
   </div>
 );
 
 export const Clickable = Template.bind({});
 Clickable.args = {
-  backgroundColor: '#192C28',
-  textColor: '#F3F3F3',
-  direction: 'right',
-  effect: 'solid',
   content: renderContent(),
   id: 'global',
   event: 'click',

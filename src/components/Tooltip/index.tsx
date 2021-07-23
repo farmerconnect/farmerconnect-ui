@@ -4,11 +4,11 @@ import ReactTooltip from 'react-tooltip';
 import { Container } from './styles';
 
 const Tooltip: FC<ITooltipProps> = ({
-  direction,
-  effect,
+  direction = 'right',
+  effect = 'solid',
   className,
-  backgroundColor,
-  textColor,
+  backgroundColor = '#192C28',
+  textColor = '#F3F3F3',
   arrowColor,
   content,
   id,
