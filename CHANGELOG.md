@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.22.0] - 2021-07-21
+## [1.23.0] - 2021-07-21
 
 - Added TagSelect component
 - Added children prop to Input component
@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Alert icon
 - Added MagnifyingGlass icon
 - Added Chain icon
+- Added InlineLoader component
 - Fixed Dropdown positions
 - Fixed Modal props' spreading
 - Fixed Modal overlay opacity

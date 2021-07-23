@@ -31,6 +31,7 @@ import TextArea from './components/TextArea';
 import Card from './components/Card';
 import Accordion from './components/Accordion';
 import TagSelect from './components/TagSelect';
+import InlineLoader from './components/InlineLoader';
 
 export {
   Breadcrumbs,
@@ -66,4 +67,5 @@ export {
   Card,
   Accordion,
   TagSelect,
+  InlineLoader,
 };
