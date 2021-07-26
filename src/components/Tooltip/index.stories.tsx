@@ -4,7 +4,6 @@ import Tooltip from './';
 import { ITooltipProps } from './interfaces';
 import PublicProfileIcon from '../Icons/PublicProfile';
 import CloseIcon from '../Icons/Close';
-import ReactTooltip from 'react-tooltip';
 
 export default {
   title: 'Tooltip',
@@ -42,7 +41,7 @@ const renderContent = () => (
     }}
   >
     <button
-      onClick={Tooltip.Hide}
+      onClick={Tooltip.hide}
       style={{
         display: 'flex',
         cursor: 'pointer',

@@ -39,5 +39,5 @@ const Tooltip: FC<ITooltipProps> = ({
 };
 
 export default Object.assign(Tooltip, {
-  Hide: () => ReactTooltip.hide(),
+  hide: () => ReactTooltip.hide(),
 });
