@@ -42,7 +42,7 @@ const renderContent = () => (
     }}
   >
     <button
-      onClick={() => ReactTooltip.hide()}
+      onClick={Tooltip.Hide}
       style={{
         display: 'flex',
         cursor: 'pointer',

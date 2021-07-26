@@ -71,5 +71,5 @@ export {
   TagSelect,
   InlineLoader,
   Breadcrumbs,
-  Orderer
+  Orderer,
 };

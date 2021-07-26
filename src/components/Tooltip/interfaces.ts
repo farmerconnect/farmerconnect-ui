@@ -11,4 +11,5 @@ export interface ITooltipProps {
   id: string;
   event?: string;
   offset?: any;
+  hide?: any;
 }

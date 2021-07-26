@@ -37,4 +37,7 @@ const Tooltip: FC<ITooltipProps> = ({
     </Container>
   );
 };
-export default Tooltip;
+
+export default Object.assign(Tooltip, {
+  Hide: () => ReactTooltip.hide(),
+});
