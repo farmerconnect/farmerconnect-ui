@@ -17,10 +17,10 @@ export const Container = styled.div`
   justify-content: center;
 
   ${CustomButton} {
-    padding: 0.625rem 0rem 0.625rem 0.5rem
+    padding: 0.625rem 0rem 0.625rem 0.5rem;
   }
 
   ${Text} {
-    padding: 0.625rem 0.5rem 0.625rem 0.5rem
+    padding: 0.625rem 0.5rem 0.625rem 0.5rem;
   }
 `;

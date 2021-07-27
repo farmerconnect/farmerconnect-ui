@@ -29,3 +29,4 @@ export { default as Share } from './Share';
 export { default as Alert } from './Alert';
 export { default as MagnifyingGlass } from './MagnifyingGlass';
 export { default as Chain } from './Chain';
+export { default as Information } from './Information';

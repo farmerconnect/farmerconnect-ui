@@ -33,6 +33,7 @@ import Accordion from './components/Accordion';
 import TagSelect from './components/TagSelect';
 import InlineLoader from './components/InlineLoader';
 import Breadcrumbs from './components/Breadcrumbs';
+import Orderer from './components/Orderer';
 
 export {
   WizardSteps,
@@ -70,4 +71,5 @@ export {
   TagSelect,
   InlineLoader,
   Breadcrumbs,
+  Orderer,
 };

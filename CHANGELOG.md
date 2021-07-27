@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.0] - 2021-07-26
+
+- Added Orderer component
+- Added Information icon
+- Changed tooltip to use tooltip-react
+- Removed TextInput component
+
 ## [1.23.0] - 2021-07-21
 
 - Added TagSelect component
