@@ -18,7 +18,7 @@ const Template: Story<ITooltipProps> = (args) => {
         marginTop: '50px',
       }}
     >
-      <PublicProfileIcon data-for={args.id} data-tip />
+      <PublicProfileIcon fill='#000' data-for={args.id} data-tip />
       <Tooltip {...args} />
     </div>
   );
@@ -28,7 +28,7 @@ export const Default = Template.bind({});
 Default.args = {
   content: 'See public profile',
   id: 'global',
-  direction: 'top',
+  direction: 'right',
 };
 
 const renderContent = () => (

@@ -14,10 +14,13 @@ const Tooltip: FC<ITooltipProps> = ({
   id,
   event,
   offset,
+  delayShow,
+  delayHide,
   ...props
 }) => {
   const clickable = !!event && event === 'click' ? true : false;
   const classnames = !!className ? `themed ${className}` : `themed`;
+  let newContent;
   return (
     <Container>
       <ReactTooltip
@@ -31,8 +34,18 @@ const Tooltip: FC<ITooltipProps> = ({
         event={event}
         clickable={clickable}
         offset={offset}
+        delayShow={delayShow}
+        delayHide={delayHide}
+        getContent={(dataTip) => {
+          newContent = content;
+          if(dataTip !== null && dataTip !== 'true') {
+            newContent = dataTip;
+          }
+          return newContent;
+        }}
+        {...props}
       >
-        {content}
+        {newContent}
       </ReactTooltip>
     </Container>
   );
@@ -40,4 +53,5 @@ const Tooltip: FC<ITooltipProps> = ({
 
 export default Object.assign(Tooltip, {
   hide: () => ReactTooltip.hide(),
+  rebuild: () => ReactTooltip.rebuild(),
 });
