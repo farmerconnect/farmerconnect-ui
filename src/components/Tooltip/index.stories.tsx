@@ -11,26 +11,6 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<ITooltipProps> = (args) => {
-  return (
-    <div
-      style={{
-        marginTop: '50px',
-      }}
-    >
-      <PublicProfileIcon fill='#000' data-for={args.id} data-tip />
-      <Tooltip {...args} />
-    </div>
-  );
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  content: 'See public profile',
-  id: 'global',
-  direction: 'right',
-};
-
 const renderContent = () => (
   <div
     style={{
@@ -61,9 +41,29 @@ const renderContent = () => (
   </div>
 );
 
+const Template: Story<ITooltipProps> = (args) => {
+  return (
+    <div
+      style={{
+        marginTop: '50px',
+      }}
+    >
+      <PublicProfileIcon fill='#000' data-for={args.id} data-tip />
+      <Tooltip {...args}>{renderContent()}</Tooltip>
+    </div>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  content: 'See public profile',
+  id: 'global',
+  direction: 'right',
+};
+
 export const Clickable = Template.bind({});
 Clickable.args = {
-  content: renderContent(),
+  content:'See public profile',
   id: 'global',
   event: 'click',
   className: 'clickable'

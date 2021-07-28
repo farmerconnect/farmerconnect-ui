@@ -16,6 +16,7 @@ const Tooltip: FC<ITooltipProps> = ({
   offset,
   delayShow,
   delayHide,
+  children,
   ...props
 }) => {
   const clickable = !!event && event === 'click' ? true : false;
@@ -38,6 +39,8 @@ const Tooltip: FC<ITooltipProps> = ({
         delayHide={delayHide}
         getContent={(dataTip) => {
           newContent = content;
+          // eslint-disable-next-line no-console
+          console.log('dataTip', typeof dataTip)
           if(dataTip !== null && dataTip !== 'true') {
             newContent = dataTip;
           }
@@ -45,7 +48,7 @@ const Tooltip: FC<ITooltipProps> = ({
         }}
         {...props}
       >
-        {newContent}
+        {children ? children : newContent}
       </ReactTooltip>
     </Container>
   );
@@ -53,5 +56,5 @@ const Tooltip: FC<ITooltipProps> = ({
 
 export default Object.assign(Tooltip, {
   hide: () => ReactTooltip.hide(),
-  rebuild: () => ReactTooltip.rebuild(),
+  rebuild: () => ReactTooltip.rebuild()
 });
