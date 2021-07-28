@@ -12,4 +12,6 @@ export interface ITooltipProps {
   event?: string;
   offset?: any;
   hide?: any;
+  delayShow?: number;
+  delayHide?: number;
 }
