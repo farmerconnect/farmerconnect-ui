@@ -5,7 +5,6 @@ import IconClose from './components/Icons/Close';
 import IconWarning from './components/Icons/Warning';
 import NavigationBar from './components/NavigationBar';
 import Loader from './components/Loader';
-import TextInput from './components/TextInput';
 import * as Icon from './components/Icons';
 import Row from './components/Row';
 import Col from './components/Col';
@@ -43,7 +42,6 @@ export {
   NavigationBar,
   IconWarning,
   Loader,
-  TextInput,
   Icon,
   Row,
   Col,

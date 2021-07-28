@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.1] - 2021-07-28
+
+- Removed TextInput export
+
 ## [1.24.0] - 2021-07-26
 
 - Added Orderer component
