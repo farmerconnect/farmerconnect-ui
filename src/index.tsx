@@ -33,6 +33,7 @@ import TagSelect from './components/TagSelect';
 import InlineLoader from './components/InlineLoader';
 import Breadcrumbs from './components/Breadcrumbs';
 import Orderer from './components/Orderer';
+import Infotip from './components/Infotip';
 
 export {
   WizardSteps,
@@ -70,4 +71,5 @@ export {
   InlineLoader,
   Breadcrumbs,
   Orderer,
+  Infotip,
 };
