@@ -18,19 +18,35 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     margin: 0;
     box-sizing: border-box;
     border-radius: 0.75rem;
-    border-color: rgba(20, 20, 20, 0.7);
+    border-color: #5b5b5b;
     transition: none;
     background-color: transparent;
     &:hover {
-      border-color: rgba(20, 20, 20, 1);
+      border-color: #5b5b5b;
     }
+
+    .select__value-container.select__value-container--is-multi.select__value-container--has-value {
+      flex-wrap: wrap;
+      overflow: hidden;
+      max-height: 1.8rem;
+      margin-bottom: 0rem;
+    }
+
     &--menu-is-open {
+      max-height: 25rem;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom: none;
       padding-bottom: 1px;
       .select__dropdown-indicator {
         transform: rotate(180deg);
+      }
+
+      .select__value-container.select__value-container--is-multi.select__value-container--has-value {
+        flex-wrap: wrap;
+        overflow: hidden;
+        padding-bottom: 1rem;
+        max-height: 20rem;
       }
     }
     &--is-focused {
@@ -129,7 +145,7 @@ export const Select = styled(ReactSelect)<ReactSelect>`
   .select__multi-value {
     background-color: #cee9dd;
     border-radius: 0.25rem;
-    margin: 0 0.125rem;
+    margin: 0.125rem;
     padding: 0 0.5rem;
     align-items: center;
     height: 1.5rem;
