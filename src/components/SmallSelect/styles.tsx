@@ -45,7 +45,6 @@ export const Select = styled(ReactSelect)<ReactSelect>`
       .select__value-container.select__value-container--is-multi.select__value-container--has-value {
         flex-wrap: wrap;
         overflow: hidden;
-        padding-bottom: 1rem;
         max-height: 20rem;
       }
     }
@@ -55,10 +54,17 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     }
   }
   .select__value-container {
-    padding: 0 0.5rem;
+    padding: 0 0.5rem 0 0.3rem;
   }
   .select__indicators {
-    padding: 0 0.75rem 0 0;
+    position: relative;
+    align-items: unset;
+
+    > svg {
+      position: absolute;
+      top: 13px;
+      right: 8px;
+    }
   }
   .select__dropdown-indicator {
     color: rgba(20, 20, 20, 0.7);
