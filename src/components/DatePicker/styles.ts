@@ -1,130 +1,54 @@
 import styled from 'styled-components';
-import ReactDatepicker from 'react-datepicker';
-import SmallSelect from '../SmallSelect';
+import { CalendarContainer } from 'react-datepicker';
 import CustomButton from '../CustomButton';
 
-export const Container = styled.div`
+export const DatePickerWrapper = styled.div`
   position: relative;
   > svg {
-    position: absolute;
-    top: 50%;
-    right: 0.625rem;
     color: #5b5b5b;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
     transform: translateY(-50%);
   }
+`;
+
+type DatePickerInputProps = {
+  error?: boolean;
+};
+export const DatePickerInput = styled.input<DatePickerInputProps>`
+  cursor: default;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid ${(props) => (props.error ? '#fb2e4c' : '#5b5b5b')};
+  border-radius: 0.75rem;
+  outline: none;
+  font-size: 0.6875rem;
+  color: #141414;
+  font-weight: 700;
+  line-height: 1rem;
+  padding: 0.5rem 1.75rem 0.5rem 0.75rem;
+  height: 2rem;
+  text-transform: uppercase;
+  &::placeholder {
+    color: #b9b9b9;
+    font-weight: 400;
+    text-transform: none;
+  }
+`;
+
+export const Calendar = styled(CalendarContainer)`
+  border-radius: 0.75rem;
+  width: 34rem;
+  box-shadow: 0.125rem 0.125rem 0 #00e394;
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
   .react-datepicker {
-    width: 19rem;
-    border-radius: 0.75rem;
-    box-shadow: 0.125rem 0.125rem 0 #00e394;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    &__navigation {
-      background-color: transparent;
-      position: absolute;
-      top: 0.5rem;
-      display: none;
-      &--previus {
-        left: 0.5rem;
-      }
-      &--next {
-        right: 0.5rem;
-      }
-    }
-    > h3 {
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: #141414;
-      margin: 0 0 1.5rem 0;
-    }
     &__triangle {
       display: none;
-    }
-    &__current-month {
-      display: none;
-    }
-    &__header__dropdown {
-      display: flex;
-      gap: 0.5rem;
-    }
-    &__month-dropdown-container,
-    &__year-dropdown-container {
-      flex: 1;
-      position: relative;
-    }
-    &__month-read-view,
-    &__year-read-view {
-      font-size: 0.6875rem;
-      color: #141414;
-      min-height: 2rem;
-      padding: 0.5rem 1.75rem 0.5rem 0.75rem;
-      box-sizing: border-box;
-      border: 1px solid #5b5b5b;
-      border-radius: 0.75rem;
-      font-weight: 500;
-    }
-    &__month-dropdown,
-    &__year-dropdown {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      font-size: 0.6875rem;
-      color: #141414;
-      min-height: 2rem;
-      box-sizing: border-box;
-      border: 1px solid #5b5b5b;
-      border-radius: 0.75rem;
-      font-weight: 500;
-      background-color: #fff;
-      z-index: 2;
-      overflow: auto;
-      max-height: 20rem;
-      &::-webkit-scrollbar-track {
-        border-radius: 0 0.75rem 0.75rem 0;
-        /* border-bottom-right-radius: 0.75rem; */
-        background-color: rgba(20, 20, 20, 0.1);
-        padding: 1rem 0;
-      }
-
-      &::-webkit-scrollbar {
-        width: 0.5rem;
-        background-color: transparent;
-        padding-top: 1rem;
-        border-bottom-right-radius: 0.75rem;
-        overflow: hidden;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 0 0.75rem 0.75rem 0;
-        box-sizing: border-box;
-        background-color: #b3b2b1;
-        margin: 2px;
-      }
-    }
-    &__month-option,
-    &__year-option {
-      padding: 0.5rem;
-      color: #5b5b5b;
-      cursor: pointer;
-      transition: all 0.1 ease-out;
-      border-bottom: 1px solid #e7e7e7;
-      &:hover {
-        background-color: #e7e7e7;
-      }
-    }
-    &__month-option--selected_month,
-    &__year-option--selected_year {
-      color: #141414;
-      font-weight: 700;
-    }
-    &__month-option--selected,
-    &__year-option--selected {
-      display: none;
-    }
-    &__month-container {
-      order: 1;
     }
     &__day-names {
       display: flex;
@@ -132,7 +56,7 @@ export const Container = styled.div`
       height: 2rem;
     }
     &__day-name {
-      color: #141414;
+      color: #19181a;
       text-align: center;
       font-size: 0.6875rem;
       flex: 1;
@@ -140,6 +64,7 @@ export const Container = styled.div`
       font-weight: 500;
     }
     &__month {
+      width: 16rem;
     }
     &__week {
       display: flex;
@@ -151,13 +76,19 @@ export const Container = styled.div`
     }
     &__day {
       flex: 1;
-      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.6875rem;
       color: #141414;
-      line-height: 2rem;
       font-weight: 400;
       cursor: pointer;
       position: relative;
+      &:hover {
+        > div {
+          background-color: #cee9dd;
+        }
+      }
       &--outside-month {
         color: #b9b9b9;
       }
@@ -165,107 +96,113 @@ export const Container = styled.div`
         position: relative;
         font-weight: 700;
         color: #fff;
-        &::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          border-radius: 1rem;
-          height: 2rem;
-          width: 2rem;
+        > div {
           background-color: #00e394;
-          z-index: -1;
         }
       }
       &--in-range {
-        background-color: #f3f3f3;
-        border-radius: 1rem;
-        border-radius: 0;
+        background: #f3f3f3;
+      }
+      &--in-selecting-range {
+        background: #f3f3f3;
       }
       &--range-start {
         border-radius: 2rem 0 0 2rem;
-        z-index: 1;
         color: #fff;
         font-weight: 700;
+        position: relative;
         &::before {
           content: '';
           position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          border-radius: 1rem;
-          height: 2rem;
-          width: 2rem;
+          inset: 0 50% 0 0;
+          background-color: #fff;
+        }
+        > div {
           background-color: #00e394;
-          z-index: -1;
+          z-index: 1;
         }
       }
       &--range-end {
         border-radius: 0 2rem 2rem 0;
-        z-index: 1;
         color: #fff;
         font-weight: 700;
         &::before {
           content: '';
           position: absolute;
-          left: 50%;
+          inset: 0 0 0 50%;
+          background-color: #fff;
+        }
+        > div {
+          background-color: #00e394;
+          z-index: 1;
+        }
+      }
+      &--range-start.react-datepicker__day--range-end {
+        background-color: #fff;
+        &::before {
+          display: none;
+        }
+      }
+      &--selecting-range-start,
+      &--selecting-range-end {
+        border-radius: 2rem 0 0 2rem;
+        background-color: #f3f3f3;
+        color: #fff;
+        font-weight: 700;
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0 50% 0 0;
+          background-color: #fff;
+        }
+        > div {
+          background-color: #00e394;
+          z-index: 1;
+        }
+      }
+      &--in-selecting-range:hover {
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0 0 0 50%;
+          background-color: #fff;
+        }
+        > div {
+          background-color: #cee9dd;
+          z-index: 1;
+        }
+      }
+      &--excluded {
+        color: #b9b9b9;
+        background-color: #fff;
+        &::after {
+          content: '';
+          position: absolute;
+          height: 1.125rem;
+          width: 0.125rem;
+          background-color: #b9b9b9;
           top: 50%;
-          transform: translate(-50%, -50%);
-          border-radius: 1rem;
-          height: 2rem;
-          width: 2rem;
-          background-color: #06a56e;
-          z-index: -1;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
         }
       }
     }
   }
 `;
 
-export const DatePicker = styled(ReactDatepicker)``;
-
-export const InputWrapper = styled.div`
-  position: relative;
-`;
-
-export const DatePickerInput = styled.input`
-  cursor: default;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #5b5b5b;
-  border-radius: 0.75rem;
-  outline: none;
-  font-size: 0.6875rem;
-  color: #141414;
-  font-weight: 500;
-  line-height: 1rem;
-  padding: 0.5rem 1.75rem 0.5rem 0.75rem;
+export const Day = styled.div`
   height: 2rem;
-  &:placeholder {
-    color: #b9b9b9;
-    font-weight: 400;
-  }
+  width: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  margin: 0;
+  border-radius: 1rem;
 `;
 
-export const SelectWrapper = styled.div`
+export const BottomRow = styled.div`
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
-export const DateSelect = styled(SmallSelect)`
-  flex: 1;
-  .select__control {
-    border-color: #5b5b5b;
-  }
-`;
-
-export const ButtonRow = styled.div`
-  order: 2;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-top: 1rem;
 `;
 
@@ -277,18 +214,83 @@ export const CancelButton = styled(CustomButton)`
   }
 `;
 
-type DateLabelProps = {
-  isEmpty?: boolean;
+export const Header = styled.div`
+  position: relative;
+  > h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #141414;
+    margin: 0 0 1rem 0;
+    text-align: center;
+  }
+  > div {
+    display: flex;
+    gap: 0.5rem;
+    .select__control {
+      flex: 1;
+    }
+  }
+`;
+
+type ArrowButtonProps = {
+  right?: boolean;
 };
-export const DateLabel = styled.span<DateLabelProps>`
+export const ArrowButton = styled(CustomButton)<ArrowButtonProps>`
   position: absolute;
-  inset: 0 0 0 0;
-  padding-left: 0.75rem;
-  padding-right: 1.75rem;
+  inset: ${(props) => (props.right ? '-0.25rem 0 auto auto' : '-0.25rem auto auto 0')};
+  color: #5b5b5b;
+  padding: 0.5rem;
+  > svg {
+    width: 0.75rem;
+    height: auto;
+    transform: rotate(${(props) => (props.right ? '90deg' : '-90deg')});
+  }
+`;
+
+export const DateSwitchContainer = styled.div`
+  margin-top: 1rem;
+  order: -1;
+  width: 100%;
   display: flex;
-  align-items: center;
-  color: ${(props) => (props.isEmpty ? '#B9B9B9' : '#141414')};
-  font-weight: ${(props) => (props.isEmpty ? 400 : 500)};
-  font-size: 0.6875rem;
-  pointer-events: none;
+  justify-content: center;
+`;
+
+export const DateSwitch = styled.div`
+  width: 17rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  background-color: #f3f3f3;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  > span {
+    display: block;
+    text-align: center;
+    flex: 1;
+    line-height: 2rem;
+    font-size: 0.6875rem;
+    color: #141414;
+    font-weight: 400;
+    z-index: 1;
+    transition: all 0.2s ease-out;
+  }
+  .selected {
+    color: #fff;
+    font-weight: 700;
+  }
+  > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 9rem;
+    background-color: #00e394;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease-out;
+  }
+  > div.selects-range {
+    left: 8rem;
+  }
 `;
