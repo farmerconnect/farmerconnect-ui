@@ -160,7 +160,7 @@ export const Body = styled.tbody<ITableStyles>`
         border-bottom-right-radius: 12px;
         border-top-right-radius: 12px;
       }
-    }    
+    }
 
     & + ${Row} {
       > ${Column} {
