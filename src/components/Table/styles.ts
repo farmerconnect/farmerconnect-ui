@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable, StyledHeaderProps } from './interfaces';
+import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
 
 export const tableDefaultStyles: ITable = {
   colors: {
@@ -82,6 +82,8 @@ export const Head = styled.thead`
   background-color: ${({ theme }) =>
     theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
+  box-shadow: #f7f6f4 0px 0.75rem 0px;
+
   ${Column} {
     color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
     font-size: 11px;
@@ -148,17 +150,15 @@ export const Body = styled.tbody<ITableStyles>`
       &:last-child:not(:first-child) {
         border-left: 0;
       }
-    }
 
-    &:last-of-type {
-      ${Column} {
-        &:first-child {
-          border-bottom-left-radius: 12px;
-        }
+      &:first-child {
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+      }
 
-        &:last-child {
-          border-bottom-right-radius: 12px;
-        }
+      &:last-child {
+        border-bottom-right-radius: 12px;
+        border-top-right-radius: 12px;
       }
     }
 
