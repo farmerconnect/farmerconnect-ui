@@ -30,6 +30,7 @@ export const DatePickerInput = styled.input<DatePickerInputProps>`
   padding: 0.5rem 1.75rem 0.5rem 0.75rem;
   height: 2rem;
   text-transform: uppercase;
+  background-color: transparent;
   &::placeholder {
     color: #b9b9b9;
     font-weight: 400;
@@ -46,6 +47,7 @@ export const Calendar = styled(CalendarContainer)`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  background-color: #fff;
   .react-datepicker {
     &__triangle {
       display: none;
