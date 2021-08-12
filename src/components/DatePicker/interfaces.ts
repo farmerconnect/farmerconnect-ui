@@ -8,7 +8,7 @@ export interface IDatePickerProps {
   hideRangeToggle?: boolean;
   error?: boolean;
   className?: string;
-  text: {
+  text?: {
     placeholder?: string;
     day?: string;
     dateRange?: string;

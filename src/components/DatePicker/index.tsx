@@ -40,7 +40,8 @@ const DatePicker = ({
   hideRangeToggle = false,
   error = false,
   className,
-  text = { day = 'Day', clearDates = 'Clear dates', dateRange = 'Date range', placeholder = 'Select date...' },
+  text = { day: 'Day', clearDates: 'Clear dates', dateRange: 'Date range', placeholder: 'Select date...' },
+  ...props
 }: IDatePickerProps) => {
   const [enableRange, setEnableRange] = useState(!!selectsRange);
 
@@ -67,7 +68,7 @@ const DatePicker = ({
   }, [selectsRange]);
 
   return (
-    <S.DatePickerWrapper className={className}>
+    <S.DatePickerWrapper className={className} {...props}>
       <ReactDatePicker
         customInput={<S.DatePickerInput error={error} />}
         calendarClassName={selectsRange === undefined ? 'show-switch' : ''}
@@ -78,7 +79,8 @@ const DatePicker = ({
         renderCustomHeader={Header}
         placeholderText={text.placeholder}
         dateFormat="MMM-dd-yyyy"
-        onChange={handleSelectRange}
+        onChange={enableRange ? handleSelectRange : undefined}
+        onSelect={enableRange ? undefined : handleSelectRange}
         selected={enableRange ? null : start}
         startDate={enableRange ? start : null}
         endDate={enableRange ? end : null}
@@ -94,11 +96,13 @@ const DatePicker = ({
             </S.DateSwitch>
           </S.DateSwitchContainer>
         )}
-        <S.BottomRow>
-          <S.CancelButton variant="link" onClick={handleClearDates}>
-            {text.clearDates}
-          </S.CancelButton>
-        </S.BottomRow>
+        {enableRange && (
+          <S.BottomRow>
+            <S.CancelButton variant="link" onClick={handleClearDates}>
+              {text.clearDates}
+            </S.CancelButton>
+          </S.BottomRow>
+        )}
       </ReactDatePicker>
       <Calendar />
     </S.DatePickerWrapper>
