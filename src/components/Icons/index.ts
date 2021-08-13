@@ -30,4 +30,5 @@ export { default as Alert } from './Alert';
 export { default as MagnifyingGlass } from './MagnifyingGlass';
 export { default as Chain } from './Chain';
 export { default as Information } from './Information';
+export { default as Calendar } from './Calendar';
 export { default as Filter } from './Filter';
