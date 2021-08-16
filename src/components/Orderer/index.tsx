@@ -24,11 +24,11 @@ const Orderer: React.FC<ITableSortProps> = ({ sort, onSortChange }) => {
     (key: string, order: string) => {
       if (key !== sort?.key) return {};
 
-      if (order === sort?.order) return { isActive: true };
+      if (order === sort?.order && key === sort?.actualSortKey) return { isActive: true };
 
       return { isInactive: true };
     },
-    [sort?.key, sort?.order]
+    [sort?.key, sort?.order, sort?.actualSortKey]
   );
 
   const sortKey = sort?.key;

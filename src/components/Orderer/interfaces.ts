@@ -9,6 +9,7 @@ export interface IOrdererOptions {
 export interface ITableSortOptions {
   key: string;
   order: string;
+  actualSortKey: string;
 }
 
 export interface ITableSortProps {

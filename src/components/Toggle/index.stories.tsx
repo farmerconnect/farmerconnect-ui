@@ -11,9 +11,16 @@ export default {
 } as Meta;
 
 const Template: Story<ToggleProps> = (args) => (
-	<div>
+	<div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+  }}>
 		<Toggle {...args} name="radio-0">
 			Regular
+		</Toggle>
+    <Toggle {...args} name="radio-0" textFirst={true}>
+			Regular with text firts
 		</Toggle>
 		<Toggle {...args} name="radio-0" defaultChecked>
 			Default checked
