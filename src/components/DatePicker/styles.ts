@@ -4,6 +4,9 @@ import CustomButton from '../CustomButton';
 
 export const DatePickerWrapper = styled.div`
   position: relative;
+  .react-datepicker-popper {
+    z-index: 50;
+  }
   > svg {
     color: #5b5b5b;
     position: absolute;
@@ -17,6 +20,7 @@ type DatePickerInputProps = {
   error?: boolean;
 };
 export const DatePickerInput = styled.input<DatePickerInputProps>`
+  font-family: 'Red Hat Text', sans-serif;
   cursor: default;
   width: 100%;
   box-sizing: border-box;
@@ -39,8 +43,9 @@ export const DatePickerInput = styled.input<DatePickerInputProps>`
 `;
 
 export const Calendar = styled(CalendarContainer)`
+  box-sizing: border-box;
   border-radius: 0.75rem;
-  width: 34rem;
+  width: 36rem;
   box-shadow: 0.125rem 0.125rem 0 #00e394;
   position: relative;
   padding: 1rem;
