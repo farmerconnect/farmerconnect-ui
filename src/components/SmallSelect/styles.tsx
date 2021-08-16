@@ -50,7 +50,7 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     }
     &--is-focused {
       box-shadow: none;
-      border-color: rgba(20, 20, 20, 1);
+      border-color: #141414;
     }
   }
   .select__value-container {
@@ -67,10 +67,10 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     }
   }
   .select__dropdown-indicator {
-    color: rgba(20, 20, 20, 0.7);
+    color: #5b5b5b;
     padding: 0;
     &:hover {
-      color: rgba(20, 20, 20, 1);
+      color: #141414;
     }
   }
   .select__menu {
@@ -78,7 +78,7 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     border: none;
     box-shadow: none;
     border-radius: 0;
-    border: 1px solid rgba(20, 20, 20, 0.7);
+    border: 1px solid #5b5b5b;
     border-top: none;
     border-radius: 0 0 0.75rem 0.75rem;
     padding: 0 0 0.25rem 0;
@@ -92,8 +92,8 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     &::-webkit-scrollbar-track {
       border-radius: 0;
       /* border-bottom-right-radius: 0.75rem; */
-      background-color: rgba(20, 20, 20, 0.1);
-      box-shadow: 0 0.25rem 0 0 rgba(20, 20, 20, 0.1);
+      background-color: #e7e7e7;
+      box-shadow: 0 0.25rem 0 0 #e7e7e7;
     }
 
     &::-webkit-scrollbar {
@@ -105,7 +105,7 @@ export const Select = styled(ReactSelect)<ReactSelect>`
 
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      border: 2px solid rgb(231, 231, 231);
+      border: 2px solid #e7e7e7;
       box-sizing: border-box;
       background-color: #b3b2b1;
       margin: 2px;
@@ -113,20 +113,24 @@ export const Select = styled(ReactSelect)<ReactSelect>`
   }
   .select__placeholder {
     font-size: 0.6875rem;
-    color: rgba(20, 20, 20, 0.3);
+    color: #b9b9b9;
+    margin-left: 0.4375rem;
   }
   .select__single-value,
   .select__input {
     font-size: 0.6875rem;
-    color: rgba(20, 20, 20, 1);
-    font-weight: 500;
+    margin-left: 0.4375rem;
+    color: #141414;
     > input {
-      font-weight: 500;
+      font-weight: 700;
     }
+  }
+  .select__single-value-value {
+    font-weight: 500;
   }
   .select__option {
     font-size: 0.875rem;
-    color: rgba(20, 20, 20, 0.7);
+    color: #5b5b5b;
     padding: 0.5rem 1rem;
     font-weight: 400;
     display: flex;
@@ -141,11 +145,11 @@ export const Select = styled(ReactSelect)<ReactSelect>`
     }
     &--is-selected {
       font-weight: 500;
-      color: rgba(20, 20, 20, 1);
+      color: #141414;
       background-color: unset;
     }
     & + .select__option {
-      border-top: 1px solid rgba(20, 20, 20, 0.1);
+      border-top: 1px solid #e7e7e7;
     }
   }
   .select__multi-value {
