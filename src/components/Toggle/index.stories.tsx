@@ -20,7 +20,7 @@ const Template: Story<ToggleProps> = (args) => (
 			Regular
 		</Toggle>
     <Toggle {...args} name="radio-0" textFirst={true}>
-			Regular with text firts
+			Regular with text first
 		</Toggle>
 		<Toggle {...args} name="radio-0" defaultChecked>
 			Default checked
