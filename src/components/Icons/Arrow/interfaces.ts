@@ -1,3 +1,5 @@
+import { HTMLAttributes } from 'react';
+
 interface SVGProps {
   fill?: string;
   width?: string;
@@ -20,4 +22,4 @@ export interface IArrow extends IArrowCommonProps {
   colors?: IArrowColors;
 }
 
-export interface IArrowProps extends SVGProps, IArrowColors, IArrowCommonProps {}
+export interface IArrowProps extends SVGProps, IArrowColors, IArrowCommonProps, HTMLAttributes<SVGSVGElement> {}

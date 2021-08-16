@@ -7,14 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.27.0] - 2021-08-16
+## [1.28.0] - 2021-08-16
 
 - Orderer styles
 - Toggle styles
 
-## [1.26.1] - 2021-08-11
+## [1.27.0] - 2021-08-11
 
-- Removed width of orderer
+- Added DatePicker
 
 ## [1.26.0] - 2021-08-09
 
