@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.28.0] - 2021-08-16
+
+- Orderer styles
+- Toggle styles
 ## [1.27.1] - 2021-08-13
 
 - Fixed DatePicker styling
