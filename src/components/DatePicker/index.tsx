@@ -25,7 +25,9 @@ const Header = (props: {
           <Arrow />
         </S.ArrowButton>
       )}
-      <h4>{props.monthDate.toLocaleString('en', { month: 'long' })}</h4>
+      <h4>
+        {props.monthDate.toLocaleString('en', { month: 'long' })} {props.monthDate.getFullYear()}
+      </h4>
     </S.Header>
   );
 };
