@@ -6,6 +6,7 @@ interface FilterSelectProps<T> {
   itemList: T[];
   onSelectItem: (item: T) => void;
   resolveItemName: (item: T) => string;
+  resolveItemRender?: (item: T) => ReactNode;
   listItemRender: (item: T) => ReactNode;
   placeholder: string;
   noResultsMessage: string;
@@ -13,12 +14,13 @@ interface FilterSelectProps<T> {
   disabled?: boolean;
 }
 
-const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, placeholder, noResultsMessage, selectedItem, disabled = false}: FilterSelectProps<T>) => {
+const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, resolveItemRender, placeholder, noResultsMessage, selectedItem, disabled = false}: FilterSelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [hasResults, setHasResults] = useState<boolean>(true);
   const [outputList, setOutputList] = useState<T[]>(itemList);
   const [inputValue, setInputValue] = useState<string>('');
   const [mouseEnterItemList, setMouseEnterItemList] = useState<boolean>(false);
+  const [inputFocused, setInputFocused] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = () => {
@@ -70,7 +72,19 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
   return (
     <S.Wrapper ref={contentRef}>
       <S.Heading onClick={() => handleToggleDropdown()} isOpen={isOpen} disabled={disabled}>
-        <input placeholder={placeholder} onChange={onInputChange} value={inputValue} alt="filter-select-input" disabled={disabled} />
+        {resolveItemRender && !isOpen && !inputFocused && selectedItem ? (
+          resolveItemRender(selectedItem)
+        ) : (
+          <input 
+            placeholder={placeholder} 
+            onChange={onInputChange} 
+            onFocus={() => setInputFocused(true)} 
+            onBlur={() => setInputFocused(false)} 
+            value={inputValue} 
+            alt="filter-select-input" 
+            disabled={disabled} 
+          />
+        )}        
         <Chevron />
       </S.Heading>
       <S.Content isOpen={isOpen}>
