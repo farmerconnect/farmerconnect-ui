@@ -10,7 +10,7 @@ type LabelSwitchProps = {
 };
 
 const LabelSwitch = ({
-  labels = ['Tab 1', 'Tab 2', 'Tab 3'],
+  labels = ['Label 1', 'Label 2'],
   currentLabel = 0,
   disabledLabels = [],
   onChange = () => {},
