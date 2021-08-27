@@ -5,4 +5,5 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   success?: boolean;
   disabled?: boolean;
   children?: ReactNode;
+  helperText?: ReactNode;
 }
