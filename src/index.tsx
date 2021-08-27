@@ -35,6 +35,8 @@ import Breadcrumbs from './components/Breadcrumbs';
 import Orderer from './components/Orderer';
 import Infotip from './components/Infotip';
 import DatePicker from './components/DatePicker';
+import Select from './components/Select';
+import LabelSwitch from './components/LabelSwitch';
 
 export {
   WizardSteps,
@@ -74,4 +76,6 @@ export {
   Orderer,
   Infotip,
   DatePicker,
+  Select,
+  LabelSwitch,
 };
