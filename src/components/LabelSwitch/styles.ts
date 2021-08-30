@@ -7,7 +7,7 @@ type LabelItemProps = {
 
 export const Container = styled.ul`
   list-style-type: none;
-  display: flex;
+  display: inline-flex;
   min-height: 2rem;
   box-sizing: border-box;
   gap: 0rem;
@@ -16,6 +16,7 @@ export const Container = styled.ul`
   align-items: center;
   background: #f7f6f4;
   border-radius: 1.1875rem;
+  width: fit-content;
 `;
 
 export const LabelItem = styled.li<LabelItemProps>`

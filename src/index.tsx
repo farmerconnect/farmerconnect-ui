@@ -37,6 +37,8 @@ import Infotip from './components/Infotip';
 import DatePicker from './components/DatePicker';
 import FileUpload from './components/FileUpload';
 import ProgressBar from './components/ProgressBar';
+import Select from './components/Select';
+import LabelSwitch from './components/LabelSwitch';
 
 export {
   WizardSteps,
@@ -77,5 +79,7 @@ export {
   Infotip,
   DatePicker,
   FileUpload,
-  ProgressBar
+  ProgressBar,
+  Select,
+  LabelSwitch,
 };

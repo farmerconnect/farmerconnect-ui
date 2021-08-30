@@ -1,5 +1,6 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ReactSelect from 'react-select';
+import { SmallSelectProps } from '.';
 
 const animateCheckbox = keyframes`
   0% {
@@ -10,7 +11,7 @@ const animateCheckbox = keyframes`
   }
 `;
 
-export const Select = styled(ReactSelect)<ReactSelect>`
+export const Select = styled(ReactSelect)<SmallSelectProps>`
   .select__control {
     min-height: 2rem;
     max-height: 2rem;
@@ -38,9 +39,6 @@ export const Select = styled(ReactSelect)<ReactSelect>`
       border-bottom-right-radius: 0;
       border-bottom: none;
       padding-bottom: 1px;
-      .select__dropdown-indicator {
-        transform: rotate(180deg);
-      }
 
       .select__value-container.select__value-container--is-multi.select__value-container--has-value {
         flex-wrap: wrap;
@@ -52,6 +50,9 @@ export const Select = styled(ReactSelect)<ReactSelect>`
       box-shadow: none;
       border-color: #141414;
     }
+    &--menu-is-open .select__indicators svg {
+      transform: rotate(180deg);
+    }
   }
   .select__value-container {
     padding: 0 0.5rem 0 0.3rem;
@@ -62,8 +63,8 @@ export const Select = styled(ReactSelect)<ReactSelect>`
 
     > svg {
       position: absolute;
-      top: 13px;
-      right: 8px;
+      top: 0.8125rem;
+      right: 0.625rem;
     }
   }
   .select__dropdown-indicator {
@@ -186,4 +187,8 @@ export const Select = styled(ReactSelect)<ReactSelect>`
       }
     }
   }
+`;
+
+export const SelectWrapper = styled.div`
+  position: relative;
 `;

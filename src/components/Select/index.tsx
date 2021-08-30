@@ -1,11 +1,12 @@
-import * as S from './styles';
+import { ReactNode } from 'react';
+import { Select } from './styles';
 import { components, Props, OptionProps } from 'react-select';
 import { CheckboxUnchecked, CheckboxChecked } from '../Icons/Checkbox';
-import { HelperText } from '../Input/styles';
 
-export type SmallSelectProps = {
-  error?: string | boolean;
-  helperText?: string;
+type CustomOptionProps = {
+  children: ReactNode;
+  isSelected: boolean;
+  isMulti: boolean;
 } & Props;
 
 const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => {
@@ -17,23 +18,19 @@ const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => {
   );
 };
 
-const SmallSelect = (props: SmallSelectProps) => (
-  <S.SelectWrapper>
-    <S.Select
-      components={{
-        IndicatorSeparator: null,
-        DropdownIndicator: DropdownIcon,
-        ClearIndicator: null,
-        Option: CustomOption,
-      }}
-      classNamePrefix="select"
-      hideSelectedOptions={false}
-      closeMenuOnSelect={false}
-      {...props}
-    />
-    {props.error && typeof props.error === 'string' && <HelperText error={true}>{props.error}</HelperText>}
-    {props.helperText && !props.error && <HelperText>{props.helperText}</HelperText>}
-  </S.SelectWrapper>
+const CustomSelect = (props: CustomOptionProps) => (
+  <Select
+    components={{
+      IndicatorSeparator: null,
+      DropdownIndicator: DropdownIcon,
+      ClearIndicator: null,
+      Option: CustomOption,
+    }}
+    classNamePrefix="select"
+    hideSelectedOptions={false}
+    closeMenuOnSelect={false}
+    {...props}
+  />
 );
 
 const DropdownIcon = () => (
@@ -46,4 +43,4 @@ const DropdownIcon = () => (
   </svg>
 );
 
-export default SmallSelect;
+export default CustomSelect;

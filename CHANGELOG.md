@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added FileUpload component
 - Added ProgressBar component
 
+## [1.31.0] - 2021-08-21
+
+- Added Select component
+- Added helperText to Input
+- Added helperText and error text to SmallSelect
+
 ## [1.30.0] - 2021-08-20
 
 - Added LabelSwitch component
