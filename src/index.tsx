@@ -35,6 +35,8 @@ import Breadcrumbs from './components/Breadcrumbs';
 import Orderer from './components/Orderer';
 import Infotip from './components/Infotip';
 import DatePicker from './components/DatePicker';
+import FileUpload from './components/FileUpload';
+import ProgressBar from './components/ProgressBar';
 
 export {
   WizardSteps,
@@ -74,4 +76,6 @@ export {
   Orderer,
   Infotip,
   DatePicker,
+  FileUpload,
+  ProgressBar
 };
