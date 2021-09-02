@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.0] - 2021-09-02
+
+- Fix table component
+
 ## [1.32.0] - 2021-08-30
 
 - Added FileUpload component
