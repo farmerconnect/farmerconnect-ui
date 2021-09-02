@@ -141,41 +141,45 @@ function SingleSelect<T extends contentType>({
             )}
           </div>
           {!!selectFilter1 && (
-            <S.FilterSelect
-              options={
-                filterContentSelect2.length
-                  ? [...new Set(filteredTextSelect2.map(selectFilter1.content))].map((item) => ({
-                      label: item,
-                      value: item,
-                    }))
-                  : [...new Set(filteredText.map(selectFilter1.content))].map((item) => ({
-                      label: item,
-                      value: item,
-                    }))
-              }
-              placeholder={selectFilter1.placeholder}
-              isMulti
-              onChange={(value: optionType[] | null) =>
-                value ? setFilterContentSelect1(value.map((option) => option.value)) : setFilterContentSelect1([])
-              }
-              value={filterContentSelect1.map((item) => ({ label: item, value: item }))}
-              inputId="single-select-dropdown-filter-1"
-            />
+            <S.FilterBox>
+              <S.FilterSelect
+                options={
+                  filterContentSelect2.length
+                    ? [...new Set(filteredTextSelect2.map(selectFilter1.content))].map((item) => ({
+                        label: item,
+                        value: item,
+                      }))
+                    : [...new Set(filteredText.map(selectFilter1.content))].map((item) => ({
+                        label: item,
+                        value: item,
+                      }))
+                }
+                placeholder={selectFilter1.placeholder}
+                isMulti
+                onChange={(value: optionType[] | null) =>
+                  value ? setFilterContentSelect1(value.map((option) => option.value)) : setFilterContentSelect1([])
+                }
+                value={filterContentSelect1.map((item) => ({ label: item, value: item }))}
+                inputId="single-select-dropdown-filter-1"
+              />
+            </S.FilterBox>
           )}
           {!!selectFilter2 && (
-            <S.FilterSelect
-              options={[...new Set(filteredTextSelect1.map(selectFilter2.content))].map((item) => ({
-                label: item,
-                value: item,
-              }))}
-              placeholder={selectFilter2.placeholder}
-              isMulti
-              onChange={(value: optionType[] | null) =>
-                value ? setFilterContentSelect2(value.map((option) => option.value)) : setFilterContentSelect2([])
-              }
-              value={filterContentSelect2.map((item) => ({ label: item, value: item }))}
-              inputId="single-select-dropdown-filter-2"
-            />
+            <S.FilterBox>
+              <S.FilterSelect
+                options={[...new Set(filteredTextSelect1.map(selectFilter2.content))].map((item) => ({
+                  label: item,
+                  value: item,
+                }))}
+                placeholder={selectFilter2.placeholder}
+                isMulti
+                onChange={(value: optionType[] | null) =>
+                  value ? setFilterContentSelect2(value.map((option) => option.value)) : setFilterContentSelect2([])
+                }
+                value={filterContentSelect2.map((item) => ({ label: item, value: item }))}
+                inputId="single-select-dropdown-filter-2"
+              />
+            </S.FilterBox>
           )}
         </S.FilterInputWrapper>
         <S.ListWrapper>

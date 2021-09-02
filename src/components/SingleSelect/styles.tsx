@@ -183,6 +183,11 @@ export const CustomCheckbox = styled(Checkbox)<CheckboxProps>`
   opacity: ${(props) => (props.disabled ? 0.4 : 1)};
 `;
 
+export const FilterBox = styled.div`
+  flex: 1;
+  max-width: none;
+`;
+
 export const FilterSelect = styled(SmallSelect)`
   flex: 1;
   max-width: none;

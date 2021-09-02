@@ -28,7 +28,7 @@ const SmallSelect = (props: SmallSelectProps) => (
       }}
       classNamePrefix="select"
       hideSelectedOptions={false}
-      closeMenuOnSelect={false}
+      closeMenuOnSelect={props.isMulti ? false : true}
       {...props}
     />
     {props.error && typeof props.error === 'string' && <HelperText error={true}>{props.error}</HelperText>}
