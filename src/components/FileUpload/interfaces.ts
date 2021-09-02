@@ -1,4 +1,4 @@
-import { FileRejection } from "react-dropzone";
+import { FileRejection } from 'react-dropzone';
 
 export interface IFileUpload {
   maxFiles: number;

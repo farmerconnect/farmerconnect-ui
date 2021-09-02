@@ -61,6 +61,7 @@ export const Column = styled.td<ITableColumnOptions>`
 
 export const Row = styled.tr`
   position: relative;
+  display: table-row !important;
 `;
 
 const tableHeaderLoadingAnimation = keyframes`
