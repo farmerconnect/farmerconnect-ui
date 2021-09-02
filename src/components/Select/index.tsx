@@ -28,7 +28,7 @@ const CustomSelect = (props: CustomOptionProps) => (
     }}
     classNamePrefix="select"
     hideSelectedOptions={false}
-    closeMenuOnSelect={false}
+    closeMenuOnSelect={props.isMulti ? false : true}
     {...props}
   />
 );
