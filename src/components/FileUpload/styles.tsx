@@ -1,24 +1,7 @@
 import styled from 'styled-components';
 import CustomButton from '../CustomButton';
 
-const getColor = (props: any) => {
-  if (props.isDragAccept) {
-    return '#00E394';
-  }
-  if (props.isDragReject) {
-    return '#ff1744';
-  }
-  return '#00E394';
-}
-
-const getBackgroundColor = (props: any) => {
-  if (props.isDragging) {
-    return '#F3F3F3';
-  }
-  return '#FFFFFF';
-}
-
-export const Container = styled.div`
+export const Container = styled.div<any>`
   flex: 1;
   display: flex;
   gap: 1rem;
@@ -28,9 +11,9 @@ export const Container = styled.div`
   padding: 20px;
   border-width: 1px;
   border-radius: 12px;
-  border-color: ${props => getColor(props)};
+  border-color: #00E394;
   border-style: dashed;
-  background-color: ${props => getBackgroundColor(props)};
+  background-color: ${(props) => (props.isDragging ? '#F3F3F3' : '#FFFFFF')};
   color: #5B5B5B;
   outline: none;
   transition: border .24s ease-in-out;

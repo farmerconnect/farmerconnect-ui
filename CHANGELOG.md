@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.2] - 2021-09-07
+
+- Changed File Upload component border color
+
 ## [1.33.1] - 2021-09-02
 
 - Select now close when single and keep open when multi
