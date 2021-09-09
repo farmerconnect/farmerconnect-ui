@@ -80,12 +80,13 @@ steps:
       command: 'custom'
       customCommand: 'run deploy-storybook -- --ci --existing-output-dir=storybook-static'
 
-  - task: SnykSecurityScan@0
+  - task: SnykSecurityScan@1
     condition: not(eq(variables['Build.Reason'], 'PullRequest'))
     inputs:
       serviceConnectionEndpoint: 'snyk-service-connection'
       testType: 'app'
-      severityThreshold: 'medium'
-      monitorOnBuild: false
-      failOnIssues: false
+      severityThreshold: 'high'
+      monitorWhen: 'never'
+      failOnIssues: true
+      additionalArguments: '--fail-on=all'
 
