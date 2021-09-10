@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IInfotipProps } from './interfaces';
+import { ITipProps } from './interfaces';
 
 export const Container = styled.div`
   padding-top: 10rem;
@@ -11,14 +11,14 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-const TipBase = styled.div<IInfotipProps>`
+const TipBase = styled.div<ITipProps>`
   position: absolute;
   border-radius: 4px;
   left: 50%;
   transform: translateX(-50%);
   padding: 6px;
-  color: ${(props) => props.color || '#F3F3F3'};
-  background: ${(props) => props.backgroundColor || '#192C28'};
+  color: ${(props) => props.color};
+  background: ${(props) => props.backgroundColor};
   font-size: 14px;
   font-family: sans-serif;
   line-height: 1;
@@ -38,41 +38,47 @@ const TipBase = styled.div<IInfotipProps>`
   }
 `;
 
-export const TopTip = styled(TipBase)<IInfotipProps>`
+export const TopTip = styled(TipBase)<ITipProps>`
   top: calc(30px * -1 - 6px);
 
   &:before {
     display: ${(props) => (props.arrow ? '' : 'none')};
     top: 100%;
-    border-top-color: ${(props) => props.backgroundColor || '#192C28'};
+    border-top-color: ${(props) => props.backgroundColor};
   }
 `;
 
-export const RightTip = styled(TipBase)<IInfotipProps>`
+export const RightTip = styled(TipBase)<ITipProps>`
   left: calc(100% + 6px);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
+  top: ${(props) => (props.position === 'start' 
+    ? '0%' 
+    : (props.position === 'end' ? '100%' : '50%'))};
+  transform: translateX(0) ${(props) => (props.position === 'start' 
+    ? 'translateY(0%)' 
+    : (props.position === 'end' ? 'translateY(-100%)' : 'translateY(-50%)'))};
 
   &:before {
     display: ${(props) => (props.arrow ? '' : 'none')};
     left: calc(6px * -1);
-    top: 50%;
+    top: ${(props) => (props.position === 'start' 
+      ? 'calc(0% - (-6px * 2))' 
+      : (props.position === 'end' ? 'calc(100% - (6px * 2))' : '50%'))};
     transform: translateX(0) translateY(-50%);
-    border-right-color: ${(props) => props.backgroundColor || '#192C28'};
+    border-right-color: ${(props) => props.backgroundColor};
   }
 `;
 
-export const BottomTip = styled(TipBase)<IInfotipProps>`
+export const BottomTip = styled(TipBase)<ITipProps>`
   bottom: calc(30px * -1 - 6px);
 
   &:before {
     display: ${(props) => (props.arrow ? '' : 'none')};
     bottom: 100%;
-    border-bottom-color: ${(props) => props.backgroundColor || '#192C28'};
+    border-bottom-color: ${(props) => props.backgroundColor};
   }
 `;
 
-export const LeftTip = styled(TipBase)<IInfotipProps>`
+export const LeftTip = styled(TipBase)<ITipProps>`
   left: auto;
   right: calc(100% + 6px);
   top: 50%;
@@ -84,6 +90,6 @@ export const LeftTip = styled(TipBase)<IInfotipProps>`
     right: calc(6px * -2);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-left-color: ${(props) => props.backgroundColor || '#192C28'};
+    border-left-color: ${(props) => props.backgroundColor};
   }
 `;

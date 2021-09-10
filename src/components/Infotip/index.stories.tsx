@@ -27,4 +27,5 @@ Default.args = {
   content: <span>See public profile</span>,
   arrow: true,
   direction: 'right',
+  position: 'middle'
 };
