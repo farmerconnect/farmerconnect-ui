@@ -2,15 +2,44 @@ import { FC } from 'react';
 import { IInfotipProps } from './interfaces';
 import * as S from './styles';
 
-const Infotip: FC<IInfotipProps> = ({ ...props }) => {
+const Infotip: FC<IInfotipProps> = ({
+  active,
+  color = '#F3F3F3', 
+  backgroundColor = '#192C28',
+  arrow = true,
+  direction,
+  content,
+  position = 'middle',
+  children,
+  onMouseEnter = () => {},
+  onMouseLeave = () => {},
+  onClick = () => {},
+  ...props 
+}) => {
   return (
-    <S.Wrapper onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave} onClick={props.onClick}>
-      {props.children}
-
-      {props.active && props.direction === 'top' && <S.TopTip {...props}>{props.content}</S.TopTip>}
-      {props.active && props.direction === 'right' && <S.RightTip {...props}>{props.content}</S.RightTip>}
-      {props.active && props.direction === 'bottom' && <S.BottomTip {...props}>{props.content}</S.BottomTip>}
-      {props.active && props.direction === 'left' && <S.LeftTip {...props}>{props.content}</S.LeftTip>}
+    <S.Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick}>
+      {children}
+      
+      {active && direction === 'top' && (
+        <S.TopTip backgroundColor={backgroundColor} color={color} arrow={arrow} position={position}>
+          {content}
+        </S.TopTip>
+      )}
+      {active && direction === 'right' && (
+        <S.RightTip backgroundColor={backgroundColor} color={color} arrow={arrow} position={position}>
+          {content}
+        </S.RightTip>
+      )}
+      {active && direction === 'bottom' && (
+        <S.BottomTip backgroundColor={backgroundColor} color={color} arrow={arrow} position={position}>
+          {content}
+        </S.BottomTip>
+      )}
+      {active && direction === 'left' && (
+        <S.LeftTip backgroundColor={backgroundColor} color={color} arrow={arrow} position={position}>
+          {content}
+        </S.LeftTip>
+      )}
     </S.Wrapper>
   );
 };

@@ -7,8 +7,16 @@ export interface IInfotipProps {
   arrow?: boolean;
   direction: 'bottom' | 'left' | 'right' | 'top';
   content: ReactNode;
+  position: 'start' | 'middle' | 'end';
   children: ReactNode;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onClick?: () => void;
+}
+
+export interface ITipProps {
+  backgroundColor?: string;
+  color?: string;
+  arrow?: boolean;
+  position: 'start' | 'middle' | 'end';
 }
