@@ -30,10 +30,22 @@ const Template: Story<IFileUpload> = (args) => {
   )
 };
 
-export const Default = Template.bind({});
+const Default = Template.bind({});
 Default.args = {
   maxSize: 10,
   accept: 'image/*, .pdf',
   onAcceptedFiles: () => {},
-  onRejectedFiles: () => {}
+  onRejectedFiles: () => {},
+};
+
+export const Slim = Template.bind({});
+Slim.args = {
+  ...Default.args,
+  slim: true
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  ...Default.args,
+  slim: false
 };
