@@ -4,11 +4,11 @@ import CustomButton from '../CustomButton';
 export const Container = styled.div<any>`
   flex: 1;
   display: flex;
-  gap: 1rem;
-  flex-direction: row;
+  gap: ${(props) => (props.slim ? '1rem' : '0.5rem')};
+  flex-direction: ${(props) => (props.slim ? 'row' : 'column')};
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: ${(props) => (props.slim ? '16px' : '42px')};
   border-width: 1px;
   border-radius: 12px;
   border-color: #00E394;
@@ -39,5 +39,5 @@ export const Helper = styled.div`
   font-size: 11px;
   line-height: 15px;
   color: #5B5B5B;
-  padding: 0.25rem 0rem 0rem 1rem;
+  padding: 0.25rem 1rem 0rem 1rem;
 `;

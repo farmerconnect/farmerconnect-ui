@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.4] - 2021-09-14
+
+- Added slim property to FileUpload component
+
 ## [1.33.3] - 2021-09-10
 
 - Added position property to Infotip component arrow
