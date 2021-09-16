@@ -3171,10 +3171,10 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
-"@types/react-select@^4.0.15":
-  version "4.0.16"
-  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-4.0.16.tgz#4883af396547065563bec3e2aeca252d670a201a"
-  integrity sha512-DMmWIKxIC5RC0qQ2l7wDt5qvvVhbtBPK6IQn6LJXe/1KTsGkZajzoLZG8mQtL2nmKrXURq+wetLeHRvYD8CmDw==
+"@types/react-select@^4.0.17":
+  version "4.0.17"
+  resolved "https://pkgs.dev.azure.com/FarmerConnectSA/_packaging/thank-my-farmer-models/npm/registry/@types/react-select/-/react-select-4.0.17.tgz#2e5ab4042c09c988bfc2711550329b0c3c9f8513"
+  integrity sha1-Llq0BCwJyYi/wnEVUDKbDDyfhRM=
   dependencies:
     "@emotion/serialize" "^1.0.0"
     "@types/react" "*"
