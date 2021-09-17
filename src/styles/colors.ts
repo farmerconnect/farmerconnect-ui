@@ -1,0 +1,25 @@
+const colors = {
+  fc_black_100: '#141414',
+  fc_black_70: '#5B5B5B',
+  fc_black_30: '#B9B9B9',
+  fc_black_10: '#E7E7E7',
+  fc_black_5: '#F3F3F3',
+  fc_beige: '#F7F6F4',
+  fc_white: '#FFFFFF',
+  fc_sidebar_green: '#192C28',
+  fc_dark_green: '#005E3A',
+  fc_hover_green: '#06A56E',
+  fc_green: '#00E394',
+  fc_light_green: '#CEE9DD',
+  fc_dark_yellow: '#AE8800',
+  fc_yellow: '#FCED00',
+  fc_light_yellow: '#FFFCD4',
+  fc_red: '#FB2E4C',
+  fc_light_red: '#FFEAED',
+  fc_hover_red: '#B02035 ',
+  fc_dark_blue: '#081851',
+  fc_light_blue: '#D1EBEE',
+  fc_cyan_blue: '#00E7FF',
+};
+
+export default colors;
