@@ -26,7 +26,6 @@ export const Label = styled.label`
 	font-size: 0.875rem;
 	display: inline-flex;
 	align-items: center;
-	margin-left: 2rem;
 	column-gap: 0.5rem;
 	-webkit-user-select: none;
 	-moz-user-select: none;

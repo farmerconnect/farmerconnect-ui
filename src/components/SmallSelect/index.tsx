@@ -1,12 +1,11 @@
-import { ReactNode } from 'react';
-import { Select } from './styles';
+import * as S from './styles';
 import { components, Props, OptionProps } from 'react-select';
 import { CheckboxUnchecked, CheckboxChecked } from '../Icons/Checkbox';
+import { HelperText } from '../Input/styles';
 
-type CustomOptionProps = {
-  children: ReactNode;
-  isSelected: boolean;
-  isMulti: boolean;
+export type SmallSelectProps = {
+  error?: string | boolean;
+  helperText?: string;
 } & Props;
 
 const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => {
@@ -18,19 +17,23 @@ const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => {
   );
 };
 
-const SmallSelect = (props: CustomOptionProps) => (
-  <Select
-    components={{
-      IndicatorSeparator: null,
-      DropdownIndicator: DropdownIcon,
-      ClearIndicator: null,
-      Option: CustomOption,
-    }}
-    classNamePrefix="select"
-    hideSelectedOptions={false}
-    closeMenuOnSelect={false}
-    {...props}
-  />
+const SmallSelect = (props: SmallSelectProps) => (
+  <S.SelectWrapper>
+    <S.Select
+      components={{
+        IndicatorSeparator: null,
+        DropdownIndicator: DropdownIcon,
+        ClearIndicator: null,
+        Option: CustomOption,
+      }}
+      classNamePrefix="select"
+      hideSelectedOptions={false}
+      closeMenuOnSelect={props.isMulti ? false : true}
+      {...props}
+    />
+    {props.error && typeof props.error === 'string' && <HelperText error={true}>{props.error}</HelperText>}
+    {props.helperText && !props.error && <HelperText>{props.helperText}</HelperText>}
+  </S.SelectWrapper>
 );
 
 const DropdownIcon = () => (

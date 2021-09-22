@@ -4,7 +4,6 @@ import { StyledArrow } from '../Icons/Arrow/styles';
 export const Container = styled.div`
   position: relative;
   font-family: 'Red Hat Text', sans-serif;
-  width: 100%;
 `;
 
 export const SortContainer = styled.div`

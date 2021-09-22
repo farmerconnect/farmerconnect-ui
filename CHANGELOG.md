@@ -7,6 +7,80 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.33.4] - 2021-09-14
+
+- Added slim property to FileUpload component
+
+## [1.33.3] - 2021-09-10
+
+- Added position property to Infotip component arrow
+
+## [1.33.2] - 2021-09-07
+
+- Changed File Upload component border color
+
+## [1.33.1] - 2021-09-02
+
+- Select now close when single and keep open when multi
+- Fix filters width on singleSelect
+
+## [1.33.0] - 2021-09-02
+
+- Fix table component
+
+## [1.32.0] - 2021-08-30
+
+- Added FileUpload component
+- Added ProgressBar component
+
+## [1.31.0] - 2021-08-21
+
+- Added Select component
+- Added helperText to Input
+- Added helperText and error text to SmallSelect
+
+## [1.30.0] - 2021-08-20
+
+- Added LabelSwitch component
+
+## [1.29.1] - 2021-08-19
+
+- Added resolveItemRender prop in FilterSelect
+
+## [1.29.0] - 2021-08-19
+
+- Added global icon
+
+## [1.28.1] - 2021-08-19
+
+- Added year to DatePicker month label
+
+## [1.28.0] - 2021-08-16
+
+- Orderer styles
+- Toggle styles
+
+## [1.27.1] - 2021-08-13
+
+- Fixed DatePicker styling
+
+## [1.27.0] - 2021-08-11
+
+- Added DatePicker
+
+## [1.26.0] - 2021-08-09
+
+- Added Filter icon
+- Changed smallSelect behaviour when tags list are bigger than the size
+
+## [1.25.1] - 2021-08-05
+
+- Added rounded corners to the first and last column of the table component row
+
+## [1.25.0] - 2021-08-03
+
+- Added Infotip component
+
 ## [1.24.2] - 2021-07-28
 
 - Changed tooltip to accept content from data-tip, included delay prop and export rebuild.
@@ -34,6 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed Dropdown positions
 - Fixed Modal props' spreading
 - Fixed Modal overlay opacity
+
 ## [1.22.1] - 2021-07-22
 
 - Added missing export of Breadcrumb component

@@ -2,7 +2,7 @@ import { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
 
 export type ButtonProps = {
-  variant?: 'filled' | 'outline' | 'link' | 'text';
+  variant?: 'filled' | 'outline' | 'link' | 'text' | 'cancel';
   small?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
@@ -79,6 +79,30 @@ const buttonModifiers = {
       svg {
         fill: #02ce87;
       }
+    }
+  `,
+  cancel: css`
+    background-color: transparent;
+    border: none;
+    color: #141414;
+    padding: 0.625rem 0rem;
+    svg {
+      fill: #141414;
+    }
+    text-decoration: underline;
+    &:disabled {
+      background-color: transparent;
+      color: rgba(20, 20, 20, 0.3);
+      svg {
+        fill: rgba(20, 20, 20, 0.3);
+      }
+    }
+    &:hover:not(:disabled) {
+      color: #141414;
+      svg {
+        fill: #141414;
+      }
+      background-color: transparent;
     }
   `,
 };

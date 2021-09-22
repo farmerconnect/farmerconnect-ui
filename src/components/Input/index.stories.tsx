@@ -6,9 +6,9 @@ import Input from '.';
 import { IInput } from './interfaces';
 
 export default {
-	title: 'Input',
-	component: Input,
-	argTypes: {},
+  title: 'Input',
+  component: Input,
+  argTypes: {},
 } as Meta;
 
 const Template: Story<IInput> = (args) => <Input {...args} />;
@@ -16,8 +16,11 @@ const Template: Story<IInput> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {};
 
+export const HelperText = Template.bind({});
+HelperText.args = { helperText: 'This is a helper text.' };
+
 export const Error = Template.bind({});
-Error.args = { error: true };
+Error.args = { error: 'This is a error message.' };
 
 export const Success = Template.bind({});
 Success.args = { success: true };
