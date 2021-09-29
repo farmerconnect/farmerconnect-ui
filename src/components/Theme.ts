@@ -12,6 +12,7 @@ import { ITag } from './Tag/interfaces';
 import { tagDefaultStyles } from './Tag/styles';
 import { ITable } from './Table/interfaces';
 import { tableDefaultStyles } from './Table/styles';
+import colors from '../styles/colors';
 
 interface ITheme {
   wizardStep: IWizardStep;
@@ -21,6 +22,9 @@ interface ITheme {
   arrow: IArrow;
   tag: ITag;
   table: ITable;
+  colors: {
+    [key: string]: string;
+  };
 }
 
 export const farmerConnectTheme: ITheme = {
@@ -31,6 +35,7 @@ export const farmerConnectTheme: ITheme = {
   arrow: arrowDefaultStyles,
   tag: tagDefaultStyles,
   table: tableDefaultStyles,
+  colors,
 };
 
 export default ITheme;

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.34.0] - 2021-09-29
+
+- Added Typography component
+- Added colors to theme
+
 ## [1.33.4] - 2021-09-14
 
 - Added slim property to FileUpload component
