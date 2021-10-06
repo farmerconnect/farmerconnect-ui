@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.34.1] - 2021-10-06
+## [1.35.1] - 2021-10-06
 
 - Added unit property to Input component
+
+## [1.35.0] - 2021-10-06
+
+- IconOnly flag added to CustomButton component
+- Copy icon added
 
 ## [1.34.0] - 2021-09-29
 
