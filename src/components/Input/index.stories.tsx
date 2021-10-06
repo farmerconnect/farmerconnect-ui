@@ -27,3 +27,6 @@ Success.args = { success: true };
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: true };
+
+export const Unit = Template.bind({});
+Unit.args = { unit: 'm' };
