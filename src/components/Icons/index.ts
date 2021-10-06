@@ -33,3 +33,4 @@ export { default as Information } from './Information';
 export { default as Calendar } from './Calendar';
 export { default as Filter } from './Filter';
 export { default as Global } from './Global';
+export { default as Copy } from './Copy';

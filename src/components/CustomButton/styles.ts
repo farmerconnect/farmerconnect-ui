@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 export type ButtonProps = {
   variant?: 'filled' | 'outline' | 'link' | 'text' | 'cancel';
   small?: boolean;
+  iconOnly?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
 const buttonModifiers = {
@@ -147,4 +148,13 @@ export const Button = styled.button<ButtonProps>`
     background-color: #02ce87;
   }
   ${({ variant = 'filled' }) => buttonModifiers[variant]}
+
+  ${({ iconOnly = false }) =>
+    iconOnly
+      ? css`
+          min-width: 2rem;
+          padding-left: 0;
+          padding-right: 0;
+        `
+      : ''}
 `;
