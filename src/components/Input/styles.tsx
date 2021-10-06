@@ -1,12 +1,14 @@
 import styled, { css, keyframes } from 'styled-components';
+import WarningIcon from '../Icons/Warning';
+import CheckIcon from '../Icons/Check';
 
 const animateIcons = keyframes`
-0% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 `;
 
 export const Container = styled.div`
@@ -25,6 +27,7 @@ export const Container = styled.div`
 type InputProps = {
   error?: boolean | string;
   success?: boolean;
+  unit?: string;
 };
 
 export const Input = styled.input<InputProps>`
@@ -44,6 +47,7 @@ export const Input = styled.input<InputProps>`
     transition: box-shadow 0.2s ease-out;
     box-shadow: ${props.error ? '0.125rem 0.125rem 0 0 #FB2E4C' : 'none'};
     ${(props.error || props.success) && 'padding-right: 2.25rem;'}
+    ${(props.unit) && 'padding-right: 3.5rem;'}
     &::placeholder {
       font-weight: 400;
       color: #5b5b5b;
@@ -56,6 +60,16 @@ export const Input = styled.input<InputProps>`
       font-weight: ${props.disabled ? '500' : '700'};
     }
   `}
+`;
+
+type IconProps = {
+  unit?: string;
+};
+export const Check = styled(CheckIcon)<IconProps>`
+  padding-right: ${(props) => (props.unit ? '2.5rem' : '')};
+`;
+export const Warning = styled(WarningIcon)<IconProps>`
+  padding-right: ${(props) => (props.unit ? '2.5rem' : '')};
 `;
 
 type HelperTextProps = {
@@ -72,4 +86,23 @@ export const HelperText = styled.p<HelperTextProps>`
   color: ${(props) => (props.error ? '#fb2e4c' : '#5b5b5b')};
   padding: 0.25rem 1rem 0;
   margin: 0;
+`;
+
+export const Unit = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #5B5B5B;
+  background-color: #E7E7E7;
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
 `;
