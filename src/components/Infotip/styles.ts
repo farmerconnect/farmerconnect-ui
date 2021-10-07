@@ -6,6 +6,7 @@ const TIP_HEIGHT = 25;
 const TIP_MARGIN = 2;
 const ARROW_SIZE = 5;
 const ARROW_MARGIN = `${ARROW_SIZE * 2}px`;
+const ARROW_VERTICAL_POSITION = `${(ARROW_SIZE + TIP_MARGIN) * 2}px`;
 
 const tipVerticalPositionMap = {
   start: '0%',
@@ -14,9 +15,9 @@ const tipVerticalPositionMap = {
 };
 
 const arrowVerticalPositionMap = {
-  start: ARROW_MARGIN,
+  start: ARROW_VERTICAL_POSITION,
   middle: '50%',
-  end: `calc(100% - ${ARROW_MARGIN})`,
+  end: `calc(100% - ${ARROW_VERTICAL_POSITION})`,
 };
 
 const getTipPosition = (direction: TipDirection, arrow: boolean | undefined) => {
@@ -54,9 +55,11 @@ export const Wrapper = styled.div`
 const TipBase = styled(small).attrs({ as: 'div' })<ITipProps>`
   background: ${({ backgroundColor }) => backgroundColor};
   border-radius: 8px;
+  box-sizing: border-box;
   color: ${({ color }) => color};
   left: 50%;
   padding: 5px 12px;
+  height: ${`${TIP_HEIGHT}px`};
   position: absolute;
   transform: translateX(-50%);
   z-index: 100;

@@ -2,13 +2,34 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Infotip from './';
-import { IInfotipProps } from './interfaces';
+import { IInfotipProps, tipDirectionList, tipPositionList } from './interfaces';
 import PublicProfileIcon from '../Icons/PublicProfile';
 
 export default {
   title: 'Infotip',
   component: Infotip,
-  argTypes: {},
+  argTypes: {
+    active: {
+      control: 'boolean',
+    },
+    content: {
+      control: 'text',
+    },
+    color: {
+      control: 'color',
+    },
+    backgroundColor: {
+      control: 'color',
+    },
+    direction: {
+      options: tipDirectionList,
+      control: 'inline-radio',
+    },
+    position: {
+      options: tipPositionList,
+      control: 'inline-radio',
+    },
+  },
 } as Meta;
 
 const Template: Story<IInfotipProps> = (args) => {
@@ -27,5 +48,5 @@ Default.args = {
   content: <span>See public profile</span>,
   arrow: true,
   direction: 'right',
-  position: 'middle'
+  position: 'middle',
 };

@@ -20,7 +20,16 @@ type TypographyFontStyle = typeof typopgrahyFontStyleList[number];
 export const typographyTagList = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'span', 'sup', 'sub'] as const;
 type TypographyTag = typeof typographyTagList[number];
 
-export const typographyVariantList = ['title1', 'title2', 'title3', 'title4', 'title5', 'body', 'small', 'steplabel'] as const;
+export const typographyVariantList = [
+  'title1',
+  'title2',
+  'title3',
+  'title4',
+  'title5',
+  'body',
+  'small',
+  'steplabel',
+] as const;
 type TypographyVariant = typeof typographyVariantList[number];
 
 type TypographyVariantToTag = {
