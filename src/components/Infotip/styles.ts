@@ -1,5 +1,45 @@
-import styled from 'styled-components';
-import { ITipProps } from './interfaces';
+import styled, { css } from 'styled-components';
+import { small } from '../Typography/styles';
+import { TipDirection, ITipProps, TipPosition } from './interfaces';
+
+const TIP_HEIGHT = 25;
+const TIP_MARGIN = 2;
+const ARROW_SIZE = 5;
+const ARROW_MARGIN = `${ARROW_SIZE * 2}px`;
+
+const tipVerticalPositionMap = {
+  start: '0%',
+  middle: '50%',
+  end: '100%',
+};
+
+const arrowVerticalPositionMap = {
+  start: ARROW_MARGIN,
+  middle: '50%',
+  end: `calc(100% - ${ARROW_MARGIN})`,
+};
+
+const getTipPosition = (direction: TipDirection, arrow: boolean | undefined) => {
+  let baseSize = TIP_MARGIN;
+  baseSize += arrow ? ARROW_SIZE : 0;
+
+  if (direction === 'top' || direction === 'bottom') {
+    baseSize += TIP_HEIGHT;
+    return `${-baseSize}px`;
+  }
+
+  return `calc(100% + ${baseSize}px)`;
+};
+
+const dynamicVerticalPosition = (position: TipPosition) => css`
+  top: ${tipVerticalPositionMap[position]};
+  transform: translateX(0) ${`translateY(-${tipVerticalPositionMap[position]})`};
+
+  &::before {
+    top: ${arrowVerticalPositionMap[position]};
+    transform: translateX(0) translateY(-50%);
+  }
+`;
 
 export const Container = styled.div`
   padding-top: 10rem;
@@ -11,85 +51,69 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-const TipBase = styled.div<ITipProps>`
-  position: absolute;
-  border-radius: 4px;
+const TipBase = styled(small).attrs({ as: 'div' })<ITipProps>`
+  background: ${({ backgroundColor }) => backgroundColor};
+  border-radius: 8px;
+  color: ${({ color }) => color};
   left: 50%;
+  padding: 5px 12px;
+  position: absolute;
   transform: translateX(-50%);
-  padding: 6px;
-  color: ${(props) => props.color};
-  background: ${(props) => props.backgroundColor};
-  font-size: 14px;
-  font-family: sans-serif;
-  line-height: 1;
   z-index: 100;
   white-space: nowrap;
 
-  &:before {
-    content: ' ';
-    left: 50%;
-    border: solid transparent;
+  &::before {
+    border: ${`${ARROW_SIZE}px solid transparent`};
+    content: ${({ arrow }) => (arrow ? '""' : 'none')};
     height: 0;
-    width: 0;
+    left: 50%;
     position: absolute;
     pointer-events: none;
-    border-width: 6px;
-    margin-left: calc(6px * -1);
+    transform: translateX(-50%);
+    width: 0;
   }
 `;
 
 export const TopTip = styled(TipBase)<ITipProps>`
-  top: calc(30px * -1 - 6px);
+  top: ${({ arrow }) => getTipPosition('top', arrow)};
 
-  &:before {
-    display: ${(props) => (props.arrow ? '' : 'none')};
+  &::before {
+    border-top-color: ${({ backgroundColor }) => backgroundColor};
     top: 100%;
-    border-top-color: ${(props) => props.backgroundColor};
-  }
-`;
-
-export const RightTip = styled(TipBase)<ITipProps>`
-  left: calc(100% + 6px);
-  top: ${(props) => (props.position === 'start' 
-    ? '0%' 
-    : (props.position === 'end' ? '100%' : '50%'))};
-  transform: translateX(0) ${(props) => (props.position === 'start' 
-    ? 'translateY(0%)' 
-    : (props.position === 'end' ? 'translateY(-100%)' : 'translateY(-50%)'))};
-
-  &:before {
-    display: ${(props) => (props.arrow ? '' : 'none')};
-    left: calc(6px * -1);
-    top: ${(props) => (props.position === 'start' 
-      ? 'calc(0% - (-6px * 2))' 
-      : (props.position === 'end' ? 'calc(100% - (6px * 2))' : '50%'))};
-    transform: translateX(0) translateY(-50%);
-    border-right-color: ${(props) => props.backgroundColor};
   }
 `;
 
 export const BottomTip = styled(TipBase)<ITipProps>`
-  bottom: calc(30px * -1 - 6px);
+  bottom: ${({ arrow }) => getTipPosition('bottom', arrow)};
 
-  &:before {
-    display: ${(props) => (props.arrow ? '' : 'none')};
+  &::before {
+    border-bottom-color: ${({ backgroundColor }) => backgroundColor};
     bottom: 100%;
-    border-bottom-color: ${(props) => props.backgroundColor};
   }
 `;
 
-export const LeftTip = styled(TipBase)<ITipProps>`
-  left: auto;
-  right: calc(100% + 6px);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
+export const RightTip = styled(TipBase)<ITipProps>`
+  ${({ arrow, position, backgroundColor }) => css`
+    left: ${getTipPosition('right', arrow)};
+    ${dynamicVerticalPosition(position)}
 
-  &:before {
-    display: ${(props) => (props.arrow ? '' : 'none')};
+    &:before {
+      border-right-color: ${backgroundColor};
+      left: -${ARROW_MARGIN};
+    }
+  `}
+`;
+
+export const LeftTip = styled(TipBase)<ITipProps>`
+  ${({ arrow, position, backgroundColor }) => css`
     left: auto;
-    right: calc(6px * -2);
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-    border-left-color: ${(props) => props.backgroundColor};
-  }
+    right: ${getTipPosition('left', arrow)};
+    ${dynamicVerticalPosition(position)}
+
+    &:before {
+      border-left-color: ${backgroundColor};
+      left: auto;
+      right: -${ARROW_MARGIN};
+    }
+  `}
 `;

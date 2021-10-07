@@ -1,13 +1,17 @@
 import { ReactNode } from 'react';
 
+export type TipDirection = 'bottom' | 'left' | 'right' | 'top';
+
+export type TipPosition = 'start' | 'middle' | 'end';
+
 export interface IInfotipProps {
   active: boolean;
   backgroundColor?: string;
   color?: string;
   arrow?: boolean;
-  direction: 'bottom' | 'left' | 'right' | 'top';
+  direction: TipDirection;
   content: ReactNode;
-  position: 'start' | 'middle' | 'end';
+  position: TipPosition;
   children: ReactNode;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -18,5 +22,5 @@ export interface ITipProps {
   backgroundColor?: string;
   color?: string;
   arrow?: boolean;
-  position: 'start' | 'middle' | 'end';
+  position: TipPosition;
 }
