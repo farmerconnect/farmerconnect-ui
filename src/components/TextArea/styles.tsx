@@ -9,6 +9,30 @@ const animateIcons = keyframes`
 }
 `;
 
+const customScrollbar = () => css`
+  &::-webkit-scrollbar {
+    border-radius: 0.75rem;
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b9b9b9;
+    background-clip: content-box;
+    border: 0.3rem solid transparent;
+    border-radius: 0.75rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0.75rem;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+    border: none;
+  }
+`;
+
 export const Container = styled.div`
   position: relative;
   padding: 0;
@@ -32,7 +56,6 @@ export const TextArea = styled.textarea<TextAreaProps>`
     border: none;
     color: #141414;
     font-size: 0.875rem;
-    color: #141414;
     font-weight: 500;
     padding: 0.6875rem 1rem;
     border-radius: 0.75rem;
@@ -41,21 +64,26 @@ export const TextArea = styled.textarea<TextAreaProps>`
     box-sizing: border-box;
     width: 100%;
     min-height: 2.5rem;
-    overflow: hidden;
+    overflow: auto;
     transition: box-shadow 0.2s ease-out;
     box-shadow: ${props.error ? '0.125rem 0.125rem 0 0 #FB2E4C' : 'none'};
     ${(props.error || props.success) && 'padding-right: 2.25rem;'}
+
     &::placeholder {
       font-weight: 400;
       color: #5b5b5b;
     }
+
     &:focus {
       box-shadow: 0.125rem 0.125rem 0 0 ${props.error ? '#FB2E4C' : '#00e394'};
     }
+
     &:active,
     &:focus {
       font-weight: 700;
     }
+
+    ${customScrollbar()}
   `}
 `;
 
