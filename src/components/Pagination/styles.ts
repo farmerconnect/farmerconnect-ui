@@ -2,7 +2,8 @@ import { IPaginationProps } from './interfaces';
 import styled from 'styled-components';
 
 export const PageCount = styled.div<any>`
-  width: 8rem;
+  min-width: 100%;
+  width: max-content;
 `;
 
 export const ButtonsContainer = styled.div<any>`
