@@ -55,13 +55,15 @@ export type ISelectOptionArray = ReadonlyArray<ISelectOption>;
 export interface IPaginationProps extends HTMLAttributes<HTMLDivElement> {
   hasSelect?: boolean;
   pageSizeArray?: number[];
-  pageSizeLabelTemplate?: (pageSize: number) => string;
+  pageSizeLabelTemplate?: PageSizeLabelTemplate;
   hasArrows?: boolean;
   pagination: IPagination;
   onPaginate: (pagination: IPagination) => void;
-  displayedItemsTemplate?: (firstItem: number, lastItem: number, totalItemCount: number) => string;
+  displayedItemsTemplate?: DisplayedItemsTemplate;
 }
 
+export type DisplayedItemsTemplate = (firstItem: number, lastItem: number, totalItemCount: number) => string;
+export type PageSizeLabelTemplate = (pageSize: number) => string;
 export interface IPageNumber {
   selected: boolean;
   display: string;
