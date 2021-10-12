@@ -1,7 +1,7 @@
 import { Arrow } from '../Icons';
 import Button from '../Button';
 import SmallSelect from '../SmallSelect';
-import { IPaginationProps, isIPaginationProps, IPagination, IPageNumber } from './interfaces';
+import { IPaginationProps, isIPaginationProps, IPagination, IPageNumber, IPageNumberDisplay } from './interfaces';
 import {
   getLastPageIndex,
   getFirstItemOnCurrentPage,
@@ -44,20 +44,6 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
 
   const lastPageIndex = getLastPageIndex(pagination);
 
-  const onBackButtonClick = (currentPagination: IPagination) => {
-    onPaginate({
-      ...currentPagination,
-      currentPageIndex: currentPagination.currentPageIndex - 1,
-    });
-  };
-
-  const onForwardButtonClick = (currentPagination: IPagination) => {
-    onPaginate({
-      ...currentPagination,
-      currentPageIndex: currentPagination.currentPageIndex + 1,
-    });
-  };
-
   const onSelectChange = (incomingOption: { value: string; label: string } | null) => {
     if (incomingOption == null) return;
 
@@ -67,12 +53,58 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
     onPaginate(updatePageNumber(pagination, newPageSize));
   };
 
-  const onPageNumberClick = (pageNumber: IPageNumber) => {
-    onPaginate({
-      ...pagination,
-      currentPageIndex: pageNumber.index,
-    });
+  const PaginationButton: React.FC<{
+    pageNumber: IPageNumberDisplay;
+    onPageNumberClick?: (pageNumber: IPageNumber) => void;
+  }> = ({ pageNumber, onPageNumberClick = () => {} }) => {
+    return pageNumber.selected ? (
+      <Button
+        disabled
+        backgroundColor={farmerConnectTheme.colors.fc_black_5}
+        customStyles={{
+          ':hover': {
+            backgroundColor: farmerConnectTheme.colors.fc_black_5,
+            cursor: 'default',
+          },
+        }}
+      >
+        <Typography color={'fc_green'} tagName="span" fontStyle="highlight">
+          {pageNumber.display}
+        </Typography>
+      </Button>
+    ) : (
+      <Button
+        onClick={() => onPageNumberClick(pageNumber as IPageNumber)}
+        color={farmerConnectTheme.colors.fc_black_100}
+        backgroundColor={farmerConnectTheme.colors.fc_white}
+        customStyles={{
+          ':hover': {
+            backgroundColor: farmerConnectTheme.colors.fc_black_5,
+          },
+        }}
+      >
+        <Typography tagName="span">{pageNumber.display}</Typography>
+      </Button>
+    );
   };
+
+  const PaginationArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: (pagination: IPagination) => void }> =
+    ({ direction, onClick }) => {
+      return (
+        <Button
+          backgroundColor={farmerConnectTheme.colors.fc_white}
+          color={farmerConnectTheme.colors.fc_green}
+          onClick={() => onClick(pagination)}
+          customStyles={{
+            ':hover': {
+              backgroundColor: farmerConnectTheme.colors.fc_black_5,
+            },
+          }}
+        >
+          <Arrow fill={farmerConnectTheme.colors.fc_green} direction={direction}></Arrow>
+        </Button>
+      );
+    };
 
   const firstItemOnPage = getFirstItemOnCurrentPage(pagination);
   const lastItemOnPage = getLastItemOnCurrentPage(pagination);
@@ -97,9 +129,15 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
       )}
       <S.ButtonsContainer>
         {hasArrows && pagination.currentPageIndex !== 0 && (
-          <Button backgroundColor={farmerConnectTheme.colors.fc_white} onClick={() => onBackButtonClick(pagination)}>
-            <Arrow fill={farmerConnectTheme.colors.fc_green} direction="left"></Arrow>
-          </Button>
+          <PaginationArrowButton
+            direction="left"
+            onClick={(currentPagination: IPagination) => {
+              onPaginate({
+                ...currentPagination,
+                currentPageIndex: currentPagination.currentPageIndex - 1,
+              });
+            }}
+          />
         )}
         {
           <S.InlinePaginationNumbers>
@@ -107,21 +145,15 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
               return (
                 <li key={`${pageNumber.display}-${i}`}>
                   {typeof pageNumber.index === 'number' ? (
-                    pageNumber.selected ? (
-                      <Button backgroundColor={farmerConnectTheme.colors.fc_black_5}>
-                        <Typography color={'fc_green'} tagName="span" fontStyle="highlight">
-                          {pageNumber.display}
-                        </Typography>
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={() => onPageNumberClick(pageNumber as IPageNumber)}
-                        color={farmerConnectTheme.colors.fc_black_100}
-                        backgroundColor={farmerConnectTheme.colors.fc_white}
-                      >
-                        <Typography tagName="span">{pageNumber.display}</Typography>
-                      </Button>
-                    )
+                    <PaginationButton
+                      pageNumber={pageNumber}
+                      onPageNumberClick={(pageNumber: IPageNumber) => {
+                        onPaginate({
+                          ...pagination,
+                          currentPageIndex: pageNumber.index,
+                        });
+                      }}
+                    />
                   ) : (
                     <Typography tagName="span">{pageNumber.display}</Typography>
                   )}
@@ -131,13 +163,15 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
           </S.InlinePaginationNumbers>
         }
         {hasArrows && pagination.currentPageIndex !== lastPageIndex && (
-          <Button
-            backgroundColor={farmerConnectTheme.colors.fc_white}
-            color={farmerConnectTheme.colors.fc_green}
-            onClick={() => onForwardButtonClick(pagination)}
-          >
-            <Arrow fill={farmerConnectTheme.colors.fc_green} direction="right"></Arrow>
-          </Button>
+          <PaginationArrowButton
+            direction="right"
+            onClick={(currentPagination: IPagination) => {
+              onPaginate({
+                ...currentPagination,
+                currentPageIndex: currentPagination.currentPageIndex + 1,
+              });
+            }}
+          />
         )}
       </S.ButtonsContainer>
     </S.PaginationContainer>
