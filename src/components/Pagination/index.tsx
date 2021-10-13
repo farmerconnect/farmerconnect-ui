@@ -18,6 +18,7 @@ import Typography from '../Typography';
 const MIN_NUMBER_OF_PAGES = 5;
 
 const defaultProps = {
+  hasItemCount: true,
   hasSelect: true,
   hasArrows: true,
   pageSizeLabelTemplate: (pageSize: number) => `${pageSize} / page`,
@@ -30,6 +31,7 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
   const {
     hasSelect = defaultProps.hasSelect,
     hasArrows = defaultProps.hasArrows,
+    hasItemCount = defaultProps.hasItemCount,
     pageSizeLabelTemplate = defaultProps.pageSizeLabelTemplate,
     pageSizeArray = defaultProps.pageSizeArray,
     displayedItemsTemplate = defaultProps.displayedItemsTemplate,
@@ -113,8 +115,8 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
 
   return (
     <S.PaginationContainer {...props}>
-      {hasSelect && (
-        <S.SelectContainer>
+      <S.SelectContainer>
+        {hasSelect && (
           <S.PageCount>
             <SmallSelect
               onChange={onSelectChange}
@@ -122,11 +124,13 @@ const Pagination: React.FC<IPaginationProps> = (incomingProps: IPaginationProps)
               options={selectOptions}
             ></SmallSelect>
           </S.PageCount>
+        )}
+        {hasItemCount && (
           <Typography variant="small" tagName="span">
             {displayedItemsTemplate(firstItemOnPage, lastItemOnPage, pagination.totalItemCount)}
           </Typography>
-        </S.SelectContainer>
-      )}
+        )}
+      </S.SelectContainer>
       <S.ButtonsContainer>
         {hasArrows && pagination.currentPageIndex !== 0 && (
           <PaginationArrowButton
