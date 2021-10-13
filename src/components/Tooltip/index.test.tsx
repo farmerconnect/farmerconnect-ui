@@ -1,15 +1,6 @@
 import { render } from '@testing-library/react';
 import Tooltip from '.';
 
-const args = {
-  backgroundColor: '#192C28',
-  textColor: '#F3F3F3',
-  direction: 'right',
-  effect: 'solid',
-  content: 'See public profile',
-  id: 'global',
-};
-
 describe('Tooltip Component', () => {
   it('renders without errors', () => {
     const container = render(

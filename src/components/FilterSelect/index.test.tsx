@@ -1,6 +1,5 @@
-import { getByAltText, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import FilterSelect from '.';
-import selectEvent from 'react-select-event';
 
 describe('FilterSelect Component', () => {
   const data: any[] = [

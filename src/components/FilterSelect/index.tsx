@@ -61,7 +61,7 @@ const FilterSelect = <T extends unknown>({
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [itemList, selectedItem]);
+  }, [itemList, selectedItem, resolveItemName]);
 
   const onInputChange = (html: React.FormEvent<HTMLInputElement>) => {
     var searchedText: string = html.currentTarget.value;

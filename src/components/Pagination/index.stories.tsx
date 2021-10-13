@@ -49,6 +49,7 @@ export default {
       },
       table: {
         type: { summary: 'DisplayedItemsTemplate' },
+        // eslint-disable-next-line no-template-curly-in-string
         defaultValue: { summary: '`${firstItem}-${lastItem} of ${totalItemCount}`' },
       },
     },
@@ -60,6 +61,7 @@ export default {
       },
       table: {
         type: { summary: 'PageSizeLabelTemplate' },
+        // eslint-disable-next-line no-template-curly-in-string
         defaultValue: { summary: '`${pageSize} / page`' },
       },
     },
