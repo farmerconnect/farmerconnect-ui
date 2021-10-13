@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.36.0] - 2021-10-12
+
+- Add Pagination component
+- Add .npmrc to default registry for people who are using company registries
+
 ## [1.35.3] - 2021-10-11
 
 - Textarea multiline overflow bug fix

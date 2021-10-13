@@ -10,6 +10,11 @@ const Arrow: React.FC<IArrowProps> = ({ fill = '#5B5B5B', direction = 'up', ...p
     height="5"
     viewBox="0 0 8 5"
     direction={direction}
+    colors={{
+      defaultColor: fill ?? props.defaultColor,
+      activeColor: props.activeColor,
+      inactiveColor: props.inactiveColor,
+    }}
     {...props}
   >
     <path

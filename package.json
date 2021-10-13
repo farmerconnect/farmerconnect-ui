@@ -1,9 +1,10 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.35.3",
+  "version": "1.36.0",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
+    "start": "yarn storybook",
     "prepare": "husky install",
     "build": "rollup --config",
     "test": "react-scripts test --ci --watchAll=false",
@@ -39,7 +40,7 @@
     "@types/react-beautiful-dnd": "^13.0.0",
     "@types/react-datepicker": "^4.1.4",
     "@types/react-dom": "^16.9.8",
-    "@types/react-select": "^4.0.15",
+    "@types/react-select": "^4.0.17",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
