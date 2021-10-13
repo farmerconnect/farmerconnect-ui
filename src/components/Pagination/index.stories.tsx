@@ -64,7 +64,17 @@ export default {
       },
     },
     hasSelect: {
-      description: 'Turns the page size select.',
+      description: 'Show/hides the page size select.',
+      defaultValue: true,
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: true },
+      },
+    },
+    hasItemCount: {
+      description: 'Show/hides the item count text.',
       defaultValue: true,
       control: {
         type: 'boolean',
@@ -74,7 +84,7 @@ export default {
       },
     },
     hasArrows: {
-      description: 'Turns the next and previous page arrows on and off',
+      description: 'Shows/hides the next and previous page arrows',
       defaultValue: true,
       control: {
         type: 'boolean',

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.36.1] - 2021-10-13
+
+- Displayed items count text now fits.
+- Add hasItemCount prop to toggle item count display.
+
 ## [1.36.0] - 2021-10-12
 
 - Add Pagination component
