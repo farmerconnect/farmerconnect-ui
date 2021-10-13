@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import * as S from './styles';
-import { Chevron} from '../SingleSelect/styles';
+import { Chevron } from '../SingleSelect/styles';
 
 interface FilterSelectProps<T> {
   itemList: T[];
@@ -14,7 +14,17 @@ interface FilterSelectProps<T> {
   disabled?: boolean;
 }
 
-const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender, resolveItemName, resolveItemRender, placeholder, noResultsMessage, selectedItem, disabled = false}: FilterSelectProps<T>) => {
+const FilterSelect = <T extends unknown>({
+  itemList,
+  onSelectItem,
+  listItemRender,
+  resolveItemName,
+  resolveItemRender,
+  placeholder,
+  noResultsMessage,
+  selectedItem,
+  disabled = false,
+}: FilterSelectProps<T>) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [hasResults, setHasResults] = useState<boolean>(true);
   const [outputList, setOutputList] = useState<T[]>(itemList);
@@ -29,7 +39,7 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
   };
 
   const handleSelectItem = (item: T) => {
-    if(inputValue === '') {
+    if (inputValue === '') {
       setOutputList(itemList);
     }
     onSelectItem(item);
@@ -54,20 +64,22 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
   }, [itemList, selectedItem]);
 
   const onInputChange = (html: React.FormEvent<HTMLInputElement>) => {
-    var searchedText:string = html.currentTarget.value;
-    let filteredList:T[] = itemList;
-    
-    if(searchedText === '') {
+    var searchedText: string = html.currentTarget.value;
+    let filteredList: T[] = itemList;
+
+    if (searchedText === '') {
       onSelectItem(null as T);
-    } 
-    if(searchedText !== undefined) {
-      filteredList = itemList.filter((item) => resolveItemName(item).toLowerCase().includes(searchedText.toLowerCase()));
+    }
+    if (searchedText !== undefined) {
+      filteredList = itemList.filter((item) =>
+        resolveItemName(item).toLowerCase().includes(searchedText.toLowerCase())
+      );
       setHasResults(filteredList.length !== 0);
       setIsOpen(true);
     }
     setInputValue(searchedText);
     setOutputList(filteredList);
-  }
+  };
 
   return (
     <S.Wrapper ref={contentRef}>
@@ -75,36 +87,37 @@ const FilterSelect = <T extends unknown>({itemList, onSelectItem, listItemRender
         {resolveItemRender && !isOpen && !inputFocused && selectedItem ? (
           resolveItemRender(selectedItem)
         ) : (
-          <input 
-            placeholder={placeholder} 
-            onChange={onInputChange} 
-            onFocus={() => setInputFocused(true)} 
-            onBlur={() => setInputFocused(false)} 
-            value={inputValue} 
-            alt="filter-select-input" 
-            disabled={disabled} 
+          <input
+            placeholder={placeholder}
+            onChange={onInputChange}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
+            value={inputValue}
+            alt="filter-select-input"
+            disabled={disabled}
           />
-        )}        
+        )}
         <Chevron />
       </S.Heading>
       <S.Content isOpen={isOpen}>
-        {
-          hasResults ?
-            <S.ItemList onMouseEnter={() => setMouseEnterItemList(true)} onMouseLeave={() => setMouseEnterItemList(false)}>
-              {outputList.map((item, index) => (
-                <S.Item
-                  onClick={() => handleSelectItem(item)} 
-                  key={`left-content-${index}`}
-                  isSelected={item === selectedItem && !mouseEnterItemList}
-                >
-                  {listItemRender(item)}
-                </S.Item>
-              ))}
-            </S.ItemList>
-          :
+        {hasResults ? (
+          <S.ItemList
+            onMouseEnter={() => setMouseEnterItemList(true)}
+            onMouseLeave={() => setMouseEnterItemList(false)}
+          >
+            {outputList.map((item, index) => (
+              <S.Item
+                onClick={() => handleSelectItem(item)}
+                key={`left-content-${index}`}
+                isSelected={item === selectedItem && !mouseEnterItemList}
+              >
+                {listItemRender(item)}
+              </S.Item>
+            ))}
+          </S.ItemList>
+        ) : (
           <S.EmptyResult>{noResultsMessage}</S.EmptyResult>
-        }
-
+        )}
       </S.Content>
     </S.Wrapper>
   );

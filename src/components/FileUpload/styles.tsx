@@ -11,12 +11,12 @@ export const Container = styled.div<any>`
   padding: ${(props) => (props.slim ? '16px' : '42px')};
   border-width: 1px;
   border-radius: 12px;
-  border-color: #00E394;
+  border-color: #00e394;
   border-style: dashed;
   background-color: ${(props) => (props.isDragging ? '#F3F3F3' : '#FFFFFF')};
-  color: #5B5B5B;
+  color: #5b5b5b;
   outline: none;
-  transition: border .24s ease-in-out;
+  transition: border 0.24s ease-in-out;
 `;
 
 export const Span = styled.span`
@@ -38,6 +38,6 @@ export const LinkButton = styled(CustomButton)`
 export const Helper = styled.div`
   font-size: 11px;
   line-height: 15px;
-  color: #5B5B5B;
+  color: #5b5b5b;
   padding: 0.25rem 1rem 0rem 1rem;
 `;

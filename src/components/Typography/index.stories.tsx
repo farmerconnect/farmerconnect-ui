@@ -10,8 +10,7 @@ export default {
   component: Typography,
   argTypes: {
     variant: {
-      description:
-        'Sets the styles required for the specified as determined by the farmer connect design library.',
+      description: 'Sets the styles required for the specified as determined by the farmer connect design library.',
       defaultValue: undefined,
       control: {
         type: 'select',
@@ -20,7 +19,7 @@ export default {
       table: {
         type: { summary: 'TypographyVariant' },
         defaultValue: { summary: 'body' },
-      }
+      },
     },
     color: {
       description:
@@ -33,11 +32,10 @@ export default {
       table: {
         type: { summary: 'TypographyColor' },
         defaultValue: { summary: 'fc_black_100' },
-      }
+      },
     },
     fontStyle: {
-      description:
-        'Sets the fontStyle for the text, altering the font-weight and font-style.',
+      description: 'Sets the fontStyle for the text, altering the font-weight and font-style.',
       defaultValue: undefined,
       control: {
         type: 'select',
@@ -46,7 +44,7 @@ export default {
       table: {
         type: { summary: 'TypographyFontStyle' },
         defaultValue: { summary: 'undefined' },
-      }
+      },
     },
     tagName: {
       description:
@@ -59,7 +57,7 @@ export default {
       table: {
         type: { summary: 'TypographyTag' },
         defaultValue: { summary: 'p' },
-      }
+      },
     },
   },
 } as Meta;
@@ -118,7 +116,6 @@ export const small: Story = () => {
     </S.Stack>
   );
 };
-
 
 export const steplabel: Story = () => {
   return (

@@ -6,9 +6,9 @@ import TextArea from '.';
 import { ITextArea } from './interfaces';
 
 export default {
-	title: 'TextArea',
-	component: TextArea,
-	argTypes: {},
+  title: 'TextArea',
+  component: TextArea,
+  argTypes: {},
 } as Meta;
 
 const Template: Story<ITextArea> = (args) => <TextArea {...args} />;

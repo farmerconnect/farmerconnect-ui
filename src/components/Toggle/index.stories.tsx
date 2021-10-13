@@ -5,37 +5,39 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Toggle, { ToggleProps } from './';
 
 export default {
-	title: 'Toggle',
-	component: Toggle,
-	argTypes: {},
+  title: 'Toggle',
+  component: Toggle,
+  argTypes: {},
 } as Meta;
 
 const Template: Story<ToggleProps> = (args) => (
-	<div style={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-  }}>
-		<Toggle {...args} name="radio-0">
-			Regular
-		</Toggle>
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '1rem',
+    }}
+  >
+    <Toggle {...args} name="radio-0">
+      Regular
+    </Toggle>
     <Toggle {...args} name="radio-0" textFirst={true}>
-			Regular with text first
-		</Toggle>
-		<Toggle {...args} name="radio-0" defaultChecked>
-			Default checked
-		</Toggle>
-		<Toggle {...args} disabled name="radio-0">
-			Disabled
-		</Toggle>
-		<Toggle {...args} disabled name="radio-0" defaultChecked>
-			Disabled default checked
-		</Toggle>
-		<Toggle {...args} />
-		<Toggle {...args} defaultChecked />
-		<Toggle {...args} disabled />
-		<Toggle {...args} disabled defaultChecked />
-	</div>
+      Regular with text first
+    </Toggle>
+    <Toggle {...args} name="radio-0" defaultChecked>
+      Default checked
+    </Toggle>
+    <Toggle {...args} disabled name="radio-0">
+      Disabled
+    </Toggle>
+    <Toggle {...args} disabled name="radio-0" defaultChecked>
+      Disabled default checked
+    </Toggle>
+    <Toggle {...args} />
+    <Toggle {...args} defaultChecked />
+    <Toggle {...args} disabled />
+    <Toggle {...args} disabled defaultChecked />
+  </div>
 );
 
 export const Default = Template.bind({});

@@ -38,7 +38,7 @@ const Tooltip: FC<ITooltipProps> = ({
         delayHide={delayHide}
         getContent={(dataTip) => {
           newContent = content;
-          if(dataTip !== null && dataTip !== 'true') {
+          if (dataTip !== null && dataTip !== 'true') {
             newContent = dataTip;
           }
           return newContent;

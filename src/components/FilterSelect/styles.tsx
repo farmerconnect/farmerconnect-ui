@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
 
@@ -16,7 +16,7 @@ type HeadingProps = {
 export const Heading = styled.div<HeadingProps>`
   ${(props) => css`
     flex: 1;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,20 +24,20 @@ export const Heading = styled.div<HeadingProps>`
     font-size: 0.875rem;
     line-height: 1.32;
     padding: 0.625rem 1rem;
-    color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
-    background-color: ${props.disabled ? "#E7E7E7" : "#F7F6F4"};
+    color: ${props.disabled ? '#B9B9B9' : '#5B5B5B'};
+    background-color: ${props.disabled ? '#E7E7E7' : '#F7F6F4'};
     transition: all 0.05s ease-out;
-    border-radius: ${props.isOpen ? "0.75rem 0.75rem 0rem 0rem" : "0.75rem"};
+    border-radius: ${props.isOpen ? '0.75rem 0.75rem 0rem 0rem' : '0.75rem'};
     color: #5b5b5b;
-    cursor: ${props.disabled ? "default" : "pointer"};
-    box-shadow: ${props.isOpen ? "0.125rem 0.125rem 0 0 #00E394" : "none"};
+    cursor: ${props.disabled ? 'default' : 'pointer'};
+    box-shadow: ${props.isOpen ? '0.125rem 0.125rem 0 0 #00E394' : 'none'};
     > svg {
-      fill: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
-      transform: ${props.isOpen ? "rotate(180deg)" : "none"};
+      fill: ${props.disabled ? '#B9B9B9' : '#5B5B5B'};
+      transform: ${props.isOpen ? 'rotate(180deg)' : 'none'};
     }
     input {
-      background-color: ${props.disabled ? "#E7E7E7" : "#F7F6F4"};
-      color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+      background-color: ${props.disabled ? '#E7E7E7' : '#F7F6F4'};
+      color: ${props.disabled ? '#B9B9B9' : '#5B5B5B'};
       font-size: 14px;
       margin: 0;
       border: none;
@@ -45,16 +45,18 @@ export const Heading = styled.div<HeadingProps>`
       ${fontFamily}
       font-size: 14px;
       font-weight: 700;
-      cursor: ${props.disabled ? "default" : "auto"};
+      cursor: ${props.disabled ? 'default' : 'auto'};
     }
 
-    input:focus, textarea:focus, select:focus{
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
     }
 
     input::placeholder {
       font-weight: 400;
-      color: ${props.disabled ? "#B9B9B9" : "#5B5B5B"};
+      color: ${props.disabled ? '#B9B9B9' : '#5B5B5B'};
     }
   `}
 `;
@@ -66,14 +68,14 @@ type ContentProps = {
 export const Content = styled.div<ContentProps>`
   position: absolute;
   background-color: #f7f6f4;
-  border-radius: ${(props) => (props.isOpen ? "0rem 0rem 0.75rem 0.75rem" : "0.75rem")};
+  border-radius: ${(props) => (props.isOpen ? '0rem 0rem 0.75rem 0.75rem' : '0.75rem')};
   z-index: 5;
   left: 0;
   right: 0;
   top: 100%;
   display: flex;
   flex-direction: column;
-  max-height: ${(props) => (props.isOpen ? "20rem" : "0")};
+  max-height: ${(props) => (props.isOpen ? '20rem' : '0')};
   overflow: hidden;
   box-shadow: 0.125rem 0.125rem 0 0 #00e394;
   transition: all 0.05s ease-out;
@@ -114,7 +116,7 @@ export const ItemList = styled.ul`
     padding: 0.3125rem 1rem;
     cursor: pointer;
     &:hover {
-      background-color: #E7E7E7;
+      background-color: #e7e7e7;
     }
   }
   li + li {
@@ -127,5 +129,5 @@ type ItemProps = {
 };
 
 export const Item = styled.li<ItemProps>`
-  background-color: ${(props) => (props.isSelected ? "#E7E7E7" : "#f7f6f4")};
+  background-color: ${(props) => (props.isSelected ? '#E7E7E7' : '#f7f6f4')};
 `;

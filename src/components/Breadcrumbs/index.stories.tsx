@@ -16,9 +16,9 @@ const Template: Story<IBreadcrumbsProps> = (args) => <Breadcrumbs {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   breadcrumbs: [
-    { text: 'First page', onClick: () => alert("First page clicked") },
-    { text: 'Second page', onClick: () => alert("Second page clicked") },
-    { text: 'Third page', onClick: () => alert("Third page clicked") },
+    { text: 'First page', onClick: () => alert('First page clicked') },
+    { text: 'Second page', onClick: () => alert('Second page clicked') },
+    { text: 'Third page', onClick: () => alert('Third page clicked') },
     { text: 'Current page' },
   ],
 };

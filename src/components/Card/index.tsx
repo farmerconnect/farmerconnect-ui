@@ -16,13 +16,18 @@ function Card({ type = 'Default', ...props }: ICardProps) {
   );
 }
 
-const Collapsed = ({ text = { seeMore: 'See more', seeLess: 'See less' }, onOpenClose = () => {}, children, ...props }: ICollapsedProps) => {
+const Collapsed = ({
+  text = { seeMore: 'See more', seeLess: 'See less' },
+  onOpenClose = () => {},
+  children,
+  ...props
+}: ICollapsedProps) => {
   const [open, setOpen] = useContext(CardContext);
 
   const onOpen = (open: boolean) => {
     setOpen(open);
     onOpenClose(open);
-  }
+  };
 
   return (
     <>

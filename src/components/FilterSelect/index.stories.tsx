@@ -15,12 +15,13 @@ export default {
     placeholder: {
       name: 'placeholder',
       type: { name: 'string', required: true },
-      description: 'Placeholder that shows before the selection'
+      description: 'Placeholder that shows before the selection',
     },
     resolveItemName: {
       name: 'resolveItemName',
       type: { name: 'function', required: true },
-      description: 'The component calls this function to resolve the label to be shown on the select, since the object is generic.',
+      description:
+        'The component calls this function to resolve the label to be shown on the select, since the object is generic.',
     },
     onSelectItem: {
       name: 'onSelectItem',
@@ -50,30 +51,31 @@ const ListItem = styled.div`
 const SelectedItem = styled.div`
   span {
     color: darkgray;
-    font-weight:bold;
-    font-size: 12px;    
+    font-weight: bold;
+    font-size: 12px;
   }
 
-  margin: 30px 10px; 
+  margin: 30px 10px;
 
-  #json-element{
+  #json-element {
     margin-top: 8px;
-    background-color:	#989898;
+    background-color: #989898;
     height: 45px;
     border-radius: 10px;
     padding: 15px;
     color: white;
   }
-  pre { font-family: monospace; }
+  pre {
+    font-family: monospace;
+  }
 `;
-
 
 export type listItemType = {
   id: number;
   name: string;
 };
 
-const data:listItemType[] = [
+const data: listItemType[] = [
   { name: 'Alex Smith    | +55 55 99999 9120', id: 1 },
   { name: 'Ronald Smith  | +55 55 99999 9121', id: 2 },
   { name: 'David Smith   | +55 55 99999 9122', id: 3 },
@@ -94,11 +96,17 @@ const Template: Story<typeof FilterSelect> = (args) => {
     <div>
       <FilterSelect
         itemList={items}
-        resolveItemName={(item:listItemType) => item.name}
-        onSelectItem={(item:listItemType) => { setSelectedItem(item); }}
-        listItemRender={(item:listItemType) => (<ListItem><span>{item.name}</span></ListItem>)}
-        placeholder={"Select farmer"}
-        noResultsMessage={"No results to show at the moment"}
+        resolveItemName={(item: listItemType) => item.name}
+        onSelectItem={(item: listItemType) => {
+          setSelectedItem(item);
+        }}
+        listItemRender={(item: listItemType) => (
+          <ListItem>
+            <span>{item.name}</span>
+          </ListItem>
+        )}
+        placeholder={'Select farmer'}
+        noResultsMessage={'No results to show at the moment'}
         selectedItem={selectedItem}
       />
       <SelectedItem>
@@ -109,7 +117,7 @@ const Template: Story<typeof FilterSelect> = (args) => {
           </pre>
         </div>
       </SelectedItem>
-    </div>   
+    </div>
   );
 };
 
@@ -123,7 +131,7 @@ export type listItemType2 = {
   value: string;
 };
 
-const datatype2:listItemType2[] = [
+const datatype2: listItemType2[] = [
   { label: 'Alex Smith    | +55 55 99999 9120', id: 1, value: 'value1' },
   { label: 'Ronald Smith  | +55 55 99999 9121', id: 2, value: 'value2' },
   { label: 'David Smith   | +55 55 99999 9122', id: 3, value: 'value3' },
@@ -144,11 +152,19 @@ const Template2: Story<typeof FilterSelect> = (args) => {
     <div>
       <FilterSelect
         itemList={items}
-        resolveItemName={(item:listItemType2) => `${item.label} - ${item.value}`}
-        onSelectItem={(item:listItemType2) => { setSelectedItem(item); }}
-        listItemRender={(item:listItemType2) => (<ListItem><span>{item.label} - {item.value}</span></ListItem>)}
-        placeholder={"Select farmer type2"}
-        noResultsMessage={"No results to show at the moment"}
+        resolveItemName={(item: listItemType2) => `${item.label} - ${item.value}`}
+        onSelectItem={(item: listItemType2) => {
+          setSelectedItem(item);
+        }}
+        listItemRender={(item: listItemType2) => (
+          <ListItem>
+            <span>
+              {item.label} - {item.value}
+            </span>
+          </ListItem>
+        )}
+        placeholder={'Select farmer type2'}
+        noResultsMessage={'No results to show at the moment'}
         selectedItem={selectedItem}
       />
       <SelectedItem>
@@ -159,7 +175,7 @@ const Template2: Story<typeof FilterSelect> = (args) => {
           </pre>
         </div>
       </SelectedItem>
-    </div>   
+    </div>
   );
 };
 
@@ -174,14 +190,18 @@ const Template3: Story<typeof FilterSelect> = (args) => {
     <div>
       <FilterSelect
         itemList={items}
-        resolveItemName={(item:listItemType) => item.name}
-        onSelectItem={() => { }}
-        listItemRender={(item:listItemType) => (<ListItem><span>{item.name}</span></ListItem>)}
-        placeholder={"Select farmer"}
-        noResultsMessage={"No results to show at the moment"}
+        resolveItemName={(item: listItemType) => item.name}
+        onSelectItem={() => {}}
+        listItemRender={(item: listItemType) => (
+          <ListItem>
+            <span>{item.name}</span>
+          </ListItem>
+        )}
+        placeholder={'Select farmer'}
+        noResultsMessage={'No results to show at the moment'}
         disabled
       />
-    </div>   
+    </div>
   );
 };
 

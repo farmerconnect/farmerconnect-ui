@@ -6,13 +6,11 @@ import { Container, Text } from './styles';
 const Breadcrumb: React.FC<IBreadcrumbProps> = (props: IBreadcrumbProps) => {
   return (
     <Container>
-      {props.isLast && (
-        <Text>{props.text}</Text>
-      )}
+      {props.isLast && <Text>{props.text}</Text>}
       {!props.isLast && (
         <CustomButton variant="text" onClick={props.onClick}>
           {props.text}
-          <Arrow fill={"#00E394"} direction="right" />
+          <Arrow fill={'#00E394'} direction="right" />
         </CustomButton>
       )}
     </Container>

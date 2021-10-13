@@ -4,16 +4,16 @@ import ProgressBar from '.';
 import { useEffect, useState } from 'react';
 
 export default {
-	title: 'ProgressBar',
-	component: ProgressBar,
-	argTypes: {},
+  title: 'ProgressBar',
+  component: ProgressBar,
+  argTypes: {},
 } as Meta;
 
 const Template: Story<IProgressBar> = (args) => {
   const [completed, setCompleted] = useState(0);
 
   useEffect(() => {
-    setInterval(() => setCompleted(prevState => prevState + 1 === 101 ? 0 : prevState + 1), 500);
+    setInterval(() => setCompleted((prevState) => (prevState + 1 === 101 ? 0 : prevState + 1)), 500);
   }, []);
 
   return (

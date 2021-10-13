@@ -10,8 +10,8 @@
     "test": "react-scripts test --ci --watchAll=false",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint -c .eslintrc.js src/**/*.ts",
-    "format": "prettier src/**/*.ts --write",
+    "lint": "eslint -c .eslintrc.js \"src/**/*.{ts,tsx,js}\"",
+    "format": "prettier \"src/**/*.{ts,tsx,js,json}\" --write",
     "storybook": "start-storybook -p 6006 -s public --no-manager-cache",
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages"

@@ -14,8 +14,8 @@ export default {
     },
     actions: {
       disabled: true,
-    }
-  }
+    },
+  },
 } as Meta;
 
 const Template: Story<IColorSwatch> = () => {

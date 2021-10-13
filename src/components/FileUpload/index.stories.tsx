@@ -4,16 +4,15 @@ import FileUpload from '.';
 import { useState } from 'react';
 
 export default {
-	title: 'FileUpload',
-	component: FileUpload,
-	argTypes: {},
+  title: 'FileUpload',
+  component: FileUpload,
+  argTypes: {},
 } as Meta;
 
 const Template: Story<IFileUpload> = (args) => {
   const [fileNames, setFileNames] = useState<string[]>([]);
-  const handleUpload = (acceptedFiles: File[]) =>
-    setFileNames(acceptedFiles.map(file => file.name));
-    
+  const handleUpload = (acceptedFiles: File[]) => setFileNames(acceptedFiles.map((file) => file.name));
+
   return (
     <>
       <FileUpload {...args} onUploadFiles={handleUpload} />
@@ -21,13 +20,13 @@ const Template: Story<IFileUpload> = (args) => {
       <div style={{ paddingTop: '1rem' }}>
         <strong>Files:</strong>
         <ul>
-          {fileNames.map(fileName => (
+          {fileNames.map((fileName) => (
             <li key={fileName}>{fileName}</li>
           ))}
         </ul>
       </div>
     </>
-  )
+  );
 };
 
 const Default = Template.bind({});
@@ -41,11 +40,11 @@ Default.args = {
 export const Slim = Template.bind({});
 Slim.args = {
   ...Default.args,
-  slim: true
+  slim: true,
 };
 
 export const Large = Template.bind({});
 Large.args = {
   ...Default.args,
-  slim: false
+  slim: false,
 };

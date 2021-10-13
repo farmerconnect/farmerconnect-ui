@@ -18,7 +18,7 @@ const Template: Story<ITooltipProps> = (args) => {
         marginTop: '50px',
       }}
     >
-      <PublicProfileIcon fill='#000' data-for={args.id} data-tip />
+      <PublicProfileIcon fill="#000" data-for={args.id} data-tip />
       <Tooltip {...args} />
     </div>
   );
@@ -37,7 +37,7 @@ const renderContent = () => (
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      maxWidth: '31.375rem'
+      maxWidth: '31.375rem',
     }}
   >
     <button
@@ -55,9 +55,14 @@ const renderContent = () => (
         right: '-24px',
       }}
     >
-      <CloseIcon fill={'#fff'}/>
+      <CloseIcon fill={'#fff'} />
     </button>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nulla eget nisl lobortis aliquam. Morbi vehicula dapibus nisi, eleifend mattis leo convallis vel. Aenean neque erat, viverra sed lobortis eu, pretium et velit. Proin neque urna, mollis in dictum vel, ornare non est. Proin egestas accumsan diam non bibendum.</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nulla eget nisl lobortis aliquam.
+      Morbi vehicula dapibus nisi, eleifend mattis leo convallis vel. Aenean neque erat, viverra sed lobortis eu,
+      pretium et velit. Proin neque urna, mollis in dictum vel, ornare non est. Proin egestas accumsan diam non
+      bibendum.
+    </p>
   </div>
 );
 
@@ -66,5 +71,5 @@ Clickable.args = {
   content: renderContent(),
   id: 'global',
   event: 'click',
-  className: 'clickable'
+  className: 'clickable',
 };
