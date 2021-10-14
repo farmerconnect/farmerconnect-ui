@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Component renders the correct svgs 1`] = `
+.c0 {
+  box-sizing: border-box;
+  color: #141414;
+  font-size: 0.875rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 2rem;
+  -webkit-column-gap: 0.25rem;
+  column-gap: 0.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.c0 input {
+  cursor: pointer;
+  opacity: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.c0 > svg {
+  min-width: 1.5rem;
+}
+
+.c0 input + .unchecked {
+  display: block;
+}
+
+.c0 input + .checked {
+  display: none;
+}
+
+.c0 input:checked + svg + .unchecked {
+  display: none;
+}
+
+.c0 input:checked + .checked {
+  display: block;
+  -webkit-animation: gZMnEj 0.2s;
+  animation: gZMnEj 0.2s;
+}
+
+<div>
+  <label
+    class="c0"
+  >
+    <input
+      name="radio-test"
+      placeholder="option-1"
+      type="checkbox"
+      value="1"
+    />
+    <svg
+      class="checked"
+      fill="none"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="#141414"
+        height="15"
+        rx="3.5"
+        stroke="#141414"
+        width="15"
+        x="4.5"
+        y="4.5"
+      />
+      <path
+        d="M10.1348 14.1591L8.03182 12.0561C7.91859 11.9426 7.76486 11.8788 7.60455 11.8788C7.44423 11.8788 7.2905 11.9426 7.17727 12.0561C6.94091 12.2924 6.94091 12.6742 7.17727 12.9106L9.71061 15.4439C9.94697 15.6803 10.3288 15.6803 10.5652 15.4439L16.9773 9.03181C17.2136 8.79545 17.2136 8.41363 16.9773 8.17726C16.864 8.06378 16.7103 8 16.55 8C16.3897 8 16.236 8.06378 16.1227 8.17726L10.1348 14.1591Z"
+        fill="white"
+      />
+    </svg>
+    <svg
+      class="unchecked"
+      data-testid="unchecked"
+      fill="none"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="none"
+        height="15"
+        rx="3.5"
+        stroke="#141414"
+        width="15"
+        x="4.5"
+        y="4.5"
+      />
+    </svg>
+    checkbox
+  </label>
+</div>
+`;

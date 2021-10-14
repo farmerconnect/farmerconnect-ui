@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import Checkbox from '.';
 
 describe('Checkbox Component', () => {
@@ -19,5 +19,28 @@ describe('Checkbox Component', () => {
     expect(container.getByText(/option 1/i)).toBeInTheDocument();
     expect(container.getByText(/option 2/i)).toBeInTheDocument();
     expect(container.getByText(/option 3/i)).toBeInTheDocument();
+  });
+
+  it('renders the correct svgs', () => {
+    const renderedCheckbox = render(
+      <Checkbox name="radio-test" value={1} placeholder="option-1">
+        checkbox
+      </Checkbox>
+    );
+    expect(renderedCheckbox.container).toMatchSnapshot();
+  });
+
+  it('hides the unchecked svg on click', async () => {
+    const renderedCheckbox = render(
+      <Checkbox name="radio-test" value={1} placeholder="option-1">
+        checkbox
+      </Checkbox>
+    );
+
+    fireEvent.click(renderedCheckbox.getByLabelText(/checkbox/));
+    await waitFor(async () => {
+      const element = await renderedCheckbox.findByTestId('unchecked');
+      expect(element).toHaveStyle('display: none');
+    });
   });
 });
