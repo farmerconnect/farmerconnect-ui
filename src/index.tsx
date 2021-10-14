@@ -44,7 +44,7 @@ import Typography from './components/Typography';
 import Alert from './components/Alert';
 import Pagination from './components/Pagination';
 
-export {
+const components = {
   WizardSteps,
   Button,
   IconCheck,
@@ -91,3 +91,5 @@ export {
   Alert,
   Pagination,
 };
+
+export default components;
