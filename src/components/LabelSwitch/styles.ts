@@ -10,20 +10,19 @@ export const Container = styled.ul`
   display: inline-flex;
   min-height: 2rem;
   box-sizing: border-box;
-  gap: 0rem;
+  gap: 1rem;
   margin: 0;
-  padding: 0.25rem;
+  padding: 0.25rem 1rem;
   align-items: center;
   background: #f7f6f4;
   border-radius: 1.1875rem;
-  width: fit-content;
 `;
 
 export const LabelItem = styled.li<LabelItemProps>`
-  width: 113px;
   height: 24px;
   position: relative;
   color: #141414;
+  text-shadow: ${({ selected }) => (selected ? '0 0 0.0625rem #141414' : 'none')};
   font-size: 0.6875rem;
   cursor: pointer;
   margin: 0;
@@ -32,7 +31,6 @@ export const LabelItem = styled.li<LabelItemProps>`
   justify-content: center;
   align-items: center;
   transition: font-weight 0.2s linear;
-  font-weight: ${({ selected }) => (selected ? '700' : 'normal')};
   ${({ disabled }) =>
     disabled
       ? css`
@@ -44,11 +42,9 @@ export const LabelItem = styled.li<LabelItemProps>`
         `};
   .selected {
     position: absolute;
-    width: 113px;
-    height: 24px;
     top: 0px;
-    left: 0;
-    right: 0;
+    left: -0.75rem;
+    right: -0.75rem;
     bottom: 0px;
     background-color: #cee9dd;
     margin: 0;

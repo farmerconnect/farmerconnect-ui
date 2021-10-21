@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.36.3] - 2021-10-21
+
+- LabelSwitch no longer breaks line on larger labels
+
 ## [1.36.2] - 2021-10-20
 
 - Icon external link added
