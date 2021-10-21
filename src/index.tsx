@@ -39,6 +39,8 @@ import FileUpload from './components/FileUpload';
 import ProgressBar from './components/ProgressBar';
 import Select from './components/Select';
 import LabelSwitch from './components/LabelSwitch';
+import Colors from './components/Colors';
+import Typography from './components/Typography';
 
 export {
   WizardSteps,
@@ -82,4 +84,6 @@ export {
   ProgressBar,
   Select,
   LabelSwitch,
+  Colors,
+  Typography,
 };

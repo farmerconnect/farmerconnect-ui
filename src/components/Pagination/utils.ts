@@ -76,7 +76,11 @@ type SelectOptionArrayGenerator = (
   pageSizeArray: number[],
   pageSizeLabelTemplate: (pageSize: number) => string
 ) => ISelectOptionArray;
-export const generateSelectOptionArray: SelectOptionArrayGenerator = (pagination, pageSizeArray, pageSizeLabelTemplate) => {
+export const generateSelectOptionArray: SelectOptionArrayGenerator = (
+  pagination,
+  pageSizeArray,
+  pageSizeLabelTemplate
+) => {
   return pageSizeArray.map((pageSize) => ({
     selected: pageSize === pagination.pageSize,
     label: pageSizeLabelTemplate(pageSize),
