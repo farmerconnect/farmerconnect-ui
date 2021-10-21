@@ -8,7 +8,7 @@ export default {
   component: LabelSwitch,
   argTypes: {},
   args: {
-    labels: ['Label 1', 'Label 2'],
+    labels: ['Super Super Long Label 1', 'Label 2'],
   },
 } as Meta;
 
