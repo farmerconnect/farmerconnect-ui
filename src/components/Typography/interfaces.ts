@@ -17,7 +17,7 @@ type TypographyColor = typeof typographyColorList[number] & keyof typeof colors;
 export const typopgrahyFontStyleList = ['semibold', 'highlight'] as const;
 type TypographyFontStyle = typeof typopgrahyFontStyleList[number];
 
-export const typographyTagList = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'span', 'sup', 'sub'] as const;
+export const typographyTagList = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'span', 'sup', 'sub', 'label'] as const;
 type TypographyTag = typeof typographyTagList[number];
 
 export const typographyVariantList = [

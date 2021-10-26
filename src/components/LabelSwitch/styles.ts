@@ -16,6 +16,7 @@ export const Container = styled.ul`
   align-items: center;
   background: #f7f6f4;
   border-radius: 1.1875rem;
+  width: fit-content;
 `;
 
 export const LabelItem = styled.li<LabelItemProps>`
