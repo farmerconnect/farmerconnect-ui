@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.37.0] 2021-10-26
 
 - Added Alert component
-- Fixed LabelSwitch width
 - Added 'label' tag option to Typography component
+- Fixed LabelSwitch width
+- Fixed: Select and SmallSelect checkbox size
 
 ## [1.36.3] - 2021-10-21
 

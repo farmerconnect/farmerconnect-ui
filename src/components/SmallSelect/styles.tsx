@@ -137,6 +137,9 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
     display: flex;
     gap: 0.25rem;
     align-items: center;
+    > svg:first-child {
+      flex-shrink: 0;
+    }
     > .checked {
       animation: ${animateCheckbox} 0.2s;
     }
