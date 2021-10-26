@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Check: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104" fill="none" {...props}>
       <rect x="49" y="35" width="6" height="32" rx="3" fill={props.fill || '#AE8800'} />
       <rect x="49" y="71" width="6" height="6" rx="3" fill={props.fill || '#AE8800'} />
       <path

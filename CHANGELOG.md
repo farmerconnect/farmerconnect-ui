@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.37.0] 2021-10-26
+
+- Added Alert component
+- Added 'label' tag option to Typography component
+- Fixed LabelSwitch width
+- Fixed: Select and SmallSelect checkbox size
+
 ## [1.36.3] - 2021-10-21
 
 - LabelSwitch no longer breaks line on larger labels

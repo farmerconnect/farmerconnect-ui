@@ -41,6 +41,7 @@ import Select from './components/Select';
 import LabelSwitch from './components/LabelSwitch';
 import Colors from './components/Colors';
 import Typography from './components/Typography';
+import Alert from './components/Alert';
 
 export {
   WizardSteps,
@@ -86,4 +87,5 @@ export {
   LabelSwitch,
   Colors,
   Typography,
+  Alert,
 };
