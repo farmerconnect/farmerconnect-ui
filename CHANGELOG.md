@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.37.1] 2021-10-27
+
+- Added missing export of Pagination component
+
 ## [1.37.0] 2021-10-26
 
 - Added Alert component

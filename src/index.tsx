@@ -42,6 +42,7 @@ import LabelSwitch from './components/LabelSwitch';
 import Colors from './components/Colors';
 import Typography from './components/Typography';
 import Alert from './components/Alert';
+import Pagination from './components/Pagination';
 
 export {
   WizardSteps,
@@ -88,4 +89,5 @@ export {
   Colors,
   Typography,
   Alert,
+  Pagination,
 };
