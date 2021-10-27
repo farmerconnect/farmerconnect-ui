@@ -1,110 +1,143 @@
 import { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
 
+const buttonVariantList = ['filled', 'outline', 'link', 'text', 'cancel'] as const;
+type IButtonVariant = typeof buttonVariantList[number];
+
 export type ButtonProps = {
-  variant?: 'filled' | 'outline' | 'link' | 'text' | 'cancel';
+  variant?: IButtonVariant;
   small?: boolean;
   iconOnly?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
+type IButtonColorVariant = {
+  primary: string;
+  background: string;
+  border: string;
+};
+
+const colorStateList = ['default', 'hover', 'disabled'];
+type IColorState = typeof colorStateList[number];
+
+const buttonColors: { [key in IButtonVariant]: { [key in IColorState]: IButtonColorVariant } } = {
+  filled: {
+    default: {
+      primary: 'white',
+      background: '#00e394',
+      border: 'transparent',
+    },
+    hover: {
+      primary: 'white',
+      background: '#02ce87',
+      border: 'transparent',
+    },
+    disabled: {
+      primary: 'white',
+      background: 'rgba(20, 20, 20, 0.3)',
+      border: 'transparent',
+    },
+  },
+  outline: {
+    default: {
+      primary: '#00e394',
+      background: 'transparent',
+      border: '#00e394',
+    },
+    hover: {
+      primary: '#02ce87',
+      background: '#f3f3f3',
+      border: '#02ce87',
+    },
+    disabled: {
+      primary: 'rgba(20, 20, 20, 0.3)',
+      background: 'transparent',
+      border: 'rgba(20, 20, 20, 0.3)',
+    },
+  },
+  link: {
+    default: {
+      primary: '#00e394',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    hover: {
+      primary: '#02ce87',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    disabled: {
+      primary: 'rgba(20, 20, 20, 0.3)',
+      background: 'transparent',
+      border: 'transparent',
+    },
+  },
+  text: {
+    default: {
+      primary: '#00e394',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    hover: {
+      primary: '#02ce87',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    disabled: {
+      primary: 'rgba(20, 20, 20, 0.3)',
+      background: 'transparent',
+      border: 'transparent',
+    },
+  },
+  cancel: {
+    default: {
+      primary: '#141414',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    hover: {
+      primary: '#141414',
+      background: 'transparent',
+      border: 'transparent',
+    },
+    disabled: {
+      primary: 'rgba(20, 20, 20, 0.3)',
+      background: 'transparent',
+      border: 'transparent',
+    },
+  },
+};
+
+const buttonColorSwitch = (colorState: IColorState) => css<ButtonProps>`
+  color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].primary};
+  background-color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].background};
+  border-color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].border};
+  svg {
+    fill: ${({ variant = 'filled' }) => buttonColors[variant][colorState].primary};
+    transition: fill 0.2s ease-out;
+
+    path {
+      fill: inherit;
+    }
+  }
+`;
+
 const buttonModifiers = {
   filled: css`
-    border: 1px solid transparent;
+    border: 1px solid;
   `,
   outline: css`
-    background-color: transparent;
-    border: 1px solid #00e394;
-    color: #00e394;
-    svg {
-      fill: #00e394;
-    }
-    &:disabled {
-      background-color: transparent;
-      border-color: rgba(20, 20, 20, 0.3);
-      color: rgba(20, 20, 20, 0.3);
-      svg {
-        fill: rgba(20, 20, 20, 0.3);
-      }
-    }
-    &:hover:not(:disabled) {
-      background-color: #f3f3f3;
-      color: #02ce87;
-      border-color: #02ce87;
-      svg {
-        fill: #02ce87;
-      }
-    }
+    border: 1px solid;
   `,
   link: css`
-    background-color: transparent;
-    border: none;
-    color: #00e394;
     padding: 0.625rem 0rem;
-    svg {
-      fill: #00e394;
-    }
     text-decoration: underline;
-    &:disabled {
-      background-color: transparent;
-      color: rgba(20, 20, 20, 0.3);
-      svg {
-        fill: rgba(20, 20, 20, 0.3);
-      }
-    }
-    &:hover:not(:disabled) {
-      color: #02ce87;
-      svg {
-        fill: #02ce87;
-      }
-      background-color: transparent;
-    }
   `,
   text: css`
-    background-color: transparent;
-    border: none;
-    color: #00e394;
     padding: 0.625rem 0rem;
-    svg {
-      fill: #00e394;
-    }
-    &:disabled {
-      background-color: transparent;
-      color: rgba(20, 20, 20, 0.3);
-      svg {
-        fill: rgba(20, 20, 20, 0.3);
-      }
-    }
-    &:hover:not(:disabled) {
-      color: #02ce87;
-      background-color: transparent;
-      svg {
-        fill: #02ce87;
-      }
-    }
   `,
   cancel: css`
-    background-color: transparent;
-    border: none;
-    color: #141414;
     padding: 0.625rem 0rem;
-    svg {
-      fill: #141414;
-    }
     text-decoration: underline;
-    &:disabled {
-      background-color: transparent;
-      color: rgba(20, 20, 20, 0.3);
-      svg {
-        fill: rgba(20, 20, 20, 0.3);
-      }
-    }
-    &:hover:not(:disabled) {
-      color: #141414;
-      svg {
-        fill: #141414;
-      }
-      background-color: transparent;
-    }
   `,
 };
 
@@ -115,9 +148,7 @@ export const Button = styled.button<ButtonProps>`
   display: inline-flex;
   border-radius: 0.75rem;
   font-weight: 700;
-  color: white;
   box-sizing: border-box;
-  background-color: #00e394;
   outline: none;
   border: none;
   cursor: pointer;
@@ -125,6 +156,7 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
   ${({ small = false }) =>
     small
       ? css`
@@ -132,21 +164,18 @@ export const Button = styled.button<ButtonProps>`
           padding: 0.375rem 1rem;
         `
       : ''}
-  svg {
-    fill: white;
-    transition: fill 0.2s ease-out;
 
-    path {
-      fill: inherit;
-    }
-  }
+  ${buttonColorSwitch('default')}
+
   &:disabled {
     cursor: default;
-    background-color: rgba(20, 20, 20, 0.3);
+    ${buttonColorSwitch('disabled')}
   }
+
   &:hover:not(:disabled) {
-    background-color: #02ce87;
+    ${buttonColorSwitch('hover')}
   }
+
   ${({ variant = 'filled' }) => buttonModifiers[variant]}
 
   ${({ iconOnly = false }) =>
