@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button from '.';
 import { ButtonProps } from './styles';
+// import 
 
 export default {
   title: 'Custom Button',
@@ -12,7 +13,7 @@ export default {
     variant: {
       control: {
         type: 'radio',
-        options: ['filled', 'outline', 'link', 'text'],
+        options: ['filled', 'outline', 'link', 'text', 'cancel'],
       },
     },
   },
@@ -53,13 +54,17 @@ const Template: Story<ButtonProps> = (args) => (
       <CloseIcon /> Custom Button
     </Button>
     <Button {...args}>
-      Custom Button
-      <CloseIcon />
+      <>
+        Custom Button
+        <CloseIcon />
+      </>
     </Button>
     <Button {...args} disabled />
     <Button {...args} disabled>
-      Disabled Icon Button
-      <CloseIcon />
+      <>
+        Disabled Icon Button
+        <CloseIcon />
+      </>
     </Button>
   </div>
 );
