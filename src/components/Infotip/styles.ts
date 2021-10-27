@@ -59,7 +59,7 @@ const TipBase = styled(small).attrs({ as: 'div' })<ITipProps>`
   color: ${({ color }) => color};
   left: 50%;
   padding: 5px 12px;
-  height: ${`${TIP_HEIGHT}px`};
+  min-height: ${`${TIP_HEIGHT}px`};
   position: absolute;
   transform: translateX(-50%);
   z-index: 100;
