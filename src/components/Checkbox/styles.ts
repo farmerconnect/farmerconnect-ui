@@ -9,9 +9,12 @@ const show = keyframes`
 }
 `;
 
-export const Label = styled.label`
+type LabelProps = {
+  disabled?: boolean;
+};
+export const Label = styled.label<LabelProps>`
   box-sizing: border-box;
-  color: #141414;
+  color: ${({ disabled }) => (disabled ? '#B9B9B9' : '#141414')};
   font-size: 0.875rem;
   display: inline-flex;
   align-items: center;
