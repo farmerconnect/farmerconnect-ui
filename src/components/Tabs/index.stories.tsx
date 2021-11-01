@@ -8,8 +8,8 @@ export default {
   component: Tabs,
   argTypes: {},
   args: {
-    tabs: ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'],
-    disabledTabs: [2],
+    tabs: ['Tab 1', 'Disabled Tab', 'Tab with a super long name', 'Tab 4'],
+    disabledTabs: [1],
   },
 } as Meta;
 

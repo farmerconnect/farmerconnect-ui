@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.37.3] 2021-10-31
+
+- Added disabled style to Checkbox
+- Added disabled style to Radio
+- Fixed Tab's current tab highlight
+
 ## [1.37.2] 2021-10-27
 
 - Fixed Infotip height

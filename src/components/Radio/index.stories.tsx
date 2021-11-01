@@ -21,8 +21,8 @@ const Template: Story<RadioProps> = (args) => (
     <Radio {...args} name="radio-0">
       Option 3
     </Radio>
-    <Radio {...args} name="radio-0">
-      Option 4
+    <Radio {...args} name="radio-0" disabled>
+      Disabled option
     </Radio>
     <Radio {...args} name="radio-0">
       Option 5

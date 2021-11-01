@@ -26,7 +26,8 @@ export const TabItem = styled.li<TabItemProps>`
   padding: 0;
   padding-bottom: 0.5rem;
   transition: font-weight 0.2s linear;
-  font-weight: ${({ selected }) => (selected ? '700' : 'normal')};
+  text-shadow: ${({ selected }) => (selected ? '0 0 0.0625rem #141414' : 'none')};
+
   ${({ disabled }) =>
     disabled
       ? css`

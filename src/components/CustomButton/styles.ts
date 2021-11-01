@@ -109,6 +109,7 @@ const buttonModifiers = {
 };
 
 export const Button = styled.button<ButtonProps>`
+  font-family: 'Red Hat Text', sans-serif;
   font-size: 0.875rem;
   line-height: 1.32;
   padding: 0.625rem 2.3rem;
