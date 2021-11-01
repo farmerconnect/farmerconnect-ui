@@ -43,6 +43,7 @@ import Colors from './components/Colors';
 import Typography from './components/Typography';
 import Alert from './components/Alert';
 import Pagination from './components/Pagination';
+import SearchInput from './components/SearchInput';
 
 export {
   WizardSteps,
@@ -90,4 +91,5 @@ export {
   Typography,
   Alert,
   Pagination,
+  SearchInput
 };
