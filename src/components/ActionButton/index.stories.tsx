@@ -1,9 +1,9 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { Copy } from '../Icons';
 
 import ActionButton from './index';
-import { IActionButtonProps } from './index';
-import { Copy } from '../Icons';
+import { IActionButtonProps } from './interfaces';
 
 export default {
   title: 'Action Button',
@@ -55,8 +55,7 @@ export default {
 
 const Template: Story<IActionButtonProps> = (args) => (
     <ActionButton {...args} >
-      {/* wow */}
-      {/* <Copy/> */}
+      <Copy/>
     </ActionButton>
 );
 

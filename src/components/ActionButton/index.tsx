@@ -1,18 +1,7 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 import Infotip from '../Infotip';
-import { IInfotipProps } from '../Infotip/interfaces';
-import { IButtonProps } from '../Button/interfaces';
 import { IconWrapper } from './styles';
-
-export interface IActionButtonProps {
-  onClick: () => boolean;
-  messageDuration: number;
-  hoverContent: ReactNode;
-  clickContent: ReactNode;
-  buttonStyles?: IButtonProps;
-  infotipProps?: Partial<IInfotipProps>;
-  id?: string;
-}
+import { IActionButtonProps } from './interfaces';
 
 const ActionButton: FC<IActionButtonProps> = ({
   children,
