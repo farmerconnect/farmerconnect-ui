@@ -1,5 +1,5 @@
 import ActionButton from './';
-import { render, fireEvent} from '@testing-library/react';
+import { render, fireEvent, waitFor} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
 describe('ActionButton Component', () => {
@@ -26,16 +26,19 @@ describe('ActionButton Component', () => {
   });
   it('shows hover tooltip', async () => {
     const container = render(actionBtn);
-    fireEvent.mouseOver(container.getByText("TEST"));
-    await new Promise((r) => setTimeout(r, 50));
-    const result = await container.findByText("Hovering message.")
-    expect(result).toBeInTheDocument();
+    await act(async () => {
+      fireEvent.mouseOver(container.getByText("TEST"));
+    });
+    const result = await (waitFor(() => container.findByText("Hovering message."), { timeout: 1000 }));
+    expect(result).toBeInTheDocument()
   });
   it('shows click tooltip', async () => {
     const container = render(actionBtn);
     const btn = container.getByText("TEST");
-    fireEvent.mouseOver(btn);
-    fireEvent.click(btn);
+    await act(async () => {
+      fireEvent.mouseOver(btn);
+      fireEvent.click(btn);
+    });
     const result = await container.findByText("Some action occurred.")
     expect(result).toBeInTheDocument();
   });
@@ -46,9 +49,8 @@ describe('ActionButton Component', () => {
       fireEvent.mouseOver(btn);
       fireEvent.click(btn);
       fireEvent.mouseOut(btn);
-      await new Promise((r) => setTimeout(r, 500));
     })
-    const result = container.queryByText("Hovering message.")
-    expect(result).not.toBeInTheDocument();
+    const result = await (waitFor(() => container.queryByText("Hovering message."), { timeout: 1000}));
+    expect(result).toBe(null);
   });
 });
