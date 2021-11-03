@@ -1,66 +1,79 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Infotip from '../Infotip';
-import { IconWrapper } from './styles';
 import { IActionButtonProps } from './interfaces';
+import * as S from './styles';
 
 const ActionButton: FC<IActionButtonProps> = ({
   children,
   hoverContent,
   clickContent,
   onClick,
-  messageDuration,
-  buttonStyles,
-  infotipProps,
-  ...props
+  messageDuration = 2000,
+  position = 'middle',
+  direction = 'top',
+  arrow = false,
+  keepOpen = false
 }) => {
   const [clicked, setClicked] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
-  const [timer, setTimer] = useState<ReturnType<typeof setTimeout>>();
+  const [hovering, setHovering ] = useState<boolean>(false);
+  const [lock, setLock] = useState<boolean>(false);
+  const [lockTimeout, setLocktimeout] = useState<ReturnType<typeof setTimeout>>();
+
+  function mouseEnter() {
+    setHovering(true);
+    setActive(true);
+  }
 
   function mouseLeave() {
-    if (clicked) {
-      setTimer(
-        setTimeout(() => {
-          setActive(false);
-          setClicked(false);
-        }, messageDuration)
-      );
-    } else {
+    setHovering(false);
+    if (!lock) {
+      setClicked(false);
       setActive(false);
     }
   }
 
-  function mouseEnter() {
-    setActive(true);
-    if (clicked) {
-      timer && clearTimeout(timer);
+  useEffect(() => {
+    if (!lock) {
+      if (!hovering || !keepOpen) {
+        setClicked(false);
+        setActive(false);
+      }
     }
-  }
+  }, [lock]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    return () => lockTimeout && clearTimeout(lockTimeout);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function click() {
-    onClick() && setClicked(true);
+    onClick();
+    setClicked(true);
+    setLock(true);
+    setLocktimeout(
+      setTimeout(() => {
+        setLock(false);
+      }, messageDuration)
+    );
   }
 
   return (
-    <div {...props}>
       <Infotip
-        position={'middle'}
-        direction={'top'}
-        {...infotipProps}
         content={clicked ? clickContent : hoverContent}
         active={active}
         onMouseLeave={mouseLeave}
         onMouseEnter={mouseEnter}
+        position={position}
+        direction={direction}
+        arrow={arrow}
       >
-      <IconWrapper
-        onClick={click}
-        variant="outline"
-        {...buttonStyles}
-      >
-        {children}
-        </IconWrapper>
+        <S.ActionButton
+            variant="outline"
+            onClick={click}
+        >
+          {children}
+        </S.ActionButton>
       </Infotip>
-    </div>
   );
 };
 

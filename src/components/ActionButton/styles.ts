@@ -1,11 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {Button as CustomButton} from '../CustomButton/styles';
 
-export const IconWrapper = styled(CustomButton)`
+const iconOnlyStyle = css`
   margin: 0px;
   padding: 0px;
   height: 32px;
   width: 32px;
   display: flex;
   border-radius: 8px
+`
+
+export const ActionButton = styled(CustomButton)`
+  ${iconOnlyStyle}
 `

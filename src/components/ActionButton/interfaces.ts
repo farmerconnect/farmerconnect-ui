@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 import { IButtonProps } from "../Button/interfaces";
-import { IInfotipProps } from "../Infotip/interfaces";
+import { TipDirection, TipPosition } from "../Infotip/interfaces";
 
-export interface IActionButtonProps {
-  onClick: () => boolean;
-  messageDuration: number;
+export interface IActionButtonProps extends IButtonProps {
+  onClick: () => void;
   hoverContent: ReactNode;
   clickContent: ReactNode;
-  buttonStyles?: IButtonProps;
-  infotipProps?: Partial<IInfotipProps>;
-  id?: string;
+  messageDuration?: number;
+  position?: TipPosition;
+  direction?: TipDirection;
+  arrow?: boolean;
+  keepOpen?: boolean;
 }
-

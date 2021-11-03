@@ -3,54 +3,77 @@ import { render, fireEvent, waitFor} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
 describe('ActionButton Component', () => {
-  const actionBtn = (
+  const actionBtn = (keepOpen = false) => (
       <ActionButton
         onClick={() => true}
         messageDuration={300}
-        clickContent={<span>Some action occurred.</span>}
-        hoverContent={<span>Hovering message.</span>}
-        infotipProps={{
-          arrow: false,
-          direction: 'right'
-        }}
-        data-testid="action-button"
+        clickContent={<span>clickMessage</span>}
+        hoverContent={<span>hoverMessage</span>}
+        arrow={false}
+        direction={'right'}
+        keepOpen={keepOpen}
       >
         TEST
       </ActionButton>
   );
 
   it('renders without errors', async () => {
-    const container = render(actionBtn);
-    const result = await container.findByTestId("action-button");
+    const container = render(actionBtn());
+    const result = await container.findByText("TEST");
     expect(result).toBeInTheDocument();
   });
+
   it('shows hover tooltip', async () => {
-    const container = render(actionBtn);
+    const container = render(actionBtn());
     await act(async () => {
       fireEvent.mouseOver(container.getByText("TEST"));
     });
-    const result = await (waitFor(() => container.findByText("Hovering message."), { timeout: 1000 }));
+    const result = await (waitFor(() => container.findByText("hoverMessage"), { timeout: 1000 }));
     expect(result).toBeInTheDocument()
   });
+
   it('shows click tooltip', async () => {
-    const container = render(actionBtn);
+    const container = render(actionBtn());
     const btn = container.getByText("TEST");
     await act(async () => {
       fireEvent.mouseOver(btn);
       fireEvent.click(btn);
     });
-    const result = await container.findByText("Some action occurred.")
+    const result = await container.findByText("clickMessage")
     expect(result).toBeInTheDocument();
   });
-  it('hides click tooltip after delay', async () => {
-    const container = render(actionBtn);
+
+  it('hides hover tooltip', async () => {
+    const container = render(actionBtn(false));
     const btn = container.getByText("TEST");
     await act(async () => {
       fireEvent.mouseOver(btn);
       fireEvent.click(btn);
       fireEvent.mouseOut(btn);
     })
-    const result = await (waitFor(() => container.queryByText("Hovering message."), { timeout: 1000}));
-    expect(result).toBe(null);
+    expect(container.queryByText(/(hoverMessage|clickMessage)/)).not.toBeInTheDocument();
+  });
+
+  it('hides tooltip after click and delay', async () => {
+    const container = render(actionBtn(false));
+    const btn = container.getByText("TEST");
+    await act(async () => {
+      fireEvent.mouseOver(btn);
+      fireEvent.click(btn);
+    })
+    await (waitFor(() => {
+      expect(container.queryByText(/(hoverMessage|clickMessage)/)).not.toBeInTheDocument();
+    }, { timeout: 1000}));
+  });
+
+  it('keep tooltip open if keepOpen is set', async () => {
+    const container = render(actionBtn(true));
+    const btn = container.getByText("TEST");
+    await act(async () => {
+      fireEvent.mouseOver(btn);
+      fireEvent.click(btn);
+    })
+    const result = await (waitFor(() => container.queryByText("clickMessage"), { timeout: 1000}));
+    expect(result).toBeInTheDocument();
   });
 });
