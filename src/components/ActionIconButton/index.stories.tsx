@@ -3,12 +3,12 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { Copy } from '../Icons';
 import { tipDirectionList, tipPositionList } from '../Infotip/interfaces';
 
-import ActionButton from './index';
-import { IActionButtonProps } from './interfaces';
+import ActionIconButton from './index';
+import { IActionIconButtonProps } from './interfaces';
 
 export default {
-  title: 'Action Button',
-  component: ActionButton,
+  title: 'ActionIconButton',
+  component: ActionIconButton,
   argTypes: {
     hoverContent: {
       description: 'Infotip content to show on hover.',
@@ -73,10 +73,10 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IActionButtonProps> = (args) =>
-      <ActionButton {...args} >
+const Template: Story<IActionIconButtonProps> = (args) =>
+      <ActionIconButton {...args} >
         <Copy />
-      </ActionButton>
+      </ActionIconButton>
   ;
 
 export const Default = Template.bind({});

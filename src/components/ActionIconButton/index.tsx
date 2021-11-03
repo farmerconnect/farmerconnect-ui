@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import Infotip from '../Infotip';
-import { IActionButtonProps } from './interfaces';
+import { IActionIconButtonProps } from './interfaces';
 import * as S from './styles';
 
-const ActionButton: FC<IActionButtonProps> = ({
+const ActionIconButton: FC<IActionIconButtonProps> = ({
   children,
   hoverContent,
   clickContent,
@@ -67,14 +67,14 @@ const ActionButton: FC<IActionButtonProps> = ({
         direction={direction}
         arrow={arrow}
       >
-        <S.ActionButton
+        <S.ActionIconButton
             variant="outline"
             onClick={click}
         >
           {children}
-        </S.ActionButton>
+        </S.ActionIconButton>
       </Infotip>
   );
 };
 
-export default ActionButton;
+export default ActionIconButton;

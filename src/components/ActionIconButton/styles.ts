@@ -10,6 +10,6 @@ const iconOnlyStyle = css`
   border-radius: 8px
 `
 
-export const ActionButton = styled(CustomButton)`
+export const ActionIconButton = styled(CustomButton)`
   ${iconOnlyStyle}
 `

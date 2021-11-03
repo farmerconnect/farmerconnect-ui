@@ -1,10 +1,10 @@
-import ActionButton from './';
+import ActionIconButton from './';
 import { render, fireEvent, waitFor} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-describe('ActionButton Component', () => {
+describe('ActionIconButton Component', () => {
   const actionBtn = (keepOpen = false) => (
-      <ActionButton
+      <ActionIconButton
         onClick={() => true}
         messageDuration={300}
         clickContent={<span>clickMessage</span>}
@@ -14,7 +14,7 @@ describe('ActionButton Component', () => {
         keepOpen={keepOpen}
       >
         TEST
-      </ActionButton>
+      </ActionIconButton>
   );
 
   it('renders without errors', async () => {
