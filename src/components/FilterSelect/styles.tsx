@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { customScrollbar } from "../../mixins/ScrollBar";
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
 
@@ -96,18 +97,9 @@ export const ItemList = styled.ul`
   ${fontFamily}
   font-size: 14px;
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
 
-  &::-webkit-scrollbar-track {
-    background: #e7e7e7;
-  }
+  ${customScrollbar({ trackBackgroundColor: '#e7e7e7' })}
 
-  &::-webkit-scrollbar-thumb {
-    background: #b9b9b9;
-    border-radius: 6px;
-  }
   > li {
     list-style: none;
     margin: 0;

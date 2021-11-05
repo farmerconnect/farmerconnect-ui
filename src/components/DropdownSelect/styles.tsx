@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import Checkbox from '../Checkbox';
 import CustomButton from '../CustomButton';
+import { customScrollbar } from '../../mixins/ScrollBar';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -96,18 +97,8 @@ export const ListWrapper = styled.div`
   overflow-y: auto;
   max-height: 314px;
   height: auto;
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
 
-  &::-webkit-scrollbar-track {
-    background: #e7e7e7;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #b9b9b9;
-    border-radius: 6px;
-  }
+  ${customScrollbar({ trackBackgroundColor: '#e7e7e7' })}
 `;
 
 export const ButtonContainer = styled.div`

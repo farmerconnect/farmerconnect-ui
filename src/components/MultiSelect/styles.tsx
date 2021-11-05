@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { ListWrapper as SingleSelectListWrapper } from "../SingleSelect/styles";
+import { customScrollbar } from "../../mixins/ScrollBar";
 
 import { isOpenType } from ".";
 
@@ -91,18 +92,9 @@ export const ProductList = styled.ul`
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
 
-  &::-webkit-scrollbar-track {
-    background: #e7e7e7;
-  }
+  ${customScrollbar({ trackBackgroundColor: '#e7e7e7' })}
 
-  &::-webkit-scrollbar-thumb {
-    background: #b9b9b9;
-    border-radius: 6px;
-  }
   > li {
     list-style: none;
     margin: 0;

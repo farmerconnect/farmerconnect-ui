@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Checkbox, { CheckboxProps } from '../Checkbox';
 import SmallSelect from '../SmallSelect';
+import { customScrollbar } from "../../mixins/ScrollBar";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -137,18 +138,9 @@ export const ListWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
 
-  &::-webkit-scrollbar-track {
-    background: #e7e7e7;
-  }
+  ${customScrollbar({ trackBackgroundColor: '#e7e7e7' })}
 
-  &::-webkit-scrollbar-thumb {
-    background: #b9b9b9;
-    border-radius: 6px;
-  }
   > label {
     margin-left: 0;
     gap: 0.5rem;
