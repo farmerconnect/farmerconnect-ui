@@ -153,8 +153,10 @@ export const Button = styled.button<ButtonProps>`
     iconOnly
       ? css`
           min-width: 2rem;
-          padding-left: 0;
-          padding-right: 0;
+          padding: 0;
+          height: 32px;
+          width: 32px;
+          border-radius: 8px;
         `
       : ''}
 `;
