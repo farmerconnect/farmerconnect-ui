@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import Infotip from '../Infotip';
-import { IActionIconButtonProps } from './interfaces';
+import { IActionInfotipProps } from './interfaces';
 
-const ActionIconButton: FC<IActionIconButtonProps> = ({
+const ActionInfotip: FC<IActionInfotipProps> = ({
   children,
   hoverContent,
   clickContent,
@@ -70,4 +70,4 @@ const ActionIconButton: FC<IActionIconButtonProps> = ({
   );
 };
 
-export default ActionIconButton;
+export default ActionInfotip;

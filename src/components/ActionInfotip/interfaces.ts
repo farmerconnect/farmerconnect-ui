@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
-import { IButtonProps } from "../Button/interfaces";
 import { TipDirection, TipPosition } from "../Infotip/interfaces";
 
-export interface IActionIconButtonProps extends IButtonProps {
+export interface IActionInfotipProps {
   hoverContent: ReactNode;
   clickContent: ReactNode;
   messageDuration?: number;

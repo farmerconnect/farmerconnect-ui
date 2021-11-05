@@ -1,10 +1,10 @@
-import ActionIconButton from './';
+import ActionInfotip from './';
 import { render, fireEvent, waitFor} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-describe('ActionIconButton Component', () => {
+describe('ActionInfotip Component', () => {
   const actionBtn = (keepOpen = false) => (
-      <ActionIconButton
+      <ActionInfotip
         messageDuration={300}
         clickContent={<span>clickMessage</span>}
         hoverContent={<span>hoverMessage</span>}
@@ -13,7 +13,7 @@ describe('ActionIconButton Component', () => {
         keepOpen={keepOpen}
       >
         TEST
-      </ActionIconButton>
+      </ActionInfotip>
   );
 
   it('renders without errors', async () => {

@@ -4,12 +4,12 @@ import CustomButton from '../CustomButton';
 import { Copy } from '../Icons';
 import { tipDirectionList, tipPositionList } from '../Infotip/interfaces';
 
-import ActionIconButton from './index';
-import { IActionIconButtonProps } from './interfaces';
+import ActionInfotip from './index';
+import { IActionInfotipProps } from './interfaces';
 
 export default {
-  title: 'ActionIconButton',
-  component: ActionIconButton,
+  title: 'ActionInfotip',
+  component: ActionInfotip,
   argTypes: {
     hoverContent: {
       description: 'Infotip content to show on hover.',
@@ -68,18 +68,17 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IActionIconButtonProps> = (args) =>
-      <ActionIconButton {...args} >
+const Template: Story<IActionInfotipProps> = (args) =>
+      <ActionInfotip {...args} >
         <CustomButton variant="outline" iconOnly>
           <Copy />
         </CustomButton>
-      </ActionIconButton>
+      </ActionInfotip>
   ;
 
 export const Default = Template.bind({});
 Default.args = {
   clickContent: <span>Copied link to clipboard!</span>,
   hoverContent: <span>Copy link.</span>,
-  keepOpen: true,
   direction: 'right'
 };

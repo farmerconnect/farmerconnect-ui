@@ -1,6 +1,6 @@
 import WizardSteps from './components/WizardSteps';
 import Button from './components/Button';
-import ActionIconButton from './components/ActionIconButton';
+import ActionInfotip from './components/ActionInfotip';
 import IconCheck from './components/Icons/Check';
 import IconClose from './components/Icons/Close';
 import IconWarning from './components/Icons/Warning';
@@ -44,7 +44,7 @@ import LabelSwitch from './components/LabelSwitch';
 export {
   WizardSteps,
   Button,
-  ActionIconButton,
+  ActionInfotip,
   IconCheck,
   IconClose,
   NavigationBar,
