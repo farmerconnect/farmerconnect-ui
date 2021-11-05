@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { customScrollbar } from '../../mixins/ScrollBar';
 
 const animateIcons = keyframes`
 0% {
@@ -7,30 +8,6 @@ const animateIcons = keyframes`
 100% {
   opacity: 1;
 }
-`;
-
-const customScrollbar = () => css`
-  &::-webkit-scrollbar {
-    border-radius: 0.75rem;
-    width: 1rem;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #b9b9b9;
-    background-clip: content-box;
-    border: 0.3rem solid transparent;
-    border-radius: 0.75rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 0.75rem;
-  }
-
-  &::-webkit-scrollbar-corner {
-    background-color: transparent;
-    border: none;
-  }
 `;
 
 export const Container = styled.div`
@@ -83,7 +60,18 @@ export const TextArea = styled.textarea<TextAreaProps>`
       font-weight: 700;
     }
 
-    ${customScrollbar()}
+    ${customScrollbar({ size: '1rem', trackBackgroundColor: 'transparent' })}
+
+    &::-webkit-scrollbar-thumb {
+      background-clip: content-box;
+      border-width: 0.3rem;
+      border-radius: 0.75rem;
+    }    
+
+    &::-webkit-scrollbar-corner {
+      background-color: transparent;
+      border: none;
+    }
   `}
 `;
 

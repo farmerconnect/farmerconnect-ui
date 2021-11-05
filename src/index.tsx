@@ -44,6 +44,7 @@ import Typography from './components/Typography';
 import Alert from './components/Alert';
 import Pagination from './components/Pagination';
 import SearchInput from './components/SearchInput';
+import * as Mixins from './mixins';
 
 export {
   WizardSteps,
@@ -91,5 +92,6 @@ export {
   Typography,
   Alert,
   Pagination,
-  SearchInput
+  SearchInput,
+  Mixins,
 };

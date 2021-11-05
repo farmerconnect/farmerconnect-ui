@@ -1,0 +1,1 @@
+export { customScrollbar } from './ScrollBar';

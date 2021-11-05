@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.39.1] 2021-11-05
+
+- Created mixin to standardize scrollbar
+
 ## [1.39.0] 2021-11-04
 
 - Added SearchInput component

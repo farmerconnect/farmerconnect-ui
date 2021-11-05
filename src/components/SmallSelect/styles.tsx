@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import ReactSelect from 'react-select';
 import { SmallSelectProps } from '.';
+import { customScrollbar } from '../../mixins/ScrollBar';
 
 const animateCheckbox = keyframes`
   0% {
@@ -90,26 +91,14 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
     padding: 0;
     max-height: 8.25rem;
     border: none;
-    &::-webkit-scrollbar-track {
-      border-radius: 0;
-      /* border-bottom-right-radius: 0.75rem; */
-      background-color: #e7e7e7;
-      box-shadow: 0 0.25rem 0 0 #e7e7e7;
-    }
+
+    ${customScrollbar({ trackBackgroundColor: '#e7e7e7', thumbBackgroundColor: '#b3b2b1' })}
 
     &::-webkit-scrollbar {
-      width: 12px;
-      background-color: transparent;
-      border-radius: 0;
       border-bottom-right-radius: 0.75rem;
     }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      border: 2px solid #e7e7e7;
-      box-sizing: border-box;
-      background-color: #b3b2b1;
-      margin: 2px;
+    &::-webkit-scrollbar-track {
+      box-shadow: 0 0.25rem 0 0 #e7e7e7;
     }
   }
   .select__placeholder {
