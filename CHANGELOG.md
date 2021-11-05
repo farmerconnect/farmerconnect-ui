@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.39.0] 2021-11-04
+
+- Added SearchInput component
+
 ## [1.38.0] 2021-11-01
 
 - Added favorite icon
