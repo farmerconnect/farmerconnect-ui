@@ -5,7 +5,6 @@ import { act } from 'react-dom/test-utils';
 describe('ActionIconButton Component', () => {
   const actionBtn = (keepOpen = false) => (
       <ActionIconButton
-        onClick={() => true}
         messageDuration={300}
         clickContent={<span>clickMessage</span>}
         hoverContent={<span>hoverMessage</span>}

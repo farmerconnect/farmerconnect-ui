@@ -1,5 +1,6 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
+import CustomButton from '../CustomButton';
 import { Copy } from '../Icons';
 import { tipDirectionList, tipPositionList } from '../Infotip/interfaces';
 
@@ -22,12 +23,6 @@ export default {
       control: 'text',
       table: {
         type: { summary: 'React.Node' },
-      }
-    },
-    onClick: {
-      description: 'Handler.',
-      table: {
-        type: { summary: '() => void' },
       }
     },
     messageDuration: {
@@ -75,13 +70,14 @@ export default {
 
 const Template: Story<IActionIconButtonProps> = (args) =>
       <ActionIconButton {...args} >
-        <Copy />
+        <CustomButton variant="outline" iconOnly>
+          <Copy />
+        </CustomButton>
       </ActionIconButton>
   ;
 
 export const Default = Template.bind({});
 Default.args = {
-  onClick: () => {},
   clickContent: <span>Copied link to clipboard!</span>,
   hoverContent: <span>Copy link.</span>,
   keepOpen: true,
