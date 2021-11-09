@@ -5,6 +5,7 @@ import { act } from 'react-dom/test-utils';
 describe('ActionInfotip Component', () => {
   const actionBtn = (keepOpen = false) => (
       <ActionInfotip
+        disabled={false}
         messageDuration={300}
         clickContent={<span>clickMessage</span>}
         hoverContent={<span>hoverMessage</span>}
