@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Chain: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const Chain: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
       <rect
@@ -11,7 +11,7 @@ const Chain: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         rx="2.25"
         transform="rotate(-45 3.19598 16.5445)"
         fill="white"
-        stroke={props.fill || '#00E394'}
+        stroke={fill}
         strokeWidth="1.5"
       />
       <rect
@@ -22,7 +22,7 @@ const Chain: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         rx="2.25"
         transform="rotate(-45 10.9232 8.81738)"
         fill="white"
-        stroke={props.fill || '#00E394'}
+        stroke={fill}
         strokeWidth="1.5"
       />
       <rect
@@ -32,7 +32,7 @@ const Chain: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         height="3"
         rx="1.5"
         transform="rotate(-45 7.92131 14.294)"
-        fill={props.fill || '#00E394'}
+        fill={fill}
         stroke="white"
       />
     </svg>
