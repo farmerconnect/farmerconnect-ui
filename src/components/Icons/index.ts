@@ -36,3 +36,4 @@ export { default as Global } from './Global';
 export { default as Copy } from './Copy';
 export { default as ExternalLink } from './ExternalLink';
 export { default as Favorite } from './Favorite';
+export { default as Options } from './Options';

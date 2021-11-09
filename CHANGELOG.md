@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.41.0] 2021-11-09
+
+- Options icon added
+
 ## [1.40.0] 2021-11-08
 
 - Added ActionInfotip component
