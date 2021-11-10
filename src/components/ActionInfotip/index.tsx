@@ -4,6 +4,7 @@ import { IActionInfotipProps } from './interfaces';
 
 const ActionInfotip: FC<IActionInfotipProps> = ({
   children,
+  disabled = false,
   hoverContent,
   clickContent,
   messageDuration = 2000,
@@ -13,21 +14,21 @@ const ActionInfotip: FC<IActionInfotipProps> = ({
   keepOpen = false
 }) => {
   const [clicked, setClicked] = useState<boolean>(false);
-  const [active, setActive] = useState<boolean>(false);
+  const [infotipActive, setInfotipActive] = useState<boolean>(false);
   const [hovering, setHovering] = useState<boolean>(false);
   const [lock, setLock] = useState<boolean>(false);
   const [lockTimeout, setLocktimeout] = useState<ReturnType<typeof setTimeout>>();
 
   function mouseEnter() {
     setHovering(true);
-    setActive(true);
+    setInfotipActive(true);
   }
 
   function mouseLeave() {
     setHovering(false);
     if (!lock) {
       setClicked(false);
-      setActive(false);
+      setInfotipActive(false);
     }
   }
 
@@ -35,7 +36,7 @@ const ActionInfotip: FC<IActionInfotipProps> = ({
     if (!lock) {
       if (!hovering || !keepOpen) {
         setClicked(false);
-        setActive(false);
+        setInfotipActive(false);
       }
     }
   }, [lock]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -57,7 +58,7 @@ const ActionInfotip: FC<IActionInfotipProps> = ({
   return (
     <Infotip
       content={clicked ? clickContent : hoverContent}
-      active={active}
+      active={!disabled && infotipActive}
       onMouseLeave={mouseLeave}
       onMouseEnter={mouseEnter}
       position={position}

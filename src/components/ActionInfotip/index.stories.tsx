@@ -1,7 +1,7 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import CustomButton from '../CustomButton';
-import { Copy } from '../Icons';
+import { Chain } from '../Icons';
 import { tipDirectionList, tipPositionList } from '../Infotip/interfaces';
 
 import ActionInfotip from './index';
@@ -11,6 +11,14 @@ export default {
   title: 'ActionInfotip',
   component: ActionInfotip,
   argTypes: {
+    disabled: {
+      control: 'boolean',
+      description: 'Allow the infotip behavior to be disabled if true',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      }
+    },
     hoverContent: {
       description: 'Infotip content to show on hover.',
       control: 'text',
@@ -68,16 +76,17 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IActionInfotipProps> = (args) =>
-      <ActionInfotip {...args} >
-        <CustomButton variant="outline" iconOnly>
-          <Copy />
+const Template: Story<IActionInfotipProps> = ({ disabled, ...args}) =>
+      <ActionInfotip disabled={disabled} {...args} >
+        <CustomButton disabled={disabled} variant="outline" iconOnly>
+          <Chain />
         </CustomButton>
       </ActionInfotip>
   ;
 
 export const Default = Template.bind({});
 Default.args = {
+  disabled: false,
   clickContent: <span>Copied link to clipboard!</span>,
   hoverContent: <span>Copy link.</span>,
   direction: 'right'
