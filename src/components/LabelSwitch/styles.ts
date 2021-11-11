@@ -5,9 +5,10 @@ type LabelItemProps = {
   disabled: boolean;
 };
 
-export const Container = styled.ul`
+export const Container = styled.ul<{ cols: number }>`
   list-style-type: none;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.cols || 1}, 1fr);
   min-height: 2rem;
   box-sizing: border-box;
   gap: 1rem;

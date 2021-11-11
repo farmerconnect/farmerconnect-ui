@@ -23,7 +23,7 @@ const LabelSwitch = ({
 
   return (
     <AnimateSharedLayout>
-      <S.Container {...props}>
+      <S.Container cols={labels.length}>
         {labels.map((label, index) => (
           <S.LabelItem
             onClick={() => handleSelectLabel(index)}
