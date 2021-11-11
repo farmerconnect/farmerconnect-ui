@@ -4,7 +4,7 @@ import { InputHTMLAttributes } from 'react';
 export function isISearchInputProps(props: ISearchInputProps): props is ISearchInputProps {
   const errorList = [];
   let debounceTimeValid = false;
-  if (typeof props.debounceTime === 'number'){
+  if (typeof props.debounceTime === 'number') {
     debounceTimeValid = props.debounceTime >= 0;
   }
 

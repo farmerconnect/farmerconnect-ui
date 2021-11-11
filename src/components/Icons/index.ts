@@ -37,3 +37,5 @@ export { default as Copy } from './Copy';
 export { default as ExternalLink } from './ExternalLink';
 export { default as Favorite } from './Favorite';
 export { default as Options } from './Options';
+export { default as PinGlobal } from './PinGlobal';
+export { default as PinCheck } from './PinCheck';
