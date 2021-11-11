@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Options icon added
 
+## [1.40.2] 2021-11-09
+
+- Updated Chain svg icon component to use currentColor as default for fill prop
+
+## [1.40.1] 2021-11-09
+
+- Updated ActionInfotip component to allow active prop
+
 ## [1.40.0] 2021-11-08
 
 - Added ActionInfotip component
