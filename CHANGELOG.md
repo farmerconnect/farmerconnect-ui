@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.42.2] 2021-11-12
+
+- Fixed icons FarmerBook2, Global, Network, PinCheck, PinGlobal, PinPlay, PinPlus, PinUp, ProductScan, Project, Report and Team to have the same width and height
+
 ## [1.42.1] 2021-11-11
 
 - Fixed LabelSwitch labels size
