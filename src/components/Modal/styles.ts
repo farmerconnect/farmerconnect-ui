@@ -1,15 +1,8 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import colors from '../../styles/colors';
 
-const showOverlay = keyframes`
-0% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
-`;
-
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   position: fixed;
   display: flex;
   align-items: center;
@@ -19,22 +12,31 @@ export const Overlay = styled.div`
   bottom: 0;
   right: 0;
   background-color: rgba(20, 20, 20, 0.6);
-  animation: ${showOverlay} 0.3s ease-out;
   z-index: 101;
 `;
 
-const showDialog = keyframes`
-0% {
-  transform: translateY(1rem);
-}
-100% {
-  transform: translateY(0);
-}
-`;
-
-export const Container = styled.div`
+export const Container = styled(motion.div)`
+  position: relative;
   background-color: white;
   padding: 2.25rem;
   border-radius: 0.75rem;
-  animation: ${showDialog} 0.3s ease-out;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  padding: 0.5rem;
+  top: 0.75rem;
+  right: 0.75rem;
+  outline: none;
+  border: none;
+  color: ${colors.fc_black_70};
+  transition: all 0.1s ease-out;
+  min-height: auto;
+  background-color: transparent;
+  cursor: pointer;
+  color: ${colors.fc_black_70};
+  &:hover,
+  &:focus {
+    color: ${colors.fc_black_100};
+  }
 `;
