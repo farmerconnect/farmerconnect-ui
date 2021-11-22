@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.42.4] 2021-11-22
+
+- Fixing Build storybook (part 1)
+
 ## [1.42.3] 2021-11-22
 
 - Creating Github action
