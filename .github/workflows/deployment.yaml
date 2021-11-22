@@ -24,7 +24,6 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
 
-    #- run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
     - run: yarn install
 
     - name: Publish to NPM
@@ -39,4 +38,4 @@ jobs:
     - name: Deploy to github pages
       run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
