@@ -24,13 +24,12 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
 
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
 
     - name: Publish to NPM
       run: yarn publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      continue-on-error: true
 
     - name: Build storybook
       run: yarn build-storybook
