@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added close button, onClose callback and ability to trigger onClose on key press to Modal component
 - Added smoother animation to Modal component
+## [1.42.3] 2021-11-22
+
+- Creating Github action
 
 ## [1.42.2] 2021-11-12
 
