@@ -43,15 +43,15 @@ const ListItem = styled.div`
   }
 `;
 
-const Template: Story<SelectProps> = (args) => {
+const Template: Story<SelectProps<any, any>> = (args) => {
   const [items, setItems] = useState(data);
-  const [product, setProduct] = useState({ id: null });
+  const [product, setProduct] = useState({ id: '' });
 
   return (
     <DoubleSelect
       {...args}
-      disableRightCombo={product.id === null}
-      disableLeftCombo={product.id !== null}
+      disableRightCombo={product.id === ''}
+      disableLeftCombo={product.id !== ''}
       rightListRenderer={(p) => (
         <ListItem>
           <b>{p.id}</b>

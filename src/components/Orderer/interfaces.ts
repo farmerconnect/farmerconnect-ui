@@ -14,5 +14,5 @@ export interface ITableSortOptions {
 
 export interface ITableSortProps {
   sort?: ITableSortOptions;
-  onSortChange?: (key: string, order: string) => void;
+  onSortChange?: (key: string, order: string, actualSortKey: string) => void;
 }

@@ -10,7 +10,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = (props: IBreadcrumbsProps) => {
           <Breadcrumb
             key={index}
             text={breadcrumb.text}
-            isLast={index == props.breadcrumbs.length - 1}
+            isLast={index === props.breadcrumbs.length - 1}
             onClick={breadcrumb.onClick}
           />
         );
