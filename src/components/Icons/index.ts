@@ -39,3 +39,8 @@ export { default as Favorite } from './Favorite';
 export { default as Options } from './Options';
 export { default as PinGlobal } from './PinGlobal';
 export { default as PinCheck } from './PinCheck';
+export { default as Handle } from './Handle';
+export { default as Error } from './Error';
+export { default as Dots } from './Dots';
+export { CheckboxUnchecked, CheckboxChecked } from './Checkbox';
+export { RadioUnchecked, RadioChecked } from './Radio';
