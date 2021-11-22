@@ -5,7 +5,7 @@
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
     "start": "yarn storybook",
-    "prepare": "cd .. && husky install farmerconnect-ui/.husky",
+    "prepare": "yarn husky init && yarn husky install",
     "build": "rollup --config",
     "test": "react-scripts test --ci --watchAll=false",
     "test-ci": "react-scripts test --ci --watchAll=false",
