@@ -39,4 +39,4 @@ jobs:
     - name: Deploy to github pages
       run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: farmerconnect:${{ secrets.GITHUB_TOKEN }}
