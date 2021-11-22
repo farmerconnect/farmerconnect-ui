@@ -1,0 +1,33 @@
+name: Test, Build & Deployment
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    uses: farmerconnect/pipeline-actions/.github/workflows/yarn-lint-build-test.yaml@main
+
+  snyk-scan:
+    uses: farmerconnect/pipeline-actions/.github/workflows/snyk-node.yaml@main
+    secrets:
+      snykToken: ${{ secrets.SNYK_TOKEN }}
+
+  build:
+    needs: [snyk-scan, tests]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Publish to NPM
+      run: npm publish
+
+    - name: Build storybook
+      run: npm run build-storybook
+      continue-on-error: true
+
+    - name: Deploy to github pages
+      run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
