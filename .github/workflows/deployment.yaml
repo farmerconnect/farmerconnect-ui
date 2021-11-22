@@ -22,6 +22,8 @@ jobs:
 
     - name: Publish to NPM
       run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Build storybook
       run: yarn build-storybook
