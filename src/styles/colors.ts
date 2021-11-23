@@ -20,6 +20,7 @@ const colors = {
   fc_dark_blue: '#081851',
   fc_light_blue: '#D1EBEE',
   fc_cyan_blue: '#00E7FF',
+  fc_grey: '#19181A',
 };
 
 export default colors;
