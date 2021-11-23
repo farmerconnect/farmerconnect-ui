@@ -44,3 +44,4 @@ export { default as Error } from './Error';
 export { default as Dots } from './Dots';
 export { CheckboxUnchecked, CheckboxChecked } from './Checkbox';
 export { RadioUnchecked, RadioChecked } from './Radio';
+export { default as Sorting } from './Sorting';
