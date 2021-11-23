@@ -6,10 +6,16 @@ const CustomButton: React.FC<S.ButtonProps> = ({ children, ...props }) => {
   const { variant } = props;
 
   const childrenClone = (() => {
-    if (Array.isArray(children))
-      return children.map((child) => (typeof child === 'string' ? <RawText text={child} /> : child));
-
     if (typeof children === 'string') return <RawText text={children} />;
+
+    if (Array.isArray(children)) {
+      // mutate in place so we do not need to assign keys.
+      for (let child of children) {
+        if (typeof child === 'string') {
+          child = <RawText text={child} />;
+        }
+      }
+    }    
 
     return children;
   })();
