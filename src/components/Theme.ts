@@ -6,12 +6,8 @@ import { INavigationBar } from './NavigationBar/interfaces';
 import { navigationBarDefaultStyles } from './NavigationBar/styles';
 import { ILoader } from './Loader/interfaces';
 import { loaderDefaultStyles } from './Loader/styles';
-import { IArrow } from './Icons/Arrow/interfaces';
-import { arrowDefaultStyles } from './Icons/Arrow/styles';
 import { ITag } from './Tag/interfaces';
 import { tagDefaultStyles } from './Tag/styles';
-import { ITable } from './Table/interfaces';
-import { tableDefaultStyles } from './Table/styles';
 import colors from '../styles/colors';
 
 interface ITheme {
@@ -19,9 +15,7 @@ interface ITheme {
   button: IButton;
   navigationBar: INavigationBar;
   loader: ILoader;
-  arrow: IArrow;
   tag: ITag;
-  table: ITable;
   colors: {
     [key: string]: string;
   };
@@ -32,9 +26,7 @@ export const farmerConnectTheme: ITheme = {
   button: buttonDefaultStyles,
   navigationBar: navigationBarDefaultStyles,
   loader: loaderDefaultStyles,
-  arrow: arrowDefaultStyles,
   tag: tagDefaultStyles,
-  table: tableDefaultStyles,
   colors,
 };
 
