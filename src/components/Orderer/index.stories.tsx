@@ -16,8 +16,8 @@ export default {
 } as Meta;
 
 export const Default: Story<any> = (args) => {
-  const [sort, setSort] = useState({ key: 'description', order: 'asc' });
-  const handleSortChange = (key: string, order: string) => setSort({ key, order });
+  const [sort, setSort] = useState({ actualSortKey: 'description', key: 'description', order: 'asc' });
+  const handleSortChange = (_: string, order: string) => setSort((prev: any) => ({ ...prev, order }));
 
   return <Orderer sort={sort} onSortChange={handleSortChange} />;
 };
