@@ -9,6 +9,8 @@ import { loaderDefaultStyles } from './Loader/styles';
 import { ITag } from './Tag/interfaces';
 import { tagDefaultStyles } from './Tag/styles';
 import colors from '../styles/colors';
+import { tableDefaultStyles } from './Table/constants';
+import { ITable } from './Table/interfaces';
 
 interface ITheme {
   wizardStep: IWizardStep;
@@ -16,6 +18,7 @@ interface ITheme {
   navigationBar: INavigationBar;
   loader: ILoader;
   tag: ITag;
+  table: ITable;
   colors: {
     [key: string]: string;
   };
@@ -27,6 +30,7 @@ export const farmerConnectTheme: ITheme = {
   navigationBar: navigationBarDefaultStyles,
   loader: loaderDefaultStyles,
   tag: tagDefaultStyles,
+  table: tableDefaultStyles,
   colors,
 };
 

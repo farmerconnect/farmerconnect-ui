@@ -48,12 +48,14 @@ export interface ITable {
   colors?: {
     head?: {
       color?: string;
+      boxShadowColor?: string;
       backgroundColor?: string;
     };
     body?: {
       color?: string;
       borderColor?: string;
       backgroundColor?: string;
+      backgroundHoverColor?: string;
     };
   };
 }

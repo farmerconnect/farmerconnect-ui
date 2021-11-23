@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
-import { farmerConnectTheme } from '../Theme';
-import { ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
+import { tableDefaultStyles } from './constants';
+import { ITableStyles, ITableColumnOptions } from './interfaces';
 
 export const Container = styled.table`
   position: relative;
@@ -66,12 +66,15 @@ const tableHeaderLoadingAnimation = keyframes`
 `;
 
 export const Head = styled.thead`
-  background-color: ${({ theme }) => theme?.table?.colors?.head?.backgroundColor || farmerConnectTheme.colors.fc_beige};
+  background-color: ${({ theme }) =>
+    theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
-  box-shadow: ${farmerConnectTheme.colors.fc_beige} 0px 0.75rem 0px;
+  box-shadow: ${({ theme }) =>
+      theme?.table?.colors?.head?.boxShadowColor || tableDefaultStyles?.colors?.head?.boxShadowColor}
+    0px 0.75rem 0px;
 
   ${Column} {
-    color: ${({ theme }) => theme?.table?.colors?.head?.color || farmerConnectTheme.colors.fc_black_100};
+    color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
     font-size: 11px;
     line-height: 14px;
     letter-spacing: 0.5px;
@@ -104,23 +107,24 @@ export const LoadingBar = styled.tr`
 export const Body = styled.tbody<ITableStyles>`
   ${Row} {
     background-color: ${({ theme }) =>
-      theme?.table?.colors?.body?.backgroundColor || farmerConnectTheme.colors.fc_white};
+      theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
 
-    ${({ hoverable }: ITableHoverable) =>
+    ${({ hoverable, theme }) =>
       hoverable &&
       css`
         &:hover {
-          background-color: ${farmerConnectTheme.colors.fc_black_5};
+          background-color: ${theme?.table?.colors?.body?.backgroundHoverColor ||
+          tableDefaultStyles?.colors?.body?.backgroundHoverColor};
         }
       `}
 
     ${Column} {
-      color: ${({ theme }) => theme?.table?.colors?.head?.color || farmerConnectTheme.colors.fc_black_100};
+      color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
       font-size: 14px;
       font-weight: 500;
       line-height: 18px;
       border: 1px solid
-        ${({ theme }) => theme?.table?.colors?.body?.borderColor || farmerConnectTheme.colors.fc_black_10};
+        ${({ theme }) => theme?.table?.colors?.body?.borderColor || tableDefaultStyles?.colors?.body?.borderColor};
       padding: ${({ slim }) => (slim ? '8px 16px' : '16px')};
       position: relative;
 
