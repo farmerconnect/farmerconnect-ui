@@ -2,14 +2,7 @@ import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import * as Icon from '../Icons';
 import CustomButton from '../CustomButton';
 import * as S from './styles';
-import {
-  ButtonContainer,
-  Chevron,
-  CustomCheckbox,
-  EmptyMessage,
-  FilterInputWrapper,
-  MagnifyingGlassIcon,
-} from '../SingleSelect/styles';
+import { ButtonContainer, CustomCheckbox, EmptyMessage, FilterInputWrapper } from '../SingleSelect/styles';
 
 export type itemType = {
   id: string;
@@ -117,11 +110,11 @@ const DoubleSelect = <T extends productType, S extends itemType>({
     <S.Wrapper ref={contentRef}>
       <S.Heading onClick={() => handleToggleDropdown('left')} isOpen={isOpen} disabled={disableLeftCombo}>
         {text.leftComboHeading}
-        <Chevron />
+        <Icon.Arrow />
       </S.Heading>
       <S.Heading onClick={() => handleToggleDropdown('right')} isOpen={isOpen} disabled={disableRightCombo}>
         {text.rightComboHeading}
-        <Chevron />
+        <Icon.Arrow />
       </S.Heading>
       <S.Content isOpen={isOpen}>
         {isOpen === 'right' && (
@@ -138,7 +131,7 @@ const DoubleSelect = <T extends productType, S extends itemType>({
                     <Icon.Close />
                   </button>
                 ) : (
-                  <MagnifyingGlassIcon />
+                  <Icon.MagnifyingGlass size="small" />
                 )}
               </div>
             </FilterInputWrapper>
