@@ -19,7 +19,7 @@ const Accordion = ({ isOpen, children = null, heading = null, onToggle, ...props
   return (
     <S.Container isOpen={open} {...props}>
       <header onClick={handleToggleOpen}>
-        <Arrow activeColor="#141414" />
+        <Arrow />
         {heading}
       </header>
       <AnimatePresence>
