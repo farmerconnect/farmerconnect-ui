@@ -31,8 +31,22 @@ export const ControlledAccordion: Story<IAccordionProps> = (args) => {
 };
 ControlledAccordion.argTypes = { isOpen: { defaultValue: false, control: { type: 'boolean' } } };
 
-export const StackedAccordions: Story<IAccordionProps> = (args) =>
-  [...new Array(10)].map((_) => <Accordion {...args} />);
+export const StackedAccordions: Story<IAccordionProps> = (args) => {
+  return (
+    <>
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+      <Accordion {...args} />
+    </>
+  );
+};
 StackedAccordions.args = {
   heading: 'Heading',
   children:

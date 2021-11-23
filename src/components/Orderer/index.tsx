@@ -15,7 +15,7 @@ const Orderer: React.FC<ITableSortProps> = ({ sort, onSortChange }) => {
         return SORT_ORDER.ASC;
       };
 
-      onSortChange && onSortChange(key, getSortOrder());
+      onSortChange && onSortChange(key, getSortOrder(), key);
     },
     [onSortChange, sort?.key]
   );

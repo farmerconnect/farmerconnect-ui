@@ -1,0 +1,41 @@
+name: Test, Build & Deployment
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    uses: farmerconnect/pipeline-actions/.github/workflows/yarn-lint-build-test.yaml@main
+
+  snyk-scan:
+    uses: farmerconnect/pipeline-actions/.github/workflows/snyk-node.yaml@main
+    secrets:
+      snykToken: ${{ secrets.SNYK_TOKEN }}
+
+  build:
+    needs: [snyk-scan, tests]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - run: yarn install --frozen-lockfile
+
+    - name: Publish to NPM
+      run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Build storybook
+      run: yarn build-storybook
+      continue-on-error: true
+
+    - name: Deploy to github pages
+      run: yarn deploy-storybook -- --ci --existing-output-dir=storybook-static
+      env:
+        GH_TOKEN: farmerconnect:${{ secrets.GITHUB_TOKEN }}

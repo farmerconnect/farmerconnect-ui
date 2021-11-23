@@ -30,7 +30,7 @@ const Infotip: FC<IInfotipProps> = ({
       {children}
 
       {active && (
-        <Tip backgroundColor={backgroundColor} color={color} arrow={arrow} position={position}>
+        <Tip backgroundColor={backgroundColor} fontColor={color} arrow={arrow} position={position}>
           {content}
         </Tip>
       )}

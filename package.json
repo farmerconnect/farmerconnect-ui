@@ -1,13 +1,14 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "1.42.2",
+  "version": "1.42.4",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "scripts": {
     "start": "yarn storybook",
-    "prepare": "husky install",
+    "prepare": "yarn husky install",
     "build": "rollup --config",
     "test": "react-scripts test --ci --watchAll=false",
+    "test-ci": "react-scripts test --ci --watchAll=false",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.js src/**/*.ts",

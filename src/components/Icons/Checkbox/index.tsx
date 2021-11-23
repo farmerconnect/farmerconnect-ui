@@ -1,4 +1,4 @@
-export const CheckboxUnchecked = (props) => (
+export const CheckboxUnchecked: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -11,7 +11,7 @@ export const CheckboxUnchecked = (props) => (
   </svg>
 );
 
-export const CheckboxChecked = (props) => (
+export const CheckboxChecked: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
