@@ -27,7 +27,7 @@ describe('DatePicker component', () => {
     const container = render(<DatePicker start={new Date(2021, 0, 1)} selectsRange={false} onChange={onChange} />);
     fireEvent.click(container.getByPlaceholderText(/select date.../i));
     await waitFor(() => expect(container.getByText(/day/i)).toBeInTheDocument());
-    fireEvent.click(container.getByRole('button', { name: 'Choose Saturday, January 2nd, 2021' }));
+    fireEvent.click(container.getByLabelText('Choose Saturday, January 2nd, 2021' ));
     await waitFor(() => {
       expect(container.queryByText(/day/i)).not.toBeInTheDocument();
       expect(onChange).toHaveBeenCalledWith(targetDate, targetDate);
