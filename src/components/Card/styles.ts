@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Button from '../CustomButton';
+import { farmerConnectTheme } from '../Theme';
 
 export const Heading = styled.h2`
   display: flex;
@@ -29,7 +30,7 @@ type ContainerProps = {
 };
 export const Container = styled.div<ContainerProps>`
   position: relative;
-  background-color: #f3f3f3;
+  background-color: ${farmerConnectTheme.colors.fc_black_5};
   border-radius: 0.75rem;
   padding: ${(props) => (props.type === 'Main' ? '2rem' : '1.5rem')};
   > ${Heading} {
@@ -42,8 +43,5 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const SeeMoreButton = styled(Button)`
-  > svg {
-    width: 0.75rem;
-    height: auto;
-  }
+  gap: 0.25rem;
 `;
