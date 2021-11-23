@@ -44,4 +44,6 @@ export const Container = styled.div<ContainerProps>`
 
 export const SeeMoreButton = styled(Button)`
   gap: 0.25rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 `;
