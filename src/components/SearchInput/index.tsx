@@ -3,7 +3,6 @@ import { ISearchInputProps, isISearchInputProps } from './interfaces';
 import * as Icon from '../Icons';
 import * as S from './styles';
 import { debounce } from './utils';
-import { farmerConnectTheme } from '../Theme';
 
 const SearchInput = (props: ISearchInputProps) => {
   const {
@@ -39,7 +38,7 @@ const SearchInput = (props: ISearchInputProps) => {
           <Icon.Close data-testid="clear-icon" />
         </button>
       ) : (
-        <Icon.MagnifyingGlass height="16" width="16" fill={farmerConnectTheme.colors.fc_black_70} />
+        <Icon.MagnifyingGlass size="small" />
       )}
     </S.SearchInputWrapper>
   );
