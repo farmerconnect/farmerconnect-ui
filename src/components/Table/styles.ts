@@ -1,17 +1,18 @@
 import styled, { css, keyframes } from 'styled-components';
 import { StyledArrow } from '../Icons/Arrow/styles';
+import { farmerConnectTheme } from '../Theme';
 import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
 
 export const tableDefaultStyles: ITable = {
   colors: {
     head: {
-      color: '#141414',
-      backgroundColor: '#f7f6f4',
+      color: farmerConnectTheme.colors.fc_black_100,
+      backgroundColor: farmerConnectTheme.colors.fc_beige,
     },
     body: {
-      color: '#141414',
-      borderColor: '#e7e7e7',
-      backgroundColor: '#ffffff',
+      color: farmerConnectTheme.colors.fc_black_100,
+      borderColor: farmerConnectTheme.colors.fc_black_10,
+      backgroundColor: farmerConnectTheme.colors.fc_white,
     },
   },
 };
@@ -83,7 +84,7 @@ export const Head = styled.thead`
   background-color: ${({ theme }) =>
     theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
-  box-shadow: #f7f6f4 0px 0.75rem 0px;
+  box-shadow: ${farmerConnectTheme.colors.fc_beige} 0px 0.75rem 0px;
 
   ${Column} {
     color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
@@ -125,7 +126,7 @@ export const Body = styled.tbody<ITableStyles>`
       hoverable &&
       css`
         &:hover {
-          background-color: #f3f3f3;
+          background-color: ${farmerConnectTheme.colors.fc_black_5};
         }
       `}
 
@@ -175,6 +176,7 @@ export const SortButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
   margin-left: 5px;
   padding: 5px;
 
