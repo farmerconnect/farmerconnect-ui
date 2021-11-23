@@ -17,12 +17,12 @@ const Header = (props: {
     <S.Header>
       {props.customHeaderCount === 0 && (
         <S.ArrowButton variant="text" onClick={props.decreaseMonth}>
-          <Arrow />
+          <Arrow direction="left" />
         </S.ArrowButton>
       )}
       {props.customHeaderCount === 1 && (
         <S.ArrowButton variant="text" right onClick={props.increaseMonth}>
-          <Arrow />
+          <Arrow direction="right" />
         </S.ArrowButton>
       )}
       <h4>
