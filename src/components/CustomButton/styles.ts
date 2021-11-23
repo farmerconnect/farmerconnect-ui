@@ -1,11 +1,13 @@
 import { HTMLProps } from 'react';
 import styled, { css } from 'styled-components';
+import colors from '../../styles/colors';
 
-const buttonVariantList = ['filled', 'outline', 'link', 'text', 'cancel'] as const;
+export const buttonVariantList = ['filled', 'outline', 'link', 'text', 'cancel'] as const;
 type IButtonVariant = typeof buttonVariantList[number];
 
 export type ButtonProps = {
   variant?: IButtonVariant;
+  colorVariant?: IColorVariant;
   small?: boolean;
   iconOnly?: boolean;
 } & HTMLProps<HTMLButtonElement>;
@@ -19,100 +21,212 @@ type IButtonColorVariant = {
 const colorStateList = ['default', 'hover', 'disabled'];
 type IColorState = typeof colorStateList[number];
 
-const buttonColors: { [key in IButtonVariant]: { [key in IColorState]: IButtonColorVariant } } = {
+const PRIMARY_COLOR_NAME = 'primary';
+
+const requiredColorVariantList = [PRIMARY_COLOR_NAME] as const;
+export const colorVariantList = [...requiredColorVariantList, 'primary', 'danger', 'secondary'] as const;
+type IColorVariant = typeof colorVariantList[number];
+type IRequiredColorVariants = typeof requiredColorVariantList[number];
+
+type ColorStateRecord = Record<IColorState, IButtonColorVariant>;
+
+type ColorVariantRecord = Record<IRequiredColorVariants, ColorStateRecord> &
+  Partial<Record<Exclude<IColorVariant, IRequiredColorVariants>, ColorStateRecord>>;
+
+const buttonColors: Record<IButtonVariant, ColorVariantRecord> = {
   filled: {
-    default: {
-      primary: 'white',
-      background: '#00e394',
-      border: 'transparent',
+    primary: {
+      default: {
+        primary: colors.fc_white,
+        background: colors.fc_green,
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_white,
+        background: colors.fc_hover_green,
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_white,
+        background: colors.fc_black_30,
+        border: 'transparent',
+      },
     },
-    hover: {
-      primary: 'white',
-      background: '#02ce87',
-      border: 'transparent',
-    },
-    disabled: {
-      primary: 'white',
-      background: 'rgba(20, 20, 20, 0.3)',
-      border: 'transparent',
+    danger: {
+      default: {
+        primary: colors.fc_white,
+        background: colors.fc_red,
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_white,
+        background: colors.fc_hover_red,
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_white,
+        background: colors.fc_black_30,
+        border: 'transparent',
+      },
     },
   },
   outline: {
-    default: {
-      primary: '#00e394',
-      background: 'transparent',
-      border: '#00e394',
+    primary: {
+      default: {
+        primary: colors.fc_green,
+        background: 'transparent',
+        border: colors.fc_green,
+      },
+      hover: {
+        primary: colors.fc_hover_green,
+        background: 'transparent',
+        border: colors.fc_hover_green,
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: colors.fc_black_30,
+      },
     },
-    hover: {
-      primary: '#02ce87',
-      background: '#f3f3f3',
-      border: '#02ce87',
-    },
-    disabled: {
-      primary: 'rgba(20, 20, 20, 0.3)',
-      background: 'transparent',
-      border: 'rgba(20, 20, 20, 0.3)',
+    danger: {
+      default: {
+        primary: colors.fc_red,
+        background: 'transparent',
+        border: colors.fc_red,
+      },
+      hover: {
+        primary: colors.fc_hover_red,
+        background: 'transparent',
+        border: colors.fc_hover_red,
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: colors.fc_black_30,
+      },
     },
   },
   link: {
-    default: {
-      primary: '#00e394',
-      background: 'transparent',
-      border: 'transparent',
+    primary: {
+      default: {
+        primary: colors.fc_black_100,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_hover_green,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
-    hover: {
-      primary: '#02ce87',
-      background: 'transparent',
-      border: 'transparent',
+    secondary: {
+      default: {
+        primary: colors.fc_black_70,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_hover_green,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
-    disabled: {
-      primary: 'rgba(20, 20, 20, 0.3)',
-      background: 'transparent',
-      border: 'transparent',
+    danger: {
+      default: {
+        primary: colors.fc_red,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_hover_red,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
   },
   text: {
-    default: {
-      primary: '#00e394',
-      background: 'transparent',
-      border: 'transparent',
-    },
-    hover: {
-      primary: '#02ce87',
-      background: 'transparent',
-      border: 'transparent',
-    },
-    disabled: {
-      primary: 'rgba(20, 20, 20, 0.3)',
-      background: 'transparent',
-      border: 'transparent',
+    primary: {
+      default: {
+        primary: colors.fc_green,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_hover_green,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
   },
   cancel: {
-    default: {
-      primary: '#141414',
-      background: 'transparent',
-      border: 'transparent',
-    },
-    hover: {
-      primary: '#141414',
-      background: 'transparent',
-      border: 'transparent',
-    },
-    disabled: {
-      primary: 'rgba(20, 20, 20, 0.3)',
-      background: 'transparent',
-      border: 'transparent',
+    primary: {
+      default: {
+        primary: colors.fc_black_100,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      hover: {
+        primary: colors.fc_black_100,
+        background: 'transparent',
+        border: 'transparent',
+      },
+      disabled: {
+        primary: colors.fc_black_30,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
   },
 };
 
+const getColorVariantOrPrimary = (variant: IButtonVariant, colorVariant: IColorVariant) =>
+  buttonColors[variant][colorVariant] ?? buttonColors[variant][PRIMARY_COLOR_NAME];
+
 const buttonColorSwitch = (colorState: IColorState) => css<ButtonProps>`
-  color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].primary};
-  background-color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].background};
-  border-color: ${({ variant = 'filled' }) => buttonColors[variant][colorState].border};
+  color: ${({ variant = 'filled', colorVariant = 'primary' }) =>
+    getColorVariantOrPrimary(variant, colorVariant)[colorState].primary};
+
+  background-color: ${({ variant = 'filled', colorVariant = 'primary' }) =>
+    getColorVariantOrPrimary(variant, colorVariant)[colorState].background};
+
+  border-color: ${({ variant = 'filled', colorVariant = 'primary' }) =>
+    getColorVariantOrPrimary(variant, colorVariant)[colorState].border};
+
   svg {
-    fill: ${({ variant = 'filled' }) => buttonColors[variant][colorState].primary};
+    ${({ small = false }) =>
+      small
+        ? css`
+            width: 16px;
+            height: 16px;
+          `
+        : css`
+            width: 24px;
+            height: 24px;
+          `}
+
+    fill: ${({ variant = 'filled', colorVariant = 'primary' }) =>
+      getColorVariantOrPrimary(variant, colorVariant)[colorState].primary};
+
     transition: fill 0.2s ease-out;
 
     path {
@@ -121,33 +235,94 @@ const buttonColorSwitch = (colorState: IColorState) => css<ButtonProps>`
   }
 `;
 
-const buttonModifiers = {
-  filled: css`
+const filledAndOutline = {
+  default: css`
+    min-width: 100px;
     border: 1px solid;
+
+    padding: 0rem 12px;
+
+    span.fc-button__raw-text {
+      padding: 0 4px;
+    }
   `,
-  outline: css`
+  small: css`
+    min-width: 80px;
     border: 1px solid;
-  `,
-  link: css`
-    padding: 0.625rem 0rem;
-    text-decoration: underline;
-  `,
-  text: css`
-    padding: 0.625rem 0rem;
-  `,
-  cancel: css`
-    padding: 0.625rem 0rem;
-    text-decoration: underline;
+
+    padding: 0rem 12px;
+
+    span.fc-button__raw-text:only-child {
+      padding: 0rem 4px;
+    }
+
+    span.fc-button__raw-text {
+      padding-right: 2px;
+      padding-left: 4px;
+    }
+
+    svg + span.fc-button__raw-text {
+      padding-right: 4px;
+      padding-left: 2px;
+    }
   `,
 };
 
+const buttonModifiers = {
+  filled: filledAndOutline,
+  outline: filledAndOutline,
+  link: {
+    default: css`
+      gap: 4px;
+      padding: 0;
+      text-decoration: underline;
+    `,
+    small: css`
+      gap: 2px;
+      padding: 0;
+      text-decoration: underline;
+    `,
+  },
+  text: {
+    default: css`
+      gap: 4px;
+      padding: 0;
+    `,
+    small: css`
+      gap: 2px;
+      padding: 0;
+    `,
+  },
+  cancel: {
+    default: css`
+      gap: 4px;
+      padding: 0;
+      text-decoration: underline;
+    `,
+    small: css`
+      gap: 2px;
+      padding: 0;
+      text-decoration: underline;
+    `,
+  },
+};
+
 export const Button = styled.button<ButtonProps>`
+  ${({ small = false }) =>
+    small
+      ? css`
+          font-size: 0.6875rem; // 11px;
+          height: 32px;
+        `
+      : css`
+          font-size: 0.875rem; // 14px
+          height: 40px;
+        `}
+
   font-family: 'Red Hat Text', sans-serif;
-  font-size: 0.875rem;
   line-height: 1.32;
-  padding: 0.625rem 2.3rem;
   display: inline-flex;
-  border-radius: 0.75rem;
+  border-radius: 12px;
   font-weight: 700;
   box-sizing: border-box;
   outline: none;
@@ -156,15 +331,7 @@ export const Button = styled.button<ButtonProps>`
   transition: all 0.2s ease-out;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-
-  ${({ small = false }) =>
-    small
-      ? css`
-          font-size: 0.6875rem;
-          padding: 0.375rem 1rem;
-        `
-      : ''}
+  white-space: nowrap;
 
   ${buttonColorSwitch('default')}
 
@@ -177,16 +344,20 @@ export const Button = styled.button<ButtonProps>`
     ${buttonColorSwitch('hover')}
   }
 
-  ${({ variant = 'filled' }) => buttonModifiers[variant]}
+  ${({ variant = 'filled', small = false }) => buttonModifiers[variant][small ? 'small' : 'default']}
 
   ${({ iconOnly = false }) =>
     iconOnly
       ? css`
-          min-width: 2rem;
+          min-width: 32px;
           padding: 0;
           height: 32px;
           width: 32px;
           border-radius: 8px;
+
+          *:not(svg, svg *) {
+            display: none;
+          }
         `
       : ''}
 `;

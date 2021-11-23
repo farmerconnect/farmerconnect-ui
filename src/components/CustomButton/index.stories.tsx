@@ -2,70 +2,65 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import Button from '.';
-import { ButtonProps } from './styles';
-// import 
+import * as Icon from '../Icons';
+
+import CustomButton from '.';
+import { ButtonProps, colorVariantList, buttonVariantList } from './styles';
 
 export default {
   title: 'Custom Button',
-  component: Button,
+  component: CustomButton,
   argTypes: {
     variant: {
       control: {
-        type: 'radio',
-        options: ['filled', 'outline', 'link', 'text', 'cancel'],
+        type: 'select',
+        options: buttonVariantList,
+      },
+    },
+    colorVariant: {
+      control: {
+        type: 'select',
+        options: colorVariantList,
+      },
+    },
+    iconOnly: {
+      defaultValue: false,
+      control: {
+        type: 'boolean',
+      },
+    },
+    small: {
+      defaultValue: true,
+      control: {
+        type: 'boolean',
       },
     },
   },
 } as Meta;
 
-const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg width="13" height="14" viewBox="0 0 13 14" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect
-      x="2.28223"
-      y="1.00012"
-      width="15.1576"
-      height="2"
-      rx="1"
-      transform="rotate(45 2.28223 1.00012)"
-      fill="param(color) #FFF"
-    />
-    <rect
-      x="13"
-      y="2.28198"
-      width="15.1576"
-      height="2"
-      rx="1"
-      transform="rotate(135 13 2.28198)"
-      fill="param(color) #FFF"
-    />
-  </svg>
-);
-
-const Template: Story<ButtonProps> = (args) => (
+const Template: Story<ButtonProps> = ({ children, ...args }) => (
   <div
     style={{
       display: 'flex',
       gap: '1rem',
     }}
   >
-    <Button {...args} />
-    <Button {...args}>
-      <CloseIcon /> Custom Button
-    </Button>
-    <Button {...args}>
-      <>
-        Custom Button
-        <CloseIcon />
-      </>
-    </Button>
-    <Button {...args} disabled />
-    <Button {...args} disabled>
-      <>
-        Disabled Icon Button
-        <CloseIcon />
-      </>
-    </Button>
+    <CustomButton {...args}>{children}</CustomButton>
+    <CustomButton {...args}>
+      <Icon.Delete />
+      Custom Button
+    </CustomButton>
+    <CustomButton {...args}>
+      Custom Button
+      <Icon.Delete />
+    </CustomButton>
+    <CustomButton {...args} disabled>
+      {children}
+    </CustomButton>
+    <CustomButton {...args} disabled>
+      Disabled Icon Button
+      <Icon.Delete />
+    </CustomButton>
   </div>
 );
 
