@@ -56,7 +56,7 @@ const TipBase = styled(small).attrs({ as: 'div' })<ITipProps>`
   background: ${({ backgroundColor }) => backgroundColor};
   border-radius: 8px;
   box-sizing: border-box;
-  color: ${({ color }) => color};
+  color: ${({ fontColor }) => fontColor};
   left: 50%;
   padding: 5px 12px;
   min-height: ${`${TIP_HEIGHT}px`};

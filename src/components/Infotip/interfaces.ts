@@ -22,7 +22,7 @@ export interface IInfotipProps {
 
 export interface ITipProps {
   backgroundColor?: string;
-  color?: string;
+  fontColor?: string;
   arrow?: boolean;
   position: TipPosition;
 }
