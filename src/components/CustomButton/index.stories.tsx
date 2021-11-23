@@ -30,7 +30,7 @@ export default {
       },
     },
     small: {
-      defaultValue: true,
+      defaultValue: false,
       control: {
         type: 'boolean',
       },
@@ -48,17 +48,17 @@ const Template: Story<ButtonProps> = ({ children, ...args }) => (
     <CustomButton {...args}>{children}</CustomButton>
     <CustomButton {...args}>
       <Icon.Delete />
-      Custom Button
+      {children}
     </CustomButton>
     <CustomButton {...args}>
-      Custom Button
+      {children}
       <Icon.Delete />
     </CustomButton>
     <CustomButton {...args} disabled>
       {children}
     </CustomButton>
     <CustomButton {...args} disabled>
-      Disabled Icon Button
+      {`Disabled ${children}`}
       <Icon.Delete />
     </CustomButton>
   </div>

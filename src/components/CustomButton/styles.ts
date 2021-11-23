@@ -217,11 +217,15 @@ const buttonColorSwitch = (colorState: IColorState) => css<ButtonProps>`
       small
         ? css`
             width: 16px;
+            min-width: 16px;
             height: 16px;
+            min-height: 16px;
           `
         : css`
             width: 24px;
+            min-width: 24px;
             height: 24px;
+            min-height: 24px;
           `}
 
     fill: ${({ variant = 'filled', colorVariant = 'primary' }) =>
@@ -240,7 +244,7 @@ const filledAndOutline = {
     min-width: 100px;
     border: 1px solid;
 
-    padding: 0rem 12px;
+    padding: 0 12px;
 
     span.fc-button__raw-text {
       padding: 0 4px;
@@ -250,10 +254,10 @@ const filledAndOutline = {
     min-width: 80px;
     border: 1px solid;
 
-    padding: 0rem 12px;
+    padding: 0 12px;
 
     span.fc-button__raw-text:only-child {
-      padding: 0rem 4px;
+      padding: 0 4px;
     }
 
     span.fc-button__raw-text {
@@ -331,7 +335,7 @@ export const Button = styled.button<ButtonProps>`
   transition: all 0.2s ease-out;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
+  white-space: normal;
 
   ${buttonColorSwitch('default')}
 
