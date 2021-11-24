@@ -6,7 +6,7 @@ export interface ISortingColors {
   inactiveColor?: string;
 }
 
-export type SortingOrder = 'asc' | 'desc' | any;
+export type SortingOrder = string | undefined;
 
 export interface ISorting extends ISortingColors {
   order?: SortingOrder;

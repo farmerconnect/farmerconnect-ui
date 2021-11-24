@@ -28,7 +28,7 @@ const Orderer: React.FC<ITableSortProps> = ({ sort, onSortChange }) => {
       {!!sortKey && !!sortOrder ? (
         <S.Container>
           <S.SortButton onClick={() => handleSortClick(sortKey, sortOrder)}>
-            <Sorting order={sort?.actualSortKey === sortKey && sortOrder} />
+            <Sorting order={sort?.actualSortKey === sortKey ? sortOrder : undefined} />
           </S.SortButton>
         </S.Container>
       ) : null}
