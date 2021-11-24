@@ -25,9 +25,10 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
 
     - run: yarn install --frozen-lockfile
+    - run: yarn build
 
     - name: Publish to NPM
-      run: yarn publish
+      run: yarn publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

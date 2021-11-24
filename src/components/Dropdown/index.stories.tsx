@@ -38,7 +38,7 @@ const Template: Story<IDropdownListProps<{ label: string; value: string }>> = (a
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         items={dropdownItems}
-        position="middle-right"
+        position="bottom-right"
         onSelect={(item) => alert(JSON.stringify(item))}
       />
     </Button>
