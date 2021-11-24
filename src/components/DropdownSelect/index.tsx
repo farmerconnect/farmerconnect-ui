@@ -116,7 +116,7 @@ const DropdownSelect = <T extends DropdownSelectContentItem>({
                 <Icon.Close />
               </button>
             ) : (
-              <S.MagnifyingGlassIcon />
+              <Icon.MagnifyingGlass size="small" />
             )}
           </div>
         </S.FilterInputWrapper>
@@ -139,9 +139,9 @@ const DropdownSelect = <T extends DropdownSelectContentItem>({
                           isDragging={snapshot.isDragging}
                         >
                           {!filterText && isDraggable && (
-                            <div {...provided.dragHandleProps}>
-                              <S.HandleIcon />
-                            </div>
+                            <S.DraggableHandle {...provided.dragHandleProps}>
+                              <Icon.Handle />
+                            </S.DraggableHandle>
                           )}
                           {!item.items ? (
                             <S.CustomCheckbox
@@ -216,7 +216,7 @@ const AccordionList = <T extends { id: string; label: ReactNode }>({
   return (
     <div>
       <S.CollapsableItem onClick={handleToggleOpen} className={isOpen ? 'open' : ''}>
-        <S.ChevronRight /> {label}
+        <Icon.Arrow size="small" /> {label}
       </S.CollapsableItem>
       <AnimatePresence>
         {isOpen && (

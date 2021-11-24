@@ -12,7 +12,7 @@ const Breadcrumb: React.FC<IBreadcrumbProps> = (props: IBreadcrumbProps) => {
       {!props.isLast && (
         <CustomButton variant="text" onClick={props.onClick}>
           {props.text}
-          <Arrow fill={"#00E394"} direction="right" />
+          <Arrow direction="right" />
         </CustomButton>
       )}
     </Container>

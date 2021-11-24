@@ -122,7 +122,7 @@ function SingleSelect<T extends contentType>({
     <S.Wrapper ref={contentRef}>
       <S.Heading onClick={handleToggleDropdown} isOpen={isOpen} disabled={disabled}>
         {headingText}
-        <S.Chevron />
+        <Icon.Arrow />
       </S.Heading>
       <S.Content isOpen={isOpen} aria-hidden={!isOpen}>
         <S.FilterInputWrapper>
@@ -137,7 +137,7 @@ function SingleSelect<T extends contentType>({
                 <Icon.Close />
               </button>
             ) : (
-              <S.MagnifyingGlassIcon />
+              <Icon.MagnifyingGlass size="small" />
             )}
           </div>
           {!!selectFilter1 && (

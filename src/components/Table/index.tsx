@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, ReactNode, isValidElement, ReactElement } from 'react';
-import IconArrow from '../Icons/Arrow';
+import { Sorting } from '../Icons';
 import { SORT_ORDER } from './constants';
 import {
   ITableChildren,
@@ -37,17 +37,6 @@ const Table: React.FC<ITableProps> = ({
     [onSortChange, sort?.key]
   );
 
-  const getArrowStyle = useCallback(
-    (key: string, order: string) => {
-      if (key !== sort?.key) return {};
-
-      if (order === sort?.order) return { isActive: true };
-
-      return { isInactive: true };
-    },
-    [sort?.key, sort?.order]
-  );
-
   const renderSortButton = useCallback(
     (options: ITableColumnOptions | undefined = {}) => {
       const { sortable } = options;
@@ -56,12 +45,11 @@ const Table: React.FC<ITableProps> = ({
 
       return (
         <S.SortButton onClick={() => handleSortClick(sortable.key, sort.order)}>
-          <IconArrow {...getArrowStyle(sortable.key, SORT_ORDER.DESC)} />
-          <IconArrow {...getArrowStyle(sortable.key, SORT_ORDER.ASC)} direction="down" />
+          <Sorting order={sortable.key === sort.key && sort.order} />
         </S.SortButton>
       );
     },
-    [getArrowStyle, handleSortClick, sort]
+    [handleSortClick, sort]
   );
 
   const renderHeader = useMemo(
