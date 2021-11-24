@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ITagSelectProps, tagOption } from './interfaces';
 import * as S from './styles';
 import { Arrow } from '../Icons';
+import { farmerConnectTheme } from '../Theme';
 
 const TagSelect = ({ options = [], onChange = () => {}, selected, ...props }: ITagSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +62,7 @@ const TagSelect = ({ options = [], onChange = () => {}, selected, ...props }: IT
           </li>
         )}
       </S.Dropdown>
-      <Arrow direction="down" size="small" fill={isOpen ? '#141414' : selected.color} />
+      <Arrow direction="down" size="small" fill={isOpen ? farmerConnectTheme.colors.fc_black_100 : selected.color} />
     </S.Container>
   );
 };

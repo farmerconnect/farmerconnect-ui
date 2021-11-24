@@ -1,15 +1,17 @@
-import React from 'react';
 import * as Icon from '../Icons';
+import { farmerConnectTheme } from '../Theme';
 import { IInlineLoaderProps } from './interfaces';
 import * as S from './styles';
 
-const InlineLoader = ({ children, ...props }: IInlineLoaderProps) => {
-  return (
-    <S.Container {...props}>
-      {props.error ? <Icon.Error fill="#FB2E4C" /> : <Icon.Dots fill="#00E394" animated />}
-      {children}
-    </S.Container>
-  );
-};
+const InlineLoader = ({ children, ...props }: IInlineLoaderProps) => (
+  <S.Container {...props}>
+    {props.error ? (
+      <Icon.Error fill={farmerConnectTheme.colors.fc_red} />
+    ) : (
+      <Icon.Dots fill={farmerConnectTheme.colors.fc_green} animated />
+    )}
+    {children}
+  </S.Container>
+);
 
 export default InlineLoader;
