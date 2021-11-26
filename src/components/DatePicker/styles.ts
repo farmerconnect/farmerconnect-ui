@@ -51,9 +51,9 @@ export const Calendar = styled(CalendarContainer)`
   box-sizing: border-box;
   border-radius: 0.75rem;
   width: 36rem;
-  box-shadow: 0.125rem 0.125rem 0 ${farmerConnectTheme.colors.fc_green};
+  box-shadow: 0 0 0 1px ${farmerConnectTheme.colors.fc_black_100};
   position: relative;
-  padding: 1rem;
+  padding: 5rem 1rem 1rem 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -244,6 +244,8 @@ export const BottomRow = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
+  flex: 1;
+  padding-right: 1rem;
 `;
 
 export const CancelButton = styled(CustomButton)`
@@ -284,13 +286,10 @@ export const ArrowButton = styled(CustomButton)<ArrowButtonProps>`
   position: absolute;
   inset: ${({ right }) => (right ? '-0.25rem 0 auto auto' : '-0.25rem auto auto 0')};
   color: ${farmerConnectTheme.colors.fc_black_70};
-  padding: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 0.5rem;
 `;
 
 export const DateSwitchContainer = styled.div`
-  margin-top: 1rem;
   order: -1;
   width: 100%;
   display: flex;
@@ -338,5 +337,39 @@ export const DateSwitch = styled.div`
 
   > div.selects-range {
     left: 8rem;
+  }
+`;
+
+export const ChangeYearButton = styled.div`
+  position: absolute;
+  left: calc(100% - 3.5rem);
+  top: -3.5rem;
+  background-color: #f3f3f3;
+  border-radius: 0.75rem;
+  width: 9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > button {
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.1s ease-out;
+    color: #b9b9b9;
+    &:hover {
+      color: #5b5b5b;
+    }
+  }
+  > span {
+    font-size: 0.875rem;
+    color: #141414;
+    font-weight: 700;
+    cursor: default;
   }
 `;

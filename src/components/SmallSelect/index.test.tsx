@@ -68,4 +68,15 @@ describe('SmallSelect component', () => {
     await selectEvent.select(getByLabelText(/food/i), ['chocolate']);
     expect(getByTestId('form')).toHaveFormValues({ food: 'orange' });
   });
+
+  it('shows footer component', async () => {
+    const container = render(
+      <form data-testid="form">
+        <label htmlFor="select">select</label>
+        <SmallSelect options={OPTIONS} name="select" inputId="select" footer="FOOTER_COMPONENT" />
+      </form>
+    );
+    await selectEvent.openMenu(container.getByLabelText(/select/));
+    expect(container.getByText(/FOOTER_COMPONENT/)).toBeInTheDocument();
+  });
 });
