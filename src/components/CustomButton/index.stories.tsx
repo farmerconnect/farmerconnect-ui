@@ -13,7 +13,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: buttonVariantList,
+        options: buttonVariantList.filter((variant) => variant !== 'cancel'),
       },
     },
     colorVariant: {
@@ -37,7 +37,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = ({ children, ...args }) => (
+const Template: Story<{ icons: boolean } & ButtonProps> = ({ icons = true, children, ...args }) => (
   <div
     style={{
       display: 'flex',
@@ -45,21 +45,29 @@ const Template: Story<ButtonProps> = ({ children, ...args }) => (
     }}
   >
     <CustomButton {...args}>{children}</CustomButton>
-    <CustomButton {...args}>
-      <Icon.Close fill="currentColor" />
-      {children}
-    </CustomButton>
-    <CustomButton {...args}>
-      {children}
-      <Icon.Close fill="currentColor" />
-    </CustomButton>
-    <CustomButton {...args} disabled>
-      {children}
-    </CustomButton>
-    <CustomButton {...args} disabled>
-      {`Disabled ${children}`}
-      <Icon.Close fill="currentColor" />
-    </CustomButton>
+    {icons ? (
+      <>
+        <CustomButton {...args}>
+          <Icon.Close fill="currentColor" />
+          {children}
+        </CustomButton>
+        <CustomButton {...args}>
+          {children}
+          <Icon.Close fill="currentColor" />
+        </CustomButton>
+        <CustomButton {...args} disabled>
+          {children}
+        </CustomButton>
+        <CustomButton {...args} disabled>
+          {`Disabled ${children}`}
+          <Icon.Close fill="currentColor" />
+        </CustomButton>
+      </>
+    ) : (
+      <CustomButton {...args} disabled>
+        {`Disabled ${children}`}
+      </CustomButton>
+    )}
   </div>
 );
 
@@ -79,6 +87,7 @@ export const Link = Template.bind({});
 Link.args = {
   children: 'Link Button',
   variant: 'link',
+  icons: false,
 };
 
 export const Text = Template.bind({});

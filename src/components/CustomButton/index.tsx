@@ -1,8 +1,9 @@
 import React from 'react';
 import * as S from './styles';
 
-const RawText: React.FC<{ text: string; iconOnly?: boolean }> = ({ text, iconOnly }) =>
-  !iconOnly ? <span className="fc-button__raw-text">{text}</span> : null;
+const RawText: React.FC<{ text: string; iconOnly?: boolean }> = ({ text }) => (
+  <span className="fc-button__raw-text">{text}</span>
+);
 
 const CustomButton: React.FC<S.ButtonProps> = ({ children, variant, ...props }) => {
   const { iconOnly } = props;
@@ -18,7 +19,7 @@ const CustomButton: React.FC<S.ButtonProps> = ({ children, variant, ...props }) 
   return (
     <S.Button {...props} variant={variant}>
       {safeChildren.map((child, i) => {
-        if (typeof child === 'string') return <RawText key={`${typeof child}-${i}`} text={child} iconOnly={iconOnly} />;
+        if (typeof child === 'string') return iconOnly ? null : <RawText key={`${typeof child}-${i}`} text={child} />;
         if (variant === 'link') {
           // eslint-disable-next-line no-console
           console.warn('CustomButton variant=link does not support children nodes that are not text.');
