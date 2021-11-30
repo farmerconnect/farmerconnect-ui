@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Range component should match the snapshot 1`] = `
+<Slider
+  axis="x"
+  disabled={false}
+  styles={
+    Object {
+      "active": Object {
+        "backgroundColor": "#00E394",
+      },
+      "disabled": Object {
+        "opacity": 0.5,
+      },
+      "thumb": Object {
+        "backgroundColor": "#00E394",
+        "height": 16,
+        "width": 16,
+      },
+      "track": Object {
+        "backgroundColor": "#F7F6F4",
+        "height": 4,
+        "width": "100%",
+      },
+    }
+  }
+  x={50}
+  xmax={100}
+  xmin={0}
+  xreverse={false}
+  xstep={1}
+  y={50}
+  ymax={100}
+  ymin={0}
+  yreverse={false}
+  ystep={1}
+/>
+`;

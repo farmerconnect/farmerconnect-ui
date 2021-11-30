@@ -12,12 +12,12 @@ export default {
 
 const props = {
   options: [
-    { label: 'Label 1', value: '0' },
-    { label: 'Label 2', value: '1' },
-    { label: 'Label 3', value: '2' },
-    { label: 'Label 4', value: '3' },
-    { label: 'Label 5', value: '4' },
-    { label: 'Label 6', value: '5' },
+    { label: <span>Label 1</span>, value: '0' },
+    { label: <span>Label 2</span>, value: '1' },
+    { label: <span>Label 3</span>, value: '2' },
+    { label: <span>Label 4</span>, value: '3' },
+    { label: <span>Label 5</span>, value: '4' },
+    { label: <span>Label 6</span>, value: '5' },
   ],
 };
 
@@ -31,4 +31,11 @@ export const Default = Template.bind({});
 Default.args = {
   error: false,
   helperText: 'This is a helper text.',
+};
+
+export const FooterComponent = Template.bind({});
+FooterComponent.args = {
+  error: false,
+  helperText: 'This is a helper text.',
+  footer: 'This is a footer content. It takes JSX as well as string.',
 };

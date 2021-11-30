@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.44.0] 2021-11-25
+## [1.46.0] 2021-11-30
 
 - Fix Custom Button styles.
 - Add Custom Button color variants.
+## [1.45.1] 2021-11-29
+
+- Fix Range component export
+
+## [1.45.0] 2021-11-24
+
+- Range component added
+
+## [1.44.0] 2021-11-25
+
+- Added footer prop to Select and SmallSelect
+- Added year navigation to DatePicker
 
 ## [1.43.0] 2021-11-23
 

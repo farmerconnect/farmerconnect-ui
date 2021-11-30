@@ -22,6 +22,8 @@ const Template: Story<IDatePickerProps> = (args) => {
   return (
     <div style={{ width: '15rem' }}>
       <DatePicker {...args} start={date[0]} end={date[1]} onChange={handleChange} />
+      <p>start: {date[0]?.toLocaleString()}</p>
+      <p>end: {date[1]?.toLocaleString()}</p>
     </div>
   );
 };

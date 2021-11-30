@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import ReactSelect from 'react-select';
-import { SmallSelectProps } from '.';
+import ReactSelect, { Props } from 'react-select';
 import { customScrollbar } from '../../mixins/ScrollBar';
 import { farmerConnectTheme } from '../Theme';
 
@@ -13,7 +12,11 @@ const animateCheckbox = keyframes`
   }
 `;
 
-export const Select = styled(ReactSelect)<SmallSelectProps>`
+type SelectProps = {
+  error: string | boolean;
+} & Props;
+
+export const Select = styled(ReactSelect)<SelectProps>`
   .select__control {
     min-height: 2rem;
     max-height: 2rem;
@@ -21,7 +24,8 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
     margin: 0;
     box-sizing: border-box;
     border-radius: 0.75rem;
-    border-color: ${farmerConnectTheme.colors.fc_black_70};
+    border-color: ${(props) =>
+      !!props.error ? farmerConnectTheme.colors.fc_red : farmerConnectTheme.colors.fc_black_70};
     transition: none;
     background-color: transparent;
 
@@ -37,7 +41,7 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
     }
 
     &--menu-is-open {
-      max-height: 25rem;
+      max-height: 45rem;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom: none;
@@ -71,8 +75,8 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
 
     > svg {
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
+      top: calc(50% - 0.125rem);
+      right: 0.75rem;
     }
   }
 
@@ -100,7 +104,6 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
   .select__menu-list {
     box-shadow: none;
     padding: 0;
-    max-height: 8.25rem;
     border: none;
 
     ${customScrollbar({
@@ -159,7 +162,7 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
     }
 
     &--is-selected {
-      font-weight: 500;
+      font-weight: 700;
       color: ${farmerConnectTheme.colors.fc_black_100};
       background-color: unset;
     }
@@ -212,4 +215,11 @@ export const Select = styled(ReactSelect)<SmallSelectProps>`
 
 export const SelectWrapper = styled.div`
   position: relative;
+`;
+
+export const FooterContainer = styled.div`
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  color: #5b5b5b;
+  position: relative;
+  margin-bottom: -0.5rem;
 `;
