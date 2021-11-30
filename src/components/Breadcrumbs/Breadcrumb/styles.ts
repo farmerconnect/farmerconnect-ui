@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import CustomButton from '../../CustomButton';
+import { farmerConnectTheme } from '../../Theme';
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
+
 export const Text = styled.span`
   ${fontFamily}
-  color: #141414;
+  color: ${farmerConnectTheme.colors.fc_black_100};
   font-size: 0.875rem;
   font-weight: 400;
 `;
@@ -17,10 +19,11 @@ export const Container = styled.div`
   justify-content: center;
 
   ${CustomButton} {
-    padding: 0.625rem 0rem 0.625rem 0.5rem;
+    gap: 0.25rem;
+    padding: 0.625rem 0;
   }
 
   ${Text} {
-    padding: 0.625rem 0.5rem 0.625rem 0.5rem;
+    padding: 0.625rem 0;
   }
 `;

@@ -7,9 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.43.0] 2021-11-23
+## [1.44.0] 2021-11-25
+
 - Fix Custom Button styles.
 - Add Custom Button color variants.
+
+## [1.43.0] 2021-11-23
+
+- Icons clean up
+  - Duplicated icons removed
+  - Arrow icon position inside components fixed
+
+## [1.42.5] 2021-11-24
+
+- Fixing Publish in Github action
 
 ## [1.42.4] 2021-11-22
 

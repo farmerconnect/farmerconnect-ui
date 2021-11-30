@@ -1,34 +1,39 @@
 import styled, { css } from 'styled-components';
+import { farmerConnectTheme } from '../Theme';
 
 type ContainerProps = {
   isOpen?: boolean;
 };
+
 export const Container = styled.div<ContainerProps>`
   height: 2.375rem;
   box-sizing: border-box;
   position: relative;
   display: inline-block;
-  z-index: ${(props) => (props.isOpen ? 5 : 'unset')};
-  &:hover {
-    filter: ${(props) => (props.isOpen ? 'none' : 'brightness(97%)')};
-  }
   transition: filter 0.1s ease-out;
+  z-index: ${({ isOpen }) => (isOpen ? 5 : 'unset')};
+
+  &:hover {
+    filter: ${({ isOpen }) => (isOpen ? 'none' : 'brightness(97%)')};
+  }
+
   > svg {
     position: absolute;
-    right: ${(props) => (props.isOpen ? '0.6825rem' : '1rem')};
-    transform: rotate(180deg);
+    right: ${({ isOpen }) => (isOpen ? '0.5rem' : '0.85rem')};
     top: 50%;
-    transform: translateY(-50%) rotate(${(props) => (props.isOpen ? '0deg' : '180deg')});
-    width: 0.625rem;
-    height: auto;
+    transform: translateY(-50%) rotate(${({ isOpen }) => (isOpen ? '180deg' : '0deg')});
+    width: 0.938rem;
+    height: 0.938rem;
     transition: fill 0.2s ease-out, right 0.2s ease-out;
     pointer-events: none;
+    margin-top: 1px;
   }
 `;
 
 type DropdownProps = {
   isOpen?: boolean;
 };
+
 export const Dropdown = styled.ul<DropdownProps>`
   position: absolute;
   top: 0;
@@ -42,18 +47,20 @@ export const Dropdown = styled.ul<DropdownProps>`
   padding: 0;
   margin: 0;
   position: relative;
-  border: 1px solid ${(props) => (props.isOpen ? '#141414' : 'transparent')};
+  border: 1px solid ${({ isOpen }) => (isOpen ? farmerConnectTheme.colors.fc_black_100 : 'transparent')};
   border-radius: 0.75rem;
   overflow: hidden;
   cursor: pointer;
   background-color: #fff;
+
   > li {
     display: flex;
     align-items: center;
-    padding: ${(props) => (props.isOpen ? '0.375rem 2.125rem 0.375rem 0.375rem' : '0.375rem')};
+    padding: ${({ isOpen }) => (isOpen ? '0.375rem 2.125rem 0.375rem 0.375rem' : '0.375rem')};
     transition: all 0.2s ease-out, background-color 0.1s ease-out;
+
     &:hover {
-      background-color: ${(props) => (props.isOpen ? '#E7E7E7' : 'transparent')};
+      background-color: ${({ isOpen }) => (isOpen ? farmerConnectTheme.colors.fc_black_10 : 'transparent')};
     }
   }
 `;
@@ -64,17 +71,18 @@ type TagItemProps = {
   background?: string;
   faded?: boolean;
 };
+
 export const TagItem = styled.span<TagItemProps>`
   font-size: 0.6825rem;
   font-weight: 700;
-  color: ${(props) => props.color || '#005e3a'};
-  background-color: ${(props) => props.background || '#cee9dd'};
+  color: ${({ color }) => color || farmerConnectTheme.colors.fc_dark_green};
+  background-color: ${({ background }) => background || farmerConnectTheme.colors.fc_light_green};
   padding: 0.375rem 0.75rem;
   border-radius: 0.75rem;
-  opacity: ${(props) => (props.faded ? 0.5 : 1)};
+  opacity: ${({ faded }) => (faded ? 0.5 : 1)};
   transition: all 0.2s ease-out;
-  ${(props) =>
-    props.selected
+  ${({ selected }) =>
+    selected
       ? css`
           padding-right: 2.5rem;
         `

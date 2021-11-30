@@ -2,10 +2,9 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import * as Icon from '../Icons';
-
 import CustomButton from '.';
 import { ButtonProps, colorVariantList, buttonVariantList } from './styles';
+import * as Icon from '../Icons';
 
 export default {
   title: 'Custom Button',
@@ -47,19 +46,19 @@ const Template: Story<ButtonProps> = ({ children, ...args }) => (
   >
     <CustomButton {...args}>{children}</CustomButton>
     <CustomButton {...args}>
-      <Icon.Delete />
-      {children}
+      <Icon.Close fill="currentColor" />
+      <span>{children}</span>
     </CustomButton>
     <CustomButton {...args}>
-      {children}
-      <Icon.Delete />
+      <span>{children}</span>
+      <Icon.Close fill="currentColor" />
     </CustomButton>
     <CustomButton {...args} disabled>
-      {children}
+      <span>{children}</span>
     </CustomButton>
     <CustomButton {...args} disabled>
-      {`Disabled ${children}`}
-      <Icon.Delete />
+      <span>{`Disabled ${children}`}</span>
+      <Icon.Close fill="currentColor" />
     </CustomButton>
   </div>
 );
