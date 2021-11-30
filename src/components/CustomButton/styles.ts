@@ -24,7 +24,7 @@ type IColorState = typeof colorStateList[number];
 const PRIMARY_COLOR_NAME = 'primary';
 
 const requiredColorVariantList = [PRIMARY_COLOR_NAME] as const;
-export const colorVariantList = [...requiredColorVariantList, 'primary', 'danger', 'secondary'] as const;
+export const colorVariantList = [...requiredColorVariantList, PRIMARY_COLOR_NAME, 'danger'] as const;
 type IColorVariant = typeof colorVariantList[number];
 type IRequiredColorVariants = typeof requiredColorVariantList[number];
 
@@ -114,24 +114,7 @@ const buttonColors: Record<IButtonVariant, ColorVariantRecord> = {
         border: 'transparent',
       },
       hover: {
-        primary: colors.fc_hover_green,
-        background: 'transparent',
-        border: 'transparent',
-      },
-      disabled: {
-        primary: colors.fc_black_30,
-        background: 'transparent',
-        border: 'transparent',
-      },
-    },
-    secondary: {
-      default: {
         primary: colors.fc_black_70,
-        background: 'transparent',
-        border: 'transparent',
-      },
-      hover: {
-        primary: colors.fc_hover_green,
         background: 'transparent',
         border: 'transparent',
       },
@@ -213,19 +196,19 @@ const buttonColorSwitch = (colorState: IColorState) => css<ButtonProps>`
     getColorVariantOrPrimary(variant, colorVariant)[colorState].border};
 
   svg {
-    ${({ small = false }) =>
-      small
+    ${({ small = false, iconOnly = false }) =>
+      !small || iconOnly
         ? css`
-            width: 16px;
-            min-width: 16px;
-            height: 16px;
-            min-height: 16px;
-          `
-        : css`
             width: 24px;
             min-width: 24px;
             height: 24px;
             min-height: 24px;
+          `
+        : css`
+            width: 16px;
+            min-width: 16px;
+            height: 16px;
+            min-height: 16px;
           `}
 
     fill: ${({ variant = 'filled', colorVariant = 'primary' }) =>
@@ -358,10 +341,6 @@ export const Button = styled.button<ButtonProps>`
           height: 32px;
           width: 32px;
           border-radius: 8px;
-
-          *:not(svg, svg *) {
-            display: none;
-          }
         `
       : ''}
 `;

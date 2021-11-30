@@ -47,17 +47,17 @@ const Template: Story<ButtonProps> = ({ children, ...args }) => (
     <CustomButton {...args}>{children}</CustomButton>
     <CustomButton {...args}>
       <Icon.Close fill="currentColor" />
-      <span>{children}</span>
+      {children}
     </CustomButton>
     <CustomButton {...args}>
-      <span>{children}</span>
+      {children}
       <Icon.Close fill="currentColor" />
     </CustomButton>
     <CustomButton {...args} disabled>
-      <span>{children}</span>
+      {children}
     </CustomButton>
     <CustomButton {...args} disabled>
-      <span>{`Disabled ${children}`}</span>
+      {`Disabled ${children}`}
       <Icon.Close fill="currentColor" />
     </CustomButton>
   </div>
