@@ -45,6 +45,7 @@ import Typography from './components/Typography';
 import Alert from './components/Alert';
 import Pagination from './components/Pagination';
 import SearchInput from './components/SearchInput';
+import Range from './components/Range';
 import * as Mixins from './mixins';
 
 export {
@@ -96,4 +97,5 @@ export {
   Pagination,
   SearchInput,
   Mixins,
+  Range,
 };

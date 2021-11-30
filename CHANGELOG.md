@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.45.1] 2021-11-29
+
+- Fix Range component export
+
+## [1.45.0] 2021-11-24
+
+- Range component added
+
+## [1.44.0] 2021-11-25
+
+- Added footer prop to Select and SmallSelect
+- Added year navigation to DatePicker
+
+## [1.43.0] 2021-11-23
+
+- Icons clean up
+  - Duplicated icons removed
+  - Arrow icon position inside components fixed
+
+## [1.42.5] 2021-11-24
+
+- Fixing Publish in Github action
+
 ## [1.42.4] 2021-11-22
 
 - Fixing Build storybook (part 1)

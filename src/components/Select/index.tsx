@@ -1,44 +1,58 @@
-import { ReactNode } from 'react';
-import { Select } from './styles';
-import { components, Props, OptionProps } from 'react-select';
+import { components, GroupTypeBase, MenuProps, OptionProps } from 'react-select';
 import { CheckboxUnchecked, CheckboxChecked } from '../Icons/Checkbox';
+import { CustomMenuProps, SmallSelectProps } from '../SmallSelect';
+import { farmerConnectTheme } from '../Theme';
+import * as S from './styles';
 
-type CustomOptionProps = {
-  children: ReactNode;
-  isSelected: boolean;
-  isMulti: boolean;
-} & Props;
+const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => (
+  <components.Option {...props}>
+    {props.isMulti ? props.isSelected ? <CheckboxChecked className="checked" /> : <CheckboxUnchecked /> : null}
+    {children}
+  </components.Option>
+);
 
-const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => {
+const CustomMenu = (props: CustomMenuProps) => {
   return (
-    <components.Option {...props}>
-      {props.isMulti ? props.isSelected ? <CheckboxChecked className="checked" /> : <CheckboxUnchecked /> : null}
-      {children}
-    </components.Option>
+    <components.Menu {...props}>
+      <>
+        {props.children}
+        {props.footer && <S.FooterContainer>{props.footer}</S.FooterContainer>}
+      </>
+    </components.Menu>
   );
 };
 
-const CustomSelect = (props: CustomOptionProps) => (
-  <Select
-    components={{
-      IndicatorSeparator: null,
-      DropdownIndicator: DropdownIcon,
-      ClearIndicator: null,
-      Option: CustomOption,
-    }}
-    classNamePrefix="select"
-    hideSelectedOptions={false}
-    closeMenuOnSelect={props.isMulti ? false : true}
-    {...props}
-  />
-);
+function CustomSelect<
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
+>({ footer = null, ...props }: SmallSelectProps<Option, IsMulti, Group>) {
+  return (
+    <S.SelectWrapper>
+      <S.Select
+        components={{
+          IndicatorSeparator: null,
+          DropdownIndicator: DropdownIcon,
+          ClearIndicator: null,
+          Option: CustomOption,
+          Menu: (props: MenuProps<{}, boolean>) => <CustomMenu {...props} footer={footer} />,
+        }}
+        classNamePrefix="select"
+        hideSelectedOptions={false}
+        closeMenuOnSelect={props.isMulti ? false : true}
+        {...props}
+      />
+      {props.error && typeof props.error === 'string' && <S.HelperText error={true}>{props.error}</S.HelperText>}
+      {props.helperText && !props.error && <S.HelperText>{props.helperText}</S.HelperText>}
+    </S.SelectWrapper>
+  );
+}
 
 const DropdownIcon = () => (
-  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
     <path
-      d="M9.73692 0.266515C9.38765 -0.0888383 8.82345 -0.0888383 8.47419 0.266515L4.99943 3.80182L1.52468 0.266515C1.17542 -0.0888383 0.611217 -0.0888383 0.26195 0.266515C-0.0873156 0.621868 -0.0873156 1.1959 0.26195 1.55125L4.37255 5.73349C4.72181 6.08884 5.28601 6.08884 5.63528 5.73349L9.74588 1.55125C10.0862 1.20501 10.0862 0.621868 9.73692 0.266515Z"
-      fill="#141414"
-      fillOpacity="0.7"
+      d="M11.2892 0.999531C10.8992 0.609531 10.2692 0.609531 9.87925 0.999531L5.99925 4.87953L2.11925 0.999531C1.72925 0.609531 1.09925 0.609531 0.709246 0.999531C0.319245 1.38953 0.319245 2.01953 0.709246 2.40953L5.29925 6.99953C5.68925 7.38953 6.31925 7.38953 6.70925 6.99953L11.2992 2.40953C11.6792 2.02953 11.6792 1.38953 11.2892 0.999531Z"
+      fill={farmerConnectTheme.colors.fc_black_70}
     />
   </svg>
 );

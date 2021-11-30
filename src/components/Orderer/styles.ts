@@ -15,6 +15,7 @@ export const SortButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
   margin-left: 5px;
   padding: 5px;
 

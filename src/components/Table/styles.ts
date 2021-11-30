@@ -1,20 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
-import { StyledArrow } from '../Icons/Arrow/styles';
-import { ITable, ITableStyles, ITableColumnOptions, ITableHoverable } from './interfaces';
-
-export const tableDefaultStyles: ITable = {
-  colors: {
-    head: {
-      color: '#141414',
-      backgroundColor: '#f7f6f4',
-    },
-    body: {
-      color: '#141414',
-      borderColor: '#e7e7e7',
-      backgroundColor: '#ffffff',
-    },
-  },
-};
+import { tableDefaultStyles } from './constants';
+import { ITableStyles, ITableColumnOptions } from './interfaces';
 
 export const Container = styled.table`
   position: relative;
@@ -83,7 +69,9 @@ export const Head = styled.thead`
   background-color: ${({ theme }) =>
     theme?.table?.colors?.head?.backgroundColor || tableDefaultStyles?.colors?.head?.backgroundColor};
 
-  box-shadow: #f7f6f4 0px 0.75rem 0px;
+  box-shadow: ${({ theme }) =>
+      theme?.table?.colors?.head?.boxShadowColor || tableDefaultStyles?.colors?.head?.boxShadowColor}
+    0px 0.75rem 0px;
 
   ${Column} {
     color: ${({ theme }) => theme?.table?.colors?.head?.color || tableDefaultStyles?.colors?.head?.color};
@@ -121,11 +109,12 @@ export const Body = styled.tbody<ITableStyles>`
     background-color: ${({ theme }) =>
       theme?.table?.colors?.body?.backgroundColor || tableDefaultStyles?.colors?.body?.backgroundColor};
 
-    ${({ hoverable }: ITableHoverable) =>
+    ${({ hoverable, theme }) =>
       hoverable &&
       css`
         &:hover {
-          background-color: #f3f3f3;
+          background-color: ${theme?.table?.colors?.body?.backgroundHoverColor ||
+          tableDefaultStyles?.colors?.body?.backgroundHoverColor};
         }
       `}
 
@@ -175,10 +164,7 @@ export const SortButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
   margin-left: 5px;
   padding: 5px;
-
-  ${StyledArrow} + ${StyledArrow} {
-    margin-top: 1px;
-  }
 `;

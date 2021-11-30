@@ -3,7 +3,7 @@ export type DropdownItem = {
   label: string;
 };
 
-type positionType = 'top-left' | 'top-right' | 'center' | 'bottom-left' | 'bottom-right' | 'middle-right';
+type positionType = 'top-left' | 'top-right' | 'center' | 'bottom-left' | 'bottom-right';
 
 export type ListProps = {
   position: positionType;

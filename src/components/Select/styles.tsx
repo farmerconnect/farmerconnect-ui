@@ -1,55 +1,74 @@
 import styled from 'styled-components';
-import SmallSelect from '../SmallSelect';
+import { customScrollbar } from '../../mixins';
+import { Select as SmallSelect } from '../SmallSelect/styles';
+import { farmerConnectTheme } from '../Theme';
+export { SelectWrapper, FooterContainer } from '../SmallSelect/styles';
+export { HelperText } from '../Input/styles';
 
 export const Select = styled(SmallSelect)`
   .select__control {
-    background-color: #f7f6f4;
+    background-color: ${farmerConnectTheme.colors.fc_beige};
     border-color: transparent;
     min-height: 2.5rem;
     max-height: 2.5rem;
-    box-shadow: ${(props) => (props.error ? '0.125rem 0.125rem 0 #fb2e4c' : 'none')};
+    box-shadow: ${({ error }) => (error ? `0.125rem 0.125rem 0 ${farmerConnectTheme.colors.fc_red}` : 'none')};
     transition: box-shadow 0.1s ease-out;
-    &--menu-is-open,
-    &--is-focused {
-      box-shadow: 0.125rem 0.125rem 0px ${(props) => (props.error ? '#fb2e4c' : '#00e394')};
+
+    &--is-focused,
+    &--menu-is-open {
+      box-shadow: 0.125rem 0.125rem 0px
+        ${({ error }) => (error ? farmerConnectTheme.colors.fc_red : farmerConnectTheme.colors.fc_green)};
     }
-    &--menu-is-open,
-    &:hover {
+
+    &:hover,
+    &--menu-is-open {
       border-color: transparent;
     }
+
     &--is-disabled {
-      background-color: #e7e7e7;
+      background-color: ${farmerConnectTheme.colors.fc_black_10};
     }
   }
+
   .select__single-value,
   .select__input,
   .select__placeholder {
     font-size: 0.875rem;
   }
+
   .select__placeholder {
-    color: #5b5b5b;
+    color: ${farmerConnectTheme.colors.fc_black_70};
   }
+
   .select__single-value {
     font-weight: 500;
   }
+
   .select__menu {
     border-color: transparent;
-    background-color: #f7f6f4;
-    box-shadow: 0.125rem 0.125rem 0px ${(props) => (props.error ? '#fb2e4c' : '#00e394')};
+    background-color: ${farmerConnectTheme.colors.fc_beige};
+    box-shadow: 0.125rem 0.125rem 0px
+      ${({ error }) => (error ? farmerConnectTheme.colors.fc_red : farmerConnectTheme.colors.fc_green)};
   }
+
   .select__menu-list {
     border-color: transparent;
-    &::-webkit-scrollbar-track {
-      background-color: #f7f6f4;
-      box-shadow: 0 0.25rem 0 0 #f7f6f4;
-    }
-    &::-webkit-scrollbar-thumb {
-      border: 2px solid #f7f6f4;
-      background-color: #b9b9b9;
-    }
+    ${customScrollbar()}
   }
+
   .select__indicators > svg {
-    top: 1.0625rem;
-    right: 1.0625rem;
+    color: ${farmerConnectTheme.colors.fc_black_70};
+    right: 1rem;
+    top: calc(50% - 0.25rem);
+  }
+  .select__single-value-value {
+    font-weight: 500;
+  }
+
+  .select__option {
+    &:hover,
+    &--is-focused {
+      background-color: ${farmerConnectTheme.colors.fc_black_10};
+    }
   }
 `;
