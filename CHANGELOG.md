@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.45.2] 2021-11-30
+
+- Fixed: SmallSelect menu scroll no longer resets when selecting multiple options
+
 ## [1.45.1] 2021-11-29
 
 - Fix Range component export
