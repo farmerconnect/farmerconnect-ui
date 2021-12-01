@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-const Close: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = '#6D6D6D', ...props }) => {
+const Close: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
   return (
-    <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="7.61035" y="6" width="15.1576" height="2" rx="1" transform="rotate(45 7.61035 6)" fill={fill} />
       <rect
-        x="2.28223"
-        y="1.00012"
+        x="18.3286"
+        y="7.28174"
         width="15.1576"
         height="2"
         rx="1"
-        transform="rotate(45 2.28223 1.00012)"
+        transform="rotate(135 18.3286 7.28174)"
         fill={fill}
       />
-      <rect x="13" y="2.28198" width="15.1576" height="2" rx="1" transform="rotate(135 13 2.28198)" fill={fill} />
     </svg>
   );
 };

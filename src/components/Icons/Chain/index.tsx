@@ -2,36 +2,36 @@ import * as React from 'react';
 
 const Chain: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <rect
-        x="3.19598"
-        y="16.5445"
+        x="3.52453"
+        y="16.5444"
         width="8.51829"
         height="6.26981"
         rx="2.25"
-        transform="rotate(-45 3.19598 16.5445)"
+        transform="rotate(-45 3.52453 16.5444)"
         fill="white"
         stroke={fill}
-        strokeWidth="1.5"
+        stroke-width="1.5"
       />
       <rect
-        x="10.9232"
+        x="11.2516"
         y="8.81738"
         width="8.51829"
         height="6.27679"
         rx="2.25"
-        transform="rotate(-45 10.9232 8.81738)"
+        transform="rotate(-45 11.2516 8.81738)"
         fill="white"
         stroke={fill}
-        strokeWidth="1.5"
+        stroke-width="1.5"
       />
       <rect
-        x="7.92131"
-        y="14.294"
+        x="8.24992"
+        y="14.2939"
         width="9"
         height="3"
         rx="1.5"
-        transform="rotate(-45 7.92131 14.294)"
+        transform="rotate(-45 8.24992 14.2939)"
         fill={fill}
         stroke="white"
       />
