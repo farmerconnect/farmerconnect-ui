@@ -31,7 +31,7 @@ describe('DatePicker component', () => {
     });
   });
 
-  it('calls onChange with the correct arguments for date raange selection', async () => {
+  it('calls onChange with the correct arguments for date range selection', async () => {
     const onChange = jest.fn();
     let startDate: Date | null = new Date(2021, 0, 1);
     let endDate: Date | null = new Date(2021, 0, 2);
