@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Product: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'black', ...props }) => (
+const Product: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill={fill} {...props}>
     <path
       d="M219,309.2H133.06a19.71,19.71,0,0,1-19.68-19.69V132.93a18.83,18.83,0,0,1,18.81-18.81h39.87L205,145.64a8.64,8.64,0,0,0,6,2.39H343.61a18.83,18.83,0,0,1,18.81,18.81,8.62,8.62,0,0,0,17.23,0,36.08,36.08,0,0,0-36-36H214.4L181.47,99.29a8.58,8.58,0,0,0-5.95-2.4H132.19a36.08,36.08,0,0,0-36,36V289.51a37,37,0,0,0,36.91,36.91H219a8.61,8.61,0,0,0,0-17.22Z"

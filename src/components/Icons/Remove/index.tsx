@@ -1,7 +1,6 @@
 import { SVGProps } from 'react';
-import colors from '../../../styles/colors';
 
-const Remove = ({ fill = colors.fc_red, ...props }: SVGProps<SVGSVGElement>) => (
+const Remove = ({ fill = 'currentColor', ...props }: SVGProps<SVGSVGElement>) => (
   <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <circle cx="12.3286" cy="12" r="10" fill={fill} />
     <path

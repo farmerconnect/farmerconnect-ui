@@ -46,6 +46,7 @@ export { default as Information } from './Information';
 export { default as Calendar } from './Calendar';
 export { default as Filter } from './Filter';
 export { default as Global } from './Global';
+export { default as Copy } from './Copy';
 export { default as CopyV2 } from './CopyV2';
 export { default as ExternalLink } from './ExternalLink';
 export { default as Favorite } from './Favorite';
