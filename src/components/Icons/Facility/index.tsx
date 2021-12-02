@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-const Facility: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'black', ...props }) => (
-  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill={fill} {...props}>
+const Facility: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill={fill} {...props}>
     <path
       d="M396.71,219.87a8.65,8.65,0,0,0-8.66.07L327.73,255.7V227.35a8.62,8.62,0,0,0-13-7.41L254.4,255.7V227.35a8.61,8.61,0,0,0-13-7.41l-73.33,43.47a8.59,8.59,0,0,0-4.22,7.41v113a8.6,8.6,0,0,0,8.61,8.61h220a8.6,8.6,0,0,0,8.61-8.61V227.35A8.62,8.62,0,0,0,396.71,219.87ZM383.83,375.23H181.07V275.72l56.1-33.25v28.35a8.62,8.62,0,0,0,13,7.41l60.32-35.76v28.35a8.62,8.62,0,0,0,13,7.41l60.32-35.76Z"
       fill={fill}
