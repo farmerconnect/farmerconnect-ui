@@ -13,7 +13,7 @@ const Duplicate: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentCol
         height="13"
         rx="1"
         stroke={fill}
-        stroke-width="3"
+        strokeWidth="3"
         mask="url(#path-1-inside-1_742_12336)"
       />
       <mask id="path-2-inside-2_742_12336" fill="white">
@@ -27,7 +27,7 @@ const Duplicate: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentCol
         rx="1"
         fill="white"
         stroke={fill}
-        stroke-width="3"
+        strokeWidth="3"
         mask="url(#path-2-inside-2_742_12336)"
       />
       <rect
@@ -38,7 +38,7 @@ const Duplicate: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentCol
         rx="0.583333"
         fill={fill}
         stroke={fill}
-        stroke-width="0.1"
+        strokeWidth="0.1"
       />
       <rect
         x="17.7453"
@@ -49,7 +49,7 @@ const Duplicate: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentCol
         transform="rotate(90 17.7453 9.3167)"
         fill={fill}
         stroke={fill}
-        stroke-width="0.1"
+        strokeWidth="0.1"
       />
     </svg>
   );

@@ -12,7 +12,7 @@ const Chain: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor',
         transform="rotate(-45 3.52453 16.5444)"
         fill="white"
         stroke={fill}
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect
         x="11.2516"
@@ -23,7 +23,7 @@ const Chain: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor',
         transform="rotate(-45 11.2516 8.81738)"
         fill="white"
         stroke={fill}
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect
         x="8.24992"
