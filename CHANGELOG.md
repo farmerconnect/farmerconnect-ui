@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] 2021-11-30
+
+- Fix Custom Button styles.
+- Add Custom Button color variants.
+- Add small Custom Button variants.
+- CustomButton variant=cancel is deprecated, please use variant=link instead.
+- Icon.Copy is deprecated, as it should have been called Icon.Duplicate. Please use Icon.Duplicate instead.
+- Icon.UploadFile is deprecated, please use Icon.Upload instead.
+- BREAKING CHANGE: All Icon.IconName icons now use currentColor as their default fill value.
+
+## [1.45.2] 2021-11-30
+
+- Fixed: SmallSelect menu scroll no longer resets when selecting multiple options
+
 ## [1.45.1] 2021-11-29
 
 - Fix Range component export

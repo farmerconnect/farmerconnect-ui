@@ -2,7 +2,7 @@ import * as S from './styles';
 import { components, Props, OptionProps, MenuProps, GroupTypeBase } from 'react-select';
 import { CheckboxUnchecked, CheckboxChecked } from '../Icons/Checkbox';
 import { HelperText } from '../Input/styles';
-import { ReactNode } from 'hoist-non-react-statics/node_modules/@types/react';
+import { ReactNode, useCallback } from 'react';
 import { farmerConnectTheme } from '../Theme';
 
 export type SmallSelectProps<
@@ -42,6 +42,8 @@ function SmallSelect<
   IsMulti extends boolean = false,
   Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
 >({ footer = null, components = {}, ...props }: SmallSelectProps<Option, IsMulti, Group>) {
+  const Menu = useCallback((props: MenuProps<{}, boolean>) => <CustomMenu {...props} footer={footer} />, [footer]);
+
   return (
     <S.SelectWrapper>
       <S.Select
@@ -50,7 +52,7 @@ function SmallSelect<
           DropdownIndicator: DropdownIcon,
           ClearIndicator: null,
           Option: CustomOption,
-          Menu: (props: MenuProps<{}, boolean>) => <CustomMenu {...props} footer={footer} />,
+          Menu: Menu,
           ...components,
         }}
         classNamePrefix="select"

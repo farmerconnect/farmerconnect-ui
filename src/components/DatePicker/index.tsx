@@ -104,7 +104,7 @@ const DatePicker = ({
         focusSelectedMonth={true}
       >
         <S.BottomRow>
-          <S.CancelButton variant="cancel" onClick={handleClearDates}>
+          <S.CancelButton variant="link" onClick={handleClearDates}>
             {text.clearDates}
           </S.CancelButton>
           {!hideRangeToggle && (
