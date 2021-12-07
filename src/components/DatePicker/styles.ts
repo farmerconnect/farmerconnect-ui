@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { CalendarContainer } from 'react-datepicker';
 import CustomButton from '../CustomButton';
 import { farmerConnectTheme } from '../Theme';
+import { Input as DefaultInput } from '../Input/styles';
+export { HelperText } from '../Input/styles';
 
 export const DatePickerWrapper = styled.div`
   position: relative;
@@ -13,7 +15,7 @@ export const DatePickerWrapper = styled.div`
   > svg {
     color: ${farmerConnectTheme.colors.fc_black_70};
     position: absolute;
-    right: 0.75rem;
+    right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -23,7 +25,7 @@ type DatePickerInputProps = {
   error?: boolean;
 };
 
-export const DatePickerInput = styled.input<DatePickerInputProps>`
+export const DatePickerSmallInput = styled.input<DatePickerInputProps>`
   font-family: 'Red Hat Text', sans-serif;
   cursor: default;
   width: 100%;
@@ -47,16 +49,22 @@ export const DatePickerInput = styled.input<DatePickerInputProps>`
   }
 `;
 
-export const Calendar = styled(CalendarContainer)`
+export const DatePickerDefaultInput = styled(DefaultInput)<DatePickerInputProps>`
+  text-transform: uppercase;
+  &::placeholder {
+    text-transform: none;
+  }
+`;
+
+export const Calendar = styled(CalendarContainer)<{ monthsShown: number }>`
   box-sizing: border-box;
   border-radius: 0.75rem;
-  width: 36rem;
   box-shadow: 0 0 0 1px ${farmerConnectTheme.colors.fc_black_100};
   position: relative;
   padding: 5rem 1rem 1rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.monthsShown}, 1fr);
+  gap: 0 2rem;
   background-color: ${farmerConnectTheme.colors.fc_white};
 
   .react-datepicker {
@@ -240,22 +248,16 @@ export const Day = styled.div`
 `;
 
 export const BottomRow = styled.div`
+  grid-column: 1/-1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
   flex: 1;
-  padding-right: 1rem;
+  padding: 0 0.5rem;
 `;
 
-export const CancelButton = styled(CustomButton)`
-  padding: 0.5rem 2rem;
-  color: ${farmerConnectTheme.colors.fc_black_100};
-
-  &:hover:not(:disabled) {
-    color: ${farmerConnectTheme.colors.fc_black_100};
-  }
-`;
+export const CancelButton = styled(CustomButton)``;
 
 export const Header = styled.div`
   position: relative;
@@ -286,64 +288,15 @@ export const ArrowButton = styled(CustomButton)<ArrowButtonProps>`
   position: absolute;
   inset: ${({ right }) => (right ? '-0.25rem 0 auto auto' : '-0.25rem auto auto 0')};
   color: ${farmerConnectTheme.colors.fc_black_70};
-  padding: 0.5rem;
-`;
-
-export const DateSwitchContainer = styled.div`
-  order: -1;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-export const DateSwitch = styled.div`
-  width: 17rem;
   height: 2rem;
-  border-radius: 0.75rem;
-  background-color: ${farmerConnectTheme.colors.fc_black_5};
-  display: flex;
-  position: relative;
-  cursor: pointer;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-
-  > span {
-    display: block;
-    text-align: center;
-    flex: 1;
-    line-height: 2rem;
-    font-size: 0.6875rem;
-    color: ${farmerConnectTheme.colors.fc_black_100};
-    font-weight: 400;
-    z-index: 1;
-    transition: all 0.2s ease-out;
-  }
-
-  .selected {
-    color: ${farmerConnectTheme.colors.fc_white};
-    font-weight: 700;
-  }
-
-  > div {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 9rem;
-    background-color: ${farmerConnectTheme.colors.fc_green};
-    border-radius: 0.75rem;
-    transition: all 0.2s ease-out;
-  }
-
-  > div.selects-range {
-    left: 8rem;
-  }
+  width: 2rem;
+  padding: 0.5rem;
 `;
 
 export const ChangeYearButton = styled.div`
   position: absolute;
-  left: calc(100% - 3.5rem);
-  top: -3.5rem;
+  left: calc(50% - 4.5rem);
+  top: 1.5rem;
   background-color: #f3f3f3;
   border-radius: 0.75rem;
   width: 9rem;
@@ -361,6 +314,7 @@ export const ChangeYearButton = styled.div`
     align-items: center;
     justify-content: center;
     transition: color 0.1s ease-out;
+    padding: 0;
     color: #b9b9b9;
     &:hover {
       color: #5b5b5b;

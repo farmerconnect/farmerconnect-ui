@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] 2021-12-07
+
+- Added: DatePicker now supports multiple calendars
+- Added: DatePicker default variant
+
 ## [2.0.0] 2021-11-30
 
 - Fix Custom Button styles.
