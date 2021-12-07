@@ -1,3 +1,6 @@
+export const datePickerVariants = ['default', 'small'] as const;
+type DatePickerVariant = typeof datePickerVariants[number];
+
 export interface IDatePickerProps {
   start?: Date | null;
   end?: Date | null;
@@ -6,8 +9,11 @@ export interface IDatePickerProps {
   excludeDates?: Date[];
   onToggleRange?: (selectsRange: boolean) => void;
   hideRangeToggle?: boolean;
-  error?: boolean;
+  error?: boolean | string;
+  helperText?: string;
+  variant?: DatePickerVariant;
   className?: string;
+  monthsShown?: number;
   text?: {
     placeholder?: string;
     day?: string;

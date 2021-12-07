@@ -3,12 +3,30 @@ import { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import DatePicker from '.';
-import { IDatePickerProps } from './interfaces';
+import { datePickerVariants, IDatePickerProps } from './interfaces';
 
 export default {
   title: 'DatePicker',
   component: DatePicker,
-  argTypes: {},
+  argTypes: {
+    variant: {
+      name: 'variant',
+      control: 'select',
+      options: datePickerVariants,
+    },
+    monthsShown: {
+      name: 'monthsShown',
+      control: 'range',
+    },
+    error: {
+      name: 'error',
+      defaultValue: '',
+    },
+    helperText: {
+      name: 'helperText',
+      defaultValue: '',
+    },
+  },
   args: {},
 } as Meta;
 
@@ -32,7 +50,9 @@ export const Default = Template.bind({});
 Default.args = {
   hideRangeToggle: false,
   excludeDates: [new Date()],
-  error: false,
+  monthsShown: 2,
+  error: '',
+  helperText: '',
 };
 
 export const SelectSingleDay = Template.bind({});
@@ -40,7 +60,8 @@ SelectSingleDay.args = {
   hideRangeToggle: true,
   selectsRange: false,
   excludeDates: [new Date()],
-  error: false,
+  error: '',
+  helperText: '',
 };
 
 export const SelectRange = Template.bind({});
@@ -48,5 +69,6 @@ SelectRange.args = {
   hideRangeToggle: true,
   selectsRange: true,
   excludeDates: [new Date()],
-  error: false,
+  error: '',
+  helperText: '',
 };
