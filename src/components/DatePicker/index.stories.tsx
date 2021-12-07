@@ -53,22 +53,6 @@ Default.args = {
   monthsShown: 2,
   error: '',
   helperText: '',
-};
-
-export const SelectSingleDay = Template.bind({});
-SelectSingleDay.args = {
-  hideRangeToggle: true,
-  selectsRange: false,
-  excludeDates: [new Date()],
-  error: '',
-  helperText: '',
-};
-
-export const SelectRange = Template.bind({});
-SelectRange.args = {
-  hideRangeToggle: true,
   selectsRange: true,
-  excludeDates: [new Date()],
-  error: '',
-  helperText: '',
+  variant: 'default',
 };
