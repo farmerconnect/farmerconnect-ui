@@ -39,14 +39,14 @@ export const Heading = styled.div<HeadingProps>`
     }
     input {
       background-color: ${disabled ? farmerConnectTheme.colors.fc_black_10 : farmerConnectTheme.colors.fc_beige};
-      color: ${disabled ? farmerConnectTheme.colors.fc_black_30 : farmerConnectTheme.colors.fc_black_70};
+      color: ${disabled ? farmerConnectTheme.colors.fc_black_30 : farmerConnectTheme.colors.fc_black_100};
       font-size: 14px;
       margin: 0;
       border: none;
       width: 100%;
       ${fontFamily}
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 500;
       cursor: ${disabled ? 'default' : 'auto'};
     }
 
@@ -54,6 +54,7 @@ export const Heading = styled.div<HeadingProps>`
     textarea:focus,
     select:focus {
       outline: none;
+      font-weight: ${disabled ? '500' : '700'};
     }
 
     input::placeholder {
