@@ -1,4 +1,3 @@
-import React from 'react';
 import { IInput } from './interfaces';
 
 import * as S from './styles';
@@ -10,12 +9,13 @@ const Input = ({
   success = false,
   disabled = false,
   unit = '',
+  ref = undefined,
   children,
   ...props
 }: IInput) => {
   return (
     <S.Container className={className}>
-      <S.Input {...props} error={error} success={success} disabled={disabled} unit={unit} />
+      <S.Input {...props} error={error} success={success} disabled={disabled} unit={unit} ref={ref} />
       {success && !error && <S.Check data-testid="check-icon" unit={unit} />}
       {error && <S.Warning data-testid="warning-icon" unit={unit} />}
       {error && typeof error === 'string' && <S.HelperText error>{error}</S.HelperText>}
