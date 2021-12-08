@@ -2,7 +2,7 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import SmallInput from '.';
-import { ISmallInput } from './interfaces';
+import { IInput } from '../Input/interfaces';
 
 export default {
   title: 'SmallInput',
@@ -10,7 +10,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<ISmallInput> = (args) => <SmallInput {...args} />;
+const Template: Story<IInput> = (args) => <SmallInput {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

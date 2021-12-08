@@ -3,7 +3,7 @@ import { IInput } from './interfaces';
 
 import * as S from './styles';
 
-const Input = ({
+const Input = React.forwardRef<HTMLInputElement, IInput>(({
   className,
   helperText,
   error = false,
@@ -12,10 +12,10 @@ const Input = ({
   unit = '',
   children,
   ...props
-}: IInput) => {
+}: IInput, ref) => {
   return (
     <S.Container className={className}>
-      <S.Input {...props} error={error} success={success} disabled={disabled} unit={unit} />
+      <S.Input {...props} error={error} success={success} disabled={disabled} unit={unit} ref={ref} />
       {success && !error && <S.Check data-testid="check-icon" unit={unit} />}
       {error && <S.Warning data-testid="warning-icon" unit={unit} />}
       {error && typeof error === 'string' && <S.HelperText error>{error}</S.HelperText>}
@@ -24,6 +24,6 @@ const Input = ({
       {children}
     </S.Container>
   );
-};
+});
 
 export default Input;
