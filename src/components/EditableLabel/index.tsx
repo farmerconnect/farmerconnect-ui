@@ -3,6 +3,7 @@ import EditIcon from '../Icons/Edit';
 import CloseIcon from '../Icons/Close';
 import { iEditableLabelProps } from './interfaces';
 import * as S from './styles';
+import SmallInput from '../SmallInput';
 
 const defaultText = {
   save: 'Save',
@@ -61,7 +62,7 @@ const EditableLabel = ({
       <S.Overlay onClick={handleClickOutside} aria-hidden="true" data-testid="overlay" />
       <S.Container ref={containerRef}>
         <form onSubmit={handleSave} ref={inputRef} id="editable-label-form">
-          <S.Input
+          <SmallInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             data-cy={`input-edit-label-${primaryLabel}`}
