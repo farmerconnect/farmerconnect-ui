@@ -6,17 +6,17 @@ const Analytics: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentCol
       <path
         d="M6.32861 14.5C6.05247 14.5 5.82861 14.7239 5.82861 15V21C5.82861 21.2761 6.05247 21.5 6.32861 21.5H8.32861C8.60476 21.5 8.82861 21.2761 8.82861 21V15C8.82861 14.7239 8.60476 14.5 8.32861 14.5H6.32861Z"
         stroke={fill}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M11.3286 12.5C11.0525 12.5 10.8286 12.7239 10.8286 13V21C10.8286 21.2761 11.0525 21.5 11.3286 21.5H13.3286C13.6048 21.5 13.8286 21.2761 13.8286 21V13C13.8286 12.7239 13.6048 12.5 13.3286 12.5H11.3286Z"
         stroke={fill}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M16.3286 10.5C16.0525 10.5 15.8286 10.7239 15.8286 11V21C15.8286 21.2761 16.0525 21.5 16.3286 21.5H18.3286C18.6048 21.5 18.8286 21.2761 18.8286 21V11C18.8286 10.7239 18.6048 10.5 18.3286 10.5H16.3286Z"
         stroke={fill}
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         fillRule="evenodd"
