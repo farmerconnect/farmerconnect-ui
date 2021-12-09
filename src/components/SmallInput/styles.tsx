@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import DefaultInput from '../Input';
 
 export const Input = styled(DefaultInput)`
-  width: 12rem;
   box-sizing: border-box;
   > svg {
     height: 1.0625rem;
@@ -30,6 +29,12 @@ export const Input = styled(DefaultInput)`
         : ''}
     &:focus {
       box-shadow: none;
+    }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      background-color: black;
     }
   }
 `;

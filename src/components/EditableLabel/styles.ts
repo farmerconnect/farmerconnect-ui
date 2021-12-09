@@ -22,6 +22,10 @@ export const Container = styled.div`
     margin: 0;
     box-sizing: border-box;
     animation: ${animateInput} 0.5s ease-out;
+    
+    input {
+      width: 12rem;
+    }
   }
 `;
 

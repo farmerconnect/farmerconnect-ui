@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.1.4] 2021-12-09
+## [2.1.5] 2021-12-09
 
 - Fixed: made DatePicker portaling optional
+
+## [2.1.4] 2021-12-08
+
+- SmallInput with width 100%
 
 ## [2.1.3] 2021-12-08
 
