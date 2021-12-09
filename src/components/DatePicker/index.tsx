@@ -22,6 +22,7 @@ const DatePicker = ({
   variant = 'default',
   helperText = '',
   monthsShown = 2,
+  portalId,
   text = { day: 'Day', clearDates: 'Clear dates', dateRange: 'Date range', placeholder: 'Select date...' },
   ...props
 }: IDatePickerProps) => {
@@ -36,8 +37,6 @@ const DatePicker = ({
     if (Array.isArray(date)) {
       const [start, end] = date;
       onChange?.(start, end);
-      // eslint-disable-next-line no-console
-      console.log(start, end);
     } else {
       onChange?.(date, date);
     }
@@ -121,7 +120,7 @@ const DatePicker = ({
         endDate={enableRange ? end : null}
         excludeDates={excludeDates}
         focusSelectedMonth={true}
-        portalId="datepicker-portal"
+        portalId={portalId}
       >
         <S.BottomRow>
           <S.CancelButton variant="link" onClick={handleClearDates}>
