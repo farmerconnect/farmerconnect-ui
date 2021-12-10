@@ -14,6 +14,7 @@ export interface IDatePickerProps {
   variant?: DatePickerVariant;
   className?: string;
   monthsShown?: number;
+  portalId?: string;
   text?: {
     placeholder?: string;
     day?: string;

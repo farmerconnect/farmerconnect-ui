@@ -22,6 +22,7 @@ const DatePicker = ({
   variant = 'default',
   helperText = '',
   monthsShown = 2,
+  portalId,
   text = { day: 'Day', clearDates: 'Clear dates', dateRange: 'Date range', placeholder: 'Select date...' },
   ...props
 }: IDatePickerProps) => {
@@ -121,6 +122,7 @@ const DatePicker = ({
         endDate={enableRange ? end : null}
         excludeDates={excludeDates}
         focusSelectedMonth={true}
+        portalId={portalId}
       >
         <S.BottomRow>
           <S.CancelButton variant="link" onClick={handleClearDates}>
