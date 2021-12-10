@@ -1,11 +1,10 @@
 import { IProgressBar } from './interfaces';
-
 import * as S from './styles';
 
-const ProgressBar = ({ backgroundColor, completed, ...props }: IProgressBar) => {
+const ProgressBar = ({ backgroundColor, completed, height, trackColor, ...props }: IProgressBar) => {
   return (
-    <S.Container>
-      <S.Filler backgroundColor={backgroundColor} completed={completed} />
+    <S.Container height={height} trackColor={trackColor}>
+      <S.Filler backgroundColor={backgroundColor} completed={completed} {...props} />
     </S.Container>
   );
 };
