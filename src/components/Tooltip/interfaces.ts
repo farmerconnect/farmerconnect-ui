@@ -14,4 +14,5 @@ export interface ITooltipProps {
   hide?: any;
   delayShow?: number;
   delayHide?: number;
+  multiline?: boolean;
 }
