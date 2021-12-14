@@ -16,6 +16,7 @@ const Tooltip: FC<ITooltipProps> = ({
   offset,
   delayShow,
   delayHide,
+  multiline = false,
   ...props
 }) => {
   const clickable = !!event && event === 'click' ? true : false;
@@ -36,9 +37,10 @@ const Tooltip: FC<ITooltipProps> = ({
         offset={offset}
         delayShow={delayShow}
         delayHide={delayHide}
+        multiline={multiline}
         getContent={(dataTip) => {
           newContent = content;
-          if(dataTip !== null && dataTip !== 'true') {
+          if (dataTip !== null && dataTip !== 'true') {
             newContent = dataTip;
           }
           return newContent;

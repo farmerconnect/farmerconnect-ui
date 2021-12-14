@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Caution: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = '#FB2E4C', ...props }) => {
+const Caution: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
   return (
     <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

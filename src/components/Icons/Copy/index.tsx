@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-const Copy: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = '#00E394', ...props }) => {
+const Copy: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'Icon.Copy is deprecated, as it should have been called Icon.Duplicate. Please use Icon.Duplicate instead.'
+  );
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <mask id="path-1-inside-1" fill="white">

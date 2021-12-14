@@ -47,6 +47,7 @@ import Pagination from './components/Pagination';
 import SearchInput from './components/SearchInput';
 import Range from './components/Range';
 import * as Mixins from './mixins';
+import SmallInput from './components/SmallInput';
 
 export {
   WizardSteps,
@@ -98,4 +99,5 @@ export {
   SearchInput,
   Mixins,
   Range,
+  SmallInput,
 };

@@ -7,6 +7,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] 2021-12-10
+
+- Changed the way the backgroundColor prop is used on the ProgressBar component
+  - Now the key of the color from fc-ui colors is passed as a string
+- Added trackColor and height as optional props to ProgressBar component
+- Updated Storybook docs from ProgressBar component
+
+## [2.1.5] 2021-12-10
+
+- Added: multiline prop to Tooltip
+
+## [2.1.5] 2021-12-09
+
+- Fixed: made DatePicker portaling optional
+
+## [2.1.4] 2021-12-08
+
+- SmallInput with width 100%
+
+## [2.1.3] 2021-12-08
+
+- Added: DatePicker portaling
+
+## [2.1.2] 2021-12-08
+
+- Added SmallInput component
+
+## [2.0.2] 2021-12-08
+
+- Filled filter select using the same style as filled input
+
+## [2.0.1] 2021-12-07
+
+- Added: DatePicker now supports multiple calendars
+- Added: DatePicker default variant
+
+## [2.0.0] 2021-11-30
+
+- Fix Custom Button styles.
+- Add Custom Button color variants.
+- Add small Custom Button variants.
+- CustomButton variant=cancel is deprecated, please use variant=link instead.
+- Icon.Copy is deprecated, as it should have been called Icon.Duplicate. Please use Icon.Duplicate instead.
+- Icon.UploadFile is deprecated, please use Icon.Upload instead.
+- BREAKING CHANGE: All Icon.IconName icons now use currentColor as their default fill value.
+
+## [1.45.2] 2021-11-30
+
+- Fixed: SmallSelect menu scroll no longer resets when selecting multiple options
+
 ## [1.45.1] 2021-11-29
 
 - Fix Range component export

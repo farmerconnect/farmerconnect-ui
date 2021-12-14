@@ -4,7 +4,7 @@ import { SIZE_VARIANTS } from './constants';
 
 interface IMagnifyingGlass extends IIconWithSizes, React.SVGProps<SVGSVGElement> {}
 
-const MagnifyingGlass: React.FC<IMagnifyingGlass> = ({ size = 'regular', ...props }) => {
+const MagnifyingGlass: React.FC<IMagnifyingGlass> = ({ size = 'regular', fill = 'currentColor', ...props }) => {
   const { width, height, path } = SIZE_VARIANTS[size] || SIZE_VARIANTS.regular;
 
   return (
@@ -16,7 +16,7 @@ const MagnifyingGlass: React.FC<IMagnifyingGlass> = ({ size = 'regular', ...prop
       viewBox={`0 0 ${width} ${height}`}
       {...props}
     >
-      <path fillRule="evenodd" clipRule="evenodd" d={path} fill="currentColor" />
+      <path fillRule="evenodd" clipRule="evenodd" d={path} fill={fill} />
     </svg>
   );
 };

@@ -7,4 +7,5 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   children?: ReactNode;
   helperText?: ReactNode;
   unit?: string;
+  ref?: any;
 }

@@ -8,20 +8,19 @@ export const Title = styled.h1`
 
 export const Table = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-columns: repeat(auto-fill, 150px);
+  place-content: center;
   grid-gap: 16px;
 `;
 export const Cell = styled.div`
   border-radius: 8px;
   border: 1px solid lightgray;
+
+  display: grid;
+  place-items: center;
+  place-content: center;
+
   height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
   cursor: pointer;
   &:hover {
     border-color: gray;
@@ -33,7 +32,8 @@ export const Cell = styled.div`
     color: black;
   }
   > svg {
-    width: 100%;
-    flex: 1;
+    width: 48px;
+    height: 48px;
+    border: 1px dotted;
   }
 `;
