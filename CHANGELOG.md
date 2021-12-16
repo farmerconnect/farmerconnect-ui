@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] 2021-12-15
+
+- Added close button, onClose callback and ability to trigger onClose on key press to Modal component
+- Added smoother animation to Modal component
+
 ## [3.0.0] 2021-12-10
 
 - Changed the way the backgroundColor prop is used on the ProgressBar component
