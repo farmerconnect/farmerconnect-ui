@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] 2021-12-10
+
+- Changed the way the backgroundColor prop is used on the ProgressBar component
+  - Now the key of the color from fc-ui colors is passed as a string
+- Added trackColor and height as optional props to ProgressBar component
+- Updated Storybook docs from ProgressBar component
+
 ## [2.1.5] 2021-12-10
 
 - Added: multiline prop to Tooltip
