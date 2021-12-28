@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0] 2021-12-28
+
+- Fixed color of some icons on components
+- Exported colors enum
+
 ## [3.0.0] 2021-12-10
 
 - Changed the way the backgroundColor prop is used on the ProgressBar component
