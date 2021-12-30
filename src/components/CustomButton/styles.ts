@@ -295,15 +295,15 @@ const buttonModifiers = {
 };
 
 export const Button = styled.button<ButtonProps>`
-  ${({ small = false }) =>
+  ${({ small = false, variant = 'filled' }) =>
     small
       ? css`
           font-size: 0.6875rem; // 11px;
-          height: 32px;
+          ${variant === 'filled' || variant === 'outline' ? 'height: 32px;' : 'max-height: 32px;'}
         `
       : css`
           font-size: 0.875rem; // 14px
-          height: 40px;
+          ${variant === 'filled' || variant === 'outline' ? 'height: 40px;' : 'max-height: 40px;'}
         `}
 
   font-family: 'Red Hat Text', sans-serif;
