@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.1.0] 2021-12-28
+## [3.1.0] 2021-12-30
 
-- Fixed color of some icons on components
-- Exported colors enum (theme component)
+- Fixed color of some icons within the components
+- Exported colors enum (Themes component)
+- Fixed toggle dropdown icon
 
 ## [3.0.0] 2021-12-10
 
