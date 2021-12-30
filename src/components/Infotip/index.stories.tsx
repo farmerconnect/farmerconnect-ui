@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Infotip from './';
 import { IInfotipProps, tipDirectionList, tipPositionList } from './interfaces';
 import PublicProfileIcon from '../Icons/PublicProfile';
+import colors from '../../styles/colors';
 
 export default {
   title: 'Infotip',
@@ -35,7 +36,7 @@ export default {
 const Template: Story<IInfotipProps> = (args) => {
   return (
     <Infotip {...args}>
-      <PublicProfileIcon stroke={'#00E394'} />
+      <PublicProfileIcon fill={colors.fc_green} />
     </Infotip>
   );
 };

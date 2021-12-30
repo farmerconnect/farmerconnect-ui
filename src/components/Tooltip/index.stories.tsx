@@ -4,6 +4,7 @@ import Tooltip from './';
 import { ITooltipProps } from './interfaces';
 import PublicProfileIcon from '../Icons/PublicProfile';
 import CloseIcon from '../Icons/Close';
+import colors from '../../styles/colors';
 
 export default {
   title: 'Tooltip',
@@ -18,7 +19,7 @@ const Template: Story<ITooltipProps> = (args) => {
         marginTop: '50px',
       }}
     >
-      <PublicProfileIcon fill='#000' data-for={args.id} data-tip />
+      <PublicProfileIcon fill={colors.fc_green} data-for={args.id} data-tip />
       <Tooltip {...args} />
     </div>
   );
@@ -45,7 +46,7 @@ const renderContent = () => (
       style={{
         display: 'flex',
         cursor: 'pointer',
-        width: '24px',
+        width: '32px',
         alignSelf: 'flex-end',
         background: 'none',
         border: 'none',

@@ -4,6 +4,7 @@ import { IFileUpload } from './interfaces';
 import UploadFileIcon from '../Icons/UploadFile';
 
 import * as S from './styles';
+import colors from '../../styles/colors';
 
 const FileUpload = ({ maxFiles, maxSize, accept, slim = false, onUploadFiles, onAcceptedFiles, onRejectedFiles,  ...props }: IFileUpload) => {
   const maxFileSize = maxSize * 1000000;
@@ -42,9 +43,8 @@ const FileUpload = ({ maxFiles, maxSize, accept, slim = false, onUploadFiles, on
       <S.Container {...getRootProps({ isDragActive, isDragAccept, isDragReject, isDragging, slim })}>
         <input {...getInputProps()} />
         <UploadFileIcon 
-          color={'#00E394'} 
-          width={slim ? 40 : 88} 
-          height={slim ? 25 : 55} 
+          color={colors.fc_green}
+          slim={slim}
         />
         <S.Span>Drag files here or <S.LinkButton variant="link" onClick={open}>browse computer</S.LinkButton></S.Span>
       </S.Container> 
