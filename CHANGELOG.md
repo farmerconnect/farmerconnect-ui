@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.1.0] 2021-12-28
 
 - Fixed color of some icons on components
-- Exported colors enum
+- Exported colors enum (theme component)
 
 ## [3.0.0] 2021-12-10
 

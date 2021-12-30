@@ -48,7 +48,7 @@ import SearchInput from './components/SearchInput';
 import Range from './components/Range';
 import * as Mixins from './mixins';
 import SmallInput from './components/SmallInput';
-import * as Styles from './styles';
+import * as Themes from './components/Theme';
 
 export {
   WizardSteps,
@@ -101,5 +101,5 @@ export {
   Mixins,
   Range,
   SmallInput,
-  Styles,
+  Themes,
 };
