@@ -59,3 +59,8 @@ export { default as Dots } from './Dots';
 export { CheckboxUnchecked, CheckboxChecked } from './Checkbox';
 export { RadioUnchecked, RadioChecked } from './Radio';
 export { default as Sorting } from './Sorting';
+export { default as Pin } from './Pin';
+export { default as AddFarmer } from './AddFarmer';
+export { default as Cocoa } from './Cocoa';
+export { default as Coffee } from './Coffee';
+export { default as SizeOfPlot } from './SizeOfPlot';
