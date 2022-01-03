@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.1] 2022-01-03
+
+- Added new icons: AddFarmer, Cocoa, Coffee, Pin, SizeOfPlot
+
 ## [3.1.0] 2021-12-30
 
 - Fixed color of some icons within the components
