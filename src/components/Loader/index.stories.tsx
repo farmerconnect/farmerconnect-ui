@@ -43,3 +43,6 @@ Default.args = { ...defaultArgs };
 
 export const CustomIconSize = Template.bind({});
 CustomIconSize.args = { ...defaultArgs, iconSize: 50 };
+
+export const Error = Template.bind({});
+Error.args = { ...defaultArgs, errorOptions: { error: true, message: 'An error ocurred' } };

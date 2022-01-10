@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Alert: React.FC<React.SVGProps<SVGSVGElement>> = ({ fill = 'currentColor', ...props }) => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <rect x="11.5786" y="8.07715" width="1.5" height="7.38461" rx="0.75" fill={fill} />
       <rect x="11.5786" y="16.3848" width="1.5" height="1.5" rx="0.75" fill={fill} />
       <path

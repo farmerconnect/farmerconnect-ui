@@ -1,12 +1,10 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import styled from 'styled-components';
-import CustomButton from '../CustomButton';
-
 import Dropdown from '.';
 import { IDropdownListProps } from './interfaces';
 import { Icon } from '../..';
+import { Button } from './styles';
 
 export default {
   title: 'Dropdown',
@@ -14,11 +12,6 @@ export default {
   argTypes: {},
   args: {},
 } as Meta;
-
-const Button = styled(CustomButton)`
-  position: relative;
-  padding: 0;
-`;
 
 const dropdownItems = [
   { label: 'Item 1', value: 'item1' },
