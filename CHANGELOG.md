@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.1.5] 2022-01-10
 
 - Added Help icon
+- Fixed DatePicker month height consistency
 
 ## [3.1.4] 2022-01-10
 
