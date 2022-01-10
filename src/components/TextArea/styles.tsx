@@ -1,5 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import { customScrollbar } from '../../mixins/ScrollBar';
+import colors from '../../styles/colors';
+import { farmerConnectTheme } from '../Theme';
 
 const animateIcons = keyframes`
 0% {
@@ -28,23 +30,24 @@ type TextAreaProps = {
 };
 
 export const TextArea = styled.textarea<TextAreaProps>`
-  ${(props) => css`
+  ${({ error, success, disabled }) => css`
     outline: none;
     border: none;
-    color: #141414;
+    color: ${disabled ? colors.fc_black_30 : colors.fc_black_100};
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0.6875rem 1rem;
     border-radius: 0.75rem;
-    background-color: #f7f6f4;
+    background-color: ${disabled ? colors.fc_black_10 : colors.fc_beige};
+    cursor: ${disabled ? 'default' : 'auto'};
     font-family: inherit;
     box-sizing: border-box;
     width: 100%;
     min-height: 2.5rem;
     overflow: auto;
     transition: box-shadow 0.2s ease-out;
-    box-shadow: ${props.error ? '0.125rem 0.125rem 0 0 #FB2E4C' : 'none'};
-    ${(props.error || props.success) && 'padding-right: 2.25rem;'}
+    box-shadow: ${error ? '0.125rem 0.125rem 0 0 #FB2E4C' : 'none'};
+    ${(error || success) && 'padding-right: 2.25rem;'}
 
     &::placeholder {
       font-weight: 400;
@@ -52,12 +55,12 @@ export const TextArea = styled.textarea<TextAreaProps>`
     }
 
     &:focus {
-      box-shadow: 0.125rem 0.125rem 0 0 ${props.error ? '#FB2E4C' : '#00e394'};
+      box-shadow: 0.125rem 0.125rem 0 0 ${error ? '#FB2E4C' : '#00e394'};
     }
 
     &:active,
     &:focus {
-      font-weight: 700;
+      font-weight: ${disabled ? 500 : 700};
     }
 
     ${customScrollbar({ size: '1rem', trackBackgroundColor: 'transparent' })}
@@ -66,7 +69,7 @@ export const TextArea = styled.textarea<TextAreaProps>`
       background-clip: content-box;
       border-width: 0.3rem;
       border-radius: 0.75rem;
-    }    
+    }
 
     &::-webkit-scrollbar-corner {
       background-color: transparent;
