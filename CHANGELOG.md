@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.5] 2022-01-10
+
+- Added Help icon
+
 ## [3.1.4] 2022-01-10
 
 - TextArea disabled style fix
@@ -17,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.1.2] 2022-01-05
 
-- Refactoring in the SearchInput component 
+- Refactoring in the SearchInput component
 
 ## [3.1.1] 2022-01-03
 
