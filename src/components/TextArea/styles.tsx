@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { customScrollbar } from '../../mixins/ScrollBar';
 import colors from '../../styles/colors';
-import { farmerConnectTheme } from '../Theme';
 
 const animateIcons = keyframes`
 0% {
