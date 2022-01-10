@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.4] 2022-01-10
+
+- TextArea disabled style fix
+
+## [3.1.3] 2022-01-07
+
+- ProductScan icon updated to match the design
+
+## [3.1.2] 2022-01-05
+
+- Refactoring in the SearchInput component 
+
+## [3.1.1] 2022-01-03
+
+- Added new icons: AddFarmer, Cocoa, Coffee, Pin, SizeOfPlot
+
+## [3.1.0] 2021-12-30
+
+- Fixed color of some icons within the components
+- Exported colors enum (Themes component)
+- Fixed toggle dropdown icon
+
 ## [3.0.0] 2021-12-10
 
 - Changed the way the backgroundColor prop is used on the ProgressBar component

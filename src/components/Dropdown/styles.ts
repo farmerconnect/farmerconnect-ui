@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { ListProps } from './interfaces';
+import { Button as CustomButton } from '../CustomButton/styles';
 
 const ListPositionModifiers = {
   'top-left': css`
@@ -89,4 +90,9 @@ export const List = styled.ul<ListProps>`
       border-top: 1px solid #e7e7e7;
     }
   }
+`;
+
+export const Button = styled(CustomButton)`
+  position: relative;
+  padding: 0;
 `;

@@ -2,6 +2,7 @@ import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'reac
 import { ILoaderProps } from './interfaces';
 import Caution from '../Icons/Caution';
 import { Button, Content, Message, Spinner, Container, SpinnerItem, SpinnerItemList } from './styles';
+import colors from '../../styles/colors';
 
 const Loader = ({
   show,
@@ -55,7 +56,7 @@ const Loader = ({
   const renderError = useCallback(() => {
     return (
       <Fragment>
-        <Caution />
+        <Caution color={colors.fc_red} />
         <Message className="error">{errorOptions?.message}</Message>
       </Fragment>
     );

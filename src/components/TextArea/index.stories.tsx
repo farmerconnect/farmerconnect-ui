@@ -6,12 +6,17 @@ import TextArea from '.';
 import { ITextArea } from './interfaces';
 
 export default {
-	title: 'TextArea',
-	component: TextArea,
-	argTypes: {},
+  title: 'TextArea',
+  component: TextArea,
+  argTypes: {
+    placeholder: {
+      control: 'text',
+      defaultValue: 'Placeholder value',
+    },
+  },
 } as Meta;
 
-const Template: Story<ITextArea> = (args) => <TextArea {...args} />;
+const Template: Story<ITextArea> = (args) => <TextArea placeholder={args.placeholder} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
@@ -21,3 +26,6 @@ Error.args = { error: true };
 
 export const Success = Template.bind({});
 Success.args = { success: true };
+
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true };

@@ -1,8 +1,11 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "3.0.0",
+  "version": "3.1.4",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
+  "repository": {
+    "url": "git@github.com:farmerconnect/farmerconnect-ui.git"
+  },
   "scripts": {
     "start": "yarn storybook",
     "prepare": "yarn husky install",

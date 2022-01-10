@@ -27,10 +27,16 @@ jobs:
     - run: yarn install --frozen-lockfile
     - run: yarn build
 
-    - name: Publish to NPM
+    - name: Publish to NPM registry
       run: yarn publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Publish to Github registry
+      run: |
+        echo registry=https://npm.pkg.github.com/farmerconnect > .npmrc
+        echo //npm.pkg.github.com/farmerconnect/:_authToken=${{ secrets.GITHUB_TOKEN }} >> .npmrc
+        yarn publish --access public --non-interactive
 
     - name: Build storybook
       run: yarn build-storybook

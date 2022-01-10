@@ -21,16 +21,21 @@ export const SearchInputWrapper = styled.div`
     border-radius: 0.75rem;
     font-size: 0.6875rem;
     background: transparent;
-    padding: 0.5rem 4rem 0.5rem 0.75rem;
-    line-height: 1.3;
+    padding: 0.5rem 1.75rem 0.5rem 0.75rem;
     outline: none;
     color: ${farmerConnectTheme.colors.fc_black_100};
-    font-weight: 700;
+    font-weight: 500;
     font-family: 'Red Hat Text', sans-serif;
+    font-style: normal;
 
     &::placeholder {
       color: ${farmerConnectTheme.colors.fc_black_30};
-      font-weight: 400;
+      font-weight: normal;
+    }
+
+    &:focus {
+      border: 1px solid ${farmerConnectTheme.colors.fc_black_100};
+      font-weight: bold;
     }
   }
 
@@ -50,7 +55,7 @@ export const SearchInputWrapper = styled.div`
     background: transparent;
     border: none;
     outline: none;
-    padding: 0.5rem;
+    padding: 0rem;
     cursor: pointer;
     transform: translateY(-50%);
 
