@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 export const Container = styled.ul`
   list-style-type: none;
   display: flex;
-  min-height: 3.1875rem;
+  min-height: 3.125rem;
   box-sizing: border-box;
-  gap: 1.5rem;
+  gap: 1rem;
   border-bottom: 1px solid rgba(20, 20, 20, 0.3);
   margin: 0;
   padding: 0;
@@ -25,8 +25,7 @@ export const TabItem = styled.li<TabItemProps>`
   margin: 0;
   padding: 0;
   padding-bottom: 0.5rem;
-  transition: font-weight 0.2s linear;
-  text-shadow: ${({ selected }) => (selected ? '0 0 0.0625rem #141414' : 'none')};
+  font-weight: ${({ selected }) => (selected ? 700 : 400)};
 
   ${({ disabled }) =>
     disabled
@@ -48,4 +47,17 @@ export const TabItem = styled.li<TabItemProps>`
     padding: 0;
     box-sizing: border-box;
   }
+`;
+
+export const DummyText = styled.span`
+  display: block;
+  font-weight: 700;
+  height: 1px;
+  color: transparent;
+  visibility: hidden;
+`;
+
+export const TabLabel = styled.span`
+  text-align: center;
+  display: block;
 `;

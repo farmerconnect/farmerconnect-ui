@@ -31,7 +31,8 @@ const Tabs = ({
             disabled={disabledTabs.includes(index)}
             key={`tab ${index}`}
           >
-            {tab}
+            <S.TabLabel>{tab}</S.TabLabel>
+            <S.DummyText aria-hidden="true">{tab}</S.DummyText>
             {currentTab === index && (
               <motion.div className="selected" layoutId="selected" transition={{ duration: 0.1 }} />
             )}

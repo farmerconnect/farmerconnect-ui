@@ -8,7 +8,7 @@ export { default as ShowId } from './ShowId';
 export { default as Reload } from './Reload';
 export { default as Payment } from './Payment';
 export { default as HideId } from './HideId';
-export { default as FavouriteOff } from './FavoriteOff';
+export { default as FavoriteOff } from './FavoriteOff';
 export { default as Email } from './Email';
 export { default as Analytics } from './Analytics';
 export { default as Caution } from './Caution';
