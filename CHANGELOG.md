@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.6] 2022-01-12
+
+- Fixed FavoriteOff icon export
+- Fixed Tabs component to replace text-shadow with proper font-weight
+
 ## [3.1.5] 2022-01-10
 
 - Added Help icon
