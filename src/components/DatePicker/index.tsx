@@ -37,8 +37,6 @@ const DatePicker = ({
     if (Array.isArray(date)) {
       const [start, end] = date;
       onChange?.(start, end);
-      // eslint-disable-next-line no-console
-      console.log(start, end);
     } else {
       onChange?.(date, date);
     }
