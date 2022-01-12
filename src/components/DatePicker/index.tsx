@@ -123,6 +123,7 @@ const DatePicker = ({
         excludeDates={excludeDates}
         focusSelectedMonth={true}
         portalId={portalId}
+        fixedHeight
       >
         <S.BottomRow>
           <S.CancelButton variant="link" onClick={handleClearDates}>
