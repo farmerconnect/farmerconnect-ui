@@ -1,6 +1,6 @@
 # Introduction
 
-This project contains the UI components that are shared across multiple front end projects inside of farmer connect. The components are built with react and exposed in a Storybook page under ui.farmerconnect.com for easy visualization and usage instructions.
+This project contains the UI components that are shared across multiple front end projects inside of farmer connect. The components are built with React and exposed in a Storybook page under [ui.farmerconnect.com](https://ui.farmerconnect.com) for easy visualization and usage instructions.
 
 # Install
 
