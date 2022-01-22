@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import InlineLoader from '../InlineLoader';
 
 const showOverlay = keyframes`
 0% {
@@ -32,9 +33,37 @@ const showDialog = keyframes`
 }
 `;
 
-export const Container = styled.div`
+export const DialogWrapper = styled.div`
+  position: relative;
+`;
+
+export const Dialog = styled.div`
   background-color: white;
   padding: 2.25rem;
   border-radius: 0.75rem;
   animation: ${showDialog} 0.3s ease-out;
+`;
+
+type LoadingOverlayProps = {
+  show: boolean;
+};
+export const LoadingOverlay = styled(InlineLoader)<LoadingOverlayProps>`
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  pointer-events: ${({ show }) => (show ? 'unset' : 'none')};
+  position: absolute;
+  inset: 0 0 0 0;
+  border-radius: 0.75rem;
+  transition: opacity 0.2s ease-out;
+  background-color: rgba(20, 20, 20, 0.6);
+  > svg {
+    height: 2rem;
+    width: auto;
+  }
+  > p {
+    font-size: 1.125rem;
+    color: #fff;
+    line-height: 1.5;
+    max-width: 21rem;
+    font-weight: 400;
+  }
 `;

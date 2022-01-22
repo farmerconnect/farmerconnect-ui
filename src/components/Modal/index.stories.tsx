@@ -17,4 +17,4 @@ const Template: Story<ModalProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { show: true };
+Default.args = { show: true, isLoading: false };
