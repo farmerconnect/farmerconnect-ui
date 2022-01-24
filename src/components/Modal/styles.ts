@@ -33,10 +33,6 @@ const showDialog = keyframes`
 }
 `;
 
-export const DialogWrapper = styled.div`
-  position: relative;
-`;
-
 export const Dialog = styled.div`
   background-color: white;
   padding: 2.25rem;
@@ -50,7 +46,7 @@ type LoadingOverlayProps = {
 export const LoadingOverlay = styled(InlineLoader)<LoadingOverlayProps>`
   opacity: ${({ show }) => (show ? 1 : 0)};
   pointer-events: ${({ show }) => (show ? 'unset' : 'none')};
-  position: absolute;
+  position: fixed;
   inset: 0 0 0 0;
   border-radius: 0.75rem;
   transition: opacity 0.2s ease-out;
@@ -65,5 +61,6 @@ export const LoadingOverlay = styled(InlineLoader)<LoadingOverlayProps>`
     line-height: 1.5;
     max-width: 21rem;
     font-weight: 400;
+    text-align: center;
   }
 `;
