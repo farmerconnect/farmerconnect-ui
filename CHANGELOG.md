@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.8] 2022-01-24
+
+- Fixed Modal loading layout
+
 ## [3.1.7] 2022-01-22
 
 - Added isLoading and loadingMessage props to Modal

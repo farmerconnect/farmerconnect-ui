@@ -12,14 +12,12 @@ const Modal: FC<ModalProps> = ({ show, children, className, isLoading, loadingMe
   const message = loadingMessage || 'We are working on your request, please bare with us for a moment...';
   return show ? (
     <S.Overlay>
-      <S.DialogWrapper>
-        <S.Dialog role="dialog" className={className} {...props}>
-          {children}
-        </S.Dialog>
-        <S.LoadingOverlay show={!!isLoading} aria-hidden={isLoading ? 'false' : 'true'} role="alert" aria-busy="true">
-          <p>{message}</p>
-        </S.LoadingOverlay>
-      </S.DialogWrapper>
+      <S.Dialog role="dialog" className={className} {...props}>
+        {children}
+      </S.Dialog>
+      <S.LoadingOverlay show={!!isLoading} aria-hidden={isLoading ? 'false' : 'true'} role="alert" aria-busy="true">
+        <p>{message}</p>
+      </S.LoadingOverlay>
     </S.Overlay>
   ) : null;
 };
