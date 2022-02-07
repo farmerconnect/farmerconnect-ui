@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.0] 2022-02-07
+
+- Added DatePicker overhaul
+
 ## [3.1.8] 2022-01-24
 
 - Fixed Modal loading layout
