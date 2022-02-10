@@ -30,7 +30,12 @@ const Template: Story<IDatePickerProps> = (args) => {
   };
 
   return (
-    <DatePicker start={dates.start} end={dates.end} onChange={handleChange} {...args} style={{ maxWidth: '18rem' }} />
+    <>
+      <DatePicker start={dates.start} end={dates.end} onChange={handleChange} {...args} style={{ maxWidth: '18rem' }} />
+      <h4>
+        {dates.start?.toISOString()} to {dates.end?.toISOString()}
+      </h4>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import {
   format,
   getDay,
   getDaysInMonth,
-  isEqual,
+  isSameDay,
   isValid,
   parse,
   startOfDay,
@@ -47,7 +47,7 @@ export default function DatePicker({
   const [isSelecting, setIsSelecting] = useState<'start' | 'end'>('start');
   const [hoveringDate, setHoveringDate] = useState<Date | null>(null);
   const [dateText, setDateText] = useState({ start: '', end: '' });
-  const [displayedMonth, setDisplayedMonth] = useState(startOfMonth(new Date()));
+  const [displayedMonth, setDisplayedMonth] = useState(getStartOfMonth());
 
   const handleSelectDay = (day: Date) => {
     if (!selectsRange) {
@@ -285,7 +285,7 @@ export default function DatePicker({
                           day.valueOf() < hoveringDate.valueOf()
                         )
                       }
-                      isHovering={!!(hoveringDate && isEqual(day, hoveringDate))}
+                      isHovering={!!(hoveringDate && isSameDay(day, hoveringDate))}
                       onMouseEnter={() => setHoveringDate(day)}
                     >
                       <span>{day.getDate()}</span>
@@ -301,6 +301,11 @@ export default function DatePicker({
   );
 }
 
+const getStartOfMonth = () => {
+  const today = new Date();
+  return new Date(today.getFullYear(), today.getMonth(), 1, 0, 0, 0, 0);
+};
+
 const getDays = (date: Date) => new Array(getDaysInMonth(date)).fill(null).map((_, index) => addDays(date, index));
 
 const getYearOptions = () => {
@@ -310,8 +315,8 @@ const getYearOptions = () => {
 };
 
 const isDateSelected = (date: Date, start: Date | null, end: Date | null) => {
-  if (start && isEqual(date, start)) return true;
-  if (end && isEqual(date, end)) return true;
+  if (start && isSameDay(date, start)) return true;
+  if (end && isSameDay(date, end)) return true;
   return false;
 };
 
