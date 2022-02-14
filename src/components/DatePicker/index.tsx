@@ -169,7 +169,6 @@ export default function DatePicker({
           onBlur={(e) => handleDateInputBlur(e, 'start')}
           aria-label="start date"
           id="date-input-start"
-          size={12}
         />
         {selectsRange && (
           <>
@@ -182,7 +181,6 @@ export default function DatePicker({
               onBlur={(e) => handleDateInputBlur(e, 'end')}
               id="date-input-end"
               aria-label="end date"
-              size={12}
               className="align-right"
             />
           </>
@@ -193,6 +191,7 @@ export default function DatePicker({
       </S.InputWrapper>
       {isOpen && (
         <S.CalendarWrapper
+          role={'dialog'}
           ref={setPopperElement}
           style={popper.styles.popper}
           {...popper.attributes.popper}
@@ -211,32 +210,34 @@ export default function DatePicker({
                 onChange={handleChangeYear}
                 id="year-select"
               />
-              <S.ButtonGroup>
-                <CustomButton
-                  variant="outline"
-                  small
-                  onClick={() => handleSelectPredefinedRange(30)}
-                  id="button-last-30"
-                >
-                  {buttonText[0]}
-                </CustomButton>
-                <CustomButton
-                  variant="outline"
-                  small
-                  onClick={() => handleSelectPredefinedRange(90)}
-                  id="button-last-90"
-                >
-                  {buttonText[1]}
-                </CustomButton>
-                <CustomButton
-                  variant="outline"
-                  small
-                  onClick={() => handleSelectPredefinedRange(365)}
-                  id="button-last-year"
-                >
-                  {buttonText[2]}
-                </CustomButton>
-              </S.ButtonGroup>
+              {selectsRange && (
+                <S.ButtonGroup>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(30)}
+                    id="button-last-30"
+                  >
+                    {buttonText[0]}
+                  </CustomButton>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(90)}
+                    id="button-last-90"
+                  >
+                    {buttonText[1]}
+                  </CustomButton>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(365)}
+                    id="button-last-year"
+                  >
+                    {buttonText[2]}
+                  </CustomButton>
+                </S.ButtonGroup>
+              )}
             </S.Header>
             <S.CalendarBody onMouseLeave={() => setHoveringDate(null)}>
               <S.MonthNavigationButton
@@ -278,6 +279,7 @@ export default function DatePicker({
                       }
                       isInSelectingRange={
                         !!(
+                          selectsRange &&
                           start &&
                           !end &&
                           hoveringDate &&

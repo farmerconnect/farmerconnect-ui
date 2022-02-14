@@ -10,7 +10,9 @@ import { Variants } from './interfaces';
 const variants: Record<Variants, FlattenSimpleInterpolation> = {
   default: css`
     --input-bg: ${colors.fc_beige};
+    --input-focused-bg: ${colors.fc_beige};
     --input-box-shadow: 0.125rem 0.125rem 0 ${colors.fc_green};
+    --input-placeholder-color: ${colors.fc_black_70};
     --input-min-height: 2.5rem;
     --input-border-color: transparent;
     --input-font-size: 0.875rem;
@@ -24,8 +26,10 @@ const variants: Record<Variants, FlattenSimpleInterpolation> = {
     --range-font-color: ${colors.fc_black_100};
   `,
   small: css`
-    --input-bg: ${colors.fc_white};
+    --input-bg: 'transparent';
+    --input-focused-bg: ${colors.fc_white};
     --input-box-shadow: none;
+    --input-placeholder-color: ${colors.fc_black_30};
     --input-min-height: 2rem;
     --input-border-color: ${colors.fc_black_100};
     --input-font-size: 0.6875rem;
@@ -73,6 +77,7 @@ export const InputWrapper = styled.div<InputWrapperProps>`
     ${props.isOpen &&
     css`
       box-shadow: var(--input-box-shadow);
+      background-color: var(--input-focused-bg);
     `}
     ${props.isError &&
     css`
@@ -109,6 +114,7 @@ export const DateInput = styled.input`
     font-family: 'Red Hat Text', sans-serif;
     box-sizing: border-box;
     display: inline-flex;
+    min-width: 0;
     margin: 0;
     padding: 0;
     flex: 1;
@@ -120,7 +126,7 @@ export const DateInput = styled.input`
     padding: 0.5rem 0;
     background-color: transparent;
     &::placeholder {
-      color: ${colors.fc_black_30};
+      color: var(--input-placeholder-color);
       text-transform: none;
       font-weight: 400;
     }
@@ -158,7 +164,7 @@ export const CalendarWrapper = styled.div<CalendarWrapperProps>`
     border-style: solid;
     border-color: var(--input-border-color);
     box-shadow: var(--input-box-shadow);
-    background-color: var(--input-bg);
+    background-color: var(--input-focused-bg);
     margin: -1px 0;
     z-index: 100;
     ${props.isError &&
