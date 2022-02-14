@@ -18,7 +18,7 @@ describe('DatePicker component', () => {
     const targetDate = new Date(2021, 0, 2);
     const container = render(<DatePicker start={new Date(2021, 0, 1)} selectsRange={false} onChange={onChange} />);
     fireEvent.focus(container.getByPlaceholderText(/DD-MMM-YYYY/i));
-    expect(container.getByText(/last 30 days/i)).toBeInTheDocument();
+    expect(container.getByRole('dialog')).toBeInTheDocument();
     fireEvent.click(container.getByLabelText('Choose Saturday, January 2nd, 2021'));
     expect(onChange).toHaveBeenCalledWith(targetDate, targetDate);
   });
