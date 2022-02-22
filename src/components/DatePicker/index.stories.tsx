@@ -1,58 +1,52 @@
+import React, { useState } from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import DatePicker from '.';
-import { datePickerVariants, IDatePickerProps } from './interfaces';
+import { IDatePickerProps } from './interfaces';
 
 export default {
   title: 'DatePicker',
   component: DatePicker,
-  argTypes: {
-    variant: {
-      name: 'variant',
-      control: 'select',
-      options: datePickerVariants,
-    },
-    monthsShown: {
-      name: 'monthsShown',
-      control: 'range',
-    },
-    error: {
-      name: 'error',
-      defaultValue: '',
-    },
-    helperText: {
-      name: 'helperText',
-      defaultValue: '',
-    },
+  argTypes: {},
+  args: {
+    error: '',
+    helperText: '',
+    dividerText: 'to',
+    weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fri', 'Sa', 'Su'],
+    buttonText: ['Last 30 days', 'Last 90 days', 'Last year'],
+    placeholder: ['DD-MMM-YYYY', 'DD-MMM-YYYY'],
   },
-  args: {},
 } as Meta;
 
 const Template: Story<IDatePickerProps> = (args) => {
-  const [date, setDate] = useState<[Date | null, Date | null]>([null, null]);
+  const [dates, setDates] = useState<{
+    start: Date | null;
+    end: Date | null;
+  }>({ start: null, end: null });
 
   const handleChange = (start: Date | null, end: Date | null) => {
-    setDate([start, end]);
+    setDates({ start, end });
   };
 
   return (
-    <div style={{ width: '15rem' }}>
-      <DatePicker {...args} start={date[0]} end={date[1]} onChange={handleChange} />
-      <p>start: {date[0]?.toLocaleString()}</p>
-      <p>end: {date[1]?.toLocaleString()}</p>
-    </div>
+    <>
+      <DatePicker start={dates.start} end={dates.end} onChange={handleChange} {...args} style={{ maxWidth: '18rem' }} />
+      <h4>
+        {dates.start?.toISOString()} to {dates.end?.toISOString()}
+      </h4>
+    </>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  hideRangeToggle: false,
-  excludeDates: [new Date()],
-  monthsShown: 2,
-  error: '',
-  helperText: '',
-  selectsRange: true,
   variant: 'default',
+  selectsRange: true,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  variant: 'small',
+  selectsRange: true,
 };

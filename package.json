@@ -1,6 +1,6 @@
 {
   "name": "@farmerconnect/farmerconnect-ui",
-  "version": "3.1.6",
+  "version": "3.2.3",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
   "repository": {
@@ -72,6 +72,7 @@
     "prettier": "^2.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-html-props": "^1.0.32",
     "react-scripts": "^4.0.3",
     "react-select-event": "^5.3.0",
     "rollup": "^2.36.1",
@@ -86,12 +87,15 @@
     "react-dom": "^16.0.0 || ^17.0.1"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.2",
     "framer-motion": "^4.1.17",
     "react-beautiful-dnd": "^13.1.0",
     "react-datepicker": "^4.1.1",
     "react-dropzone": "^11.3.4",
     "react-input-slider": "^6.0.1",
+    "react-popper": "^2.2.5",
     "react-select": "^4.3.1",
+    "react-string-replace": "^0.4.4",
     "react-tooltip": "^4.2.21",
     "styled-components": "^5.2.1"
   },

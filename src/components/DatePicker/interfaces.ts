@@ -1,24 +1,21 @@
-export const datePickerVariants = ['default', 'small'] as const;
-type DatePickerVariant = typeof datePickerVariants[number];
+import { DivPropsWithoutRef } from 'react-html-props';
 
-export interface IDatePickerProps {
+export const variants = ['default', 'small'] as const;
+
+export type Variants = typeof variants[number];
+
+export interface IDatePickerProps extends Omit<DivPropsWithoutRef, 'onChange' | 'placeholder'> {
   start?: Date | null;
   end?: Date | null;
-  onChange?: (start: Date | null, end: Date | null) => void;
   selectsRange?: boolean;
-  excludeDates?: Date[];
-  onToggleRange?: (selectsRange: boolean) => void;
-  hideRangeToggle?: boolean;
+  onChange?: (start: Date | null, end: Date | null) => void;
+  monthsShown?: number;
+  variant?: Variants;
   error?: boolean | string;
   helperText?: string;
-  variant?: DatePickerVariant;
-  className?: string;
-  monthsShown?: number;
-  portalId?: string;
-  text?: {
-    placeholder?: string;
-    day?: string;
-    dateRange?: string;
-    clearDates?: string;
-  };
+  onBlur?: () => void;
+  weekDays?: [string, string, string, string, string, string, string];
+  buttonText?: [string, string, string];
+  dividerText?: string;
+  placeholder?: [string, string] | string;
 }

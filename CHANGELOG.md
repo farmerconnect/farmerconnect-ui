@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.3] 2022-02-18
+
+- Adding properties to send the translated texts to the file upload component
+
+## [3.2.2] 2022-02-13
+
+- Fixed datepicker single date selection
+- Fixed datepicker styling
+
+## [3.2.1] 2022-02-07
+
+- Fixed datepicker timezone
+
+## [3.2.0] 2022-02-07
+
+- Added DatePicker overhaul
+
+## [3.1.8] 2022-01-24
+
+- Fixed Modal loading layout
+
+## [3.1.7] 2022-01-22
+
+- Added isLoading and loadingMessage props to Modal
+
 ## [3.1.6] 2022-01-12
 
 - Fixed FavoriteOff icon export

@@ -3,52 +3,38 @@ import DatePicker from '.';
 
 describe('DatePicker component', () => {
   it('renders properly', () => {
-    const container = render(<DatePicker start={new Date()} />);
-    expect(container.getByPlaceholderText(/select date.../i)).toBeInTheDocument();
+    const container = render(<DatePicker />);
+    expect(container.getAllByPlaceholderText(/DD-MMM-YYYY/i)).toHaveLength(2);
   });
 
-  it('opens on click', async () => {
-    const container = render(<DatePicker start={new Date()} />);
-    fireEvent.click(container.getByPlaceholderText(/select date.../i));
-    await waitFor(() => {
-      expect(container.getByLabelText(/date range/i)).toBeChecked();
-    });
+  it('opens on click', () => {
+    const container = render(<DatePicker start={new Date(2022, 0, 1)} />);
+    fireEvent.focus(container.getAllByPlaceholderText(/DD-MMM-YYYY/i)[0]);
+    expect(container.getByText(/last 30 days/i)).toBeInTheDocument();
   });
 
-  it('calls onChange with the correct arguments for single date selection', async () => {
+  it('calls onChange with the correct arguments for single date selection', () => {
     const onChange = jest.fn();
     const targetDate = new Date(2021, 0, 2);
     const container = render(<DatePicker start={new Date(2021, 0, 1)} selectsRange={false} onChange={onChange} />);
-    fireEvent.click(container.getByPlaceholderText(/select date.../i));
-    await waitFor(() => {
-      expect(container.getByLabelText(/date range/i)).toBeInTheDocument();
-      expect(container.getByLabelText(/date range/i)).not.toBeChecked();
-    });
-
+    fireEvent.focus(container.getByPlaceholderText(/DD-MMM-YYYY/i));
+    expect(container.getByRole('dialog')).toBeInTheDocument();
     fireEvent.click(container.getByLabelText('Choose Saturday, January 2nd, 2021'));
-    await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(targetDate, targetDate);
-    });
+    expect(onChange).toHaveBeenCalledWith(targetDate, targetDate);
   });
 
   it('calls onChange with the correct arguments for date range selection', async () => {
     const onChange = jest.fn();
     let startDate: Date | null = new Date(2021, 0, 1);
-    let endDate: Date | null = new Date(2021, 0, 2);
+    let endDate: Date | null = null;
     const container = render(<DatePicker start={startDate} end={endDate} selectsRange={true} onChange={onChange} />);
-    fireEvent.click(container.getByPlaceholderText(/select date.../i));
+    fireEvent.focus(container.getAllByPlaceholderText(/DD-MMM-YYYY/i)[0]);
 
-    await waitFor(() => expect(container.getByLabelText(/date range/i)).toBeChecked());
+    expect(container.getByText(/last 30 days/i)).toBeInTheDocument();
 
     fireEvent.click(container.getByLabelText('Choose Sunday, January 3rd, 2021'));
-    await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(new Date(2021, 0, 3), null);
-      expect(container.getByLabelText(/date range/i)).toBeInTheDocument();
-    });
-
-    await waitFor(() => {
-      fireEvent.click(container.getByLabelText('Choose Monday, January 4th, 2021'));
-      expect(onChange).toHaveBeenCalledWith(new Date(2021, 0, 4), null);
-    });
+    expect(onChange).toHaveBeenLastCalledWith(new Date(2021, 0, 3), null);
+    fireEvent.click(container.getByLabelText('Choose Monday, January 4th, 2021'));
+    expect(onChange).toHaveBeenLastCalledWith(new Date(2021, 0, 1), new Date(2021, 0, 4));
   });
 });

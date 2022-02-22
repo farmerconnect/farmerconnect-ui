@@ -1,144 +1,331 @@
-import { useCallback } from 'react';
-import React, { useState, useEffect } from 'react';
-import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
-import CalendarIcon from '../Icons/Calendar';
-import Toggle from '../Toggle';
+import {
+  addDays,
+  addMonths,
+  format,
+  getDay,
+  getDaysInMonth,
+  isSameDay,
+  isValid,
+  parse,
+  startOfDay,
+  startOfMonth,
+  subDays,
+  subMonths,
+} from 'date-fns';
+import React, { ChangeEvent, FocusEvent, useEffect, useRef, useState } from 'react';
+import { usePopper } from 'react-popper';
+import CustomButton from '../CustomButton';
 import Arrow from '../Icons/Arrow';
+import { HelperText } from '../Input/styles';
 import { IDatePickerProps } from './interfaces';
 import * as S from './styles';
 
-const Day = (day: number) => <S.Day>{day}</S.Day>;
-
-const DatePicker = ({
+export default function DatePicker({
   start = null,
   end = null,
-  selectsRange = true,
-  onChange,
-  excludeDates = [],
-  onToggleRange,
-  hideRangeToggle = false,
-  error = false,
-  className,
+  monthsShown: calendarCount = 2,
+  onChange = () => {},
   variant = 'default',
-  helperText = '',
-  monthsShown = 2,
-  portalId,
-  text = { day: 'Day', clearDates: 'Clear dates', dateRange: 'Date range', placeholder: 'Select date...' },
-  ...props
-}: IDatePickerProps) => {
-  const [enableRange, setEnableRange] = useState(!!selectsRange);
-  const _monthsShown = Math.max(monthsShown, 1);
+  selectsRange = true,
+  error = false,
+  onBlur = () => {},
+  helperText,
+  weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fri', 'Sa', 'Su'],
+  buttonText = ['Last 30 days', 'Last 90 days', 'Last year'],
+  dividerText = 'to',
+  placeholder = ['DD-MMM-YYYY', 'DD-MMM-YYYY'],
+  ...divProps
+}: IDatePickerProps) {
+  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
+  const popper = usePopper(referenceElement, popperElement, {
+    placement: 'bottom-start',
+    strategy: 'fixed',
+  });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSelecting, setIsSelecting] = useState<'start' | 'end'>('start');
+  const [hoveringDate, setHoveringDate] = useState<Date | null>(null);
+  const [dateText, setDateText] = useState({ start: '', end: '' });
+  const [displayedMonth, setDisplayedMonth] = useState(getStartOfMonth());
 
-  const handleClearDates = () => {
-    onChange?.(null, null);
-  };
-
-  const handleSelectRange: ReactDatePickerProps['onChange'] = (date) => {
-    if (Array.isArray(date)) {
-      const [start, end] = date;
-      onChange?.(start, end);
-    } else {
-      onChange?.(date, date);
+  const handleSelectDay = (day: Date) => {
+    if (!selectsRange) {
+      onChange(day, day);
+      setIsSelecting('start');
+      setIsOpen(false);
+      return;
+    }
+    if (isSelecting === 'start') {
+      onChange(day, null);
+      setIsSelecting('end');
+    } else if (isSelecting === 'end') {
+      if (!start) {
+        onChange(day, null);
+        setIsSelecting('end');
+      } else if (start && start.valueOf() > day.valueOf()) {
+        onChange(day, null);
+      } else {
+        onChange(start, day);
+        setIsSelecting('start');
+        setIsOpen(false);
+      }
     }
   };
 
-  const handleToggleRange = () => {
-    onToggleRange?.(!enableRange);
-    setEnableRange(!enableRange);
+  const handleOpenCalendar = (e: FocusEvent<HTMLInputElement>, range: 'start' | 'end') => {
+    e.target.select();
+    if (end && start && end.getMonth() - start.getMonth() <= calendarCount - 1) {
+      setDisplayedMonth(startOfMonth(start));
+    } else if (end) {
+      setDisplayedMonth(subMonths(startOfMonth(end), calendarCount - 1));
+    } else if (start) {
+      setDisplayedMonth(startOfMonth(start));
+    } else {
+      setDisplayedMonth(startOfMonth(new Date()));
+    }
+    setIsOpen(true);
+    setIsSelecting(range);
+  };
+
+  const handleClickOutside: EventListener = (e) => {
+    if ((e.target as HTMLDivElement).classList.contains('select__option')) return;
+    if (!containerRef?.current?.contains(e.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleChangeYear = (value: { value: number; label: number }) => {
+    setDisplayedMonth(new Date(value.value, 0, 1));
+  };
+
+  const handleSelectPredefinedRange = (days: number) => {
+    const today = startOfDay(new Date());
+    onChange(subDays(today, days), today);
+    setIsOpen(false);
+    setIsSelecting('start');
+  };
+
+  const handleNavigateMonth = (navigate: number) => {
+    setDisplayedMonth((prev) => addMonths(prev, navigate));
+  };
+
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>, date: 'start' | 'end') => {
+    setDateText((prev) => ({ ...prev, [date]: e.target.value }));
+  };
+
+  const handleDateInputBlur = (e: ChangeEvent<HTMLInputElement>, date: 'start' | 'end') => {
+    const tentativeDate = parseDate(e.target.value);
+    if (tentativeDate) {
+      if (date === 'start') {
+        onChange(tentativeDate, end);
+      } else {
+        onChange(start, tentativeDate);
+      }
+    }
   };
 
   useEffect(() => {
-    setEnableRange(!!selectsRange);
+    if (!isOpen) onBlur();
+    if (isOpen) {
+      window.addEventListener('click', handleClickOutside);
+    } else {
+      window.removeEventListener('click', handleClickOutside);
+    }
+    // eslint-disable-next-line
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!selectsRange) onChange(start, start);
+    // eslint-disable-next-line
   }, [selectsRange]);
 
-  const Header = useCallback(
-    (props: {
-      monthDate: Date;
-      customHeaderCount: number;
-      decreaseMonth(): void;
-      increaseMonth(): void;
-      increaseYear(): void;
-      decreaseYear(): void;
-    }) => {
-      return (
-        <>
-          <S.Header>
-            {props.customHeaderCount === 0 && (
-              <S.ArrowButton variant="text" onClick={props.decreaseMonth}>
-                <Arrow direction="left" />
-              </S.ArrowButton>
-            )}
-            {props.customHeaderCount === _monthsShown - 1 && (
-              <S.ArrowButton variant="text" right onClick={props.increaseMonth}>
-                <Arrow direction="right" />
-              </S.ArrowButton>
-            )}
-            <h4>
-              {props.monthDate.toLocaleString('en', { month: 'long' })} {props.monthDate.getFullYear()}
-            </h4>
-          </S.Header>
-          {props.customHeaderCount === 0 && (
-            <S.ChangeYearButton>
-              <button onClick={props.decreaseYear}>
-                <Arrow direction="left" />
-              </button>
-              <span>{props.monthDate.getFullYear()}</span>
-              <button onClick={props.increaseYear}>
-                <Arrow direction="right" />
-              </button>
-            </S.ChangeYearButton>
-          )}
-        </>
-      );
-    },
-    [_monthsShown]
-  );
-
-  const Calendar = useCallback((props) => <S.Calendar monthsShown={_monthsShown} {...props} />, [_monthsShown]);
+  useEffect(() => {
+    setDateText({
+      start: start ? format(start, 'dd-MMM-yyyy') : '',
+      end: end ? format(end, 'dd-MMM-yyyy') : '',
+    });
+    if (start && end && start.valueOf() > end.valueOf()) {
+      // eslint-disable-next-linnne
+      onChange(end, start);
+      return;
+    }
+    // eslint-disable-next-line
+  }, [start, end]);
 
   return (
-    <S.DatePickerWrapper className={className} {...props}>
-      <ReactDatePicker
-        customInput={
-          variant === 'small' ? (
-            <S.DatePickerSmallInput error={!!error} />
-          ) : (
-            <S.DatePickerDefaultInput error={!!error} />
-          )
-        }
-        calendarClassName={selectsRange === undefined ? 'show-switch' : ''}
-        calendarContainer={Calendar}
-        renderDayContents={Day}
-        selectsRange={enableRange}
-        monthsShown={_monthsShown}
-        renderCustomHeader={Header}
-        placeholderText={text.placeholder}
-        dateFormat="MMM-dd-yyyy"
-        onChange={handleSelectRange}
-        selected={enableRange ? null : start}
-        startDate={enableRange ? start : null}
-        endDate={enableRange ? end : null}
-        excludeDates={excludeDates}
-        focusSelectedMonth={true}
-        portalId={portalId}
-        fixedHeight
+    <S.Container ref={containerRef} variant={variant} {...divProps}>
+      <S.InputWrapper
+        ref={setReferenceElement}
+        isOpen={isOpen}
+        isError={!!error}
+        placeTop={popper.state?.placement === 'top-start'}
       >
-        <S.BottomRow>
-          <S.CancelButton variant="link" onClick={handleClearDates}>
-            {text.clearDates}
-          </S.CancelButton>
-          {!hideRangeToggle && (
-            <Toggle checked={enableRange} onChange={handleToggleRange}>
-              {text.dateRange}
-            </Toggle>
-          )}
-        </S.BottomRow>
-      </ReactDatePicker>
-      <CalendarIcon height={24} />
-      {error && typeof error === 'string' && <S.HelperText error>{error}</S.HelperText>}
-      {helperText && !error && <S.HelperText>{helperText}</S.HelperText>}
-    </S.DatePickerWrapper>
+        <S.DateInput
+          placeholder={Array.isArray(placeholder) ? placeholder[0] : placeholder}
+          onFocus={(e) => handleOpenCalendar(e, 'start')}
+          value={dateText.start}
+          onChange={(e) => handleChangeInput(e, 'start')}
+          onBlur={(e) => handleDateInputBlur(e, 'start')}
+          aria-label="start date"
+          id="date-input-start"
+        />
+        {selectsRange && (
+          <>
+            <S.DateInputDivider>{dividerText}</S.DateInputDivider>
+            <S.DateInput
+              placeholder={Array.isArray(placeholder) ? placeholder[1] : ''}
+              onFocus={(e) => handleOpenCalendar(e, 'end')}
+              value={dateText.end}
+              onChange={(e) => handleChangeInput(e, 'end')}
+              onBlur={(e) => handleDateInputBlur(e, 'end')}
+              id="date-input-end"
+              aria-label="end date"
+              className="align-right"
+            />
+          </>
+        )}
+        <S.CalendarIcon />
+        {error && typeof error === 'string' && <HelperText error>{error}</HelperText>}
+        {!error && helperText && <HelperText>{helperText}</HelperText>}
+      </S.InputWrapper>
+      {isOpen && (
+        <S.CalendarWrapper
+          role={'dialog'}
+          ref={setPopperElement}
+          style={popper.styles.popper}
+          {...popper.attributes.popper}
+          placeTop={popper.state?.placement === 'top-start'}
+          isError={!!error}
+        >
+          <S.CalendarContainer
+            inputWidth={referenceElement?.clientWidth || 0}
+            isOpen={isOpen}
+            placeTop={popper.state?.placement === 'top-start'}
+          >
+            <S.Header>
+              <S.SmallYearSelect
+                options={getYearOptions()}
+                value={{ label: displayedMonth.getFullYear(), value: displayedMonth.getFullYear() }}
+                onChange={handleChangeYear}
+                id="year-select"
+              />
+              {selectsRange && (
+                <S.ButtonGroup>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(30)}
+                    id="button-last-30"
+                  >
+                    {buttonText[0]}
+                  </CustomButton>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(90)}
+                    id="button-last-90"
+                  >
+                    {buttonText[1]}
+                  </CustomButton>
+                  <CustomButton
+                    variant="outline"
+                    small
+                    onClick={() => handleSelectPredefinedRange(365)}
+                    id="button-last-year"
+                  >
+                    {buttonText[2]}
+                  </CustomButton>
+                </S.ButtonGroup>
+              )}
+            </S.Header>
+            <S.CalendarBody onMouseLeave={() => setHoveringDate(null)}>
+              <S.MonthNavigationButton
+                align="left"
+                onClick={() => handleNavigateMonth(-1)}
+                variant="outline"
+                aria-label="go to previous month"
+              >
+                <Arrow direction="left" />
+              </S.MonthNavigationButton>
+              <S.MonthNavigationButton
+                align="right"
+                onClick={() => handleNavigateMonth(1)}
+                variant="outline"
+                aria-label="go to next month"
+              >
+                <Arrow direction="right" />
+              </S.MonthNavigationButton>
+              {new Array(calendarCount).fill(null).map((_, index) => (
+                <S.SingleCalendar key={'calendar-' + index}>
+                  <S.MonthName>{format(addMonths(displayedMonth, index), 'MMMM')}</S.MonthName>
+                  {weekDays.map((day) => (
+                    <S.WeekdayName key={index + '-' + day}>{day}</S.WeekdayName>
+                  ))}
+                  {getDays(addMonths(displayedMonth, index)).map((day) => (
+                    <S.Day
+                      key={day.toString()}
+                      aria-label={`Choose ${format(day, 'EEEE, MMMM do, yyyy')}`}
+                      style={{
+                        gridColumnStart: day.getDate() === 1 ? getDay(addMonths(displayedMonth, index)) || 7 : 'auto',
+                      }}
+                      onClick={() => handleSelectDay(day)}
+                      isSelected={isDateSelected(day, start, end)}
+                      isInRange={!!(start && end && day.valueOf() > start.valueOf() && day.valueOf() < end.valueOf())}
+                      isStartDate={!!(start && start.valueOf() === day.valueOf())}
+                      isEndDate={
+                        !!(start && !end && hoveringDate && hoveringDate.valueOf() === day.valueOf()) ||
+                        !!(start && end && end.valueOf() === day.valueOf())
+                      }
+                      isInSelectingRange={
+                        !!(
+                          selectsRange &&
+                          start &&
+                          !end &&
+                          hoveringDate &&
+                          day.valueOf() > start.valueOf() &&
+                          day.valueOf() < hoveringDate.valueOf()
+                        )
+                      }
+                      isHovering={!!(hoveringDate && isSameDay(day, hoveringDate))}
+                      onMouseEnter={() => setHoveringDate(day)}
+                    >
+                      <span>{day.getDate()}</span>
+                    </S.Day>
+                  ))}
+                </S.SingleCalendar>
+              ))}
+            </S.CalendarBody>
+          </S.CalendarContainer>
+        </S.CalendarWrapper>
+      )}
+    </S.Container>
   );
+}
+
+const getStartOfMonth = () => {
+  const today = new Date();
+  return new Date(today.getFullYear(), today.getMonth(), 1, 0, 0, 0, 0);
 };
 
-export default DatePicker;
+const getDays = (date: Date) => new Array(getDaysInMonth(date)).fill(null).map((_, index) => addDays(date, index));
+
+const getYearOptions = () => {
+  const currentYear = new Date().getFullYear();
+  const numberOfOptions = currentYear - 2010 + 6;
+  return new Array(numberOfOptions).fill(null).map((_, index) => ({ value: 2010 + index, label: 2010 + index }));
+};
+
+const isDateSelected = (date: Date, start: Date | null, end: Date | null) => {
+  if (start && isSameDay(date, start)) return true;
+  if (end && isSameDay(date, end)) return true;
+  return false;
+};
+
+const parseDate = (date: string) => {
+  const formats = ['dd-MMM-yyyy', 'yyyy-MM-dd', 'dd-MM-yyyy', 'MM-dd-yyyy'];
+  let validDate = formats
+    .map((format) => parse(date.replaceAll('/', '-'), format, startOfDay(new Date())))
+    .find((date) => isValid(date));
+  return validDate || false;
+};
