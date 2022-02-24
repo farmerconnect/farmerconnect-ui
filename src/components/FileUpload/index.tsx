@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import reactStringReplace from 'react-string-replace';
 import { IFileUpload } from './interfaces';
 import UploadFileIcon from '../Icons/UploadFile';
 
 import * as S from './styles';
 import colors from '../../styles/colors';
 
-const FileUpload = ({ maxFiles, maxSize, accept, slim = false, onUploadFiles, onAcceptedFiles, onRejectedFiles,  ...props }: IFileUpload) => {
+const FileUpload = ({ 
+  maxFiles,
+  maxSize,
+  accept,
+  slim = false,
+  dragFilesText = 'Drag files here or <a>browse computer</a>',
+  uploadFilesUpToText = 'Upload files up to {{maxSize}}MB.',
+  acceptedFilesText = 'Accepted files: {{accept}}.',
+  onUploadFiles,
+  onAcceptedFiles,
+  onRejectedFiles,
+  ...props
+}: IFileUpload) => {
   const maxFileSize = maxSize * 1000000;
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -46,21 +59,25 @@ const FileUpload = ({ maxFiles, maxSize, accept, slim = false, onUploadFiles, on
           color={colors.fc_green}
           slim={slim}
         />
-        <S.Span>Drag files here or <S.LinkButton variant="link" onClick={open}>browse computer</S.LinkButton></S.Span>
+        <S.Span>
+          {reactStringReplace(dragFilesText, /<[^<>]+>/g, (match) => (
+            <S.LinkButton variant="link" onClick={open}>{match}</S.LinkButton>
+          ))}
+        </S.Span>
       </S.Container> 
       <S.Helper>
         {slim && (
           <div>
-            Upload files up to {maxSize}MB. Accepted files: {accept}.
+            {uploadFilesUpToText.replace('{{maxSize}}', `${maxSize}`)} {acceptedFilesText.replace('{{accept}}', `${accept}`)}
           </div>
         )}
         {!slim && (
           <>
             <div>
-              Upload files up to {maxSize}MB.
+              {uploadFilesUpToText.replace('{{maxSize}}', `${maxSize}`)}
             </div>
             <div>
-              Accepted files: {accept}.
+              {acceptedFilesText.replace('{{accept}}', `${accept}`)}
             </div>
           </>
         )}
