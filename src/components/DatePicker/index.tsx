@@ -54,6 +54,7 @@ export default function DatePicker({
       onChange(day, day);
       setIsSelecting('start');
       setIsOpen(false);
+      onBlur();
       return;
     }
     if (isSelecting === 'start') {
@@ -69,6 +70,7 @@ export default function DatePicker({
         onChange(start, day);
         setIsSelecting('start');
         setIsOpen(false);
+        onBlur();
       }
     }
   };
@@ -92,6 +94,7 @@ export default function DatePicker({
     if ((e.target as HTMLDivElement).classList.contains('select__option')) return;
     if (!containerRef?.current?.contains(e.target as Node)) {
       setIsOpen(false);
+      onBlur();
     }
   };
 
@@ -103,6 +106,7 @@ export default function DatePicker({
     const today = startOfDay(new Date());
     onChange(subDays(today, days), today);
     setIsOpen(false);
+    onBlur();
     setIsSelecting('start');
   };
 
@@ -126,7 +130,6 @@ export default function DatePicker({
   };
 
   useEffect(() => {
-    if (!isOpen) onBlur();
     if (isOpen) {
       window.addEventListener('click', handleClickOutside);
     } else {

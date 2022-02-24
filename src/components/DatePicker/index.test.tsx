@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import DatePicker from '.';
 
 describe('DatePicker component', () => {
