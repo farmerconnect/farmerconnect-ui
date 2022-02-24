@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.4] 2022-02-24
+
+- Fixed Datepicker onBlur behavior
+
 ## [3.2.3] 2022-02-18
 
 - Adding properties to send the translated texts to the file upload component
