@@ -12,7 +12,7 @@ import {
   subDays,
   subMonths,
 } from 'date-fns';
-import React, { ChangeEvent, FocusEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import CustomButton from '../CustomButton';
 import Arrow from '../Icons/Arrow';
@@ -126,6 +126,18 @@ export default function DatePicker({
       } else {
         onChange(start, tentativeDate);
       }
+    } else {
+      if (date === 'start') {
+        onChange(null, end);
+      } else {
+        onChange(start, null);
+      }
+    }
+  };
+
+  const handleEnter = (e: KeyboardEvent, date: 'start' | 'end') => {
+    if (e.key === 'Enter') {
+      handleDateInputBlur(e, date);
     }
   };
 
@@ -170,6 +182,7 @@ export default function DatePicker({
           value={dateText.start}
           onChange={(e) => handleChangeInput(e, 'start')}
           onBlur={(e) => handleDateInputBlur(e, 'start')}
+          onKeyDown={(e) => handleEnter(e, 'start')}
           aria-label="start date"
           id="date-input-start"
         />
@@ -182,6 +195,7 @@ export default function DatePicker({
               value={dateText.end}
               onChange={(e) => handleChangeInput(e, 'end')}
               onBlur={(e) => handleDateInputBlur(e, 'end')}
+              onKeyDown={(e) => handleEnter(e, 'end')}
               id="date-input-end"
               aria-label="end date"
               className="align-right"
