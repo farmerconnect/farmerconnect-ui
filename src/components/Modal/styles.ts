@@ -51,6 +51,7 @@ export const LoadingOverlay = styled(InlineLoader)<LoadingOverlayProps>`
   border-radius: 0.75rem;
   transition: opacity 0.2s ease-out;
   background-color: rgba(20, 20, 20, 0.6);
+  font-family: 'Red Hat Text', sans-serif;
   > svg {
     height: 2rem;
     width: auto;
