@@ -65,3 +65,4 @@ export { default as Cocoa } from './Cocoa';
 export { default as Coffee } from './Coffee';
 export { default as SizeOfPlot } from './SizeOfPlot';
 export { default as Help } from './Help';
+export { default as PinNetwork } from './PinNetwork';
