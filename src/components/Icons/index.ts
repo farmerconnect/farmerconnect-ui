@@ -56,6 +56,7 @@ export { default as PinCheck } from './PinCheck';
 export { default as Handle } from './Handle';
 export { default as Error } from './Error';
 export { default as Dots } from './Dots';
+export { default as DoubleArrow } from './DoubleArrow';
 export { CheckboxUnchecked, CheckboxChecked } from './Checkbox';
 export { RadioUnchecked, RadioChecked } from './Radio';
 export { default as Sorting } from './Sorting';
