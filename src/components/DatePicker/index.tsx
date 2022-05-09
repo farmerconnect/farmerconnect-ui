@@ -43,6 +43,7 @@ export default function DatePicker({
     strategy: 'fixed',
   });
   const containerRef = useRef<HTMLDivElement>(null);
+  const dateInputStartRef = useRef<HTMLInputElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isSelecting, setIsSelecting] = useState<'start' | 'end'>('start');
   const [hoveringDate, setHoveringDate] = useState<Date | null>(null);
@@ -137,7 +138,18 @@ export default function DatePicker({
 
   const handleEnter = (e: KeyboardEvent, date: 'start' | 'end') => {
     if (e.key === 'Enter') {
-      handleDateInputBlur(e, date);
+      handleDateInputBlur(e as unknown as ChangeEvent<HTMLInputElement>, date);
+    }
+  };
+
+  const handleCalendarClick = () => {
+    if (!isOpen) {
+      dateInputStartRef.current?.focus();
+      dateInputStartRef.current?.select();
+    }
+    else {
+      setIsOpen(false);
+      onBlur();
     }
   };
 
@@ -185,6 +197,8 @@ export default function DatePicker({
           onKeyDown={(e) => handleEnter(e, 'start')}
           aria-label="start date"
           id="date-input-start"
+          autoComplete="off"
+          ref={dateInputStartRef}
         />
         {selectsRange && (
           <>
@@ -198,11 +212,12 @@ export default function DatePicker({
               onKeyDown={(e) => handleEnter(e, 'end')}
               id="date-input-end"
               aria-label="end date"
+              autoComplete="off"
               className="align-right"
             />
           </>
         )}
-        <S.CalendarIcon />
+        <S.CalendarIcon onClick={handleCalendarClick} />
         {error && typeof error === 'string' && <HelperText error>{error}</HelperText>}
         {!error && helperText && <HelperText>{helperText}</HelperText>}
       </S.InputWrapper>
@@ -226,6 +241,7 @@ export default function DatePicker({
                 value={{ label: displayedMonth.getFullYear(), value: displayedMonth.getFullYear() }}
                 onChange={handleChangeYear}
                 id="year-select"
+                tabIndex={-1}
               />
               {selectsRange && (
                 <S.ButtonGroup>
@@ -234,6 +250,7 @@ export default function DatePicker({
                     small
                     onClick={() => handleSelectPredefinedRange(30)}
                     id="button-last-30"
+                    tabIndex={-1}
                   >
                     {buttonText[0]}
                   </CustomButton>
@@ -242,6 +259,7 @@ export default function DatePicker({
                     small
                     onClick={() => handleSelectPredefinedRange(90)}
                     id="button-last-90"
+                    tabIndex={-1}
                   >
                     {buttonText[1]}
                   </CustomButton>
@@ -250,6 +268,7 @@ export default function DatePicker({
                     small
                     onClick={() => handleSelectPredefinedRange(365)}
                     id="button-last-year"
+                    tabIndex={-1}
                   >
                     {buttonText[2]}
                   </CustomButton>
@@ -262,6 +281,7 @@ export default function DatePicker({
                 onClick={() => handleNavigateMonth(-1)}
                 variant="outline"
                 aria-label="go to previous month"
+                tabIndex={-1}
               >
                 <Arrow direction="left" />
               </S.MonthNavigationButton>
@@ -270,6 +290,7 @@ export default function DatePicker({
                 onClick={() => handleNavigateMonth(1)}
                 variant="outline"
                 aria-label="go to next month"
+                tabIndex={-1}
               >
                 <Arrow direction="right" />
               </S.MonthNavigationButton>
@@ -306,6 +327,7 @@ export default function DatePicker({
                       }
                       isHovering={!!(hoveringDate && isSameDay(day, hoveringDate))}
                       onMouseEnter={() => setHoveringDate(day)}
+                      tabIndex={-1}
                     >
                       <span>{day.getDate()}</span>
                     </S.Day>

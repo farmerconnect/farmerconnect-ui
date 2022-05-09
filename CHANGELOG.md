@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.1] 2022-05-09
+
+- Fixed click calendar icon to open the date picker
+
 ## [3.4.0] 2022-03-24
 
 - Added DoubleArrow icon
