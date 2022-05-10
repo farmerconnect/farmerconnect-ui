@@ -210,7 +210,7 @@ export default function DatePicker({
             />
           </>
         )}
-        <S.CalendarIcon onClick={handleCalendarClick} />
+        <S.CalendarIcon onClick={handleCalendarClick} tabIndex={-1} />
         {error && typeof error === 'string' && <HelperText error>{error}</HelperText>}
         {!error && helperText && <HelperText>{helperText}</HelperText>}
       </S.InputWrapper>
