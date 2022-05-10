@@ -44,6 +44,7 @@ export default function DatePicker({
   });
   const containerRef = useRef<HTMLDivElement>(null);
   const dateInputStartRef = useRef<HTMLInputElement>(null);
+  const dateInputEndRef = useRef<HTMLInputElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isSelecting, setIsSelecting] = useState<'start' | 'end'>('start');
   const [hoveringDate, setHoveringDate] = useState<Date | null>(null);
@@ -61,6 +62,7 @@ export default function DatePicker({
     if (isSelecting === 'start') {
       onChange(day, null);
       setIsSelecting('end');
+      dateInputEndRef.current?.focus();
     } else if (isSelecting === 'end') {
       if (!start) {
         onChange(day, null);
@@ -89,14 +91,6 @@ export default function DatePicker({
     }
     setIsOpen(true);
     setIsSelecting(range);
-  };
-
-  const handleClickOutside: EventListener = (e) => {
-    if ((e.target as HTMLDivElement).classList.contains('select__option')) return;
-    if (!containerRef?.current?.contains(e.target as Node)) {
-      setIsOpen(false);
-      onBlur();
-    }
   };
 
   const handleChangeYear = (value: { value: number; label: number }) => {
@@ -130,8 +124,10 @@ export default function DatePicker({
     } else {
       if (date === 'start') {
         onChange(null, end);
+        setDateText((prev) => ({ ...prev, start: '' }));
       } else {
         onChange(start, null);
+        setDateText((prev) => ({ ...prev, end: '' }));
       }
     }
   };
@@ -146,21 +142,18 @@ export default function DatePicker({
     if (!isOpen) {
       dateInputStartRef.current?.focus();
       dateInputStartRef.current?.select();
-    }
-    else {
+    } else {
       setIsOpen(false);
       onBlur();
     }
   };
 
   useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('click', handleClickOutside);
-    } else {
-      window.removeEventListener('click', handleClickOutside);
+    if (!containerRef.current?.contains(document.activeElement)) {
+      setIsOpen(false);
+      onBlur();
     }
-    // eslint-disable-next-line
-  }, [isOpen]);
+  }, [onBlur]);
 
   useEffect(() => {
     if (!selectsRange) onChange(start, start);
