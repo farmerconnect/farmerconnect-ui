@@ -13,7 +13,7 @@ export interface IInfotipProps {
   arrow?: boolean;
   direction: TipDirection;
   content: ReactNode;
-  position: TipPosition;
+  position?: TipPosition;
   children: ReactNode;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;

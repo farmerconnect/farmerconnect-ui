@@ -113,8 +113,9 @@ export default function DatePicker({
     setDateText((prev) => ({ ...prev, [date]: e.target.value }));
   };
 
-  const handleDateInputBlur = (e: ChangeEvent<HTMLInputElement>, date: 'start' | 'end') => {
-    const tentativeDate = parseDate(e.target.value);
+  const handleDateInputBlur = (e: ChangeEvent<HTMLInputElement> | string, date: 'start' | 'end') => {
+    const value = typeof e === 'string' ? e : e.target.value;
+    const tentativeDate = parseDate(value);
     if (tentativeDate) {
       if (date === 'start') {
         onChange(tentativeDate, end);
@@ -134,7 +135,7 @@ export default function DatePicker({
 
   const handleEnter = (e: KeyboardEvent, date: 'start' | 'end') => {
     if (e.key === 'Enter') {
-      handleDateInputBlur(e as unknown as ChangeEvent<HTMLInputElement>, date);
+      handleDateInputBlur(dateText[date], date);
     }
   };
 

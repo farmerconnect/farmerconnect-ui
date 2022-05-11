@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import CustomButton from '../../CustomButton';
 import { farmerConnectTheme } from '../../Theme';
 
 const fontFamily = `font-family: 'Red Hat Text', sans-serif;`;
@@ -18,7 +17,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  ${CustomButton} {
+  > button {
     gap: 0.25rem;
     padding: 0.625rem 0;
   }

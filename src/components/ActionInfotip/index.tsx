@@ -11,7 +11,7 @@ const ActionInfotip: FC<IActionInfotipProps> = ({
   position = 'middle',
   direction = 'top',
   arrow = false,
-  keepOpen = false
+  keepOpen = false,
 }) => {
   const [clicked, setClicked] = useState<boolean>(false);
   const [infotipActive, setInfotipActive] = useState<boolean>(false);
@@ -42,7 +42,9 @@ const ActionInfotip: FC<IActionInfotipProps> = ({
   }, [lock]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    return () => lockTimeout && clearTimeout(lockTimeout);
+    return () => {
+      lockTimeout && clearTimeout(lockTimeout);
+    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function click() {

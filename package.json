@@ -3,6 +3,7 @@
   "version": "3.4.1",
   "main": "dist/farmerconnect-ui.cjs.js",
   "module": "dist/farmerconnect-ui.esm.js",
+  "types": "dist/farmerconnect-ui.esm.d.ts",
   "repository": {
     "url": "git@github.com:farmerconnect/farmerconnect-ui.git"
   },
@@ -76,6 +77,7 @@
     "react-scripts": "^4.0.3",
     "react-select-event": "^5.3.0",
     "rollup": "^2.36.1",
+    "rollup-plugin-ts": "^2.0.7",
     "ssri": "^8.0.1",
     "trim": "^1.0.1",
     "tslib": "^2.1.0",

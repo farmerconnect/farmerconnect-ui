@@ -1,4 +1,4 @@
-import typescript from '@rollup/plugin-typescript';
+import ts from 'rollup-plugin-ts';
 
 const config = {
   input: 'src/index.tsx',
@@ -12,7 +12,7 @@ const config = {
       format: 'es',
     },
   ],
-  plugins: [typescript()],
+  plugins: [ts()],
 };
 
 export default config;

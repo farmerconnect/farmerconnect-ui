@@ -14,7 +14,6 @@ import Modal from './components/Modal';
 import Radio from './components/Radio';
 import CustomButton from './components/CustomButton';
 import SingleSelect from './components/SingleSelect';
-import DoubleSelect from './components/MultiSelect';
 import Checkbox from './components/Checkbox';
 import Tabs from './components/Tabs';
 import SmallSelect from './components/SmallSelect';
@@ -68,7 +67,6 @@ export {
   CustomButton,
   Checkbox,
   SingleSelect,
-  DoubleSelect,
   Tabs,
   SmallSelect,
   DropdownSelect,
