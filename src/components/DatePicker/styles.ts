@@ -165,7 +165,6 @@ export const CalendarWrapper = styled.div<CalendarWrapperProps>`
     border-color: var(--input-border-color);
     box-shadow: var(--input-box-shadow);
     background-color: var(--input-focused-bg);
-    margin: -1px 0;
     z-index: 100;
     ${props.isError &&
     css`
