@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] 2022-05-11
+
+- Added type safety to library
+
 ## [3.4.1] 2022-05-09
 
 - Fixed click calendar icon to open the date picker
