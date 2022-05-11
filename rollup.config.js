@@ -1,4 +1,4 @@
-import ts from 'rollup-plugin-ts';
+import ts from 'rollup-plugin-typescript2';
 
 const config = {
   input: 'src/index.tsx',
