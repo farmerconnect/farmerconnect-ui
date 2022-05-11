@@ -1,7 +1,8 @@
 import React from 'react';
+import { SVGProps } from 'react-html-props';
 import { StyledIcon } from './styles';
 
-export interface IDots extends Omit<React.SVGProps<SVGSVGElement>, 'ref'> {
+export interface IDots extends Omit<SVGProps, 'ref'> {
   animated?: boolean;
 }
 

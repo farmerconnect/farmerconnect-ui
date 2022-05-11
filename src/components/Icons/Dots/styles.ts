@@ -42,5 +42,5 @@ export const StyledIcon = styled.svg<IDots>`
         animation: ${jumpingDot} 1.1s infinite 0.5s;
       }
     `}
-  `}}
+  `}
 `;

@@ -18,15 +18,12 @@ const Infotip: FC<IInfotipProps> = ({
   content,
   position = 'middle',
   children,
-  onMouseEnter = () => {},
-  onMouseLeave = () => {},
-  onClick = () => {},
   ...props
 }) => {
   const Tip = tipDirectionMap[direction];
 
   return (
-    <S.Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} {...props}>
+    <S.Wrapper {...props}>
       {children}
 
       {active && (

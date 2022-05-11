@@ -3,7 +3,7 @@ import Orderer from './';
 
 describe('Table Component', () => {
   const orderer = (
-    <Orderer sort={{ key: 'description', order: 'asc' }} onSortChange={() => {}} />
+    <Orderer sort={{ key: 'description', order: 'asc', actualSortKey: 'description' }} onSortChange={() => {}} />
   );
 
   it('renders without errors', () => {

@@ -1,4 +1,4 @@
-import { HTMLProps } from 'react';
+import { ButtonPropsWithoutRef } from 'react-html-props';
 import styled, { css } from 'styled-components';
 import colors from '../../styles/colors';
 
@@ -10,7 +10,7 @@ export type ButtonProps = {
   colorVariant?: IColorVariant;
   small?: boolean;
   iconOnly?: boolean;
-} & HTMLProps<HTMLButtonElement>;
+} & ButtonPropsWithoutRef;
 
 type IButtonColorVariant = {
   primary: string;

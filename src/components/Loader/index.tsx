@@ -33,7 +33,9 @@ const Loader = ({
       }, option.duration * 1000);
     }
 
-    return () => timeout && clearTimeout(timeout);
+    return () => {
+      timeout && clearTimeout(timeout);
+    };
   }, [currentIndex, option, options, show]);
 
   const renderSpinner = useCallback(

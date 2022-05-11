@@ -45,7 +45,7 @@ const Table: React.FC<ITableProps> = ({
 
       return (
         <S.SortButton onClick={() => handleSortClick(sortable.key, sort.order)}>
-          <Sorting order={sortable.key === sort.key && sort.order} />
+          <Sorting order={sortable.key === sort.key ? sort.order : undefined} />
         </S.SortButton>
       );
     },
