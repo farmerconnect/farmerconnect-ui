@@ -63,6 +63,7 @@ export default function DatePicker({
       onChange(day, null);
       setIsSelecting('end');
       dateInputEndRef.current?.focus();
+      dateInputEndRef.current?.select();
     } else if (isSelecting === 'end') {
       if (!start) {
         onChange(day, null);
@@ -207,6 +208,7 @@ export default function DatePicker({
               aria-label="end date"
               autoComplete="off"
               className="align-right"
+              ref={dateInputEndRef}
             />
           </>
         )}
