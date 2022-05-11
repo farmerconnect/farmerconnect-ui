@@ -207,6 +207,7 @@ export default function DatePicker({
               aria-label="end date"
               autoComplete="off"
               className="align-right"
+              ref={dateInputEndRef}
             />
           </>
         )}
