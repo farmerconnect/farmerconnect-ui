@@ -63,7 +63,6 @@ export default function DatePicker({
       onChange(day, null);
       setIsSelecting('end');
       dateInputEndRef.current?.focus();
-      dateInputEndRef.current?.select();
     } else if (isSelecting === 'end') {
       if (!start) {
         onChange(day, null);
@@ -131,6 +130,20 @@ export default function DatePicker({
         setDateText((prev) => ({ ...prev, end: '' }));
       }
     }
+    if (selectsRange && date === 'end') {
+      onBlur();
+    } else if (!selectsRange) {
+      onBlur();
+    }
+    setTimeout(() => {
+      if (
+        !popperElement?.contains(document.activeElement) &&
+        document.activeElement !== dateInputStartRef.current &&
+        document.activeElement !== dateInputEndRef.current
+      ) {
+        setIsOpen(false);
+      }
+    }, 0);
   };
 
   const handleEnter = (e: KeyboardEvent, date: 'start' | 'end') => {
@@ -148,13 +161,6 @@ export default function DatePicker({
       onBlur();
     }
   };
-
-  useEffect(() => {
-    if (!containerRef.current?.contains(document.activeElement)) {
-      setIsOpen(false);
-      onBlur();
-    }
-  }, [onBlur]);
 
   useEffect(() => {
     if (!selectsRange) onChange(start, start);
@@ -212,7 +218,7 @@ export default function DatePicker({
             />
           </>
         )}
-        <S.CalendarIcon onClick={handleCalendarClick} tabIndex={-1} />
+        <S.CalendarIcon onClick={handleCalendarClick} />
         {error && typeof error === 'string' && <HelperText error>{error}</HelperText>}
         {!error && helperText && <HelperText>{helperText}</HelperText>}
       </S.InputWrapper>
@@ -224,6 +230,7 @@ export default function DatePicker({
           {...popper.attributes.popper}
           placeTop={popper.state?.placement === 'top-start'}
           isError={!!error}
+          tabIndex={-1}
         >
           <S.CalendarContainer
             inputWidth={referenceElement?.clientWidth || 0}
