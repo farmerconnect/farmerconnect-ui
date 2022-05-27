@@ -56,7 +56,7 @@ export default function DatePicker({
       onChange(day, day);
       setIsSelecting('start');
       setIsOpen(false);
-      onBlur();
+      setTimeout(() => onBlur());
       return;
     }
     if (isSelecting === 'start') {
@@ -73,7 +73,7 @@ export default function DatePicker({
         onChange(start, day);
         setIsSelecting('start');
         setIsOpen(false);
-        onBlur();
+        setTimeout(() => onBlur());
       }
     }
   };
@@ -101,7 +101,7 @@ export default function DatePicker({
     const today = startOfDay(new Date());
     onChange(subDays(today, days), today);
     setIsOpen(false);
-    onBlur();
+    setTimeout(() => onBlur());
     setIsSelecting('start');
   };
 
@@ -115,25 +115,12 @@ export default function DatePicker({
 
   const handleDateInputBlur = (e: ChangeEvent<HTMLInputElement>, date: 'start' | 'end') => {
     const tentativeDate = parseDate(e.target.value);
-    if (tentativeDate) {
-      if (date === 'start') {
-        onChange(tentativeDate, end);
-      } else {
-        onChange(start, tentativeDate);
-      }
+    if (date === 'start') {
+      onChange(tentativeDate, end);
+      setDateText((prev) => ({ ...prev, start: tentativeDate ? format(tentativeDate, 'dd-MMM-yyyy') : '' }));
     } else {
-      if (date === 'start') {
-        onChange(null, end);
-        setDateText((prev) => ({ ...prev, start: '' }));
-      } else {
-        onChange(start, null);
-        setDateText((prev) => ({ ...prev, end: '' }));
-      }
-    }
-    if (selectsRange && date === 'end') {
-      onBlur();
-    } else if (!selectsRange) {
-      onBlur();
+      onChange(start, tentativeDate);
+      setDateText((prev) => ({ ...prev, end: tentativeDate ? format(tentativeDate, 'dd-MMM-yyyy') : '' }));
     }
     setTimeout(() => {
       if (
@@ -142,8 +129,9 @@ export default function DatePicker({
         document.activeElement !== dateInputEndRef.current
       ) {
         setIsOpen(false);
+        onBlur();
       }
-    }, 0);
+    });
   };
 
   const handleEnter = (e: KeyboardEvent, date: 'start' | 'end') => {
@@ -158,7 +146,8 @@ export default function DatePicker({
       dateInputStartRef.current?.select();
     } else {
       setIsOpen(false);
-      onBlur();
+      onChange(start, end);
+      setTimeout(() => onBlur());
     }
   };
 
@@ -368,5 +357,5 @@ const parseDate = (date: string) => {
   let validDate = formats
     .map((format) => parse(date.replaceAll('/', '-'), format, startOfDay(new Date())))
     .find((date) => isValid(date));
-  return validDate || false;
+  return validDate || null;
 };
