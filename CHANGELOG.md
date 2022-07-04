@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.3] 2022-05-27
+
+- Fixed DatePicker blur behavior
+
 ## [3.4.2] 2022-05-19
 
 - Fixed DatePicker blur behavior
