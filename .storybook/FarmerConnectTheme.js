@@ -13,5 +13,5 @@ export default create({
   
   brandTitle: 'Farmer Connect UI Components',
   brandUrl: 'https://farmerconnect.com',
-  brandImage: 'https://tmf-prd-centralus-cdn-ep-images.azureedge.net/LogoFC.png',
+  brandImage: 'https://ik.imagekit.io/sjinj9tw5mn/LogoFC.png',
 });
