@@ -53,6 +53,7 @@ export type ISelectOption = { selected: boolean; label: string; value: string };
 export type ISelectOptionArray = ReadonlyArray<ISelectOption>;
 
 export interface IPaginationProps extends HTMLAttributes<HTMLDivElement> {
+  openMenuUpwards?: boolean;
   hasItemCount?: boolean;
   hasSelect?: boolean;
   pageSizeArray?: number[];
