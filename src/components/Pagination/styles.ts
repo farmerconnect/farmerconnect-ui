@@ -47,8 +47,12 @@ export const PaginationNumberButton = styled(Button)`
   ${defaultButtonStyle}
 `;
 
-export const PaginationArrowButton = styled(Button)`
+type PaginationArrowButtonProps = {
+  isHidden: boolean;
+};
+export const PaginationArrowButton = styled(Button)<PaginationArrowButtonProps>`
   padding: 0 0.25rem;
+  visibility: ${(props) => (props.isHidden ? 'hidden' : 'visible')};
   ${defaultButtonStyle}
 `;
 

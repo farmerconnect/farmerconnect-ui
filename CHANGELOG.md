@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.5] 2022-08-11
+
+- Added: SmallSelect now supports menu opening upwards with proper styling
+- Added: Pagination now supports 'items per page' menu opening upwards
+
 ## [3.4.4] 2022-08-09
 
 - Updated dependencies to fix security vulnerabilities.

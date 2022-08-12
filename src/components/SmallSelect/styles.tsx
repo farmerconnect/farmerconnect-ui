@@ -42,10 +42,9 @@ export const Select = styled(ReactSelect)<SelectProps>`
 
     &--menu-is-open {
       max-height: 45rem;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom: none;
-      padding-bottom: 1px;
+      border-radius: ${(props) => (props.menuPlacement === 'top' ? '0 0 0.75rem 0.75rem' : '0.75rem 0.75rem 0 0')};
+      border-width: ${(props) => (props.menuPlacement === 'top' ? '0 1px 1px 1px' : '1px 1px 0 1px')};
+      padding: ${(props) => (props.menuPlacement === 'top' ? '1px 0 0 0' : '0 0 1px 0')};
 
       .select__value-container.select__value-container--is-multi.select__value-container--has-value {
         flex-wrap: wrap;
@@ -93,10 +92,9 @@ export const Select = styled(ReactSelect)<SelectProps>`
     margin: 0;
     border: none;
     box-shadow: none;
-    border-radius: 0;
     border: 1px solid ${farmerConnectTheme.colors.fc_black_70};
-    border-top: none;
-    border-radius: 0 0 0.75rem 0.75rem;
+    border-width: ${(props) => (props.menuPlacement === 'top' ? '1px 1px 0 1px' : '0 1px 1px 1px')};
+    border-radius: ${(props) => (props.menuPlacement === 'top' ? '0.7rem 0.75rem 0 0' : '0 0 0.75rem 0.75rem')};
     padding: 0 0 0.25rem 0;
     overflow: hidden;
   }
@@ -156,15 +154,15 @@ export const Select = styled(ReactSelect)<SelectProps>`
       animation: ${animateCheckbox} 0.2s;
     }
 
-    &:hover,
-    &--is-focused {
-      background-color: ${farmerConnectTheme.colors.fc_black_5};
-    }
-
     &--is-selected {
       font-weight: 700;
       color: ${farmerConnectTheme.colors.fc_black_100};
-      background-color: unset;
+      background-color: transparent;
+    }
+
+    &:active,
+    &--is-focused {
+      background-color: ${farmerConnectTheme.colors.fc_black_5};
     }
 
     & + .select__option {
