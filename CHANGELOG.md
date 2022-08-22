@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.0] 2022-08-22
+
+- Added: Modal v2
+- Added: deprecation message on Modal
+
 ## [3.4.5] 2022-08-11
 
 - Added: SmallSelect now supports menu opening upwards with proper styling
