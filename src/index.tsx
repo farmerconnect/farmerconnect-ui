@@ -49,6 +49,7 @@ import Range from './components/Range';
 import * as Mixins from './mixins';
 import SmallInput from './components/SmallInput';
 import * as Themes from './components/Theme';
+import Modal_v2 from './components/Modal_v2';
 
 export {
   WizardSteps,
@@ -102,4 +103,5 @@ export {
   Range,
   SmallInput,
   Themes,
+  Modal_v2,
 };
