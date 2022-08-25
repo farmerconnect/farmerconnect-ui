@@ -33,11 +33,15 @@ export const Select = styled(ReactSelect)<SelectProps>`
       border-color: ${farmerConnectTheme.colors.fc_black_70};
     }
 
-    .select__value-container.select__value-container--is-multi.select__value-container--has-value {
-      flex-wrap: wrap;
+    .select__value-container {
+      flex-wrap: nowrap;
+    }
+
+    .select__value-container--is-multi > span {
+      padding-left: 0.4375rem;
+      white-space: nowrap;
       overflow: hidden;
-      max-height: 1.8rem;
-      margin-bottom: 0rem;
+      text-overflow: ellipsis;
     }
 
     &--menu-is-open {

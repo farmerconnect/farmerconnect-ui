@@ -4,9 +4,9 @@ import { StyledIcon } from './styles';
 
 const Sorting = ({ fill, order, activeColor, defaultColor, inactiveColor, ...props }: ISortingProps) => {
   const getCurrentColors = () => {
-    if (order === 'asc') return [activeColor, inactiveColor];
+    if (order === 'desc') return [activeColor, inactiveColor];
 
-    if (order === 'desc') return [inactiveColor, activeColor];
+    if (order === 'asc') return [inactiveColor, activeColor];
 
     return [defaultColor, defaultColor];
   };

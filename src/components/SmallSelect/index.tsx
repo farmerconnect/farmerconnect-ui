@@ -1,9 +1,10 @@
-import * as S from './styles';
-import { components, Props, OptionProps, MenuProps, GroupTypeBase } from 'react-select';
-import { CheckboxUnchecked, CheckboxChecked } from '../Icons/Checkbox';
-import { HelperText } from '../Input/styles';
 import { ReactNode, useCallback } from 'react';
+import { components, GroupTypeBase, MenuProps, OptionProps, Props, ValueContainerProps } from 'react-select';
+import { CheckboxChecked, CheckboxUnchecked } from '../Icons/Checkbox';
+import { HelperText } from '../Input/styles';
 import { farmerConnectTheme } from '../Theme';
+import Typography from '../Typography';
+import * as S from './styles';
 
 export type SmallSelectProps<
   Option,
@@ -13,6 +14,7 @@ export type SmallSelectProps<
   error?: string | boolean;
   helperText?: ReactNode;
   footer?: ReactNode;
+  selectedItemsLabel?: (count: number) => string;
 } & Props<Option, IsMulti, Group>;
 
 const CustomOption = ({ children, ...props }: OptionProps<{}, boolean>) => (
@@ -37,12 +39,51 @@ const CustomMenu = (props: CustomMenuProps) => {
   );
 };
 
+const CustomValueContainer = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
+>(
+  props: ValueContainerProps<Option, IsMulti, Group> &
+    Pick<SmallSelectProps<Option, IsMulti, Group>, 'selectedItemsLabel'>
+) => {
+  const {
+    getValue,
+    isMulti,
+    hasValue,
+    selectProps: { menuIsOpen },
+    selectedItemsLabel = (count) => `${count} item(s) selected`,
+  } = props;
+  const valueCount = getValue()?.length || 0;
+  if (!isMulti) {
+    return <components.ValueContainer {...props} />;
+  }
+
+  return (
+    <components.ValueContainer {...props}>
+      {!menuIsOpen && hasValue && (
+        <Typography variant="small" tagName="span">
+          {selectedItemsLabel(valueCount)}
+        </Typography>
+      )}
+      {props.children}
+    </components.ValueContainer>
+  );
+};
+
 function SmallSelect<
   Option,
   IsMulti extends boolean = false,
   Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
->({ footer = null, components = {}, ...props }: SmallSelectProps<Option, IsMulti, Group>) {
+>({ footer = null, components = {}, selectedItemsLabel, ...props }: SmallSelectProps<Option, IsMulti, Group>) {
   const Menu = useCallback((props: MenuProps<{}, boolean>) => <CustomMenu {...props} footer={footer} />, [footer]);
+
+  const ValueContainer = useCallback(
+    (props: ValueContainerProps<Option, IsMulti, Group>) => (
+      <CustomValueContainer {...props} selectedItemsLabel={selectedItemsLabel} />
+    ),
+    [selectedItemsLabel]
+  );
 
   return (
     <S.SelectWrapper>
@@ -53,6 +94,8 @@ function SmallSelect<
           ClearIndicator: null,
           Option: CustomOption,
           Menu: Menu,
+          ValueContainer,
+          MultiValue: () => null,
           ...components,
         }}
         classNamePrefix="select"
