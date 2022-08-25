@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.1] 2022-08-25
+
+- Updated: SmallSelect no longer show item tags for multiple selected items
+- Fixed: Sorting now highlights the correct arrow for asc/desc ordering
+
 ## [3.5.0] 2022-08-22
 
 - Added: Modal v2
