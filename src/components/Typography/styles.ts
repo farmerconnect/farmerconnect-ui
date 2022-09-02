@@ -27,7 +27,7 @@ const pickFontStyle = (fontStyle: ITypographyProps['fontStyle']) =>
 
 const fontDefaults = css<ITypographyProps>`
   margin: 0;
-  font-family: 'Red Hat Text', sans-serif;
+  font-family: var(--fc-typography-font, 'Red Hat Text', sans-serif);
   color: ${({ color }) => (!!color ? farmerConnectTheme.colors[color] : defaultFontColor)};
 `;
 
