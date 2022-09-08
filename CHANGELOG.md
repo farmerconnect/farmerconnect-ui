@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.3] 2022-09-08
+
+- Fixed SmallSelect placeholder styling
+
 ## [3.5.2] 2022-09-08
 
 - Fixed SmallSelect placeholder and search filter layout
