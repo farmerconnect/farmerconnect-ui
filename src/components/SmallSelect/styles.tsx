@@ -118,7 +118,7 @@ export const Select = styled(ReactSelect)<SelectProps>`
   }
   .select__placeholder {
     font-size: 0.6875rem;
-    color: ${farmerConnectTheme.colors.fc_black_70};
+    color: ${farmerConnectTheme.colors.fc_black_30};
     margin: 0;
   }
 
@@ -129,7 +129,6 @@ export const Select = styled(ReactSelect)<SelectProps>`
 
   .select__input {
     font-size: 0.6875rem;
-    transform: translateY(-0.125rem);
     > input {
       font-weight: 700;
     }
