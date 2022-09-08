@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.5.4] 2022-09-02
+## [3.5.4] 2022-09-08
 
 - Added: Ability to set Typography's font-family via css variable
 
