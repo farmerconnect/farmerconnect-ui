@@ -1,5 +1,13 @@
 import { ReactNode, useCallback } from 'react';
-import { components, GroupTypeBase, MenuProps, OptionProps, Props, ValueContainerProps } from 'react-select';
+import {
+  components,
+  GroupTypeBase,
+  MenuProps,
+  OptionProps,
+  OptionTypeBase,
+  Props,
+  ValueContainerProps,
+} from 'react-select';
 import { CheckboxChecked, CheckboxUnchecked } from '../Icons/Checkbox';
 import { HelperText } from '../Input/styles';
 import { farmerConnectTheme } from '../Theme';
@@ -7,7 +15,7 @@ import Typography from '../Typography';
 import * as S from './styles';
 
 export type SmallSelectProps<
-  Option,
+  Option extends OptionTypeBase,
   IsMulti extends boolean = false,
   Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
 > = {
@@ -40,7 +48,7 @@ const CustomMenu = (props: CustomMenuProps) => {
 };
 
 const CustomValueContainer = <
-  Option,
+  Option extends OptionTypeBase,
   IsMulti extends boolean = false,
   Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
 >(
@@ -51,7 +59,7 @@ const CustomValueContainer = <
     getValue,
     isMulti,
     hasValue,
-    selectProps: { menuIsOpen },
+    selectProps: { menuIsOpen, inputValue },
     selectedItemsLabel = (count) => `${count} item(s) selected`,
   } = props;
   const valueCount = getValue()?.length || 0;
@@ -66,13 +74,18 @@ const CustomValueContainer = <
           {selectedItemsLabel(valueCount)}
         </Typography>
       )}
+      {menuIsOpen && !inputValue && hasValue && (
+        <Typography variant="small" tagName="span">
+          {selectedItemsLabel(valueCount)}
+        </Typography>
+      )}
       {props.children}
     </components.ValueContainer>
   );
 };
 
 function SmallSelect<
-  Option,
+  Option extends OptionTypeBase,
   IsMulti extends boolean = false,
   Group extends GroupTypeBase<Option> = GroupTypeBase<Option>
 >({ footer = null, components = {}, selectedItemsLabel, ...props }: SmallSelectProps<Option, IsMulti, Group>) {

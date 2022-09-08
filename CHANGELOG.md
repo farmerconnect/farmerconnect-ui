@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.2] 2022-09-08
+
+- Fixed SmallSelect placeholder and search filter layout
+
 ## [3.5.1] 2022-08-25
 
 - Updated: SmallSelect no longer show item tags for multiple selected items
