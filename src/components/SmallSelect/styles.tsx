@@ -1,7 +1,8 @@
+import ReactSelect from 'react-select';
 import styled, { keyframes } from 'styled-components';
-import ReactSelect, { Props } from 'react-select';
 import { customScrollbar } from '../../mixins/ScrollBar';
 import { farmerConnectTheme } from '../Theme';
+import Typography from '../Typography';
 
 const animateCheckbox = keyframes`
   0% {
@@ -14,8 +15,7 @@ const animateCheckbox = keyframes`
 
 type SelectProps = {
   error: string | boolean;
-} & Props;
-
+};
 export const Select = styled(ReactSelect)<SelectProps>`
   .select__control {
     min-height: 2rem;
@@ -33,15 +33,17 @@ export const Select = styled(ReactSelect)<SelectProps>`
       border-color: ${farmerConnectTheme.colors.fc_black_70};
     }
 
-    .select__value-container {
-      flex-wrap: nowrap;
-    }
-
-    .select__value-container--is-multi > span {
-      padding-left: 0.4375rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .select__value-container,
+    .select__value-container--is-multi {
+      > div {
+        margin: 0;
+        padding: 0;
+      }
+      > span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     &--menu-is-open {
@@ -49,12 +51,6 @@ export const Select = styled(ReactSelect)<SelectProps>`
       border-radius: ${(props) => (props.menuPlacement === 'top' ? '0 0 0.75rem 0.75rem' : '0.75rem 0.75rem 0 0')};
       border-width: ${(props) => (props.menuPlacement === 'top' ? '0 1px 1px 1px' : '1px 1px 0 1px')};
       padding: ${(props) => (props.menuPlacement === 'top' ? '1px 0 0 0' : '0 0 1px 0')};
-
-      .select__value-container.select__value-container--is-multi.select__value-container--has-value {
-        flex-wrap: wrap;
-        overflow: hidden;
-        max-height: 20rem;
-      }
     }
 
     &--is-focused {
@@ -68,7 +64,7 @@ export const Select = styled(ReactSelect)<SelectProps>`
   }
 
   .select__value-container {
-    padding: 0 0.5rem 0 0.3rem;
+    padding: 0 0.5rem;
   }
 
   .select__indicators {
@@ -122,16 +118,18 @@ export const Select = styled(ReactSelect)<SelectProps>`
   }
   .select__placeholder {
     font-size: 0.6875rem;
-    color: ${farmerConnectTheme.colors.fc_black_30};
-    margin-left: 0.4375rem;
+    color: ${farmerConnectTheme.colors.fc_black_70};
+    margin: 0;
   }
 
-  .select__single-value,
+  .select__single-value {
+    font-size: 0.6875rem;
+    color: ${farmerConnectTheme.colors.fc_black_100};
+  }
+
   .select__input {
     font-size: 0.6875rem;
-    margin-left: 0.4375rem;
-    color: ${farmerConnectTheme.colors.fc_black_100};
-
+    transform: translateY(-0.125rem);
     > input {
       font-weight: 700;
     }
@@ -224,4 +222,8 @@ export const FooterContainer = styled.div`
   color: #5b5b5b;
   position: relative;
   margin-bottom: -0.5rem;
+`;
+
+export const SelectPlaceholder = styled(Typography)`
+  color: #b9b9b9;
 `;
