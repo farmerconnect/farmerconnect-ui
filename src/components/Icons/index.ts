@@ -67,3 +67,5 @@ export { default as Coffee } from './Coffee';
 export { default as SizeOfPlot } from './SizeOfPlot';
 export { default as Help } from './Help';
 export { default as PinNetwork } from './PinNetwork';
+export { default as Settings } from './Settings';
+export { default as Logout } from './Logout';
