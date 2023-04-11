@@ -1,4 +1,6 @@
 # Introduction
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffarmerconnect%2Ffarmerconnect-ui.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffarmerconnect%2Ffarmerconnect-ui?ref=badge_shield)
+
 
 This project contains the UI components that are shared across multiple front end projects inside of farmer connect. The components are built with React and exposed in a Storybook page under [ui.farmerconnect.com](https://ui.farmerconnect.com) for easy visualization and usage instructions.
 
@@ -22,6 +24,9 @@ Then access it in `http://localhost:6006`
 # License
 
 Check the [LICENSE](https://github.com/farmerconnect/farmerconnect-ui/blob/main/LICENSE) file
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffarmerconnect%2Ffarmerconnect-ui.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffarmerconnect%2Ffarmerconnect-ui?ref=badge_large)
 
 # Contribute
 
